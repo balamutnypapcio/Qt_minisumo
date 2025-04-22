@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/new/image">
+        <file>img/activeSensor.png</file>
+        <file>img/greenLEFT.png</file>
+        <file>img/greenRIGHT.png</file>
+        <file>img/greenUP.png</file>
+        <file>img/greenUpR.png</file>
+        <file>img/redLEFT.png</file>
+        <file>img/redRIGHT.png</file>
+        <file>img/redUp.png</file>
+        <file>img/redUpR.png</file>
+        <file>img/robotv1.png</file>
+        <file>img/arrowDown.png</file>
+        <file>img/arrowUp.png</file>
+        <file>img/arrowIMU.png</file>
+    </qresource>
+    <qresource prefix="/data">
+        <file>csv/settings1.csv</file>
+    </qresource>
+</RCC>
