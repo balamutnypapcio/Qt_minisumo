@@ -1,0 +1,46 @@
+\doxysection{linechartmenager.\+h}
+\hypertarget{linechartmenager_8h_source}{}\label{linechartmenager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LINECHARTMENAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LINECHARTMENAGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QtCharts/QChartView>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QtCharts/QLineSeries>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QtCharts/QChart>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QtCharts/QValueAxis>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}sensordata.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLineChartMenager}{LineChartMenager}}\ \ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classLineChartMenager}{LineChartMenager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QWidget*\ container,\ QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classLineChartMenager}{\string~LineChartMenager}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}{setupChart}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_aeea626a786f77e752dcb62ff11a266fc}{updateChart}}(\textcolor{keywordtype}{int}\ time);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_ac69f0c1db373525cdcf1fb2223b789d0}{clearChart}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classSensorData}{SensorData}}*\ m\_sensorData;\ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ QWidget*\ m\_container;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ QChart*\ m\_chart;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ QLineSeries*\ m\_series1;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ QLineSeries*\ m\_series2;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ QLineSeries*\ m\_series3;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ QValueAxis*\ m\_axisX;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ QValueAxis*\ m\_axisY;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ QChartView*\ m\_chartView;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_POINTS\ =\ 100;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_currentPoint\ =\ 0;}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LINECHARTMENAGER\_H}}
+
+\end{DoxyCode}

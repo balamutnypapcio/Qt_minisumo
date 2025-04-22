@@ -1,0 +1,48 @@
+\doxysection{visualizationmanager.\+h}
+\hypertarget{visualizationmanager_8h_source}{}\label{visualizationmanager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VISUALIZATIONMANAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VISUALIZATIONMANAGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QPixmap>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}sensordata.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}ui\_mainwindow.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QGraphicsOpacityEffect>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QtMath>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVisualizationManager}{VisualizationManager}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classVisualizationManager}{VisualizationManager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ Ui::MainWindow*\ ui,\ QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVisualizationManager_a89c8db228d60d6e69f919deeaa93a10c}{setupArrows}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVisualizationManager_aa475de761f448ecbc01dc76aa7cf5089}{updateVisibility}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVisualizationManager_a7977385b324008ebef4fbf13fa2a36a9}{updateMotorArrows}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVisualizationManager_a374eb6236b03955bac5deece365177f9}{updateImuArrow}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVisualizationManager_a587b97c2f0c252417f0e1b876ef1c55d}{updateMotorSpeed}}();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVisualizationManager_a5f945fcf791c213972cc8762d0cc196b}{updateAll}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ updateArrowSize1();}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ updateArrowSize2();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ setArrowOpacity(QLabel*\ arrowLabel);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{classSensorData}{SensorData}}*\ m\_sensorData;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ Ui::MainWindow*\ m\_ui;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ QPixmap\ m\_originalArrowPixmap;\ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ QPixmap\ m\_originalArrowIMU;\ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ VISUALIZATIONMANAGER\_H}}
+
+\end{DoxyCode}

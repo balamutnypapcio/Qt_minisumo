@@ -1,0 +1,120 @@
+\doxysection{Dokumentacja klasy CSVManager}
+\hypertarget{classCSVManager}{}\label{classCSVManager}\index{CSVManager@{CSVManager}}
+
+
+Zarządza odczytem i odtwarzaniem danych z pliku CSV.  
+
+
+
+
+{\ttfamily \#include $<$csvmanager.\+h$>$}
+
+
+
+Diagram dziedziczenia dla CSVManager
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classCSVManager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagram współpracy dla CSVManager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classCSVManager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Sygnały}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}{data\+Updated}} (int time)
+\begin{DoxyCompactList}\small\item\em Sygnał informujący o aktualizacji danych. \end{DoxyCompactList}\item 
+\Hypertarget{classCSVManager_a10755abfed118a3625b213fcc61b8e3f}\label{classCSVManager_a10755abfed118a3625b213fcc61b8e3f} 
+void {\bfseries playback\+Finished} ()
+\begin{DoxyCompactList}\small\item\em Sygnał emitowany po zakończeniu odtwarzania. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCSVManager_a41436a6ce1f97fed378776db1eac6e24}{CSVManager}} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Konstruktor klasy \doxylink{classCSVManager}{CSVManager}. \end{DoxyCompactList}\item 
+\Hypertarget{classCSVManager_a97ab57c81378a5655ec36f52885316b1}\label{classCSVManager_a97ab57c81378a5655ec36f52885316b1} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+CSVManager} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCSVManager_aa83110a5d828a7dd9f18c6edcf661ea4}{load\+From\+File}} (const QString \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Wczytuje dane z pliku CSV. \end{DoxyCompactList}\item 
+\Hypertarget{classCSVManager_aa421002b8c1b3562776ae67961680e71}\label{classCSVManager_aa421002b8c1b3562776ae67961680e71} 
+void {\bfseries start\+Playback} ()
+\begin{DoxyCompactList}\small\item\em Rozpoczyna odtwarzanie danych z CSV. \end{DoxyCompactList}\item 
+\Hypertarget{classCSVManager_a16a339a63758a4b594567faaedf4bc82}\label{classCSVManager_a16a339a63758a4b594567faaedf4bc82} 
+void {\bfseries stop\+Playback} ()
+\begin{DoxyCompactList}\small\item\em Zatrzymuje odtwarzanie danych. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Zarządza odczytem i odtwarzaniem danych z pliku CSV. 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classCSVManager_a41436a6ce1f97fed378776db1eac6e24}\label{classCSVManager_a41436a6ce1f97fed378776db1eac6e24} 
+\index{CSVManager@{CSVManager}!CSVManager@{CSVManager}}
+\index{CSVManager@{CSVManager}!CSVManager@{CSVManager}}
+\doxysubsubsection{\texorpdfstring{CSVManager()}{CSVManager()}}
+{\footnotesize\ttfamily CSVManager\+::\+CSVManager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}}]{sensor\+Data,  }\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Konstruktor klasy \doxylink{classCSVManager}{CSVManager}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em sensor\+Data} & Wskaźnik do obiektu \doxylink{classSensorData}{Sensor\+Data}. \\
+\hline
+{\em parent} & Opcjonalny rodzic QObject. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}\label{classCSVManager_ac8dfd7524b2fe204986084c3accbd839} 
+\index{CSVManager@{CSVManager}!dataUpdated@{dataUpdated}}
+\index{dataUpdated@{dataUpdated}!CSVManager@{CSVManager}}
+\doxysubsubsection{\texorpdfstring{dataUpdated}{dataUpdated}}
+{\footnotesize\ttfamily void CSVManager\+::data\+Updated (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Sygnał informujący o aktualizacji danych. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em time} & Znacznik czasu aktualizacji. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCSVManager_aa83110a5d828a7dd9f18c6edcf661ea4}\label{classCSVManager_aa83110a5d828a7dd9f18c6edcf661ea4} 
+\index{CSVManager@{CSVManager}!loadFromFile@{loadFromFile}}
+\index{loadFromFile@{loadFromFile}!CSVManager@{CSVManager}}
+\doxysubsubsection{\texorpdfstring{loadFromFile()}{loadFromFile()}}
+{\footnotesize\ttfamily bool CSVManager\+::load\+From\+File (\begin{DoxyParamCaption}\item[{const QString \&}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Wczytuje dane z pliku CSV. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em file\+Path} & Ścieżka do pliku CSV. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+true jeśli wczytywanie się powiodło. 
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+csvmanager.\+h\item 
+csvmanager.\+cpp\end{DoxyCompactItemize}

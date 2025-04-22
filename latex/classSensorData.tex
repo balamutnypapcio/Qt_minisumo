@@ -1,0 +1,133 @@
+\doxysection{Dokumentacja klasy Sensor\+Data}
+\hypertarget{classSensorData}{}\label{classSensorData}\index{SensorData@{SensorData}}
+
+
+Przechowuje dane z różnych sensorów i udostępnia je aplikacji.  
+
+
+
+
+{\ttfamily \#include $<$sensordata.\+h$>$}
+
+
+
+Diagram dziedziczenia dla Sensor\+Data
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{classSensorData__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagram współpracy dla Sensor\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{classSensorData__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Sygnały}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSensorData_a93a841a87717c333f93c8e2ab1ba479e}\label{classSensorData_a93a841a87717c333f93c8e2ab1ba479e} 
+void {\bfseries tof\+Data\+Changed} ()
+\item 
+\Hypertarget{classSensorData_a0ebd4e4804899960c3708d6ff6b4641e}\label{classSensorData_a0ebd4e4804899960c3708d6ff6b4641e} 
+void {\bfseries line\+SData\+Changed} ()
+\item 
+\Hypertarget{classSensorData_a3d394763776fdce03f4c9130ca35b39e}\label{classSensorData_a3d394763776fdce03f4c9130ca35b39e} 
+void {\bfseries motor\+Data\+Changed} ()
+\item 
+\Hypertarget{classSensorData_aeeb25bc8f4aa7c531044fc6b0ef98c73}\label{classSensorData_aeeb25bc8f4aa7c531044fc6b0ef98c73} 
+void {\bfseries imu\+Data\+Changed} ()
+\item 
+\Hypertarget{classSensorData_ac852da69eccb449b75153160aa56676b}\label{classSensorData_ac852da69eccb449b75153160aa56676b} 
+void {\bfseries data\+Changed} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSensorData_a036b0dc2c1a573c8394077ad65e3cecb}\label{classSensorData_a036b0dc2c1a573c8394077ad65e3cecb} 
+{\bfseries Sensor\+Data} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+\Hypertarget{classSensorData_af44dc21742b6625197b018e22837b42d}\label{classSensorData_af44dc21742b6625197b018e22837b42d} 
+bool {\bfseries get\+Tof1} () const
+\item 
+\Hypertarget{classSensorData_a83d7ef96da281c8e1174549f82a3aac2}\label{classSensorData_a83d7ef96da281c8e1174549f82a3aac2} 
+void {\bfseries set\+Tof1} (bool value)
+\item 
+\Hypertarget{classSensorData_aa6b558d735fc064e465894567f56b75a}\label{classSensorData_aa6b558d735fc064e465894567f56b75a} 
+bool {\bfseries get\+Tof2} () const
+\item 
+\Hypertarget{classSensorData_a7ec6d5f81e1217238569ae8f849178b0}\label{classSensorData_a7ec6d5f81e1217238569ae8f849178b0} 
+void {\bfseries set\+Tof2} (bool value)
+\item 
+\Hypertarget{classSensorData_a8bf8f9e8a1f20ee70d813a8f6fe850c4}\label{classSensorData_a8bf8f9e8a1f20ee70d813a8f6fe850c4} 
+bool {\bfseries get\+Tof3} () const
+\item 
+\Hypertarget{classSensorData_a5a50e07551f1fff071f5a6c987c086ae}\label{classSensorData_a5a50e07551f1fff071f5a6c987c086ae} 
+void {\bfseries set\+Tof3} (bool value)
+\item 
+\Hypertarget{classSensorData_a201e2f4719c4e16df262017324c757b3}\label{classSensorData_a201e2f4719c4e16df262017324c757b3} 
+bool {\bfseries get\+Tof4} () const
+\item 
+\Hypertarget{classSensorData_a66721d68a94fd516c56e13668b4fa62c}\label{classSensorData_a66721d68a94fd516c56e13668b4fa62c} 
+void {\bfseries set\+Tof4} (bool value)
+\item 
+\Hypertarget{classSensorData_a24eb6108f3bda24bf75d45408533a940}\label{classSensorData_a24eb6108f3bda24bf75d45408533a940} 
+bool {\bfseries get\+Line\+S1\+Active} () const
+\item 
+\Hypertarget{classSensorData_aa90ffd81486a062a307b20e0cf6d758f}\label{classSensorData_aa90ffd81486a062a307b20e0cf6d758f} 
+void {\bfseries set\+Line\+S1\+Active} (bool value)
+\item 
+\Hypertarget{classSensorData_ae3897165469492b6f77b74e64574f357}\label{classSensorData_ae3897165469492b6f77b74e64574f357} 
+bool {\bfseries get\+Line\+S2\+Active} () const
+\item 
+\Hypertarget{classSensorData_a1c1d1671f67942687f784fbb54259741}\label{classSensorData_a1c1d1671f67942687f784fbb54259741} 
+void {\bfseries set\+Line\+S2\+Active} (bool value)
+\item 
+\Hypertarget{classSensorData_a7bea6a8d8248abbb5a68ac10e9827de8}\label{classSensorData_a7bea6a8d8248abbb5a68ac10e9827de8} 
+bool {\bfseries get\+Line\+S3\+Active} () const
+\item 
+\Hypertarget{classSensorData_a58dbe7b4a31ae67315b790caa3dd9131}\label{classSensorData_a58dbe7b4a31ae67315b790caa3dd9131} 
+void {\bfseries set\+Line\+S3\+Active} (bool value)
+\item 
+\Hypertarget{classSensorData_a1be7773329f4a5e1ac61112e94075988}\label{classSensorData_a1be7773329f4a5e1ac61112e94075988} 
+int {\bfseries get\+Motor1\+Speed} () const
+\item 
+\Hypertarget{classSensorData_a485c5643f25b9a4f4e023c3e44b9a1ce}\label{classSensorData_a485c5643f25b9a4f4e023c3e44b9a1ce} 
+void {\bfseries set\+Motor1\+Speed} (int value)
+\item 
+\Hypertarget{classSensorData_ac8a1dfd8386c538e5772906519a76211}\label{classSensorData_ac8a1dfd8386c538e5772906519a76211} 
+int {\bfseries get\+Motor2\+Speed} () const
+\item 
+\Hypertarget{classSensorData_a10ee9e936eb6637f198bb724e79cfe51}\label{classSensorData_a10ee9e936eb6637f198bb724e79cfe51} 
+void {\bfseries set\+Motor2\+Speed} (int value)
+\item 
+\Hypertarget{classSensorData_a0184257f45592ade4fd34b975c6792cd}\label{classSensorData_a0184257f45592ade4fd34b975c6792cd} 
+float {\bfseries get\+ImuX} () const
+\item 
+\Hypertarget{classSensorData_affba870f7752c0deb2438e69e02ef53a}\label{classSensorData_affba870f7752c0deb2438e69e02ef53a} 
+void {\bfseries set\+ImuX} (float value)
+\item 
+\Hypertarget{classSensorData_ac1375b4be88832978daa10b80e7ddfa7}\label{classSensorData_ac1375b4be88832978daa10b80e7ddfa7} 
+float {\bfseries get\+ImuY} () const
+\item 
+\Hypertarget{classSensorData_af309ff8aee4255fd470078d496b9237f}\label{classSensorData_af309ff8aee4255fd470078d496b9237f} 
+void {\bfseries set\+ImuY} (float value)
+\item 
+\Hypertarget{classSensorData_a3a985eab247604ab102f4015df8d66e8}\label{classSensorData_a3a985eab247604ab102f4015df8d66e8} 
+void {\bfseries update\+All\+Data} (bool tof1, bool tof2, bool tof3, bool tof4, bool line\+S1, bool line\+S2, bool line\+S3, int motor1, int motor2, float imuX, float imuY)
+\begin{DoxyCompactList}\small\item\em Aktualizuje wszystkie dane naraz. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Przechowuje dane z różnych sensorów i udostępnia je aplikacji. 
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+sensordata.\+h\item 
+sensordata.\+cpp\end{DoxyCompactItemize}

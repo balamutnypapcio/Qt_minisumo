@@ -1,0 +1,82 @@
+\doxysection{sensordata.\+h}
+\hypertarget{sensordata_8h_source}{}\label{sensordata_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SENSORDATA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SENSORDATA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSensorData}{SensorData}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classSensorData}{SensorData}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Gettery\ i\ settery\ dla\ danych\ sensorów}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ getTof1()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_1;\ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ setTof1(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ getTof2()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_2;\ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ setTof2(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ getTof3()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_3;\ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ setTof3(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ getTof4()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_4;\ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ setTof4(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ getLineS1Active()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_islineS\_1\_Active;\ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ setLineS1Active(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{bool}\ getLineS2Active()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_islineS\_2\_Active;\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ setLineS2Active(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ getLineS3Active()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_islineS\_3\_Active;\ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ setLineS3Active(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ getMotor1Speed()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_motor1\_speed;\ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ setMotor1Speed(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ getMotor2Speed()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_motor2\_speed;\ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ setMotor2Speed(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{float}\ getImuX()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_imuX;\ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ setImuX(\textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ getImuY()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_imuY;\ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ setImuY(\textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a3a985eab247604ab102f4015df8d66e8}{updateAllData}}(\textcolor{keywordtype}{bool}\ tof1,\ \textcolor{keywordtype}{bool}\ tof2,\ \textcolor{keywordtype}{bool}\ tof3,\ \textcolor{keywordtype}{bool}\ tof4,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ lineS1,\ \textcolor{keywordtype}{bool}\ lineS2,\ \textcolor{keywordtype}{bool}\ lineS3,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ motor1,\ \textcolor{keywordtype}{int}\ motor2,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ imuX,\ \textcolor{keywordtype}{float}\ imuY);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ signals:}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Sygnały\ emitowane\ przy\ zmianie\ danych}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ tofDataChanged();}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ lineSDataChanged();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ motorDataChanged();}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ imuDataChanged();}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ dataChanged();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_1\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_2\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_3\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_4\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_islineS\_1\_Active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_islineS\_2\_Active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_islineS\_3\_Active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_motor1\_speed\ =\ 0;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_motor2\_speed\ =\ 0;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_imuX\ =\ 0;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_imuY\ =\ 0;}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SENSORDATA\_H}}
+
+\end{DoxyCode}

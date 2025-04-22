@@ -1,0 +1,17 @@
+<map id="Graficzna hierarchia klas" name="Graficzna hierarchia klas">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,153,80,179"/>
+<area shape="rect" id="Node000001" href="$classCSVManager.html" title="Zarządza odczytem i odtwarzaniem danych z pliku CSV." alt="" coords="157,5,262,31"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="52,139,81,89,102,62,126,40,155,25,158,30,130,44,106,66,85,92,57,142"/>
+<area shape="rect" id="Node000002" href="$classImuChartManager.html" title="Zarządza wykresem danych z IMU." alt="" coords="140,55,279,80"/>
+<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="63,141,91,114,127,89,153,78,155,83,129,94,95,118,66,145"/>
+<area shape="rect" id="Node000003" href="$classLineChartMenager.html" title=" " alt="" coords="139,104,280,129"/>
+<area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="93,149,127,138,165,127,166,132,129,143,94,154"/>
+<area shape="rect" id="Node000004" href="$classMotorChartManager.html" title=" " alt="" coords="133,153,285,179"/>
+<area shape="poly" id="edge5_Node000000_Node000004" title=" " alt="" coords="94,163,133,163,133,169,94,169"/>
+<area shape="rect" id="Node000005" href="$classSensorData.html" title="Przechowuje dane z różnych sensorów i udostępnia je aplikacji." alt="" coords="161,203,258,228"/>
+<area shape="poly" id="edge6_Node000000_Node000005" title=" " alt="" coords="94,178,166,200,165,205,93,183"/>
+<area shape="rect" id="Node000006" href="$classTofChartManager.html" title=" " alt="" coords="143,252,276,277"/>
+<area shape="poly" id="edge7_Node000000_Node000006" title=" " alt="" coords="66,186,95,213,129,237,158,249,156,254,127,242,92,217,63,190"/>
+<area shape="rect" id="Node000007" href="$classVisualizationManager.html" title="Zarządza wizualizacją danych sensorów w GUI (strzałki, opacities, itp.)." alt="" coords="128,301,291,327"/>
+<area shape="poly" id="edge8_Node000000_Node000007" title=" " alt="" coords="57,190,86,239,106,265,130,286,152,299,150,304,126,291,102,268,81,242,53,192"/>
+</map>

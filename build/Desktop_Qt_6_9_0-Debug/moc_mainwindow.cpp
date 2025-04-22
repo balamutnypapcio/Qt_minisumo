@@ -40,18 +40,8 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "MainWindow",
-        "updateVisibility",
-        "",
-        "updateMotorSpeed",
-        "updateArrowSize1",
-        "updateArrowSize2",
-        "updateArrowIMU",
-        "updateAll",
-        "setArrowOpacity",
-        "QLabel*",
-        "arrowLabel",
-        "setUpArrows",
         "on_line1_button_clicked",
+        "",
         "on_tof1_button_clicked",
         "on_dial_valueChanged",
         "value",
@@ -59,73 +49,37 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "on_x_dial_valueChanged",
         "on_y_dial_valueChanged",
         "on_load_fButton_clicked",
-        "setupTofChart",
-        "setupLineSChart",
-        "setupMotorsChart",
-        "setupImuChart",
-        "setupCharts",
-        "updateCharts",
-        "time",
-        "clearCharts"
+        "handleDataUpdated",
+        "time"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'updateVisibility'
-        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'updateMotorSpeed'
-        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'updateArrowSize1'
-        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'updateArrowSize2'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'updateArrowIMU'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'updateAll'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'setArrowOpacity'
-        QtMocHelpers::SlotData<void(QLabel *)>(8, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 9, 10 },
-        }}),
-        // Slot 'setUpArrows'
-        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_line1_button_clicked'
-        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_tof1_button_clicked'
-        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_dial_valueChanged'
-        QtMocHelpers::SlotData<void(int)>(14, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 15 },
+        QtMocHelpers::SlotData<void(int)>(4, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 5 },
         }}),
         // Slot 'on_dial_2_valueChanged'
-        QtMocHelpers::SlotData<void(int)>(16, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 15 },
+        QtMocHelpers::SlotData<void(int)>(6, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 5 },
         }}),
         // Slot 'on_x_dial_valueChanged'
-        QtMocHelpers::SlotData<void(int)>(17, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 15 },
+        QtMocHelpers::SlotData<void(int)>(7, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 5 },
         }}),
         // Slot 'on_y_dial_valueChanged'
-        QtMocHelpers::SlotData<void(int)>(18, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 15 },
+        QtMocHelpers::SlotData<void(int)>(8, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 5 },
         }}),
         // Slot 'on_load_fButton_clicked'
-        QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'setupTofChart'
-        QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'setupLineSChart'
-        QtMocHelpers::SlotData<void()>(21, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'setupMotorsChart'
-        QtMocHelpers::SlotData<void()>(22, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'setupImuChart'
-        QtMocHelpers::SlotData<void()>(23, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'setupCharts'
-        QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'updateCharts'
-        QtMocHelpers::SlotData<void(int)>(25, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 26 },
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleDataUpdated'
+        QtMocHelpers::SlotData<void(int)>(10, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 11 },
         }}),
-        // Slot 'clearCharts'
-        QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -149,41 +103,15 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<MainWindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->updateVisibility(); break;
-        case 1: _t->updateMotorSpeed(); break;
-        case 2: _t->updateArrowSize1(); break;
-        case 3: _t->updateArrowSize2(); break;
-        case 4: _t->updateArrowIMU(); break;
-        case 5: _t->updateAll(); break;
-        case 6: _t->setArrowOpacity((*reinterpret_cast< std::add_pointer_t<QLabel*>>(_a[1]))); break;
-        case 7: _t->setUpArrows(); break;
-        case 8: _t->on_line1_button_clicked(); break;
-        case 9: _t->on_tof1_button_clicked(); break;
-        case 10: _t->on_dial_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 11: _t->on_dial_2_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 12: _t->on_x_dial_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 13: _t->on_y_dial_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 14: _t->on_load_fButton_clicked(); break;
-        case 15: _t->setupTofChart(); break;
-        case 16: _t->setupLineSChart(); break;
-        case 17: _t->setupMotorsChart(); break;
-        case 18: _t->setupImuChart(); break;
-        case 19: _t->setupCharts(); break;
-        case 20: _t->updateCharts((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 21: _t->clearCharts(); break;
+        case 0: _t->on_line1_button_clicked(); break;
+        case 1: _t->on_tof1_button_clicked(); break;
+        case 2: _t->on_dial_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 3: _t->on_dial_2_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 4: _t->on_x_dial_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 5: _t->on_y_dial_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 6: _t->on_load_fButton_clicked(); break;
+        case 7: _t->handleDataUpdated((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
-        }
-    }
-    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        switch (_id) {
-        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 6:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QLabel* >(); break;
-            }
-            break;
         }
     }
 }
@@ -207,14 +135,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 22)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 8;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 22)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        if (_id < 8)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 8;
     }
     return _id;
 }
