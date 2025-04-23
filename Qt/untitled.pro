@@ -1,5 +1,6 @@
 QT       += core gui
 QT       += charts
+QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,6 +18,7 @@ SOURCES += \
     mainwindow.cpp \
     motorchartmanager.cpp \
     sensordata.cpp \
+    tcpmanager.cpp \
     tofchartmanager.cpp \
     visualizationmanager.cpp
 
@@ -27,6 +29,7 @@ HEADERS += \
     mainwindow.h \
     motorchartmanager.h \
     sensordata.h \
+    tcpmanager.h \
     tofchartmanager.h \
     visualizationmanager.h
 

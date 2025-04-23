@@ -45,6 +45,13 @@ public:
      */
     void updateMotorSpeed();
 
+
+    /**
+     * @brief Aktualizuje interfejs użytkownika w zależności od stanu połączenia TCP.
+     * @param connected Status połączenia.
+     */
+    void updateConnectionStatusUI(bool connected);
+
     /**
      * @brief Aktualizuje wszystkie elementy wizualizacji.
      */

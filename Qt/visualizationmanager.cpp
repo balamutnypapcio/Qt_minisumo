@@ -358,3 +358,21 @@ void VisualizationManager::updateAll()
     updateImuArrow();
     updateMotorSpeed();
 }
+
+
+// Update UI based on connection status
+void VisualizationManager::updateConnectionStatusUI(bool connected)
+{
+    // Update button states based on connection status
+    // Adjust these to match your actual UI element names
+    m_ui->connectTcpButton->setEnabled(!connected);
+    m_ui->disconnectTcpButton->setEnabled(connected);
+
+    // If you have a connection indicator, update it
+    // For example:
+    if(connected == true){
+        m_ui->connectRed->setVisible(false);
+    }else{
+         m_ui->connectRed->setVisible(true);
+    }
+}

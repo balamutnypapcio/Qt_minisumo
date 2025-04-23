@@ -13,6 +13,8 @@
         <file>img/arrowDown.png</file>
         <file>img/arrowUp.png</file>
         <file>img/arrowIMU.png</file>
+        <file>img/connectionGreen.png</file>
+        <file>img/connectionRed.png</file>
     </qresource>
     <qresource prefix="/data">
         <file>csv/settings1.csv</file>

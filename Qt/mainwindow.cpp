@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_imuChartManager->setupChart();
 
     // Połączenia sygnałów i slotów
+    m_tcpManager = new TCPManager(m_sensorData, this);
     connect(m_csvManager, &CSVManager::dataUpdated, this, &MainWindow::handleDataUpdated);
     connect(m_sensorData, &SensorData::dataChanged, m_visualManager, &VisualizationManager::updateAll);
 
@@ -37,6 +38,10 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 MainWindow::~MainWindow() {
+    if (m_tcpManager && m_tcpManager->isConnected()) {
+        m_tcpManager->disconnectFromDevice();
+    }
+
     delete ui;
 }
 
@@ -86,3 +91,52 @@ void MainWindow::on_x_dial_valueChanged(int value) {
 void MainWindow::on_y_dial_valueChanged(int value) {
     m_sensorData->setImuY(value);
 }
+
+// Implement TCP connection button handler
+void MainWindow::on_connectTcpButton_clicked()
+{
+    // Get IP address and port from UI elements
+    // Adjust these lines to match your actual UI element names
+    QString ipAddress = ui->IpText->text();
+    QString portText = ui->PortText->text();
+    QTextStream ts(&portText);
+    quint16 port = 0;
+    ts >> port;
+
+
+       // Try to connect
+    if (m_tcpManager->connectToDevice(ipAddress, port)) {
+        ui->statusBar->showMessage("Próba połączenia z ESP...");
+    } else {
+        ui->statusBar->showMessage("Błąd podczas inicjowania połączenia");
+    }
+}
+
+// Implement TCP disconnection button handler
+void MainWindow::on_disconnectTcpButton_clicked()
+{
+    m_tcpManager->disconnectFromDevice();
+    ui->statusBar->showMessage("Rozłączono z ESP");
+}
+
+// Handle connection status changes
+void MainWindow::handleConnectionStatusChanged(bool connected)
+{
+    m_visualManager->updateConnectionStatusUI(connected);
+
+    if (connected) {
+        ui->statusBar->showMessage("Połączono z ESP");
+    } else {
+        ui->statusBar->showMessage("Rozłączono z ESP");
+    }
+}
+
+// Handle TCP errors
+void MainWindow::handleTcpError(const QString &errorMessage)
+{
+    ui->statusBar->showMessage("Błąd: " + errorMessage);
+
+    // Optionally show a message box for critical errors
+    QMessageBox::warning(this, "Błąd połączenia TCP", errorMessage);
+}
+
