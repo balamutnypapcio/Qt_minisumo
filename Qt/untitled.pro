@@ -1,3 +1,5 @@
+TARGET = untitled
+
 QT       += core gui
 QT       += charts
 QT       += network

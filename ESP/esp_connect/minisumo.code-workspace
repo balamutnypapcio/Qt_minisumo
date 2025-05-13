@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../MiniSumo_Wilus/Software/minisumo"
+		},
+		{
+			"name": "esp_wifi_connection",
+			"path": "../../../Documents/PlatformIO/Projects/esp_wifi_connection"
+		},
+		{
+			"name": "esp_connect",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
