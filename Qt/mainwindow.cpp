@@ -8,15 +8,20 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Dodaj to zaraz po setupUi
+    connect(ui->buttEXIT, &QPushButton::clicked, this, &QWidget::close);
+    // lub
+    connect(ui->buttEXIT, &QPushButton::clicked, qApp, &QApplication::quit);
+
     // Tworzenie obiektów zarządzających
     m_sensorData = new SensorData(this);
     m_csvManager = new CSVManager(m_sensorData, this);
 
     // Tworzenie managerów wykresów
-    m_tofChartManager = new TofChartManager(m_sensorData, ui->tof_widget, this);
-    m_lineChartManager = new LineChartMenager(m_sensorData, ui->lineS_widget, this);
-    m_motorChartManager = new MotorChartManager(m_sensorData, ui->motors_widget, this);
-    m_imuChartManager = new ImuChartManager(m_sensorData, ui->imu_widget, this);
+    m_tofChartManager = new TofChartManager(m_sensorData, ui->widTof, this);
+    m_lineChartManager = new LineChartMenager(m_sensorData, ui->widLS, this);
+    m_motorChartManager = new MotorChartManager(m_sensorData, ui->widMOTORS, this);
+    m_imuChartManager = new ImuChartManager(m_sensorData, ui->widIMU, this);
 
     // Tworzenie managera wizualizacji
     m_visualManager = new VisualizationManager(m_sensorData, ui, this);
@@ -45,7 +50,7 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::on_load_fButton_clicked() {
+void MainWindow::on_buttLOADcsv_clicked() {
     // Otwórz dialog pliku
     QString filePath = QFileDialog::getOpenFileName(this, "Wybierz plik CSV", "", "Pliki CSV (*.csv);;Wszystkie pliki (*)");
 
@@ -68,37 +73,14 @@ void MainWindow::handleDataUpdated(int time) {
     m_imuChartManager->updateChart(time);
 }
 
-void MainWindow::on_line1_button_clicked() {
-    m_sensorData->setLineS1Active(!m_sensorData->getLineS1Active());
-}
-
-void MainWindow::on_tof1_button_clicked() {
-    m_sensorData->setTof1(!m_sensorData->getTof1());
-}
-
-void MainWindow::on_dial_valueChanged(int value) {
-    m_sensorData->setMotor1Speed(value);
-}
-
-void MainWindow::on_dial_2_valueChanged(int value) {
-    m_sensorData->setMotor2Speed(value);
-}
-
-void MainWindow::on_x_dial_valueChanged(int value) {
-    m_sensorData->setImuX(value);
-}
-
-void MainWindow::on_y_dial_valueChanged(int value) {
-    m_sensorData->setImuY(value);
-}
 
 // Implement TCP connection button handler
-void MainWindow::on_connectTcpButton_clicked()
+void MainWindow::on_buttCONN_clicked()
 {
     // Get IP address and port from UI elements
     // Adjust these lines to match your actual UI element names
-    QString ipAddress = ui->IpText->text();
-    QString portText = ui->PortText->text();
+    QString ipAddress = ui->lineIP->text();
+    QString portText = ui->linePORT->text();
     QTextStream ts(&portText);
     quint16 port = 0;
     ts >> port;
@@ -113,7 +95,7 @@ void MainWindow::on_connectTcpButton_clicked()
 }
 
 // Implement TCP disconnection button handler
-void MainWindow::on_disconnectTcpButton_clicked()
+void MainWindow::on_buttDISS_clicked()
 {
     m_tcpManager->disconnectFromDevice();
     ui->statusBar->showMessage("Rozłączono z ESP");
@@ -139,4 +121,5 @@ void MainWindow::handleTcpError(const QString &errorMessage)
     // Optionally show a message box for critical errors
     QMessageBox::warning(this, "Błąd połączenia TCP", errorMessage);
 }
+
 

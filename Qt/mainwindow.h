@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QApplication>
 #include "sensordata.h"
 #include "csvmanager.h"
 #include "tofchartmanager.h"
@@ -39,13 +40,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_line1_button_clicked();
-    void on_tof1_button_clicked();
-    void on_dial_valueChanged(int value);
-    void on_dial_2_valueChanged(int value);
-    void on_x_dial_valueChanged(int value);
-    void on_y_dial_valueChanged(int value);
-    void on_load_fButton_clicked();
+
+    void on_buttLOADcsv_clicked();
+    //void on_buttSTOPcsv_clicked();
 
     /**
      * @brief Slot aktualizujący dane przy odtwarzaniu z pliku CSV.
@@ -56,12 +53,12 @@ private slots:
     /**
      * @brief Slot obsługujący połączenie TCP z ESP.
      */
-    void on_connectTcpButton_clicked();
+    void on_buttCONN_clicked();
 
     /**
      * @brief Slot obsługujący rozłączenie TCP z ESP.
      */
-    void on_disconnectTcpButton_clicked();
+    void on_buttDISS_clicked();
 
     /**
      * @brief Slot obsługujący zmianę stanu połączenia TCP.

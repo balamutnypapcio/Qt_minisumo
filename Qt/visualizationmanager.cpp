@@ -32,31 +32,31 @@ VisualizationManager::VisualizationManager(SensorData* sensorData, Ui::MainWindo
 
 void VisualizationManager::setupArrows()
 {
-    // Initialize arrows with default properties
-    if (m_ui->motor1_arrow && !m_originalArrowPixmap.isNull()) {
-        m_ui->motor1_arrow->setPixmap(m_originalArrowPixmap.scaled(
-            m_ui->motor1_arrow->width(),
-            m_ui->motor1_arrow->height(),
-            Qt::KeepAspectRatio,
-            Qt::SmoothTransformation));
-    }
+    // // Initialize arrows with default properties
+    // if (m_ui->motor1_arrow && !m_originalArrowPixmap.isNull()) {
+    //     m_ui->motor1_arrow->setPixmap(m_originalArrowPixmap.scaled(
+    //         m_ui->motor1_arrow->width(),
+    //         m_ui->motor1_arrow->height(),
+    //         Qt::KeepAspectRatio,
+    //         Qt::SmoothTransformation));
+    // }
 
-    if (m_ui->motor2_arrow && !m_originalArrowPixmap.isNull()) {
-        m_ui->motor2_arrow->setPixmap(m_originalArrowPixmap.scaled(
-            m_ui->motor2_arrow->width(),
-            m_ui->motor2_arrow->height(),
-            Qt::KeepAspectRatio,
-            Qt::SmoothTransformation));
-    }
+    // if (m_ui->motor2_arrow && !m_originalArrowPixmap.isNull()) {
+    //     m_ui->motor2_arrow->setPixmap(m_originalArrowPixmap.scaled(
+    //         m_ui->motor2_arrow->width(),
+    //         m_ui->motor2_arrow->height(),
+    //         Qt::KeepAspectRatio,
+    //         Qt::SmoothTransformation));
+    // }
 
-    if (m_ui->imu_arrow && !m_originalArrowIMU.isNull()) {
-        m_ui->imu_arrow->setPixmap(m_originalArrowIMU.scaled(
-            m_ui->imu_arrow->width(),
-            m_ui->imu_arrow->height(),
-            Qt::KeepAspectRatio,
-            Qt::SmoothTransformation));
-        setArrowOpacity(m_ui->imu_arrow);
-    }
+    // if (m_ui->imu_arrow && !m_originalArrowIMU.isNull()) {
+    //     m_ui->imu_arrow->setPixmap(m_originalArrowIMU.scaled(
+    //         m_ui->imu_arrow->width(),
+    //         m_ui->imu_arrow->height(),
+    //         Qt::KeepAspectRatio,
+    //         Qt::SmoothTransformation));
+    //     setArrowOpacity(m_ui->imu_arrow);
+    // }
 
     // Update initial visibility based on sensor data
     updateVisibility();
@@ -67,35 +67,35 @@ void VisualizationManager::setupArrows()
 
 void VisualizationManager::updateVisibility()
 {
-    // Update TOF sensors visibility
-    if (m_ui->tof_Red_1) {
-        m_ui->tof_Red_1->setVisible(m_sensorData->getTof1());
-    }
+    // // Update TOF sensors visibility
+    // if (m_ui->tof_Red_1) {
+    //     m_ui->tof_Red_1->setVisible(m_sensorData->getTof1());
+    // }
 
-    if (m_ui->tof_Red_2) {
-        m_ui->tof_Red_2->setVisible(m_sensorData->getTof2());
-    }
+    // if (m_ui->tof_Red_2) {
+    //     m_ui->tof_Red_2->setVisible(m_sensorData->getTof2());
+    // }
 
-    if (m_ui->tof_Red_3) {
-        m_ui->tof_Red_3->setVisible(m_sensorData->getTof3());
-    }
+    // if (m_ui->tof_Red_3) {
+    //     m_ui->tof_Red_3->setVisible(m_sensorData->getTof3());
+    // }
 
-    if (m_ui->tof_Red_4) {
-        m_ui->tof_Red_4->setVisible(m_sensorData->getTof4());
-    }
+    // if (m_ui->tof_Red_4) {
+    //     m_ui->tof_Red_4->setVisible(m_sensorData->getTof4());
+    // }
 
-    // Update Line sensors visibility
-    if (m_ui->lineS_Active_1) {
-        m_ui->lineS_Active_1->setVisible(m_sensorData->getLineS1Active());
-    }
+    // // Update Line sensors visibility
+    // if (m_ui->lineS_Active_1) {
+    //     m_ui->lineS_Active_1->setVisible(m_sensorData->getLineS1Active());
+    // }
 
-    if (m_ui->lineS_Active_2) {
-        m_ui->lineS_Active_2->setVisible(m_sensorData->getLineS2Active());
-    }
+    // if (m_ui->lineS_Active_2) {
+    //     m_ui->lineS_Active_2->setVisible(m_sensorData->getLineS2Active());
+    // }
 
-    if (m_ui->lineS_Active_3) {
-        m_ui->lineS_Active_3->setVisible(m_sensorData->getLineS3Active());
-    }
+    // if (m_ui->lineS_Active_3) {
+    //     m_ui->lineS_Active_3->setVisible(m_sensorData->getLineS3Active());
+    // }
 }
 
 void VisualizationManager::updateMotorArrows()
@@ -115,142 +115,142 @@ void VisualizationManager::updateMotorArrows()
 
 void VisualizationManager::updateArrowSize1()
 {
-    if (!m_ui->motor1_arrow || m_originalArrowPixmap.isNull()) {
-        return;
-    }
+    // if (!m_ui->motor1_arrow || m_originalArrowPixmap.isNull()) {
+    //     return;
+    // }
 
-    if(m_sensorData->getMotor1Speed() == 0){
-        m_ui->motor1_arrow->setVisible(false);
-        return;
-    }
+    // if(m_sensorData->getMotor1Speed() == 0){
+    //     m_ui->motor1_arrow->setVisible(false);
+    //     return;
+    // }
 
-    // Create transformed pixmap
-    QTransform transform;
+    // // Create transformed pixmap
+    // QTransform transform;
 
-    // Rotate if motor speed is negative
-    if (m_sensorData->getMotor1Speed() < 0) {
-        transform.rotate(180);
-    }
+    // // Rotate if motor speed is negative
+    // if (m_sensorData->getMotor1Speed() < 0) {
+    //     transform.rotate(180);
+    // }
 
-    QPixmap rotatedPixmap = m_originalArrowPixmap.transformed(transform);
+    // QPixmap rotatedPixmap = m_originalArrowPixmap.transformed(transform);
 
-    // Get label dimensions
-    int labelWidth = m_ui->motor1_arrow->width();
-    int labelHeight = m_ui->motor1_arrow->height();
+    // // Get label dimensions
+    // int labelWidth = m_ui->motor1_arrow->width();
+    // int labelHeight = m_ui->motor1_arrow->height();
 
-    // Calculate scale factor based on motor speed (0-100%)
-    float speedPercentage = std::min(std::abs(m_sensorData->getMotor1Speed()), 100) / 100.0f;
+    // // Calculate scale factor based on motor speed (0-100%)
+    // float speedPercentage = std::min(std::abs(m_sensorData->getMotor1Speed()), 100) / 100.0f;
 
-    // Calculate maximum possible size to fit within the label
-    // We'll scale to a maximum of 95% of label size to ensure it fits
-    int maxWidth = labelWidth * 0.95;
-    int maxHeight = labelHeight * 0.95;
+    // // Calculate maximum possible size to fit within the label
+    // // We'll scale to a maximum of 95% of label size to ensure it fits
+    // int maxWidth = labelWidth * 0.95;
+    // int maxHeight = labelHeight * 0.95;
 
-    // Calculate scaled dimensions while maintaining aspect ratio
-    float originalAspectRatio = (float)rotatedPixmap.width() / rotatedPixmap.height();
+    // // Calculate scaled dimensions while maintaining aspect ratio
+    // float originalAspectRatio = (float)rotatedPixmap.width() / rotatedPixmap.height();
 
-    // Calculate max size while maintaining aspect ratio and scaling by speed
-    int newWidth, newHeight;
+    // // Calculate max size while maintaining aspect ratio and scaling by speed
+    // int newWidth, newHeight;
 
-    if (labelWidth / originalAspectRatio <= labelHeight) {
-        // Width is the limiting factor
-        newWidth = maxWidth * speedPercentage;
-        newHeight = newWidth / originalAspectRatio;
-    } else {
-        // Height is the limiting factor
-        newHeight = maxHeight * speedPercentage;
-        newWidth = newHeight * originalAspectRatio;
-    }
+    // if (labelWidth / originalAspectRatio <= labelHeight) {
+    //     // Width is the limiting factor
+    //     newWidth = maxWidth * speedPercentage;
+    //     newHeight = newWidth / originalAspectRatio;
+    // } else {
+    //     // Height is the limiting factor
+    //     newHeight = maxHeight * speedPercentage;
+    //     newWidth = newHeight * originalAspectRatio;
+    // }
 
-    // Ensure minimum visibility when speed is not zero
-    if (speedPercentage > 0) {
-        // Set minimum size to 10% of maximum when speed is not zero
-        newWidth = std::max(newWidth, (int)(maxWidth * 0.1));
-        newHeight = std::max(newHeight, (int)(maxHeight * 0.1));
-    }
+    // // Ensure minimum visibility when speed is not zero
+    // if (speedPercentage > 0) {
+    //     // Set minimum size to 10% of maximum when speed is not zero
+    //     newWidth = std::max(newWidth, (int)(maxWidth * 0.1));
+    //     newHeight = std::max(newHeight, (int)(maxHeight * 0.1));
+    // }
 
-    // Scale the pixmap to fit
-    QPixmap scaledPixmap = rotatedPixmap.scaled(
-        newWidth,
-        newHeight,
-        Qt::KeepAspectRatio,
-        Qt::SmoothTransformation);
+    // // Scale the pixmap to fit
+    // QPixmap scaledPixmap = rotatedPixmap.scaled(
+    //     newWidth,
+    //     newHeight,
+    //     Qt::KeepAspectRatio,
+    //     Qt::SmoothTransformation);
 
-    m_ui->motor1_arrow->setPixmap(scaledPixmap);
+    // m_ui->motor1_arrow->setPixmap(scaledPixmap);
 
-    // Center the pixmap in the label
-    m_ui->motor1_arrow->setAlignment(Qt::AlignCenter);
-    m_ui->motor1_arrow->setVisible(true);
+    // // Center the pixmap in the label
+    // m_ui->motor1_arrow->setAlignment(Qt::AlignCenter);
+    // m_ui->motor1_arrow->setVisible(true);
 }
 
 void VisualizationManager::updateArrowSize2()
 {
-    if (!m_ui->motor2_arrow || m_originalArrowPixmap.isNull()) {
-        return;
-    }
+    // if (!m_ui->motor2_arrow || m_originalArrowPixmap.isNull()) {
+    //     return;
+    // }
 
-    if(m_sensorData->getMotor1Speed() == 0){
-        m_ui->motor2_arrow->setVisible(false);
-        return;
-    }
+    // if(m_sensorData->getMotor1Speed() == 0){
+    //     m_ui->motor2_arrow->setVisible(false);
+    //     return;
+    // }
 
-    // Create transformed pixmap
-    QTransform transform;
+    // // Create transformed pixmap
+    // QTransform transform;
 
-    // Rotate if motor speed is negative
-    if (m_sensorData->getMotor2Speed() < 0) {
-        transform.rotate(180);
-    }
+    // // Rotate if motor speed is negative
+    // if (m_sensorData->getMotor2Speed() < 0) {
+    //     transform.rotate(180);
+    // }
 
-    QPixmap rotatedPixmap = m_originalArrowPixmap.transformed(transform);
+    // QPixmap rotatedPixmap = m_originalArrowPixmap.transformed(transform);
 
-    // Get label dimensions
-    int labelWidth = m_ui->motor2_arrow->width();
-    int labelHeight = m_ui->motor2_arrow->height();
+    // // Get label dimensions
+    // int labelWidth = m_ui->motor2_arrow->width();
+    // int labelHeight = m_ui->motor2_arrow->height();
 
-    // Calculate scale factor based on motor speed (0-100%)
-    float speedPercentage = std::min(std::abs(m_sensorData->getMotor2Speed()), 100) / 100.0f;
+    // // Calculate scale factor based on motor speed (0-100%)
+    // float speedPercentage = std::min(std::abs(m_sensorData->getMotor2Speed()), 100) / 100.0f;
 
-    // Calculate maximum possible size to fit within the label
-    // We'll scale to a maximum of 95% of label size to ensure it fits
-    int maxWidth = labelWidth * 0.95;
-    int maxHeight = labelHeight * 0.95;
+    // // Calculate maximum possible size to fit within the label
+    // // We'll scale to a maximum of 95% of label size to ensure it fits
+    // int maxWidth = labelWidth * 0.95;
+    // int maxHeight = labelHeight * 0.95;
 
-    // Calculate scaled dimensions while maintaining aspect ratio
-    float originalAspectRatio = (float)rotatedPixmap.width() / rotatedPixmap.height();
+    // // Calculate scaled dimensions while maintaining aspect ratio
+    // float originalAspectRatio = (float)rotatedPixmap.width() / rotatedPixmap.height();
 
-    // Calculate max size while maintaining aspect ratio and scaling by speed
-    int newWidth, newHeight;
+    // // Calculate max size while maintaining aspect ratio and scaling by speed
+    // int newWidth, newHeight;
 
-    if (labelWidth / originalAspectRatio <= labelHeight) {
-        // Width is the limiting factor
-        newWidth = maxWidth * speedPercentage;
-        newHeight = newWidth / originalAspectRatio;
-    } else {
-        // Height is the limiting factor
-        newHeight = maxHeight * speedPercentage;
-        newWidth = newHeight * originalAspectRatio;
-    }
+    // if (labelWidth / originalAspectRatio <= labelHeight) {
+    //     // Width is the limiting factor
+    //     newWidth = maxWidth * speedPercentage;
+    //     newHeight = newWidth / originalAspectRatio;
+    // } else {
+    //     // Height is the limiting factor
+    //     newHeight = maxHeight * speedPercentage;
+    //     newWidth = newHeight * originalAspectRatio;
+    // }
 
-    // Ensure minimum visibility when speed is not zero
-    if (speedPercentage > 0) {
-        // Set minimum size to 10% of maximum when speed is not zero
-        newWidth = std::max(newWidth, (int)(maxWidth * 0.1));
-        newHeight = std::max(newHeight, (int)(maxHeight * 0.1));
-    }
+    // // Ensure minimum visibility when speed is not zero
+    // if (speedPercentage > 0) {
+    //     // Set minimum size to 10% of maximum when speed is not zero
+    //     newWidth = std::max(newWidth, (int)(maxWidth * 0.1));
+    //     newHeight = std::max(newHeight, (int)(maxHeight * 0.1));
+    // }
 
-    // Scale the pixmap to fit
-    QPixmap scaledPixmap = rotatedPixmap.scaled(
-        newWidth,
-        newHeight,
-        Qt::KeepAspectRatio,
-        Qt::SmoothTransformation);
+    // // Scale the pixmap to fit
+    // QPixmap scaledPixmap = rotatedPixmap.scaled(
+    //     newWidth,
+    //     newHeight,
+    //     Qt::KeepAspectRatio,
+    //     Qt::SmoothTransformation);
 
-    m_ui->motor2_arrow->setPixmap(scaledPixmap);
+    // m_ui->motor2_arrow->setPixmap(scaledPixmap);
 
-    // Center the pixmap in the label
-    m_ui->motor2_arrow->setAlignment(Qt::AlignCenter);
-    m_ui->motor2_arrow->setVisible(true);
+    // // Center the pixmap in the label
+    // m_ui->motor2_arrow->setAlignment(Qt::AlignCenter);
+    // m_ui->motor2_arrow->setVisible(true);
 }
 
 void VisualizationManager::setArrowOpacity(QLabel* arrowLabel)
@@ -267,86 +267,86 @@ void VisualizationManager::setArrowOpacity(QLabel* arrowLabel)
 
 void VisualizationManager::updateImuArrow()
 {
-    if (!m_ui->imu_arrow || m_originalArrowIMU.isNull()) {
-        return;
-    }
+    // if (!m_ui->imu_arrow || m_originalArrowIMU.isNull()) {
+    //     return;
+    // }
 
-    // Check if both IMU values are zero
-    if (m_sensorData->getImuX() == 0 && m_sensorData->getImuY() == 0) {
-        m_ui->imu_arrow->setVisible(false);
-        return;
-    }
+    // // Check if both IMU values are zero
+    // if (m_sensorData->getImuX() == 0 && m_sensorData->getImuY() == 0) {
+    //     m_ui->imu_arrow->setVisible(false);
+    //     return;
+    // }
 
-    // Calculate length of the vector
-    float length = sqrt(m_sensorData->getImuX() * m_sensorData->getImuX() +
-                        m_sensorData->getImuY() * m_sensorData->getImuY());
+    // // Calculate length of the vector
+    // float length = sqrt(m_sensorData->getImuX() * m_sensorData->getImuX() +
+    //                     m_sensorData->getImuY() * m_sensorData->getImuY());
 
-    // Calculate scale factor based on length (10% to 80% of max size)
-    float scaleFactor = 0.10 + (std::min(length, 100.0f) / 100.0) * 0.70;
+    // // Calculate scale factor based on length (10% to 80% of max size)
+    // float scaleFactor = 0.10 + (std::min(length, 100.0f) / 100.0) * 0.70;
 
-    // Calculate rotation angle based on IMU data
-    float angle = atan2(m_sensorData->getImuY(), m_sensorData->getImuX()) * 180 / M_PI;
+    // // Calculate rotation angle based on IMU data
+    // float angle = atan2(m_sensorData->getImuY(), m_sensorData->getImuX()) * 180 / M_PI;
 
-    // Create transformed pixmap
-    QTransform transform;
-    transform.rotate(angle);
-    QPixmap rotatedPixmap = m_originalArrowIMU.transformed(transform);
+    // // Create transformed pixmap
+    // QTransform transform;
+    // transform.rotate(angle);
+    // QPixmap rotatedPixmap = m_originalArrowIMU.transformed(transform);
 
-    // Get label dimensions
-    int labelWidth = m_ui->imu_arrow->width();
-    int labelHeight = m_ui->imu_arrow->height();
+    // // Get label dimensions
+    // int labelWidth = m_ui->imu_arrow->width();
+    // int labelHeight = m_ui->imu_arrow->height();
 
-    // Calculate maximum possible size to fit within the label (95% of label size)
-    int maxWidth = labelWidth * 0.95;
-    int maxHeight = labelHeight * 0.95;
+    // // Calculate maximum possible size to fit within the label (95% of label size)
+    // int maxWidth = labelWidth * 0.95;
+    // int maxHeight = labelHeight * 0.95;
 
-    // Calculate scaled dimensions while maintaining aspect ratio
-    float originalAspectRatio = (float)rotatedPixmap.width() / rotatedPixmap.height();
+    // // Calculate scaled dimensions while maintaining aspect ratio
+    // float originalAspectRatio = (float)rotatedPixmap.width() / rotatedPixmap.height();
 
-    // Calculate max size while maintaining aspect ratio and scaling by length
-    int newWidth, newHeight;
+    // // Calculate max size while maintaining aspect ratio and scaling by length
+    // int newWidth, newHeight;
 
-    if (labelWidth / originalAspectRatio <= labelHeight) {
-        // Width is the limiting factor
-        newWidth = maxWidth * scaleFactor;
-        newHeight = newWidth / originalAspectRatio;
-    } else {
-        // Height is the limiting factor
-        newHeight = maxHeight * scaleFactor;
-        newWidth = newHeight * originalAspectRatio;
-    }
+    // if (labelWidth / originalAspectRatio <= labelHeight) {
+    //     // Width is the limiting factor
+    //     newWidth = maxWidth * scaleFactor;
+    //     newHeight = newWidth / originalAspectRatio;
+    // } else {
+    //     // Height is the limiting factor
+    //     newHeight = maxHeight * scaleFactor;
+    //     newWidth = newHeight * originalAspectRatio;
+    // }
 
-    // Ensure minimum visibility when length is not zero
-    if (length > 0) {
-        // Set minimum size to 10% of maximum when length is not zero
-        newWidth = std::max(newWidth, (int)(maxWidth * 0.1));
-        newHeight = std::max(newHeight, (int)(maxHeight * 0.1));
-    }
+    // // Ensure minimum visibility when length is not zero
+    // if (length > 0) {
+    //     // Set minimum size to 10% of maximum when length is not zero
+    //     newWidth = std::max(newWidth, (int)(maxWidth * 0.1));
+    //     newHeight = std::max(newHeight, (int)(maxHeight * 0.1));
+    // }
 
-    // Scale the pixmap with our calculated dimensions
-    QPixmap scaledPixmap = rotatedPixmap.scaled(
-        newWidth,
-        newHeight,
-        Qt::KeepAspectRatio,
-        Qt::SmoothTransformation);
+    // // Scale the pixmap with our calculated dimensions
+    // QPixmap scaledPixmap = rotatedPixmap.scaled(
+    //     newWidth,
+    //     newHeight,
+    //     Qt::KeepAspectRatio,
+    //     Qt::SmoothTransformation);
 
-    // Set the pixmap to the label
-    m_ui->imu_arrow->setPixmap(scaledPixmap);
+    // // Set the pixmap to the label
+    // m_ui->imu_arrow->setPixmap(scaledPixmap);
 
-    // Center the pixmap in the label
-    m_ui->imu_arrow->setAlignment(Qt::AlignCenter);
-    m_ui->imu_arrow->setVisible(true);
+    // // Center the pixmap in the label
+    // m_ui->imu_arrow->setAlignment(Qt::AlignCenter);
+    // m_ui->imu_arrow->setVisible(true);
 }
 
 void VisualizationManager::updateMotorSpeed()
 {
     // Update motor speed labels if they exist
-    if (m_ui->motor_speed_1_Label) {
-        m_ui->motor_speed_1_Label->setText(QString::number(m_sensorData->getMotor1Speed()));
+    if (m_ui->labelMotor1PWM) {
+        m_ui->labelMotor1PWM->setText(QString::number(m_sensorData->getMotor1Speed()));
     }
 
-    if (m_ui->motor_speed_2_Label) {
-        m_ui->motor_speed_2_Label->setText(QString::number(m_sensorData->getMotor2Speed()));
+    if (m_ui->labelMotor2PWM) {
+        m_ui->labelMotor2PWM->setText(QString::number(m_sensorData->getMotor2Speed()));
     }
 }
 
@@ -365,14 +365,20 @@ void VisualizationManager::updateConnectionStatusUI(bool connected)
 {
     // Update button states based on connection status
     // Adjust these to match your actual UI element names
-    m_ui->connectTcpButton->setEnabled(!connected);
-    m_ui->disconnectTcpButton->setEnabled(connected);
+    m_ui->buttCONN->setEnabled(!connected);
+    m_ui->buttDISS->setEnabled(connected);
 
     // If you have a connection indicator, update it
     // For example:
-    if(connected == true){
-        m_ui->connectRed->setVisible(false);
-    }else{
-         m_ui->connectRed->setVisible(true);
-    }
+    // if(connected == true){
+    //     m_ui->connectRed->setVisible(false);
+    // }else{
+    //      m_ui->connectRed->setVisible(true);
+    // }
 }
+
+
+// void VisualizationManager::on_buttEXIT_clicked()
+// {
+//     QApplication::quit();
+// }

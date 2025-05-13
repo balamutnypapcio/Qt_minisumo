@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QLabel>
+#include <QApplication>
 #include <QPixmap>
 #include "sensordata.h"
 #include "ui_mainwindow.h"
@@ -56,6 +57,9 @@ public:
      * @brief Aktualizuje wszystkie elementy wizualizacji.
      */
     void updateAll();
+
+// private slots:
+//     void on_buttEXIT_clicked();
 
 private:
     void updateArrowSize1();
