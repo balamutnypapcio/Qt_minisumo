@@ -8,6 +8,29 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    setupProportionalWidgets();
+    adjustGridLayoutProportions();
+
+    // Po setupUi(this);
+    QWidget* widget_14 = findChild<QWidget*>("widget_14");
+    QWidget* widget_16 = findChild<QWidget*>("widget_16");
+    QWidget* widget_18 = findChild<QWidget*>("widget_18");
+    QWidget* robotView = findChild<QWidget*>("robotView");
+
+    QHBoxLayout* hLayout = qobject_cast<QHBoxLayout*>(widget_14->layout());
+    if (hLayout) {
+        hLayout->setStretch(0, 1);
+        hLayout->setStretch(1, 1);
+        hLayout->setStretch(2, 1);
+
+        widget_16->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        widget_18->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        robotView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+        widget_16->setMinimumWidth(60);
+        widget_18->setMinimumWidth(60);
+    }
+
     // Dodaj to zaraz po setupUi
     connect(ui->buttEXIT, &QPushButton::clicked, this, &QWidget::close);
     // lub
@@ -122,4 +145,89 @@ void MainWindow::handleTcpError(const QString &errorMessage)
     QMessageBox::warning(this, "Błąd połączenia TCP", errorMessage);
 }
 
+
+void MainWindow::setupProportionalWidgets()
+{
+    // Create left and right sensor widgets
+    leftSensorWidget = new ProportionalWidget(this);
+    rightSensorWidget = new ProportionalWidget(this);
+
+    // Find the tof widgets
+    QStackedWidget* tofLeft = ui->tofLEFT;
+    QStackedWidget* tofRight = ui->tofRIGHT;
+
+    // Find the arrow widgets
+    QStackedWidget* arrowLeft = ui->M1_arrow;
+    QStackedWidget* arrowRight = ui->M2_arrow;
+
+    // Setup the left sensor widget
+    if (tofLeft && arrowLeft) {
+        leftSensorWidget->setupTofWidget(tofLeft);
+        leftSensorWidget->setupArrowWidget(arrowLeft, true);
+    }
+
+    // Setup the right sensor widget
+    if (tofRight && arrowRight) {
+        rightSensorWidget->setupTofWidget(tofRight);
+        rightSensorWidget->setupArrowWidget(arrowRight, false);
+    }
+
+    // Find the original widgets to replace
+    QWidget* widget16 = ui->widget_16;
+    QWidget* widget18 = ui->widget_18;
+
+    // Find the parent layout
+    if (widget16 && widget18) {
+        QWidget* parentWidget = widget16->parentWidget();
+        QHBoxLayout* parentLayout = qobject_cast<QHBoxLayout*>(parentWidget->layout());
+
+        if (parentLayout) {
+            // Get the indices of the widgets to replace
+            int index16 = parentLayout->indexOf(widget16);
+            int index18 = parentLayout->indexOf(widget18);
+
+            // Replace the widgets
+            if (index16 >= 0) {
+                parentLayout->removeWidget(widget16);
+                parentLayout->insertWidget(index16, leftSensorWidget);
+                widget16->hide();
+            }
+
+            if (index18 >= 0) {
+                parentLayout->removeWidget(widget18);
+                parentLayout->insertWidget(index18, rightSensorWidget);
+                widget18->hide();
+            }
+
+            // Force layout update
+            parentLayout->update();
+        }
+    }
+    // QGridLayout* grid = qobject_cast<QGridLayout*>(ui->widRobot->layout());
+    // if (grid) {
+    //     grid->setRowStretch(0, 10);
+    //     grid->setRowStretch(1, 30);
+    //     grid->setRowStretch(2, 35);
+    //     grid->setRowStretch(3, 6);
+    //     grid->setRowStretch(4, 5);
+    // }
+    // Make sure the new widgets are visible
+    leftSensorWidget->show();
+    rightSensorWidget->show();
+}
+
+
+
+void MainWindow::adjustGridLayoutProportions()
+{
+    // Zakładamy, że używasz centralWidget i jego layoutem jest QGridLayout
+    QGridLayout* grid = qobject_cast<QGridLayout*>(ui->centralwidget->layout());
+    if (grid) {
+        grid->setRowStretch(0, 10);
+        grid->setRowStretch(1, 30);
+        grid->setRowStretch(2, 35);
+        grid->setRowStretch(3, 6);
+        grid->setRowStretch(4, 5);
+    }
+}
 

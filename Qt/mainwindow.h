@@ -12,6 +12,7 @@
 #include "imuchartmanager.h"
 #include "visualizationmanager.h"
 #include "tcpmanager.h"
+#include "proportionalwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -84,6 +85,11 @@ private:
     MotorChartManager* m_motorChartManager;      ///< Wskaźnik na menedżera wykresu silników.
     ImuChartManager* m_imuChartManager;          ///< Wskaźnik na menedżera wykresu IMU.
     VisualizationManager* m_visualManager;       ///< Wskaźnik na menedżera wizualizacji (strzałki, ikony itp.).
+    void setupProportionalWidgets();
+    ProportionalWidget *leftSensorWidget;
+    ProportionalWidget *rightSensorWidget;
+    void adjustGridLayoutProportions();
+
 };
 
 #endif // MAINWINDOW_H

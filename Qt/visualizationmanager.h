@@ -2,79 +2,33 @@
 #define VISUALIZATIONMANAGER_H
 
 #include <QObject>
-#include <QLabel>
-#include <QApplication>
-#include <QPixmap>
-#include "sensordata.h"
-#include "ui_mainwindow.h"
-#include <QGraphicsOpacityEffect>
-#include <QtMath>
+#include <QWidget>
 
+// Forward declarations
+class SensorData;
+namespace Ui {
+class MainWindow;
+}
 
-/**
- * @class VisualizationManager
- * @brief Zarządza wizualizacją danych sensorów w GUI (strzałki, opacities, itp.).
- */
-class VisualizationManager : public QObject {
+class VisualizationManager : public QObject
+{
     Q_OBJECT
 
 public:
-    explicit VisualizationManager(SensorData* sensorData, Ui::MainWindow* ui, QObject *parent = nullptr);
-
-    /**
-     * @brief Inicjalizuje obrazki strzałek.
-     */
+    explicit VisualizationManager(SensorData* sensorData, Ui::MainWindow* ui, QObject* parent = nullptr);
     void setupArrows();
-
-    /**
-     * @brief Aktualizuje widoczność elementów graficznych.
-     */
-    void updateVisibility();
-
-    /**
-     * @brief Aktualizuje strzałki silników.
-     */
-    void updateMotorArrows();
-
-    /**
-     * @brief Aktualizuje strzałkę IMU.
-     */
-    void updateImuArrow();
-
-    /**
-     * @brief Aktualizuje wartości prędkości silników.
-     */
-    void updateMotorSpeed();
-
-
-    /**
-     * @brief Aktualizuje interfejs użytkownika w zależności od stanu połączenia TCP.
-     * @param connected Status połączenia.
-     */
     void updateConnectionStatusUI(bool connected);
 
-    /**
-     * @brief Aktualizuje wszystkie elementy wizualizacji.
-     */
+public slots:
     void updateAll();
 
-// private slots:
-//     void on_buttEXIT_clicked();
-
 private:
-    void updateArrowSize1();
-    void updateArrowSize2();
+    void updateMotorArrows();
+    void updateTofSensors();
+    void updateMotorLabels();
 
-    /**
-     * @brief Ustawia przezroczystość strzałki.
-     * @param arrowLabel QLabel z obrazkiem strzałki.
-     */
-    void setArrowOpacity(QLabel* arrowLabel);
-
-    SensorData* m_sensorData;        ///< Wskaźnik do danych sensorów.
-    Ui::MainWindow* m_ui;            ///< Wskaźnik do UI głównego okna.
-    QPixmap m_originalArrowPixmap;   ///< Oryginalny obrazek strzałki silnika.
-    QPixmap m_originalArrowIMU;      ///< Oryginalny obrazek strzałki IMU.
+    SensorData* m_sensorData;
+    Ui::MainWindow* m_ui;
 };
 
 #endif // VISUALIZATIONMANAGER_H

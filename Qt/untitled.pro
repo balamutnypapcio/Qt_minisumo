@@ -19,6 +19,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     motorchartmanager.cpp \
+    proportionalwidget.cpp \
     sensordata.cpp \
     tcpmanager.cpp \
     tofchartmanager.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     linechartmenager.h \
     mainwindow.h \
     motorchartmanager.h \
+    proportionalwidget.h \
     sensordata.h \
     tcpmanager.h \
     tofchartmanager.h \
