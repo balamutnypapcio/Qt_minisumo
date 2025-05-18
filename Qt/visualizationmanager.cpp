@@ -32,33 +32,7 @@ VisualizationManager::VisualizationManager(SensorData* sensorData, Ui::MainWindo
 
 void VisualizationManager::setupArrows()
 {
-    // // Initialize arrows with default properties
-    // if (m_ui->motor1_arrow && !m_originalArrowPixmap.isNull()) {
-    //     m_ui->motor1_arrow->setPixmap(m_originalArrowPixmap.scaled(
-    //         m_ui->motor1_arrow->width(),
-    //         m_ui->motor1_arrow->height(),
-    //         Qt::KeepAspectRatio,
-    //         Qt::SmoothTransformation));
-    // }
-
-    // if (m_ui->motor2_arrow && !m_originalArrowPixmap.isNull()) {
-    //     m_ui->motor2_arrow->setPixmap(m_originalArrowPixmap.scaled(
-    //         m_ui->motor2_arrow->width(),
-    //         m_ui->motor2_arrow->height(),
-    //         Qt::KeepAspectRatio,
-    //         Qt::SmoothTransformation));
-    // }
-
-    // if (m_ui->imu_arrow && !m_originalArrowIMU.isNull()) {
-    //     m_ui->imu_arrow->setPixmap(m_originalArrowIMU.scaled(
-    //         m_ui->imu_arrow->width(),
-    //         m_ui->imu_arrow->height(),
-    //         Qt::KeepAspectRatio,
-    //         Qt::SmoothTransformation));
-    //     setArrowOpacity(m_ui->imu_arrow);
-    // }
-
-    // Update initial visibility based on sensor data
+    // Initialize arrows with default properties
     updateVisibility();
     updateMotorArrows();
     updateImuArrow();
@@ -67,280 +41,116 @@ void VisualizationManager::setupArrows()
 
 void VisualizationManager::updateVisibility()
 {
-    // // Update TOF sensors visibility
-    // if (m_ui->tof_Red_1) {
-    //     m_ui->tof_Red_1->setVisible(m_sensorData->getTof1());
-    // }
+    // Update TOF sensors visibility using QStackedWidget
+    if (m_ui->tofUpL) {
+        m_ui->tofUpL->setCurrentIndex(m_sensorData->getTof1() ? 1 : 0);
+    }
 
-    // if (m_ui->tof_Red_2) {
-    //     m_ui->tof_Red_2->setVisible(m_sensorData->getTof2());
-    // }
+    if (m_ui->tofUpR) {
+        m_ui->tofUpR->setCurrentIndex(m_sensorData->getTof2() ? 1 : 0);
+    }
 
-    // if (m_ui->tof_Red_3) {
-    //     m_ui->tof_Red_3->setVisible(m_sensorData->getTof3());
-    // }
+    if (m_ui->tofLEFT) {
+        m_ui->tofLEFT->setCurrentIndex(m_sensorData->getTof3() ? 1 : 0);
+    }
 
-    // if (m_ui->tof_Red_4) {
-    //     m_ui->tof_Red_4->setVisible(m_sensorData->getTof4());
-    // }
-
-    // // Update Line sensors visibility
-    // if (m_ui->lineS_Active_1) {
-    //     m_ui->lineS_Active_1->setVisible(m_sensorData->getLineS1Active());
-    // }
-
-    // if (m_ui->lineS_Active_2) {
-    //     m_ui->lineS_Active_2->setVisible(m_sensorData->getLineS2Active());
-    // }
-
-    // if (m_ui->lineS_Active_3) {
-    //     m_ui->lineS_Active_3->setVisible(m_sensorData->getLineS3Active());
-    // }
+    if (m_ui->tofRIGHT) {
+        m_ui->tofRIGHT->setCurrentIndex(m_sensorData->getTof4() ? 1 : 0);
+    }
 }
 
 void VisualizationManager::updateMotorArrows()
 {
     updateArrowSize1();
     updateArrowSize2();
-
-    // Set opacity for motor arrows based on speed
-    // if (m_ui->motor1_arrow) {
-    //     setArrowOpacity(m_ui->motor1_arrow);
-    // }
-
-    // if (m_ui->motor2_arrow) {
-    //     setArrowOpacity(m_ui->motor2_arrow);
-    // }
 }
 
 void VisualizationManager::updateArrowSize1()
 {
-    // if (!m_ui->motor1_arrow || m_originalArrowPixmap.isNull()) {
-    //     return;
-    // }
+    if (!m_ui->M1_arrow) {
+        return;
+    }
 
-    // if(m_sensorData->getMotor1Speed() == 0){
-    //     m_ui->motor1_arrow->setVisible(false);
-    //     return;
-    // }
+    int speed = m_sensorData->getMotor1Speed();
 
-    // // Create transformed pixmap
-    // QTransform transform;
+    if (speed == 0) {
+        m_ui->M1_arrow->setVisible(false);
+        return;
+    }
 
-    // // Rotate if motor speed is negative
-    // if (m_sensorData->getMotor1Speed() < 0) {
-    //     transform.rotate(180);
-    // }
+    m_ui->M1_arrow->setVisible(true);
 
-    // QPixmap rotatedPixmap = m_originalArrowPixmap.transformed(transform);
+    // Ustaw kierunek strzałki (UP/DOWN)
+    m_ui->M1_arrow->setCurrentIndex(speed > 0 ? 0 : 1);
 
-    // // Get label dimensions
-    // int labelWidth = m_ui->motor1_arrow->width();
-    // int labelHeight = m_ui->motor1_arrow->height();
+    // Oblicz skalę na podstawie bezwzględnej wartości prędkości (0-100%)
+    float scale = std::min(std::abs(speed), 100) / 100.0f;
 
-    // // Calculate scale factor based on motor speed (0-100%)
-    // float speedPercentage = std::min(std::abs(m_sensorData->getMotor1Speed()), 100) / 100.0f;
+    // Minimalna skala to 30%, maksymalna 100%
+    scale = 0.3f + (scale * 0.7f);
 
-    // // Calculate maximum possible size to fit within the label
-    // // We'll scale to a maximum of 95% of label size to ensure it fits
-    // int maxWidth = labelWidth * 0.95;
-    // int maxHeight = labelHeight * 0.95;
+    // Pobierz aktualny widget ze stosu
+    QWidget* currentWidget = m_ui->M1_arrow->currentWidget();
+    if (currentWidget) {
+        // Ustaw minimalny rozmiar widgetu
+        int baseSize = 30; // bazowy rozmiar w pikselach
+        int scaledSize = baseSize + (int)(baseSize * scale);
 
-    // // Calculate scaled dimensions while maintaining aspect ratio
-    // float originalAspectRatio = (float)rotatedPixmap.width() / rotatedPixmap.height();
+        currentWidget->setMinimumSize(scaledSize, scaledSize);
+        currentWidget->setMaximumSize(scaledSize, scaledSize);
 
-    // // Calculate max size while maintaining aspect ratio and scaling by speed
-    // int newWidth, newHeight;
-
-    // if (labelWidth / originalAspectRatio <= labelHeight) {
-    //     // Width is the limiting factor
-    //     newWidth = maxWidth * speedPercentage;
-    //     newHeight = newWidth / originalAspectRatio;
-    // } else {
-    //     // Height is the limiting factor
-    //     newHeight = maxHeight * speedPercentage;
-    //     newWidth = newHeight * originalAspectRatio;
-    // }
-
-    // // Ensure minimum visibility when speed is not zero
-    // if (speedPercentage > 0) {
-    //     // Set minimum size to 10% of maximum when speed is not zero
-    //     newWidth = std::max(newWidth, (int)(maxWidth * 0.1));
-    //     newHeight = std::max(newHeight, (int)(maxHeight * 0.1));
-    // }
-
-    // // Scale the pixmap to fit
-    // QPixmap scaledPixmap = rotatedPixmap.scaled(
-    //     newWidth,
-    //     newHeight,
-    //     Qt::KeepAspectRatio,
-    //     Qt::SmoothTransformation);
-
-    // m_ui->motor1_arrow->setPixmap(scaledPixmap);
-
-    // // Center the pixmap in the label
-    // m_ui->motor1_arrow->setAlignment(Qt::AlignCenter);
-    // m_ui->motor1_arrow->setVisible(true);
+        // Wymuś przerysowanie
+        currentWidget->updateGeometry();
+    }
 }
 
 void VisualizationManager::updateArrowSize2()
 {
-    // if (!m_ui->motor2_arrow || m_originalArrowPixmap.isNull()) {
-    //     return;
-    // }
-
-    // if(m_sensorData->getMotor1Speed() == 0){
-    //     m_ui->motor2_arrow->setVisible(false);
-    //     return;
-    // }
-
-    // // Create transformed pixmap
-    // QTransform transform;
-
-    // // Rotate if motor speed is negative
-    // if (m_sensorData->getMotor2Speed() < 0) {
-    //     transform.rotate(180);
-    // }
-
-    // QPixmap rotatedPixmap = m_originalArrowPixmap.transformed(transform);
-
-    // // Get label dimensions
-    // int labelWidth = m_ui->motor2_arrow->width();
-    // int labelHeight = m_ui->motor2_arrow->height();
-
-    // // Calculate scale factor based on motor speed (0-100%)
-    // float speedPercentage = std::min(std::abs(m_sensorData->getMotor2Speed()), 100) / 100.0f;
-
-    // // Calculate maximum possible size to fit within the label
-    // // We'll scale to a maximum of 95% of label size to ensure it fits
-    // int maxWidth = labelWidth * 0.95;
-    // int maxHeight = labelHeight * 0.95;
-
-    // // Calculate scaled dimensions while maintaining aspect ratio
-    // float originalAspectRatio = (float)rotatedPixmap.width() / rotatedPixmap.height();
-
-    // // Calculate max size while maintaining aspect ratio and scaling by speed
-    // int newWidth, newHeight;
-
-    // if (labelWidth / originalAspectRatio <= labelHeight) {
-    //     // Width is the limiting factor
-    //     newWidth = maxWidth * speedPercentage;
-    //     newHeight = newWidth / originalAspectRatio;
-    // } else {
-    //     // Height is the limiting factor
-    //     newHeight = maxHeight * speedPercentage;
-    //     newWidth = newHeight * originalAspectRatio;
-    // }
-
-    // // Ensure minimum visibility when speed is not zero
-    // if (speedPercentage > 0) {
-    //     // Set minimum size to 10% of maximum when speed is not zero
-    //     newWidth = std::max(newWidth, (int)(maxWidth * 0.1));
-    //     newHeight = std::max(newHeight, (int)(maxHeight * 0.1));
-    // }
-
-    // // Scale the pixmap to fit
-    // QPixmap scaledPixmap = rotatedPixmap.scaled(
-    //     newWidth,
-    //     newHeight,
-    //     Qt::KeepAspectRatio,
-    //     Qt::SmoothTransformation);
-
-    // m_ui->motor2_arrow->setPixmap(scaledPixmap);
-
-    // // Center the pixmap in the label
-    // m_ui->motor2_arrow->setAlignment(Qt::AlignCenter);
-    // m_ui->motor2_arrow->setVisible(true);
-}
-
-void VisualizationManager::setArrowOpacity(QLabel* arrowLabel)
-{
-    if (!arrowLabel) {
+    if (!m_ui->M2_arrow) {
         return;
     }
 
-    QGraphicsOpacityEffect* effect = new QGraphicsOpacityEffect(this);
-    effect->setOpacity(0.7);  // przezroczystość na 70%
+    int speed = m_sensorData->getMotor2Speed();
 
-    arrowLabel->setGraphicsEffect(effect);
+    if (speed == 0) {
+        m_ui->M2_arrow->setVisible(false);
+        return;
+    }
+
+    m_ui->M2_arrow->setVisible(true);
+
+    // Ustaw kierunek strzałki (UP/DOWN)
+    m_ui->M2_arrow->setCurrentIndex(speed > 0 ? 0 : 1);
+
+    // Oblicz skalę na podstawie bezwzględnej wartości prędkości (0-100%)
+    float scale = std::min(std::abs(speed), 100) / 100.0f;
+
+    // Minimalna skala to 30%, maksymalna 100%
+    scale = 0.3f + (scale * 0.7f);
+
+    // Pobierz aktualny widget ze stosu
+    QWidget* currentWidget = m_ui->M2_arrow->currentWidget();
+    if (currentWidget) {
+        // Ustaw minimalny rozmiar widgetu
+        int baseSize = 30; // bazowy rozmiar w pikselach
+        int scaledSize = baseSize + (int)(baseSize * scale);
+
+        currentWidget->setMinimumSize(scaledSize, scaledSize);
+        currentWidget->setMaximumSize(scaledSize, scaledSize);
+
+        // Wymuś przerysowanie
+        currentWidget->updateGeometry();
+    }
 }
 
 void VisualizationManager::updateImuArrow()
 {
-    // if (!m_ui->imu_arrow || m_originalArrowIMU.isNull()) {
-    //     return;
-    // }
-
-    // // Check if both IMU values are zero
-    // if (m_sensorData->getImuX() == 0 && m_sensorData->getImuY() == 0) {
-    //     m_ui->imu_arrow->setVisible(false);
-    //     return;
-    // }
-
-    // // Calculate length of the vector
-    // float length = sqrt(m_sensorData->getImuX() * m_sensorData->getImuX() +
-    //                     m_sensorData->getImuY() * m_sensorData->getImuY());
-
-    // // Calculate scale factor based on length (10% to 80% of max size)
-    // float scaleFactor = 0.10 + (std::min(length, 100.0f) / 100.0) * 0.70;
-
-    // // Calculate rotation angle based on IMU data
-    // float angle = atan2(m_sensorData->getImuY(), m_sensorData->getImuX()) * 180 / M_PI;
-
-    // // Create transformed pixmap
-    // QTransform transform;
-    // transform.rotate(angle);
-    // QPixmap rotatedPixmap = m_originalArrowIMU.transformed(transform);
-
-    // // Get label dimensions
-    // int labelWidth = m_ui->imu_arrow->width();
-    // int labelHeight = m_ui->imu_arrow->height();
-
-    // // Calculate maximum possible size to fit within the label (95% of label size)
-    // int maxWidth = labelWidth * 0.95;
-    // int maxHeight = labelHeight * 0.95;
-
-    // // Calculate scaled dimensions while maintaining aspect ratio
-    // float originalAspectRatio = (float)rotatedPixmap.width() / rotatedPixmap.height();
-
-    // // Calculate max size while maintaining aspect ratio and scaling by length
-    // int newWidth, newHeight;
-
-    // if (labelWidth / originalAspectRatio <= labelHeight) {
-    //     // Width is the limiting factor
-    //     newWidth = maxWidth * scaleFactor;
-    //     newHeight = newWidth / originalAspectRatio;
-    // } else {
-    //     // Height is the limiting factor
-    //     newHeight = maxHeight * scaleFactor;
-    //     newWidth = newHeight * originalAspectRatio;
-    // }
-
-    // // Ensure minimum visibility when length is not zero
-    // if (length > 0) {
-    //     // Set minimum size to 10% of maximum when length is not zero
-    //     newWidth = std::max(newWidth, (int)(maxWidth * 0.1));
-    //     newHeight = std::max(newHeight, (int)(maxHeight * 0.1));
-    // }
-
-    // // Scale the pixmap with our calculated dimensions
-    // QPixmap scaledPixmap = rotatedPixmap.scaled(
-    //     newWidth,
-    //     newHeight,
-    //     Qt::KeepAspectRatio,
-    //     Qt::SmoothTransformation);
-
-    // // Set the pixmap to the label
-    // m_ui->imu_arrow->setPixmap(scaledPixmap);
-
-    // // Center the pixmap in the label
-    // m_ui->imu_arrow->setAlignment(Qt::AlignCenter);
-    // m_ui->imu_arrow->setVisible(true);
+    // IMU functionality can be implemented later if needed
 }
 
 void VisualizationManager::updateMotorSpeed()
 {
-    // Update motor speed labels if they exist
+    // Update motor speed labels
     if (m_ui->labelMotor1PWM) {
         m_ui->labelMotor1PWM->setText(QString::number(m_sensorData->getMotor1Speed()));
     }
@@ -352,33 +162,20 @@ void VisualizationManager::updateMotorSpeed()
 
 void VisualizationManager::updateAll()
 {
-    // Update all visualization elements
     updateVisibility();
     updateMotorArrows();
     updateImuArrow();
     updateMotorSpeed();
 }
 
-
-// Update UI based on connection status
 void VisualizationManager::updateConnectionStatusUI(bool connected)
 {
     // Update button states based on connection status
-    // Adjust these to match your actual UI element names
     m_ui->buttCONN->setEnabled(!connected);
     m_ui->buttDISS->setEnabled(connected);
 
-    // If you have a connection indicator, update it
-    // For example:
-    // if(connected == true){
-    //     m_ui->connectRed->setVisible(false);
-    // }else{
-    //      m_ui->connectRed->setVisible(true);
-    // }
+    // Update connection indicator using QStackedWidget
+    if (m_ui->wifi) {
+        m_ui->wifi->setCurrentIndex(connected ? 0 : 1); // 0 = green, 1 = red
+    }
 }
-
-
-// void VisualizationManager::on_buttEXIT_clicked()
-// {
-//     QApplication::quit();
-// }
