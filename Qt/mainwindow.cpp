@@ -60,6 +60,31 @@ MainWindow::MainWindow(QWidget *parent)
     // Początkowa konfiguracja
     m_visualManager->setupArrows();
     m_visualManager->updateAll();
+
+
+    loadLanguagePreference();
+
+    // Inicjalizacja tłumaczeń
+    initializeTranslations();
+
+    // Konfiguracja przycisku języka
+    QPushButton* languageButton = findChild<QPushButton*>("languageButton");
+    if (languageButton) {
+        // Ustaw odpowiednią ikonę w zależności od zapisanego języka
+        languageButton->setIcon(QIcon(m_isEnglish ? ":/new/image/img/eng.png" : ":/new/image/img/pl.png"));
+        languageButton->setIconSize(QSize(32, 32));
+
+        // Połączenie sygnału kliknięcia z przełączaniem języka
+        connect(languageButton, &QPushButton::clicked, this, &MainWindow::switchLanguage);
+
+        // Styl dla okrągłego przycisku
+        languageButton->setStyleSheet("QPushButton { border-radius: 16px; min-width: 32px; max-width: 32px; min-height: 32px; max-height: 32px; }");
+    }
+
+    // Zastosuj zapisany język, jeśli nie jest angielski
+    if (!m_isEnglish) {
+        applyPolishTranslation();
+    }
 }
 
 MainWindow::~MainWindow() {
@@ -237,3 +262,141 @@ void MainWindow::adjustGridLayoutProportions()
     }
 }
 
+
+
+// Inicjalizacja tłumaczeń - tutaj zdefiniuj wszystkie teksty
+void MainWindow::initializeTranslations()
+{
+    QList<QLabel*> labels = findChildren<QLabel*>();
+    foreach (QLabel* label, labels) {
+        m_englishTexts[label] = label->text();
+
+        if (label->objectName() == "labelMotors") {
+            m_polishTexts[label] = "PRĘDKOŚCI SILNIKÓW:";
+        }
+        else if(label->objectName() == "labelTof"){
+            m_polishTexts[label] = "CZUJNIKI ODBICIOWE";
+        }
+        else if(label->objectName() == "labelLine"){
+            m_polishTexts[label] = "CZUJNIKI LINI";
+        }
+        else if(label->objectName() == "labelImu"){
+            m_polishTexts[label] = "CZUJNIK IMU";
+        }
+    }
+
+    // Nowa część dla QPushButton
+    QList<QPushButton*> buttons = findChildren<QPushButton*>();
+    foreach (QPushButton* button, buttons) {
+        if (button->objectName() == "languageButton") {
+            continue;
+        }
+
+        m_englishButtonTexts[button] = button->text();
+
+        if (button->objectName() == "buttSTOPcsv") {
+            m_polishButtonTexts[button] = "WSZYMAJ CSV";
+        }
+        else if (button->objectName() == "buttLOADcsv") {
+            m_polishButtonTexts[button] = "WCZYTAJ CSV";
+        }
+        else if (button->objectName() == "buttCONN") {
+            m_polishButtonTexts[button] = "POŁĄCZ";
+        }
+        else if (button->objectName() == "buttDISS") {
+            m_polishButtonTexts[button] = "ROZŁĄCZ";
+        }
+        else if (button->objectName() == "buttEXIT") {
+            m_polishButtonTexts[button] = "WYJŚCIE";
+        }
+    }
+}
+
+void MainWindow::switchLanguage()
+{
+    QPushButton* languageButton = qobject_cast<QPushButton*>(sender());
+    if (!languageButton)
+        return;
+
+    m_isEnglish = !m_isEnglish;
+
+    if (m_isEnglish) {
+        languageButton->setIcon(QIcon(":/new/image/img/eng.png"));
+    } else {
+        languageButton->setIcon(QIcon(":/new/image/img/pl.png"));
+    }
+
+    QList<QLabel*> labels = findChildren<QLabel*>();
+    foreach (QLabel* label, labels) {
+        if (m_isEnglish) {
+            if (m_englishTexts.contains(label)) {
+                label->setText(m_englishTexts[label]);
+            }
+        } else {
+            if (m_polishTexts.contains(label)) {
+                label->setText(m_polishTexts[label]);
+            }
+        }
+    }
+
+    QList<QPushButton*> buttons = findChildren<QPushButton*>();
+    foreach (QPushButton* button, buttons) {
+        if (button == languageButton) {
+            continue;
+        }
+
+        if (m_isEnglish) {
+            if (m_englishButtonTexts.contains(button)) {
+                button->setText(m_englishButtonTexts[button]);
+            }
+        } else {
+            if (m_polishButtonTexts.contains(button)) {
+                button->setText(m_polishButtonTexts[button]);
+            }
+        }
+    }
+
+    // Zapisz preferencję języka
+    saveLanguagePreference();
+}
+
+
+// Dodaj tę implementację brakującej funkcji:
+void MainWindow::saveLanguagePreference()
+{
+    QSettings settings("Jakub Wilczynski", "SumoWilusRobotVisualizer"); // Dostosuj nazwę
+    settings.setValue("language", m_isEnglish ? "en" : "pl");
+}
+
+// Opcjonalnie: funkcja do wczytania preferencji przy starcie
+void MainWindow::loadLanguagePreference()
+{
+    QSettings settings("Jakub Wilczynski", "SumoWilusRobotVisualizer"); // Dostosuj nazwę
+    QString language = settings.value("language", "en").toString();
+    m_isEnglish = (language == "en");
+}
+
+
+void MainWindow::applyPolishTranslation()
+{
+    // 1. Zmień teksty etykiet
+    QList<QLabel*> labels = findChildren<QLabel*>();
+    foreach (QLabel* label, labels) {
+        if (m_polishTexts.contains(label)) {
+            label->setText(m_polishTexts[label]);
+        }
+    }
+
+    // 2. Zmień teksty przycisków
+    QList<QPushButton*> buttons = findChildren<QPushButton*>();
+    foreach (QPushButton* button, buttons) {
+        // Pomijamy languageButton
+        if (button->objectName() == "languageButton") {
+            continue;
+        }
+
+        if (m_polishButtonTexts.contains(button)) {
+            button->setText(m_polishButtonTexts[button]);
+        }
+    }
+}

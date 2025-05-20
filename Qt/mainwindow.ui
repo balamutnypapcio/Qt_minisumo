@@ -178,16 +178,17 @@ border: 2px solid #505050; </string>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="languageButton">
          <property name="styleSheet">
           <string notr="true">    border-radius: 20px; 
     min-width: 40px;
     max-width: 40px;
     min-height: 40px;
-    max-height: 40px;</string>
+    max-height: 40px;
+image: url(:/new/image/img/eng.png);</string>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -311,7 +312,7 @@ border-radius: 8px;  </string>
         <widget class="QWidget" name="widChart" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_5" stretch="25,250,25,175,25,175,25,220">
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="labelImu">
             <property name="styleSheet">
              <string notr="true">background-color: #B0B0B0;
 color: #555555;            
@@ -319,7 +320,7 @@ font-weight: bold;
 border: 2px solid #505050; </string>
             </property>
             <property name="text">
-             <string>IMU</string>
+             <string>IMU SENSOR</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -337,7 +338,7 @@ border: 2px solid #505050; </string>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="labelMotors">
             <property name="styleSheet">
              <string notr="true">background-color: #B0B0B0;
 color: #555555;            
@@ -345,7 +346,7 @@ font-weight: bold;
 border: 2px solid #505050; </string>
             </property>
             <property name="text">
-             <string>MOTORS</string>
+             <string> MOTORS SPEED</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -363,7 +364,7 @@ border: 2px solid #505050; </string>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="labelLine">
             <property name="styleSheet">
              <string notr="true">background-color: #B0B0B0;
 color: #555555;            
@@ -389,7 +390,7 @@ border: 2px solid #505050; </string>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="labelTof">
             <property name="styleSheet">
              <string notr="true">background-color: #B0B0B0;
 color: #555555;            

@@ -22,6 +22,8 @@
         <file>img/robotRightBottomLS.png</file>
         <file>img/robotRightLS.png</file>
         <file>img/robotNoLs.png</file>
+        <file>img/eng.png</file>
+        <file>img/pl.png</file>
     </qresource>
     <qresource prefix="/data">
         <file>csv/settings1.csv</file>

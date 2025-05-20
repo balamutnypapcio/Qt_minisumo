@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QApplication>
+#include <QSettings>
 #include "sensordata.h"
 #include "csvmanager.h"
 #include "tofchartmanager.h"
@@ -92,6 +93,16 @@ private:
     ProportionalWidget *leftSensorWidget;
     ProportionalWidget *rightSensorWidget;
     void adjustGridLayoutProportions();
+    bool m_isEnglish = true; // Domyślnie angielski
+    QMap<QLabel*, QString> m_englishTexts; // Teksty angielskie
+    QMap<QLabel*, QString> m_polishTexts;  // Teksty polskie
+    QMap<QPushButton*, QString> m_englishButtonTexts;
+    QMap<QPushButton*, QString> m_polishButtonTexts;
+    void initializeTranslations(); // Inicjalizacja tekstów
+    void switchLanguage();         // Przełączanie języka
+    void loadLanguagePreference();
+    void saveLanguagePreference();
+    void applyPolishTranslation();
 
 };
 
