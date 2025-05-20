@@ -31,10 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
         widget_18->setMinimumWidth(60);
     }
 
-    // Dodaj to zaraz po setupUi
-    connect(ui->buttEXIT, &QPushButton::clicked, this, &QWidget::close);
-    // lub
-    connect(ui->buttEXIT, &QPushButton::clicked, qApp, &QApplication::quit);
+    connect(ui->buttEXIT, &QPushButton::clicked, this, &MainWindow::showExitConfirmation);
 
     // Tworzenie obiektów zarządzających
     m_sensorData = new SensorData(this);
@@ -145,6 +142,24 @@ void MainWindow::handleTcpError(const QString &errorMessage)
     QMessageBox::warning(this, "Błąd połączenia TCP", errorMessage);
 }
 
+
+
+void MainWindow::showExitConfirmation()
+{
+    QMessageBox messageBox(this);
+    messageBox.setWindowTitle("Do you want to quit?");
+    messageBox.setText("Are you sure that you want to quit?");
+    messageBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    messageBox.setDefaultButton(QMessageBox::No);
+    messageBox.setButtonText(QMessageBox::Yes, "Yes");
+    messageBox.setButtonText(QMessageBox::No, "No");
+
+    int ret = messageBox.exec();
+
+    if (ret == QMessageBox::Yes) {
+        qApp->quit();
+    }
+}
 
 void MainWindow::setupProportionalWidgets()
 {

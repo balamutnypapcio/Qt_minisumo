@@ -74,6 +74,9 @@ private slots:
     void handleTcpError(const QString &errorMessage);
 
 
+    void showExitConfirmation();
+
+
 private:
     Ui::MainWindow *ui;                          ///< Wskaźnik do interfejsu użytkownika.
 

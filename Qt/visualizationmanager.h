@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QWidget>
+#include <QPainter>
 
 // Forward declarations
 class SensorData;
@@ -27,9 +28,12 @@ private:
     void updateTofSensors();
     void updateMotorLabels();
     void updateLsSensors();
+    void updateImuArrow();
 
     SensorData* m_sensorData;
     Ui::MainWindow* m_ui;
+    QPixmap m_originalImuPixmap;
+    bool eventFilter(QObject *obj, QEvent *event) override;
 };
 
 #endif // VISUALIZATIONMANAGER_H

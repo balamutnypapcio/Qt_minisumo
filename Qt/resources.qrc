@@ -9,7 +9,6 @@
         <file>img/redRIGHT.png</file>
         <file>img/redUp.png</file>
         <file>img/redUpR.png</file>
-        <file>img/robotv1.png</file>
         <file>img/arrowDown.png</file>
         <file>img/arrowUp.png</file>
         <file>img/arrowIMU.png</file>
@@ -22,6 +21,7 @@
         <file>img/robotLeftRightLS.png</file>
         <file>img/robotRightBottomLS.png</file>
         <file>img/robotRightLS.png</file>
+        <file>img/robotNoLs.png</file>
     </qresource>
     <qresource prefix="/data">
         <file>csv/settings1.csv</file>

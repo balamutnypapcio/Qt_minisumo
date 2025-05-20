@@ -11,6 +11,7 @@ VisualizationManager::VisualizationManager(SensorData* sensorData, Ui::MainWindo
 {
     // Initial setup of connection status
     updateConnectionStatusUI(false);
+    m_ui->imuArrow->installEventFilter(this);
 }
 
 void VisualizationManager::setupArrows()
@@ -81,6 +82,7 @@ void VisualizationManager::updateAll()
     updateTofSensors();
     updateMotorLabels();
     updateLsSensors();
+    updateImuArrow();
 }
 
 void VisualizationManager::updateMotorArrows()
@@ -139,36 +141,35 @@ void VisualizationManager::updateLsSensors()
     bool lineRight = m_sensorData->getLineS2Active();
     bool lineBottom = m_sensorData->getLineS3Active();
 
-    // Update robot image based on active line sensors
-    if (m_ui->stackedWidget) {
-        if (lineLeft && lineRight && lineBottom) {
-            // All sensors active
-            m_ui->stackedWidget->setCurrentIndex(4); // AllLS
-        } else if (lineLeft && lineRight) {
-            // Left and right sensors active
-            m_ui->stackedWidget->setCurrentIndex(1); // leftRightLS
-        } else if (lineLeft && lineBottom) {
-            // Left and bottom sensors active
-            m_ui->stackedWidget->setCurrentIndex(2); // leftBottomLS
-        } else if (lineRight && lineBottom) {
-            // Right and bottom sensors active
-            m_ui->stackedWidget->setCurrentIndex(3); // rightBottomLS
-        } else if (lineLeft) {
-            // Only left sensor active
-            m_ui->stackedWidget->setCurrentIndex(7); // leftLS
-        } else if (lineRight) {
-            // Only right sensor active
-            m_ui->stackedWidget->setCurrentIndex(6); // rightLS
-        } else if (lineBottom) {
-            // Only bottom sensor active
-            m_ui->stackedWidget->setCurrentIndex(0); // bottomLS
-        } else {
-            // No line sensors active
-            m_ui->stackedWidget->setCurrentIndex(5); // noLS
-        }
-    }
-}
+    // Wybierz odpowiednią ścieżkę obrazu na podstawie aktywnych czujników
+    QString imagePath;
 
+    if (lineLeft && lineRight && lineBottom) {
+        imagePath = ":/new/image/img/robotAllLS.png"; // Wszystkie czujniki aktywne
+    } else if (lineLeft && lineRight) {
+        imagePath = ":/new/image/img/robotLeftRightLS.png"; // Lewy i prawy aktywne
+    } else if (lineLeft && lineBottom) {
+        imagePath = ":/new/image/img/robotLeftBottomLS.png"; // Lewy i dolny aktywne
+    } else if (lineRight && lineBottom) {
+        imagePath = ":/new/image/img/robotRightBottomLS.png"; // Prawy i dolny aktywne
+    } else if (lineLeft) {
+        imagePath = ":/new/image/img/robotLeftLS.png"; // Tylko lewy aktywny
+    } else if (lineRight) {
+        imagePath = ":/new/image/img/robotRightLS.png"; // Tylko prawy aktywny
+    } else if (lineBottom) {
+        imagePath = ":/new/image/img/robotBottomLS.png"; // Tylko dolny aktywny
+    } else {
+        imagePath = ":/new/image/img/robotNoLs.png"; // Żaden czujnik nie jest aktywny
+    }
+
+    // Plik istnieje - utwórz arkusz stylów CSS z obrazem
+    QString styleSheet = QString("image: url(%1); "
+                               "image-position: top center; "
+                               "border: none;").arg(imagePath);
+
+    // Ustaw arkusz stylów dla widgetu robotView
+    m_ui->robotView->setStyleSheet(styleSheet);
+}
 
 
 void VisualizationManager::updateMotorLabels()
@@ -186,3 +187,137 @@ void VisualizationManager::updateMotorLabels()
         m_ui->labelMotor2PWM->setText(QString::number(abs(motor2)));
     }
 }
+
+
+
+void VisualizationManager::updateImuArrow()
+{
+    // Sprawdź czy widget imuArrow istnieje
+    if (!m_ui->imuArrow) {
+        qDebug() << "Błąd: Widget imuArrow nie istnieje!";
+        return;
+    }
+
+    // Pobierz dane z sensorów IMU
+    float imuX = m_sensorData->getImuX();
+    float imuY = m_sensorData->getImuY();
+
+    // Oblicz długość wektora (magnitudę)
+    float magnitude = sqrt(imuX*imuX + imuY*imuY);
+
+    // Jeśli długość jest 0, nie wyświetlaj strzałki
+    if (magnitude == 0) {
+        // Ustawiamy pustą pixmapę
+        m_ui->imuArrow->setPixmap(QPixmap());
+        return;
+    }
+
+    // Oblicz kąt na podstawie wartości X i Y (w stopniach)
+    float angle = atan2(imuY, imuX) * (180.0 / M_PI);
+
+    // Normalizacja długości do wartości skali (od 10% do 80% przy wartości 100)
+    // Skalowanie liniowe: 0->0, 1->0.1, 100->0.8
+    float minScale = 0.1; // 10% maksymalnej długości
+    float maxScale = 0.8; // 80% maksymalnej długości przy wartości 100
+
+    // Zapewniamy, że magnitude będzie co najmniej 1 (dla minimalnego rozmiaru)
+    magnitude = qMax(1.0f, magnitude);
+
+    // Normalizacja długości do wartości skali
+    float scaleFactor;
+    if (magnitude <= 1.0f) {
+        scaleFactor = minScale;
+    } else {
+        scaleFactor = minScale + (maxScale - minScale) * (magnitude - 1.0f) / 99.0f;
+    }
+
+    // Wartość nie może przekroczyć maxScale
+    scaleFactor = qMin(scaleFactor, maxScale);
+
+    // Pobierz oryginalny obrazek, jeśli nie jest jeszcze przechowywany
+    if (m_originalImuPixmap.isNull()) {
+        m_originalImuPixmap = QPixmap(":/new/image/img/arrowIMU.png");
+
+        if (m_originalImuPixmap.isNull()) {
+            qDebug() << "Błąd: Nie można załadować obrazka arrowIMU!";
+            return;
+        }
+    }
+
+    // Pobierz wymiary QLabela
+    int labelWidth = m_ui->imuArrow->width();
+    int labelHeight = m_ui->imuArrow->height();
+
+    // Upewnij się, że QLabel ma niezerowy rozmiar
+    if (labelWidth <= 0 || labelHeight <= 0) {
+        qDebug() << "Ostrzeżenie: QLabel ma zerowy rozmiar!";
+        return;
+    }
+
+    // Ustaw minimalny rozmiar, aby strzałka nie zniknęła w bardzo małym oknie
+    // Jeśli rozmiar QLabel jest mniejszy niż 20x20 pikseli, użyj stałej wartości skalowania
+    float baseScaleFactor;
+    if (labelWidth < 20 || labelHeight < 20) {
+        // Użyj minimalnej skali dla małego QLabel
+        baseScaleFactor = 1.0; // Minimalna skala
+    } else {
+        // Normalne obliczenie skali dla odpowiedniego rozmiaru QLabel
+        baseScaleFactor = qMin(labelWidth, labelHeight) /
+                          qMax((float)m_originalImuPixmap.width(), (float)m_originalImuPixmap.height());
+    }
+
+    // Ostateczny współczynnik skalowania to iloczyn bazowego współczynnika i współczynnika długości
+    float combinedScaleFactor = baseScaleFactor * scaleFactor;
+
+    // Ustaw minimalny współczynnik skalowania, aby obrazek był zawsze widoczny
+    combinedScaleFactor = qMax(combinedScaleFactor, 0.1f);
+
+    // Utwórz obiekt transformacji
+    QTransform transform;
+
+    // Obróć wokół środka obrazka
+    transform.translate(m_originalImuPixmap.width() / 2.0, m_originalImuPixmap.height() / 2.0);
+    transform.rotate(angle);
+    transform.translate(-m_originalImuPixmap.width() / 2.0, -m_originalImuPixmap.height() / 2.0);
+
+    // Zastosuj skalowanie
+    transform.scale(combinedScaleFactor, combinedScaleFactor);
+
+    // Zastosuj transformację do oryginalnego obrazka
+    QPixmap transformedPixmap = m_originalImuPixmap.transformed(transform, Qt::SmoothTransformation);
+
+    // Utworzenie przezroczystego obrazka o wymiarach QLabela
+    QPixmap finalPixmap(qMax(1, labelWidth), qMax(1, labelHeight));
+    finalPixmap.fill(Qt::transparent);
+
+    // Oblicz pozycję obrazka tak, aby był wyśrodkowany w QLabelu
+    int xPos = (labelWidth - transformedPixmap.width()) / 2;
+    int yPos = (labelHeight - transformedPixmap.height()) / 2;
+
+    // Upewnij się, że pozycje nie są ujemne (może się zdarzyć przy bardzo małym QLabel)
+    xPos = qMax(0, xPos);
+    yPos = qMax(0, yPos);
+
+    // Rysuj przekształcony obrazek z 30% przezroczystością na środku
+    QPainter painter(&finalPixmap);
+    painter.setOpacity(0.7); // 70% nieprzezroczystości = 30% przezroczystości
+    painter.drawPixmap(xPos, yPos, transformedPixmap);
+    painter.end();
+
+    // Ustaw finalny obrazek w QLabel
+    m_ui->imuArrow->setPixmap(finalPixmap);
+}
+
+
+
+
+bool VisualizationManager::eventFilter(QObject *obj, QEvent *event)
+{
+    if (obj == m_ui->imuArrow && event->type() == QEvent::Resize) {
+        // Odśwież obrazek po zmianie rozmiaru QLabel
+        updateImuArrow();
+        return true;
+    }
+    return QObject::eventFilter(obj, event);
+}
+
