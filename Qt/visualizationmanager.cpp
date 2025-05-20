@@ -105,31 +105,29 @@ void VisualizationManager::updateTofSensors()
 {
     // Get TOF sensor values
     int tofLeft = m_sensorData->getTof1();
-    int tofRight = m_sensorData->getTof2();
-    int tofUpL = m_sensorData->getTof3();
-    int tofUpR = m_sensorData->getTof4();
+    int tofUpL = m_sensorData->getTof2();
+    int tofUpR = m_sensorData->getTof3();
+    int tofRight = m_sensorData->getTof4();
 
-    // Define threshold for obstacle detection
-    const int OBSTACLE_THRESHOLD = 200; // Adjust as needed
 
     // Update left TOF sensor visual
     if (m_ui->tofLEFT) {
-        m_ui->tofLEFT->setCurrentIndex(tofLeft < OBSTACLE_THRESHOLD ? 1 : 0); // 0 = green, 1 = red
+        m_ui->tofLEFT->setCurrentIndex(tofLeft == 1 ? 1 : 0); // 0 = green, 1 = red
     }
 
     // Update right TOF sensor visual
     if (m_ui->tofRIGHT) {
-        m_ui->tofRIGHT->setCurrentIndex(tofRight < OBSTACLE_THRESHOLD ? 0 : 1); // 0 = red, 1 = green
+        m_ui->tofRIGHT->setCurrentIndex(tofRight == 1 ? 0 : 1); // 0 = red, 1 = green
     }
 
     // Update upper-left TOF sensor visual
     if (m_ui->tofUpL) {
-        m_ui->tofUpL->setCurrentIndex(tofUpL < OBSTACLE_THRESHOLD ? 1 : 0); // 0 = green, 1 = red
+        m_ui->tofUpL->setCurrentIndex(tofUpL == 1 ? 1 : 0); // 0 = green, 1 = red
     }
 
     // Update upper-right TOF sensor visual
     if (m_ui->tofUpR) {
-        m_ui->tofUpR->setCurrentIndex(tofUpR < OBSTACLE_THRESHOLD ? 1 : 0); // 0 = green, 1 = red
+        m_ui->tofUpR->setCurrentIndex(tofUpR == 1 ? 1 : 0); // 0 = green, 1 = red
     }
 }
 
