@@ -207,7 +207,6 @@ void VisualizationManager::updateImuArrow()
 
     // Jeśli długość jest 0, nie wyświetlaj strzałki
     if (magnitude == 0) {
-        // Ustawiamy pustą pixmapę
         m_ui->imuArrow->setPixmap(QPixmap());
         return;
     }
@@ -216,7 +215,6 @@ void VisualizationManager::updateImuArrow()
     float angle = atan2(imuY, imuX) * (180.0 / M_PI);
 
     // Normalizacja długości do wartości skali (od 10% do 80% przy wartości 100)
-    // Skalowanie liniowe: 0->0, 1->0.1, 100->0.8
     float minScale = 0.1; // 10% maksymalnej długości
     float maxScale = 0.8; // 80% maksymalnej długości przy wartości 100
 
@@ -254,22 +252,16 @@ void VisualizationManager::updateImuArrow()
         return;
     }
 
-    // Ustaw minimalny rozmiar, aby strzałka nie zniknęła w bardzo małym oknie
-    // Jeśli rozmiar QLabel jest mniejszy niż 20x20 pikseli, użyj stałej wartości skalowania
+    // Ustaw minimalny współczynnik skalowania
     float baseScaleFactor;
     if (labelWidth < 20 || labelHeight < 20) {
-        // Użyj minimalnej skali dla małego QLabel
         baseScaleFactor = 1.0; // Minimalna skala
     } else {
-        // Normalne obliczenie skali dla odpowiedniego rozmiaru QLabel
         baseScaleFactor = qMin(labelWidth, labelHeight) /
                           qMax((float)m_originalImuPixmap.width(), (float)m_originalImuPixmap.height());
     }
 
-    // Ostateczny współczynnik skalowania to iloczyn bazowego współczynnika i współczynnika długości
     float combinedScaleFactor = baseScaleFactor * scaleFactor;
-
-    // Ustaw minimalny współczynnik skalowania, aby obrazek był zawsze widoczny
     combinedScaleFactor = qMax(combinedScaleFactor, 0.1f);
 
     // Utwórz obiekt transformacji
@@ -292,9 +284,22 @@ void VisualizationManager::updateImuArrow()
 
     // Oblicz pozycję obrazka tak, aby był wyśrodkowany w QLabelu
     int xPos = (labelWidth - transformedPixmap.width()) / 2;
-    int yPos = (labelHeight - transformedPixmap.height()) / 2;
 
-    // Upewnij się, że pozycje nie są ujemne (może się zdarzyć przy bardzo małym QLabel)
+    // TU JEST NAJWAŻNIEJSZA ZMIANA - Obliczanie pozycji Y z uwzględnieniem "wyimaginowanej bariery"
+    int yPos;
+
+    if (labelHeight > labelWidth) {
+        // Jeśli wysokość jest większa niż szerokość, tworzymy "wyimaginowaną barierę" - kwadrat o boku równym szerokości
+        // Centrujemy strzałkę w górnej części widgetu, w obszarze kwadratowym
+        int squareSize = labelWidth; // Kwadratowy obszar ma bok równy szerokości
+        int verticalOffset = (squareSize - transformedPixmap.height()) / 2;
+        yPos = verticalOffset; // Pozycja Y od góry widgetu
+    } else {
+        // Standardowe wyśrodkowanie gdy widget jest szerszy lub kwadratowy
+        yPos = (labelHeight - transformedPixmap.height()) / 2;
+    }
+
+    // Upewnij się, że pozycje nie są ujemne
     xPos = qMax(0, xPos);
     yPos = qMax(0, yPos);
 
@@ -307,7 +312,6 @@ void VisualizationManager::updateImuArrow()
     // Ustaw finalny obrazek w QLabel
     m_ui->imuArrow->setPixmap(finalPixmap);
 }
-
 
 
 
