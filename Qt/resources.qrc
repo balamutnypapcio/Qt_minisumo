@@ -15,6 +15,13 @@
         <file>img/arrowIMU.png</file>
         <file>img/connectionGreen.png</file>
         <file>img/connectionRed.png</file>
+        <file>img/robotAllLS.png</file>
+        <file>img/robotBottomLS.png</file>
+        <file>img/robotLeftBottomLS.png</file>
+        <file>img/robotLeftLS.png</file>
+        <file>img/robotLeftRightLS.png</file>
+        <file>img/robotRightBottomLS.png</file>
+        <file>img/robotRightLS.png</file>
     </qresource>
     <qresource prefix="/data">
         <file>csv/settings1.csv</file>

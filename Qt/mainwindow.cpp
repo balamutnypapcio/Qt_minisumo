@@ -203,15 +203,6 @@ void MainWindow::setupProportionalWidgets()
             parentLayout->update();
         }
     }
-    // QGridLayout* grid = qobject_cast<QGridLayout*>(ui->widRobot->layout());
-    // if (grid) {
-    //     grid->setRowStretch(0, 10);
-    //     grid->setRowStretch(1, 30);
-    //     grid->setRowStretch(2, 35);
-    //     grid->setRowStretch(3, 6);
-    //     grid->setRowStretch(4, 5);
-    // }
-    // Make sure the new widgets are visible
     leftSensorWidget->show();
     rightSensorWidget->show();
 }

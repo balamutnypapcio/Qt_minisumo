@@ -26,6 +26,7 @@ private:
     void updateMotorArrows();
     void updateTofSensors();
     void updateMotorLabels();
+    void updateLsSensors();
 
     SensorData* m_sensorData;
     Ui::MainWindow* m_ui;

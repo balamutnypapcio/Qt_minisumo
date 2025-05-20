@@ -80,6 +80,7 @@ void VisualizationManager::updateAll()
     updateMotorArrows();
     updateTofSensors();
     updateMotorLabels();
+    updateLsSensors();
 }
 
 void VisualizationManager::updateMotorArrows()
@@ -130,6 +131,45 @@ void VisualizationManager::updateTofSensors()
         m_ui->tofUpR->setCurrentIndex(tofUpR == 1 ? 1 : 0); // 0 = green, 1 = red
     }
 }
+
+void VisualizationManager::updateLsSensors()
+{
+    // Get Line sensor values
+    bool lineLeft = m_sensorData->getLineS1Active();
+    bool lineRight = m_sensorData->getLineS2Active();
+    bool lineBottom = m_sensorData->getLineS3Active();
+
+    // Update robot image based on active line sensors
+    if (m_ui->stackedWidget) {
+        if (lineLeft && lineRight && lineBottom) {
+            // All sensors active
+            m_ui->stackedWidget->setCurrentIndex(4); // AllLS
+        } else if (lineLeft && lineRight) {
+            // Left and right sensors active
+            m_ui->stackedWidget->setCurrentIndex(1); // leftRightLS
+        } else if (lineLeft && lineBottom) {
+            // Left and bottom sensors active
+            m_ui->stackedWidget->setCurrentIndex(2); // leftBottomLS
+        } else if (lineRight && lineBottom) {
+            // Right and bottom sensors active
+            m_ui->stackedWidget->setCurrentIndex(3); // rightBottomLS
+        } else if (lineLeft) {
+            // Only left sensor active
+            m_ui->stackedWidget->setCurrentIndex(7); // leftLS
+        } else if (lineRight) {
+            // Only right sensor active
+            m_ui->stackedWidget->setCurrentIndex(6); // rightLS
+        } else if (lineBottom) {
+            // Only bottom sensor active
+            m_ui->stackedWidget->setCurrentIndex(0); // bottomLS
+        } else {
+            // No line sensors active
+            m_ui->stackedWidget->setCurrentIndex(5); // noLS
+        }
+    }
+}
+
+
 
 void VisualizationManager::updateMotorLabels()
 {

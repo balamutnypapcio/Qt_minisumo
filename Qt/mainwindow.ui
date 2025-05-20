@@ -85,6 +85,9 @@ border-radius: 8px;  </string>
               <height>12</height>
              </size>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">background-color: #B0B0B0;
 color: #555555;            
@@ -103,6 +106,9 @@ border: 2px solid #505050; </string>
               <width>20</width>
               <height>12</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: #B0B0B0;
@@ -203,6 +209,9 @@ border: 2px solid #505050; </string>
               <height>12</height>
              </size>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">background-color: #B0B0B0;
 color: #555555;            
@@ -221,6 +230,9 @@ border: 2px solid #505050; </string>
               <width>20</width>
               <height>12</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: #B0B0B0;
@@ -249,6 +261,9 @@ border: 2px solid #505050; </string>
            <width>30</width>
            <height>20</height>
           </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: #B0B0B0;
@@ -744,10 +759,78 @@ image-position: center;
                <property name="autoFillBackground">
                 <bool>false</bool>
                </property>
-               <property name="styleSheet">
-                <string notr="true">image: url(:/new/image/img/robotv1.png);
+               <layout class="QHBoxLayout" name="horizontalLayout_15">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QStackedWidget" name="stackedWidget">
+                  <property name="currentIndex">
+                   <number>3</number>
+                  </property>
+                  <widget class="QWidget" name="bottomLS">
+                   <property name="styleSheet">
+                    <string notr="true">image: url(:/new/image/img/robotBottomLS.png);
 image-position: top;</string>
-               </property>
+                   </property>
+                  </widget>
+                  <widget class="QWidget" name="leftRightLS">
+                   <property name="styleSheet">
+                    <string notr="true">image: url(:/new/image/img/robotLeftRightLS.png);
+image-position: top;</string>
+                   </property>
+                  </widget>
+                  <widget class="QWidget" name="leftBottomLS">
+                   <property name="styleSheet">
+                    <string notr="true">image: url(:/new/image/img/robotLeftBottomLS.png);
+image-position: top;</string>
+                   </property>
+                  </widget>
+                  <widget class="QWidget" name="rightBottomLS">
+                   <property name="styleSheet">
+                    <string notr="true">image: url(:/new/image/img/robotRightBottomLS.png);
+image-position: top;</string>
+                   </property>
+                  </widget>
+                  <widget class="QWidget" name="AllLS">
+                   <property name="styleSheet">
+                    <string notr="true">image: url(:/new/image/img/robotAllLS.png);
+image-position: top;</string>
+                   </property>
+                  </widget>
+                  <widget class="QWidget" name="noLS">
+                   <property name="styleSheet">
+                    <string notr="true">image: url(:/new/image/img/robotv1.png);
+image-position: top;</string>
+                   </property>
+                  </widget>
+                  <widget class="QWidget" name="rightLS">
+                   <property name="styleSheet">
+                    <string notr="true">image: url(:/new/image/img/robotRightLS.png);
+image-position: top;</string>
+                   </property>
+                  </widget>
+                  <widget class="QWidget" name="leftLS">
+                   <property name="styleSheet">
+                    <string notr="true">image: url(:/new/image/img/robotLeftLS.png);
+image-position: top;</string>
+                   </property>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
              <item>

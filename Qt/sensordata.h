@@ -65,12 +65,12 @@ signals:
     void dataChanged();
 
 private:
-    bool m_isTof_1 = true;
+    bool m_isTof_1 = false;
     bool m_isTof_2 = false;
     bool m_isTof_3 = false;
     bool m_isTof_4 = false;
 
-    bool m_islineS_1_Active = true;
+    bool m_islineS_1_Active = false;
     bool m_islineS_2_Active = false;
     bool m_islineS_3_Active = false;
 
