@@ -172,12 +172,27 @@ void MainWindow::handleTcpError(const QString &errorMessage)
 void MainWindow::showExitConfirmation()
 {
     QMessageBox messageBox(this);
-    messageBox.setWindowTitle("Do you want to quit?");
-    messageBox.setText("Are you sure that you want to quit?");
-    messageBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-    messageBox.setDefaultButton(QMessageBox::No);
-    messageBox.setButtonText(QMessageBox::Yes, "Yes");
-    messageBox.setButtonText(QMessageBox::No, "No");
+    if(m_isEnglish){
+        messageBox.setWindowTitle("Do you want to quit?");
+        messageBox.setText("Are you sure that you want to quit?");
+        messageBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        messageBox.setDefaultButton(QMessageBox::No);
+        messageBox.setButtonText(QMessageBox::Yes, "Yes");
+        messageBox.setButtonText(QMessageBox::No, "No");
+        QFont font = messageBox.font();
+        font.setFamily("Arial");
+        messageBox.setFont(font);
+    }else{
+        messageBox.setWindowTitle("Czy chcesz wyjsc?");
+        messageBox.setText("Czy na pewno chcesz wyjść?");
+        messageBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        messageBox.setDefaultButton(QMessageBox::No);
+        messageBox.setButtonText(QMessageBox::Yes, "Tak");
+        messageBox.setButtonText(QMessageBox::No, "Nie");
+        QFont font = messageBox.font();
+        font.setFamily("Arial");
+        messageBox.setFont(font);
+    }
 
     int ret = messageBox.exec();
 
