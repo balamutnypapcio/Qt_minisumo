@@ -2,18 +2,20 @@
 #define LINECHARTMENAGER_H
 
 #include <QObject>
-#include <QtCharts/QChartView>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QChart>
 #include <QtCharts/QValueAxis>
+#include <QTimer>
 #include "sensordata.h"
+#include "chartviewhelper.h"
 
+class QGraphicsTextItem;
 
 /**
- * @class ImuChartManager
- * @brief Zarządza wykresem danych z IMU.
+ * @class LineChartMenager
+ * @brief Zarządza wykresem danych z czujników linii.
  */
-class LineChartMenager  : public QObject
+class LineChartMenager : public QObject
 {
     Q_OBJECT
 
@@ -25,6 +27,7 @@ public:
      * @brief Inicjalizuje wykres.
      */
     void setupChart();
+
     /**
      * @brief Aktualizuje dane na wykresie.
      * @param time Znacznik czasu.
@@ -36,6 +39,33 @@ public:
      */
     void clearChart();
 
+    /**
+     * @brief Przywraca widok do aktualnych danych (włącza auto-scrolling).
+     */
+    void resetToCurrentData();
+
+protected:
+    /**
+     * @brief Filtr zdarzeń do obsługi zmiany rozmiaru kontenera.
+     */
+    bool eventFilter(QObject *watched, QEvent *event) override;
+
+    /**
+     * @brief Obsługa kliknięcia i przesunięcia myszy na wykresie.
+     */
+    void handleChartMousePressed();
+    void handleChartMouseReleased();
+
+    /**
+     * @brief Wymusza przestrzeganie limitów osi X (min ≥ 0, max ≤ aktualny_czas).
+     */
+    void enforceAxisLimits(qreal min, qreal max);
+
+    /**
+     * @brief Dostosowuje etykiety osi X do bieżącego rozmiaru wykresu.
+     */
+    void adjustAxisLabels();
+
 private:
     SensorData* m_sensorData;      ///< Wskaźnik do danych sensorów.
     QWidget* m_container;          ///< Kontener QWidget, w którym umieszczany jest wykres.
@@ -45,11 +75,17 @@ private:
     QLineSeries* m_series3;        ///< Trzecia seria danych wykresu.
     QValueAxis* m_axisX;           ///< Oś X wykresu (zwykle czas).
     QValueAxis* m_axisY;           ///< Oś Y wykresu (np. wartość sensora).
-    QChartView* m_chartView;       ///< Widok wykresu do umieszczenia w GUI.
+    HorizontalOnlyChartView* m_chartView; ///< Widok wykresu do umieszczenia w GUI.
 
+    // Dodajemy własne etykiety tytułów osi
+    QGraphicsTextItem* m_xAxisTitle;  ///< Tytuł osi X jako osobny element graficzny
+    QGraphicsTextItem* m_yAxisTitle;  ///< Tytuł osi Y jako osobny element graficzny
 
-    static const int MAX_POINTS = 100;
-    int m_currentPoint = 0;
+    static const int MAX_POINTS = 100;  ///< Maksymalna liczba punktów widocznych na wykresie.
+    int m_currentPoint = 0;             ///< Aktualny numer punktu (licznik).
+    qint64 m_currentTimeOffset;         ///< Bieżące przesunięcie czasu.
+    bool m_isAutoScrollEnabled;         ///< Czy auto-przewijanie jest włączone.
+    qreal m_latestDataTime = 0;         ///< Czas najnowszych danych.
 };
 
 #endif // LINECHARTMENAGER_H

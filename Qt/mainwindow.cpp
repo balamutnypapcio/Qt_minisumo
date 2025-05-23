@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     setupProportionalWidgets();
     adjustGridLayoutProportions();
 
-    // Po setupUi(this);
+
     QWidget* widget_14 = findChild<QWidget*>("widget_14");
     QWidget* widget_16 = findChild<QWidget*>("widget_16");
     QWidget* widget_18 = findChild<QWidget*>("widget_18");
@@ -38,10 +38,10 @@ MainWindow::MainWindow(QWidget *parent)
     m_csvManager = new CSVManager(m_sensorData, this);
 
     // Tworzenie managerów wykresów
-    m_tofChartManager = new TofChartManager(m_sensorData, ui->widTof, this);
-    m_lineChartManager = new LineChartMenager(m_sensorData, ui->widLS, this);
-    m_motorChartManager = new MotorChartManager(m_sensorData, ui->widMOTORS, this);
-    m_imuChartManager = new ImuChartManager(m_sensorData, ui->widIMU, this);
+    m_tofChartManager = new TofChartManager(m_sensorData, ui->chartTof, this);
+    m_lineChartManager = new LineChartMenager(m_sensorData, ui->chartLS, this);
+    m_motorChartManager = new MotorChartManager(m_sensorData, ui->chartMotors, this);
+    m_imuChartManager = new ImuChartManager(m_sensorData, ui->chartIMU, this);
 
     // Tworzenie managera wizualizacji
     m_visualManager = new VisualizationManager(m_sensorData, ui, this);
@@ -81,10 +81,14 @@ MainWindow::MainWindow(QWidget *parent)
         languageButton->setStyleSheet("QPushButton { border-radius: 16px; min-width: 32px; max-width: 32px; min-height: 32px; max-height: 32px; }");
     }
 
+    setupRotatedLabels();
+
     // Zastosuj zapisany język, jeśli nie jest angielski
     if (!m_isEnglish) {
         applyPolishTranslation();
     }
+
+
 }
 
 MainWindow::~MainWindow() {
@@ -298,6 +302,30 @@ void MainWindow::initializeTranslations()
         else if(label->objectName() == "labelImu"){
             m_polishTexts[label] = "CZUJNIK IMU";
         }
+        else if(label->objectName() == "labelIMU"){
+            m_polishTexts[label] = "WARTOSC";
+        }
+        else if(label->objectName() == "labelMotorsY"){
+            m_polishTexts[label] = "WARTOŚĆ";
+        }
+        else if(label->objectName() == "labelTofY"){
+            m_polishTexts[label] = "WARTOŚĆ";
+        }
+        else if(label->objectName() == "labelLSY"){
+            m_polishTexts[label] = "WARTOŚĆ";
+        }
+        else if(label->objectName() == "labelIMUX"){
+            m_polishTexts[label] = "CZAS (ms)";
+        }
+        else if(label->objectName() == "labelMotorsX"){
+            m_polishTexts[label] = "CZAS (ms)";
+        }
+        else if(label->objectName() == "labelLSX"){
+            m_polishTexts[label] = "CZAS (ms)";
+        }
+        else if(label->objectName() == "labelTofX"){
+            m_polishTexts[label] = "CZAS (ms)";
+        }
     }
 
     // Nowa część dla QPushButton
@@ -371,6 +399,8 @@ void MainWindow::switchLanguage()
         }
     }
 
+    refreshParentWidgets();
+
     // Zapisz preferencję języka
     saveLanguagePreference();
 }
@@ -412,6 +442,97 @@ void MainWindow::applyPolishTranslation()
 
         if (m_polishButtonTexts.contains(button)) {
             button->setText(m_polishButtonTexts[button]);
+        }
+    }
+
+    refreshParentWidgets();
+}
+
+
+void MainWindow::setupRotatedLabels(){
+    RotatedLabel* labelIMU = new RotatedLabel(m_isEnglish ? "VALUE" : "WARTOŚĆ");
+    labelIMU->setObjectName("rotatedLabelIMU");
+    replaceLabel(ui->labelIMU, labelIMU);
+
+    RotatedLabel* labelMotorsY = new RotatedLabel(m_isEnglish ? "VALUE" : "WARTOŚĆ");
+    labelMotorsY->setObjectName("rotatedLabelMotorsY");
+    replaceLabel(ui->labelMotorsY, labelMotorsY);
+
+    RotatedLabel* labelLSY = new RotatedLabel(m_isEnglish ? "VALUE" : "WARTOŚĆ");
+    labelLSY->setObjectName("rotatedLabelLSY");
+    replaceLabel(ui->labelLSY, labelLSY);
+
+    RotatedLabel* labelTofY = new RotatedLabel(m_isEnglish ? "VALUE" : "WARTOŚĆ");
+    labelTofY->setObjectName("rotatedLabelTofY");
+    replaceLabel(ui->labelTofY, labelTofY);
+
+    // Dodaj nowe etykiety do słowników tłumaczeń
+    m_englishTexts[labelIMU] = "VALUE";
+    m_polishTexts[labelIMU] = "WARTOŚĆ";
+
+    m_englishTexts[labelMotorsY] = "VALUE";
+    m_polishTexts[labelMotorsY] = "WARTOŚĆ";
+
+    m_englishTexts[labelLSY] = "VALUE";
+    m_polishTexts[labelLSY] = "WARTOŚĆ";
+
+    m_englishTexts[labelTofY] = "VALUE";
+    m_polishTexts[labelTofY] = "WARTOŚĆ";
+}
+
+
+
+
+void MainWindow::replaceLabel(QLabel* oldLabel, QLabel* newLabel)
+{
+    if (!oldLabel || !newLabel) return;
+
+    // Pobierz rodzica i layout
+    QWidget* parent = oldLabel->parentWidget();
+    QLayout* layout = parent->layout();
+
+    if (!layout) return;
+
+    // Kopiuj ważne właściwości ze starej etykiety
+    newLabel->setFont(oldLabel->font());
+    newLabel->setStyleSheet(oldLabel->styleSheet());
+    newLabel->setAlignment(oldLabel->alignment());
+
+    // Obsługa różnych typów layoutów
+    if (QHBoxLayout* hLayout = qobject_cast<QHBoxLayout*>(layout)) {
+        int index = layout->indexOf(oldLabel);
+        if (index != -1) {
+            // Usuń starą etykietę
+            oldLabel->hide();
+            layout->removeWidget(oldLabel);
+
+            // Dodaj nową etykietę
+            hLayout->insertWidget(index, newLabel);
+        }
+    }
+}
+
+
+
+void MainWindow::refreshParentWidgets()
+{
+    // Znajdź wszystkie etykiety obrotowe
+    QList<RotatedLabel*> rotatedLabels = findChildren<RotatedLabel*>();
+
+    // Dla każdej etykiety obrotowej odśwież widget rodzica
+    foreach(RotatedLabel* label, rotatedLabels) {
+        if (label) {
+            QWidget* parent = label->parentWidget();
+            if (parent) {
+                // Wymuś pełne odświeżenie widgetu rodzica
+                parent->update();
+
+                // Dodatkowe odświeżenie nadrzędnego kontenera (jeśli istnieje)
+                QWidget* grandparent = parent->parentWidget();
+                if (grandparent) {
+                    grandparent->update();
+                }
+            }
         }
     }
 }

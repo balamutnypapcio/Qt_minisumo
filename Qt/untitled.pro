@@ -3,6 +3,7 @@ TARGET = untitled
 QT       += core gui
 QT       += charts
 QT       += network
+QT += core gui charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,6 +14,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chartviewhelper.cpp \
     csvmanager.cpp \
     imuchartmanager.cpp \
     linechartmenager.cpp \
@@ -26,12 +28,14 @@ SOURCES += \
     visualizationmanager.cpp
 
 HEADERS += \
+    chartviewhelper.h \
     csvmanager.h \
     imuchartmanager.h \
     linechartmenager.h \
     mainwindow.h \
     motorchartmanager.h \
     proportionalwidget.h \
+    rotatedlabel.h \
     sensordata.h \
     tcpmanager.h \
     tofchartmanager.h \

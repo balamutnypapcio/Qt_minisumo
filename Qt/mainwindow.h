@@ -14,6 +14,7 @@
 #include "visualizationmanager.h"
 #include "tcpmanager.h"
 #include "proportionalwidget.h"
+#include "rotatedlabel.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -40,6 +41,8 @@ public:
      * @brief Destruktor klasy MainWindow.
      */
     ~MainWindow();
+
+    void labelMotors();
 
 private slots:
 
@@ -77,7 +80,6 @@ private slots:
 
     void showExitConfirmation();
 
-
 private:
     Ui::MainWindow *ui;                          ///< Wskaźnik do interfejsu użytkownika.
 
@@ -103,7 +105,13 @@ private:
     void loadLanguagePreference();
     void saveLanguagePreference();
     void applyPolishTranslation();
-
+    // Funkcja ustawiająca obrócone etykiety
+    void setupRotatedLabels();
+    void replaceLabel(QLabel* oldLabel, QLabel* newLabel);
+    /**
+     * @brief Wymusza odświeżenie widgetów rodzica po zmianie języka
+     */
+    void refreshParentWidgets();
 };
 
 #endif // MAINWINDOW_H
