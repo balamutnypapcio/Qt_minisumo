@@ -66,6 +66,15 @@ private slots:
     void on_buttDISS_clicked();
 
     /**
+     * @brief Obsługuje kliknięcie przycisku zatrzymania odtwarzania CSV
+     *
+     * Ta metoda zatrzymuje odtwarzanie danych z pliku CSV poprzez wywołanie
+     * odpowiedniej metody w CSVManager. Po zatrzymaniu wyświetla komunikat
+     * w pasku statusu.
+     */
+    void on_buttSTOPcsv_clicked();
+
+    /**
      * @brief Slot obsługujący zmianę stanu połączenia TCP.
      * @param connected Status połączenia.
      */

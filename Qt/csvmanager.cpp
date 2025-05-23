@@ -64,6 +64,23 @@ void CSVManager::startPlayback() {
     m_dataUpdateTimer->start(20);
 }
 
+
+void CSVManager::stopPlayback()
+{
+    // Zatrzymaj timer aktualizujący dane
+    if (m_dataUpdateTimer) {
+        m_dataUpdateTimer->stop();
+    }
+
+    // Zresetuj timer pomiarowy
+    m_playbackTimer.invalidate();
+
+    // Emisja sygnału o zakończeniu odtwarzania
+    emit playbackFinished();
+}
+
+
+
 void CSVManager::updateData() {
     // Jeśli nie mamy danych lub timer nie jest aktywny, wyjdź
     if (m_csvData.isEmpty() || !m_playbackTimer.isValid()) {

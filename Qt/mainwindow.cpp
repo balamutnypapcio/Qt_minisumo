@@ -56,7 +56,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_tcpManager = new TCPManager(m_sensorData, this);
     connect(m_csvManager, &CSVManager::dataUpdated, this, &MainWindow::handleDataUpdated);
     connect(m_sensorData, &SensorData::dataChanged, m_visualManager, &VisualizationManager::updateAll);
-
+    connect(m_tcpManager, &TCPManager::connectionStatusChanged, this, &MainWindow::handleConnectionStatusChanged);
+    connect(m_tcpManager, &TCPManager::dataUpdated, this, &MainWindow::handleDataUpdated);
     // Początkowa konfiguracja
     m_visualManager->setupArrows();
     m_visualManager->updateAll();
@@ -126,6 +127,11 @@ void MainWindow::handleDataUpdated(int time) {
 // Implement TCP connection button handler
 void MainWindow::on_buttCONN_clicked()
 {
+    m_tofChartManager->clearChart();
+    m_lineChartManager->clearChart();
+    m_motorChartManager->clearChart();
+    m_imuChartManager->clearChart();
+
     // Get IP address and port from UI elements
     // Adjust these lines to match your actual UI element names
     QString ipAddress = ui->lineIP->text();
@@ -161,6 +167,20 @@ void MainWindow::handleConnectionStatusChanged(bool connected)
         ui->statusBar->showMessage("Rozłączono z ESP");
     }
 }
+
+
+
+void MainWindow::on_buttSTOPcsv_clicked()
+{
+    // Zatrzymaj odtwarzanie danych z CSV
+    if (m_csvManager) {
+        m_csvManager->stopPlayback();
+        ui->statusBar->showMessage("Odtwarzanie CSV zatrzymane");
+    }
+}
+
+
+
 
 // Handle TCP errors
 void MainWindow::handleTcpError(const QString &errorMessage)
