@@ -1,0 +1,142 @@
+\doxysection{Dokumentacja klasy Rotated\+Label}
+\hypertarget{classRotatedLabel}{}\label{classRotatedLabel}\index{RotatedLabel@{RotatedLabel}}
+
+
+Etykieta z obróconym o 90 stopni tekstem.  
+
+
+
+
+{\ttfamily \#include $<$rotatedlabel.\+h$>$}
+
+
+
+Diagram dziedziczenia dla Rotated\+Label
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=161pt]{classRotatedLabel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagram współpracy dla Rotated\+Label\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=161pt]{classRotatedLabel__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRotatedLabel_a724ff0d442df92369310df710c9972ba}{Rotated\+Label}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Konstruktor domyślny. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRotatedLabel_aa7383f5563cb41a12cdaab4b3a6fb951}{Rotated\+Label}} (const QString \&text, QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Konstruktor z tekstem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody chronione}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRotatedLabel_a7366514aa4dbca45c715cd66181ae3f4}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Metoda obsługująca zdarzenie rysowania widgetu. \end{DoxyCompactList}\item 
+QSize \mbox{\hyperlink{classRotatedLabel_a266ec1ec78421f85658fad0276bfbec8}{size\+Hint}} () const override
+\begin{DoxyCompactList}\small\item\em Sugerowany rozmiar widgetu. \end{DoxyCompactList}\item 
+QSize \mbox{\hyperlink{classRotatedLabel_a290423f574e51b54b58408665857f506}{minimum\+Size\+Hint}} () const override
+\begin{DoxyCompactList}\small\item\em Minimalny sugerowany rozmiar widgetu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Etykieta z obróconym o 90 stopni tekstem. 
+
+Klasa rozszerzająca standardową QLabel, która wyświetla tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara. Używana głównie do wyświetlania pionowych etykiet osi na wykresach. 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classRotatedLabel_a724ff0d442df92369310df710c9972ba}\label{classRotatedLabel_a724ff0d442df92369310df710c9972ba} 
+\index{RotatedLabel@{RotatedLabel}!RotatedLabel@{RotatedLabel}}
+\index{RotatedLabel@{RotatedLabel}!RotatedLabel@{RotatedLabel}}
+\doxysubsubsection{\texorpdfstring{RotatedLabel()}{RotatedLabel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Rotated\+Label\+::\+Rotated\+Label (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Konstruktor domyślny. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Wskaźnik do widgetu rodzica \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRotatedLabel_aa7383f5563cb41a12cdaab4b3a6fb951}\label{classRotatedLabel_aa7383f5563cb41a12cdaab4b3a6fb951} 
+\index{RotatedLabel@{RotatedLabel}!RotatedLabel@{RotatedLabel}}
+\index{RotatedLabel@{RotatedLabel}!RotatedLabel@{RotatedLabel}}
+\doxysubsubsection{\texorpdfstring{RotatedLabel()}{RotatedLabel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Rotated\+Label\+::\+Rotated\+Label (\begin{DoxyParamCaption}\item[{const QString \&}]{text,  }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Konstruktor z tekstem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em text} & Tekst do wyświetlenia \\
+\hline
+{\em parent} & Wskaźnik do widgetu rodzica \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classRotatedLabel_a290423f574e51b54b58408665857f506}\label{classRotatedLabel_a290423f574e51b54b58408665857f506} 
+\index{RotatedLabel@{RotatedLabel}!minimumSizeHint@{minimumSizeHint}}
+\index{minimumSizeHint@{minimumSizeHint}!RotatedLabel@{RotatedLabel}}
+\doxysubsubsection{\texorpdfstring{minimumSizeHint()}{minimumSizeHint()}}
+{\footnotesize\ttfamily QSize Rotated\+Label\+::minimum\+Size\+Hint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Minimalny sugerowany rozmiar widgetu. 
+
+Zwraca minimalny rozmiar widgetu potrzebny do poprawnego wyświetlenia obroconego tekstu.
+
+\begin{DoxyReturn}{Zwraca}
+QSize Minimalny sugerowany rozmiar widgetu 
+\end{DoxyReturn}
+\Hypertarget{classRotatedLabel_a7366514aa4dbca45c715cd66181ae3f4}\label{classRotatedLabel_a7366514aa4dbca45c715cd66181ae3f4} 
+\index{RotatedLabel@{RotatedLabel}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!RotatedLabel@{RotatedLabel}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily void Rotated\+Label\+::paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Metoda obsługująca zdarzenie rysowania widgetu. 
+
+Implementacja rysuje tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara. Przed rysowaniem czyści całe tło, aby zapobiec pozostawaniu artefaktów po poprzednim tekście.
+
+
+\begin{DoxyParams}{Parametry}
+{\em event} & Obiekt zdarzenia rysowania \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRotatedLabel_a266ec1ec78421f85658fad0276bfbec8}\label{classRotatedLabel_a266ec1ec78421f85658fad0276bfbec8} 
+\index{RotatedLabel@{RotatedLabel}!sizeHint@{sizeHint}}
+\index{sizeHint@{sizeHint}!RotatedLabel@{RotatedLabel}}
+\doxysubsubsection{\texorpdfstring{sizeHint()}{sizeHint()}}
+{\footnotesize\ttfamily QSize Rotated\+Label\+::size\+Hint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Sugerowany rozmiar widgetu. 
+
+Zwraca sugerowany rozmiar widgetu, zamieniający szerokość i wysokość w porównaniu do standardowej etykiety, aby uwzględnić obrót tekstu o 90 stopni.
+
+\begin{DoxyReturn}{Zwraca}
+QSize Sugerowany rozmiar widgetu 
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+rotatedlabel.\+h\end{DoxyCompactItemize}

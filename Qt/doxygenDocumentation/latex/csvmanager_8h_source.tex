@@ -1,0 +1,51 @@
+\doxysection{csvmanager.\+h}
+\hypertarget{csvmanager_8h_source}{}\label{csvmanager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CSVMANAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CSVMANAGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QElapsedTimer>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QVector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QStringList>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}sensordata.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCSVManager}{CSVManager}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classCSVManager}{CSVManager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{classCSVManager_a97ab57c81378a5655ec36f52885316b1}{\string~CSVManager}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCSVManager_aa83110a5d828a7dd9f18c6edcf661ea4}{loadFromFile}}(\textcolor{keyword}{const}\ QString\ \&filePath);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCSVManager_aa421002b8c1b3562776ae67961680e71}{startPlayback}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCSVManager_a16a339a63758a4b594567faaedf4bc82}{stopPlayback}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ signals:}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}{dataUpdated}}(\textcolor{keywordtype}{int}\ time);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCSVManager_a10755abfed118a3625b213fcc61b8e3f}{playbackFinished}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ updateData();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{classSensorData}{SensorData}}*\ m\_sensorData;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ QVector<QStringList>\ m\_csvData;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ QElapsedTimer\ m\_playbackTimer;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ QTimer*\ m\_dataUpdateTimer\ =\ \textcolor{keyword}{nullptr};\ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_currentRow\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ updateVariablesFromCSV(\textcolor{keywordtype}{int}\ row);}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CSVMANAGER\_H}}
+
+\end{DoxyCode}

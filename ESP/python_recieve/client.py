@@ -1,6 +1,6 @@
 import socket
 
-ESP_IP = '192.168.0.13'   # ← wpisz tutaj IP swojego ESP32
+ESP_IP = '192.168.0.20'   # ← wpisz tutaj IP swojego ESP32
 PORT = 1234
 
 def main():

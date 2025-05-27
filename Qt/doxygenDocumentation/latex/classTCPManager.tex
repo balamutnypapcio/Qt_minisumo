@@ -1,0 +1,165 @@
+\doxysection{Dokumentacja klasy TCPManager}
+\hypertarget{classTCPManager}{}\label{classTCPManager}\index{TCPManager@{TCPManager}}
+
+
+Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów.  
+
+
+
+
+{\ttfamily \#include $<$tcpmanager.\+h$>$}
+
+
+
+Diagram dziedziczenia dla TCPManager
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classTCPManager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagram współpracy dla TCPManager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classTCPManager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Sygnały}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classTCPManager_a6c3543bf266491dcb529beb7a44fe012}{data\+Updated}} (int time)
+\begin{DoxyCompactList}\small\item\em Sygnał informujący o aktualizacji danych. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTCPManager_a363c1b3b68d005feea5268decf210000}{connection\+Status\+Changed}} (bool connected)
+\begin{DoxyCompactList}\small\item\em Sygnał emitowany po zmianie stanu połączenia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTCPManager_a26641c127869ce539809b188f653be04}{error\+Occurred}} (const QString \&error\+Message)
+\begin{DoxyCompactList}\small\item\em Sygnał emitowany w przypadku wystąpienia błędu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTCPManager_a895d7f1d6f214b008c540fdd376a1014}{TCPManager}} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Konstruktor klasy \doxylink{classTCPManager}{TCPManager}. \end{DoxyCompactList}\item 
+\Hypertarget{classTCPManager_a9c24ac909211d3e0029d518d04b9f00d}\label{classTCPManager_a9c24ac909211d3e0029d518d04b9f00d} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+TCPManager} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTCPManager_a4ce4783a94bb6bb4f3122397bd9d437b}{connect\+To\+Device}} (const QString \&host\+Address, quint16 port)
+\begin{DoxyCompactList}\small\item\em Nawiązuje połączenie z urządzeniem ESP. \end{DoxyCompactList}\item 
+\Hypertarget{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f}\label{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f} 
+void {\bfseries disconnect\+From\+Device} ()
+\begin{DoxyCompactList}\small\item\em Rozłącza połączenie z urządzeniem ESP. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTCPManager_a49bf45bb9b1545806780fe5458fa1155}{is\+Connected}} () const
+\begin{DoxyCompactList}\small\item\em Sprawdza stan połączenia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów. 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classTCPManager_a895d7f1d6f214b008c540fdd376a1014}\label{classTCPManager_a895d7f1d6f214b008c540fdd376a1014} 
+\index{TCPManager@{TCPManager}!TCPManager@{TCPManager}}
+\index{TCPManager@{TCPManager}!TCPManager@{TCPManager}}
+\doxysubsubsection{\texorpdfstring{TCPManager()}{TCPManager()}}
+{\footnotesize\ttfamily TCPManager\+::\+TCPManager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}}]{sensor\+Data,  }\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Konstruktor klasy \doxylink{classTCPManager}{TCPManager}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em sensor\+Data} & Wskaźnik do obiektu \doxylink{classSensorData}{Sensor\+Data}. \\
+\hline
+{\em parent} & Opcjonalny rodzic QObject. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classTCPManager_a363c1b3b68d005feea5268decf210000}\label{classTCPManager_a363c1b3b68d005feea5268decf210000} 
+\index{TCPManager@{TCPManager}!connectionStatusChanged@{connectionStatusChanged}}
+\index{connectionStatusChanged@{connectionStatusChanged}!TCPManager@{TCPManager}}
+\doxysubsubsection{\texorpdfstring{connectionStatusChanged}{connectionStatusChanged}}
+{\footnotesize\ttfamily void TCPManager\+::connection\+Status\+Changed (\begin{DoxyParamCaption}\item[{bool}]{connected }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Sygnał emitowany po zmianie stanu połączenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em connected} & Stan połączenia (true -\/ połączony, false -\/ rozłączony). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTCPManager_a4ce4783a94bb6bb4f3122397bd9d437b}\label{classTCPManager_a4ce4783a94bb6bb4f3122397bd9d437b} 
+\index{TCPManager@{TCPManager}!connectToDevice@{connectToDevice}}
+\index{connectToDevice@{connectToDevice}!TCPManager@{TCPManager}}
+\doxysubsubsection{\texorpdfstring{connectToDevice()}{connectToDevice()}}
+{\footnotesize\ttfamily bool TCPManager\+::connect\+To\+Device (\begin{DoxyParamCaption}\item[{const QString \&}]{host\+Address,  }\item[{quint16}]{port }\end{DoxyParamCaption})}
+
+
+
+Nawiązuje połączenie z urządzeniem ESP. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em host\+Address} & Adres IP urządzenia ESP. \\
+\hline
+{\em port} & Port, na którym nasłuchuje urządzenie ESP. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+true jeśli próba połączenia została zainicjowana. 
+\end{DoxyReturn}
+\Hypertarget{classTCPManager_a6c3543bf266491dcb529beb7a44fe012}\label{classTCPManager_a6c3543bf266491dcb529beb7a44fe012} 
+\index{TCPManager@{TCPManager}!dataUpdated@{dataUpdated}}
+\index{dataUpdated@{dataUpdated}!TCPManager@{TCPManager}}
+\doxysubsubsection{\texorpdfstring{dataUpdated}{dataUpdated}}
+{\footnotesize\ttfamily void TCPManager\+::data\+Updated (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Sygnał informujący o aktualizacji danych. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em time} & Znacznik czasu aktualizacji. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTCPManager_a26641c127869ce539809b188f653be04}\label{classTCPManager_a26641c127869ce539809b188f653be04} 
+\index{TCPManager@{TCPManager}!errorOccurred@{errorOccurred}}
+\index{errorOccurred@{errorOccurred}!TCPManager@{TCPManager}}
+\doxysubsubsection{\texorpdfstring{errorOccurred}{errorOccurred}}
+{\footnotesize\ttfamily void TCPManager\+::error\+Occurred (\begin{DoxyParamCaption}\item[{const QString \&}]{error\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Sygnał emitowany w przypadku wystąpienia błędu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em error\+Message} & Komunikat o błędzie. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTCPManager_a49bf45bb9b1545806780fe5458fa1155}\label{classTCPManager_a49bf45bb9b1545806780fe5458fa1155} 
+\index{TCPManager@{TCPManager}!isConnected@{isConnected}}
+\index{isConnected@{isConnected}!TCPManager@{TCPManager}}
+\doxysubsubsection{\texorpdfstring{isConnected()}{isConnected()}}
+{\footnotesize\ttfamily bool TCPManager\+::is\+Connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Sprawdza stan połączenia. 
+
+\begin{DoxyReturn}{Zwraca}
+true jeśli połączenie jest aktywne. 
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+tcpmanager.\+h\item 
+tcpmanager.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MiniSumo &#39;Wilus&#39; - wizualizacja: Dokumentacja klasy TCPManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">MiniSumo &#39;Wilus&#39; - wizualizacja
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#signals">Sygnały</a> &#124;
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="classTCPManager-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy TCPManager</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów.  
+ <a href="classTCPManager.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="tcpmanager_8h_source.html">tcpmanager.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagram dziedziczenia dla TCPManager</div>
+<div class="dyncontent">
+<div class="center"><img src="classTCPManager__inherit__graph.png" border="0" usemap="#aTCPManager_inherit__map" alt="Inheritance graph"/></div>
+<map name="aTCPManager_inherit__map" id="aTCPManager_inherit__map">
+<area shape="rect" title="Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów." alt="" coords="5,79,108,104"/>
+<area shape="rect" title=" " alt="" coords="19,5,94,31"/>
+<area shape="poly" title=" " alt="" coords="59,44,59,79,54,79,54,44"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
+<div class="dynheader">
+Diagram współpracy dla TCPManager:</div>
+<div class="dyncontent">
+<div class="center"><img src="classTCPManager__coll__graph.png" border="0" usemap="#aTCPManager_coll__map" alt="Collaboration graph"/></div>
+<map name="aTCPManager_coll__map" id="aTCPManager_coll__map">
+<area shape="rect" title="Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów." alt="" coords="5,79,108,104"/>
+<area shape="rect" title=" " alt="" coords="19,5,94,31"/>
+<area shape="poly" title=" " alt="" coords="59,44,59,79,54,79,54,44"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
+Sygnały</h2></td></tr>
+<tr class="memitem:a6c3543bf266491dcb529beb7a44fe012" id="r_a6c3543bf266491dcb529beb7a44fe012"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#a6c3543bf266491dcb529beb7a44fe012">dataUpdated</a> (int time)</td></tr>
+<tr class="memdesc:a6c3543bf266491dcb529beb7a44fe012"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sygnał informujący o aktualizacji danych.  <br /></td></tr>
+<tr class="separator:a6c3543bf266491dcb529beb7a44fe012"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a363c1b3b68d005feea5268decf210000" id="r_a363c1b3b68d005feea5268decf210000"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#a363c1b3b68d005feea5268decf210000">connectionStatusChanged</a> (bool connected)</td></tr>
+<tr class="memdesc:a363c1b3b68d005feea5268decf210000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sygnał emitowany po zmianie stanu połączenia.  <br /></td></tr>
+<tr class="separator:a363c1b3b68d005feea5268decf210000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26641c127869ce539809b188f653be04" id="r_a26641c127869ce539809b188f653be04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#a26641c127869ce539809b188f653be04">errorOccurred</a> (const QString &amp;errorMessage)</td></tr>
+<tr class="memdesc:a26641c127869ce539809b188f653be04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sygnał emitowany w przypadku wystąpienia błędu.  <br /></td></tr>
+<tr class="separator:a26641c127869ce539809b188f653be04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a895d7f1d6f214b008c540fdd376a1014" id="r_a895d7f1d6f214b008c540fdd376a1014"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#a895d7f1d6f214b008c540fdd376a1014">TCPManager</a> (<a class="el" href="classSensorData.html">SensorData</a> *sensorData, QObject *parent=nullptr)</td></tr>
+<tr class="memdesc:a895d7f1d6f214b008c540fdd376a1014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor klasy <a class="el" href="classTCPManager.html" title="Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów.">TCPManager</a>.  <br /></td></tr>
+<tr class="separator:a895d7f1d6f214b008c540fdd376a1014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c24ac909211d3e0029d518d04b9f00d" id="r_a9c24ac909211d3e0029d518d04b9f00d"><td class="memItemLeft" align="right" valign="top"><a id="a9c24ac909211d3e0029d518d04b9f00d" name="a9c24ac909211d3e0029d518d04b9f00d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~TCPManager</b> ()</td></tr>
+<tr class="memdesc:a9c24ac909211d3e0029d518d04b9f00d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruktor. <br /></td></tr>
+<tr class="separator:a9c24ac909211d3e0029d518d04b9f00d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ce4783a94bb6bb4f3122397bd9d437b" id="r_a4ce4783a94bb6bb4f3122397bd9d437b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#a4ce4783a94bb6bb4f3122397bd9d437b">connectToDevice</a> (const QString &amp;hostAddress, quint16 port)</td></tr>
+<tr class="memdesc:a4ce4783a94bb6bb4f3122397bd9d437b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nawiązuje połączenie z urządzeniem ESP.  <br /></td></tr>
+<tr class="separator:a4ce4783a94bb6bb4f3122397bd9d437b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afee7fb4092d884354ccf66f0148a8b1f" id="r_afee7fb4092d884354ccf66f0148a8b1f"><td class="memItemLeft" align="right" valign="top"><a id="afee7fb4092d884354ccf66f0148a8b1f" name="afee7fb4092d884354ccf66f0148a8b1f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnectFromDevice</b> ()</td></tr>
+<tr class="memdesc:afee7fb4092d884354ccf66f0148a8b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rozłącza połączenie z urządzeniem ESP. <br /></td></tr>
+<tr class="separator:afee7fb4092d884354ccf66f0148a8b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49bf45bb9b1545806780fe5458fa1155" id="r_a49bf45bb9b1545806780fe5458fa1155"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#a49bf45bb9b1545806780fe5458fa1155">isConnected</a> () const</td></tr>
+<tr class="memdesc:a49bf45bb9b1545806780fe5458fa1155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza stan połączenia.  <br /></td></tr>
+<tr class="separator:a49bf45bb9b1545806780fe5458fa1155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów. </p>
+</div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a id="a895d7f1d6f214b008c540fdd376a1014" name="a895d7f1d6f214b008c540fdd376a1014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a895d7f1d6f214b008c540fdd376a1014">&#9670;&#160;</a></span>TCPManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCPManager::TCPManager </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSensorData.html">SensorData</a> *&#160;</td>
+          <td class="paramname"><em>sensorData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QObject *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konstruktor klasy <a class="el" href="classTCPManager.html" title="Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów.">TCPManager</a>. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sensorData</td><td>Wskaźnik do obiektu <a class="el" href="classSensorData.html" title="Przechowuje dane z różnych sensorów i udostępnia je aplikacji.">SensorData</a>. </td></tr>
+    <tr><td class="paramname">parent</td><td>Opcjonalny rodzic QObject. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a363c1b3b68d005feea5268decf210000" name="a363c1b3b68d005feea5268decf210000"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a363c1b3b68d005feea5268decf210000">&#9670;&#160;</a></span>connectionStatusChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TCPManager::connectionStatusChanged </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>connected</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sygnał emitowany po zmianie stanu połączenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connected</td><td>Stan połączenia (true - połączony, false - rozłączony). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4ce4783a94bb6bb4f3122397bd9d437b" name="a4ce4783a94bb6bb4f3122397bd9d437b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ce4783a94bb6bb4f3122397bd9d437b">&#9670;&#160;</a></span>connectToDevice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TCPManager::connectToDevice </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>hostAddress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint16&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nawiązuje połączenie z urządzeniem ESP. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hostAddress</td><td>Adres IP urządzenia ESP. </td></tr>
+    <tr><td class="paramname">port</td><td>Port, na którym nasłuchuje urządzenie ESP. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>true jeśli próba połączenia została zainicjowana. </dd></dl>
+
+</div>
+</div>
+<a id="a6c3543bf266491dcb529beb7a44fe012" name="a6c3543bf266491dcb529beb7a44fe012"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c3543bf266491dcb529beb7a44fe012">&#9670;&#160;</a></span>dataUpdated</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TCPManager::dataUpdated </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sygnał informujący o aktualizacji danych. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>Znacznik czasu aktualizacji. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a26641c127869ce539809b188f653be04" name="a26641c127869ce539809b188f653be04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26641c127869ce539809b188f653be04">&#9670;&#160;</a></span>errorOccurred</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TCPManager::errorOccurred </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>errorMessage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sygnał emitowany w przypadku wystąpienia błędu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">errorMessage</td><td>Komunikat o błędzie. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a49bf45bb9b1545806780fe5458fa1155" name="a49bf45bb9b1545806780fe5458fa1155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49bf45bb9b1545806780fe5458fa1155">&#9670;&#160;</a></span>isConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TCPManager::isConnected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sprawdza stan połączenia. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>true jeśli połączenie jest aktywne. </dd></dl>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<li><a class="el" href="tcpmanager_8h_source.html">tcpmanager.h</a></li>
+<li><b>tcpmanager.cpp</b></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

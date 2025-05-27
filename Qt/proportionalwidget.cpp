@@ -6,6 +6,10 @@
 #include <QHBoxLayout>
 #include <QDebug>
 
+/**
+ * @brief Konstruktor widgetu proporcjonalnego.
+ * @param parent Rodzic widgetu.
+ */
 ProportionalWidget::ProportionalWidget(QWidget *parent)
     : QWidget(parent)
 {
@@ -22,24 +26,23 @@ ProportionalWidget::ProportionalWidget(QWidget *parent)
     m_arrowWidget = nullptr;
 }
 
-
-
-
-
-
+/**
+ * @brief Ustawia widget TOF (np. tofLEFT albo tofRIGHT) w górnej części.
+ * @param tofWidget Wskaźnik do widgetu TOF.
+ */
 void ProportionalWidget::setupTofWidget(QStackedWidget* tofWidget)
 {
     if (!tofWidget) return;
 
     m_tofWidget = tofWidget;
 
-    // Remove from its current parent and add to our layout
+    // Przenieś widget TOF do tego widgetu, jeśli nie jest już przypisany.
     if (m_tofWidget->parentWidget() != this) {
         m_tofWidget->setParent(this);
         layout()->addWidget(m_tofWidget);
     }
 
-    // Create arrow container if needed
+    // Utwórz kontener na strzałkę, jeśli go jeszcze nie ma.
     if (!m_arrowContainer) {
         m_arrowContainer = new QWidget(this);
         m_arrowContainer->setStyleSheet("background: transparent; border: none;");
@@ -47,18 +50,23 @@ void ProportionalWidget::setupTofWidget(QStackedWidget* tofWidget)
         arrowLayout->setContentsMargins(0, 0, 0, 0);
         arrowLayout->setSpacing(0);
 
-        // Add the arrow container to the main layout
+        // Dodaj kontener na strzałkę do głównego layoutu
         layout()->addWidget(m_arrowContainer);
     }
 
-    // Set stretch factors on the layout
+    // Ustaw proporcje rozciągania layoutu: TOF (40%), strzałka (60%)
     QVBoxLayout* vLayout = qobject_cast<QVBoxLayout*>(layout());
     if (vLayout) {
-        vLayout->setStretch(0, 40); // 40% for tof widget
-        vLayout->setStretch(1, 60); // 60% for arrow container
+        vLayout->setStretch(0, 40);
+        vLayout->setStretch(1, 60);
     }
 }
 
+/**
+ * @brief Ustawia widget strzałki (M1_arrow lub M2_arrow) w dolnej części.
+ * @param arrowWidget Wskaźnik do widgetu strzałki.
+ * @param leftSide Czy strzałka ma być po lewej stronie (true) czy po prawej (false).
+ */
 void ProportionalWidget::setupArrowWidget(QStackedWidget* arrowWidget, bool leftSide)
 {
     if (!arrowWidget || !m_arrowContainer) return;
@@ -66,12 +74,12 @@ void ProportionalWidget::setupArrowWidget(QStackedWidget* arrowWidget, bool left
     m_arrowWidget = arrowWidget;
     m_isLeftSide = leftSide;
 
-    // Remove from its current parent and add to our arrow container
+    // Przenieś widget strzałki do kontenera, jeśli nie jest już przypisany.
     if (m_arrowWidget->parentWidget() != m_arrowContainer) {
         m_arrowWidget->setParent(m_arrowContainer);
     }
 
-    // Create or recreate the layout for the arrow container
+    // Utwórz lub wyczyść layout dla kontenera strzałki.
     QHBoxLayout* arrowLayout = qobject_cast<QHBoxLayout*>(m_arrowContainer->layout());
     if (!arrowLayout) {
         delete m_arrowContainer->layout();
@@ -80,7 +88,7 @@ void ProportionalWidget::setupArrowWidget(QStackedWidget* arrowWidget, bool left
         arrowLayout->setSpacing(0);
     }
 
-    // Clear the layout
+    // Wyczyść layout z poprzednich widgetów.
     while (QLayoutItem* item = arrowLayout->takeAt(0)) {
         if (item->widget()) {
             item->widget()->hide();
@@ -88,7 +96,7 @@ void ProportionalWidget::setupArrowWidget(QStackedWidget* arrowWidget, bool left
         delete item;
     }
 
-    // Add widgets to the layout according to side
+    // Dodaj widgety do layoutu zgodnie z pozycją (lewa/prawa strona).
     if (leftSide) {
         QWidget* spacer = new QWidget(m_arrowContainer);
         arrowLayout->addWidget(spacer, 60);
@@ -101,7 +109,7 @@ void ProportionalWidget::setupArrowWidget(QStackedWidget* arrowWidget, bool left
 
     m_arrowWidget->show();
 
-    // Reset all arrow icon styles in the stack
+    // Ustaw style ikon strzałek dla wszystkich stron stosu.
     for (int i = 0; i < m_arrowWidget->count(); i++) {
         QWidget* page = m_arrowWidget->widget(i);
         if (i == 0) {
@@ -124,6 +132,10 @@ void ProportionalWidget::setupArrowWidget(QStackedWidget* arrowWidget, bool left
     }
 }
 
+/**
+ * @brief Obsługa zmiany rozmiaru - zachowuje odpowiednie proporcje elementów.
+ * @param event Zdarzenie zmiany rozmiaru.
+ */
 void ProportionalWidget::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
@@ -138,41 +150,37 @@ void ProportionalWidget::resizeEvent(QResizeEvent *event)
         return;
     }
 
-    // Get dimensions of the robot view
+    // Pobierz wymiary robotView
     int robotWidth = robotView->width();
     int robotHeight = robotView->height();
     int minDim = qMin(robotWidth, robotHeight);
 
-    // Size for the tof widget (40% of the minimum dimension)
+    // Rozmiar TOF: 40% z minimalnego wymiaru robotView
     int tofSize = minDim * 0.4;
 
-    // Cały ProportionalWidget nie wymusza rozmiaru – tylko dzieli swoją wysokość na dwie części:
-    // górna (tof) i dolna (arrow)
-
-    // 1. Ustaw max wysokość tofLEFT, żeby był kwadratem, ale NIE wymuszaj szerokości/całej wysokości
+    // Ustaw maksymalną wysokość widgetu TOF tak, żeby był kwadratem
     m_tofWidget->setMaximumHeight(tofSize);
     m_tofWidget->setMinimumHeight(0);
-    // Ustaw politykę rozmiaru
     m_tofWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    // 2. ArrowContainer dostaje resztę wysokości widgetu ProportionalWidget
+    // Kontener na strzałkę dostaje resztę wysokości widgetu ProportionalWidget
     int widgetH = height();
     int arrowContainerHeight = widgetH - m_tofWidget->height();
     m_arrowContainer->setMaximumHeight(arrowContainerHeight > 0 ? arrowContainerHeight : 0);
     m_arrowContainer->setMinimumHeight(0);
     m_arrowContainer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    // 3. Arrow wewnątrz kontenera – proporcjonalny (np. 60% wysokości kontenera)
+    // Strzałka wewnątrz kontenera - 60% wysokości kontenera
     int arrowSize = m_arrowContainer->height() * 0.6;
     m_arrowWidget->setMaximumHeight(arrowSize);
     m_arrowWidget->setMaximumWidth(arrowSize);
     m_arrowWidget->setMinimumSize(0,0);
     m_arrowWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    // Stretch factors w layoucie (na wszelki wypadek)
+    // Ustaw współczynniki rozciągania (na wszelki wypadek)
     QVBoxLayout* vLayout = qobject_cast<QVBoxLayout*>(layout());
     if (vLayout) {
-        vLayout->setStretch(0, 40);  // tof widget (góra)
-        vLayout->setStretch(1, 60);  // arrow container (dół)
+        vLayout->setStretch(0, 40);
+        vLayout->setStretch(1, 60);
     }
 }

@@ -2,6 +2,10 @@
 #include "ui_mainwindow.h"
 #include <QFileDialog>
 
+/**
+ * @brief Konstruktor klasy MainWindow. Inicjalizuje interfejs i wszystkie menedżery oraz ustawia połączenia sygnałów i slotów.
+ * @param parent Wskaźnik na obiekt nadrzędny.
+ */
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -11,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     setupProportionalWidgets();
     adjustGridLayoutProportions();
 
-
+    // Pobieranie i konfiguracja widgetów
     QWidget* widget_14 = findChild<QWidget*>("widget_14");
     QWidget* widget_16 = findChild<QWidget*>("widget_16");
     QWidget* widget_18 = findChild<QWidget*>("widget_18");
@@ -31,22 +35,19 @@ MainWindow::MainWindow(QWidget *parent)
         widget_18->setMinimumWidth(60);
     }
 
+    // Połączenie przycisku wyjścia z oknem potwierdzenia
     connect(ui->buttEXIT, &QPushButton::clicked, this, &MainWindow::showExitConfirmation);
 
-    // Tworzenie obiektów zarządzających
+    // Tworzenie obiektów zarządzających danymi i wizualizacją
     m_sensorData = new SensorData(this);
     m_csvManager = new CSVManager(m_sensorData, this);
-
-    // Tworzenie managerów wykresów
     m_tofChartManager = new TofChartManager(m_sensorData, ui->chartTof, this);
     m_lineChartManager = new LineChartMenager(m_sensorData, ui->chartLS, this);
     m_motorChartManager = new MotorChartManager(m_sensorData, ui->chartMotors, this);
     m_imuChartManager = new ImuChartManager(m_sensorData, ui->chartIMU, this);
-
-    // Tworzenie managera wizualizacji
     m_visualManager = new VisualizationManager(m_sensorData, ui, this);
 
-    // Inicjalizacja
+    // Inicjalizacja wykresów
     m_tofChartManager->setupChart();
     m_lineChartManager->setupChart();
     m_motorChartManager->setupChart();
@@ -58,53 +59,48 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_sensorData, &SensorData::dataChanged, m_visualManager, &VisualizationManager::updateAll);
     connect(m_tcpManager, &TCPManager::connectionStatusChanged, this, &MainWindow::handleConnectionStatusChanged);
     connect(m_tcpManager, &TCPManager::dataUpdated, this, &MainWindow::handleDataUpdated);
-    // Początkowa konfiguracja
+
+    // Początkowa konfiguracja wizualizacji
     m_visualManager->setupArrows();
     m_visualManager->updateAll();
 
-
+    // Wczytanie preferencji języka i inicjalizacja tłumaczeń
     loadLanguagePreference();
-
-    // Inicjalizacja tłumaczeń
     initializeTranslations();
 
     // Konfiguracja przycisku języka
     QPushButton* languageButton = findChild<QPushButton*>("languageButton");
     if (languageButton) {
-        // Ustaw odpowiednią ikonę w zależności od zapisanego języka
         languageButton->setIcon(QIcon(m_isEnglish ? ":/new/image/img/eng.png" : ":/new/image/img/pl.png"));
         languageButton->setIconSize(QSize(32, 32));
-
-        // Połączenie sygnału kliknięcia z przełączaniem języka
         connect(languageButton, &QPushButton::clicked, this, &MainWindow::switchLanguage);
-
-        // Styl dla okrągłego przycisku
         languageButton->setStyleSheet("QPushButton { border-radius: 16px; min-width: 32px; max-width: 32px; min-height: 32px; max-height: 32px; }");
     }
 
+    // Tworzenie obrotowych etykiet
     setupRotatedLabels();
 
-    // Zastosuj zapisany język, jeśli nie jest angielski
+    // Jeżeli zapisany język to polski, zastosuj tłumaczenie
     if (!m_isEnglish) {
         applyPolishTranslation();
     }
-
-
 }
 
+/**
+ * @brief Destruktor klasy MainWindow. Zwalnia zasoby i rozłącza TCP jeśli to konieczne.
+ */
 MainWindow::~MainWindow() {
     if (m_tcpManager && m_tcpManager->isConnected()) {
         m_tcpManager->disconnectFromDevice();
     }
-
     delete ui;
 }
 
+/**
+ * @brief Obsługuje kliknięcie przycisku ładowania pliku CSV.
+ */
 void MainWindow::on_buttLOADcsv_clicked() {
-    // Otwórz dialog pliku
     QString filePath = QFileDialog::getOpenFileName(this, "Wybierz plik CSV", "", "Pliki CSV (*.csv);;Wszystkie pliki (*)");
-
-    // Jeśli użytkownik wybrał plik (nie anulował)
     if (!filePath.isEmpty()) {
         if (m_csvManager->loadFromFile(filePath)) {
             m_tofChartManager->clearChart();
@@ -116,6 +112,10 @@ void MainWindow::on_buttLOADcsv_clicked() {
     }
 }
 
+/**
+ * @brief Aktualizuje wykresy na podstawie nowych danych (np. z CSV lub TCP).
+ * @param time Czas w milisekundach.
+ */
 void MainWindow::handleDataUpdated(int time) {
     m_tofChartManager->updateChart(time);
     m_lineChartManager->updateChart(time);
@@ -123,8 +123,9 @@ void MainWindow::handleDataUpdated(int time) {
     m_imuChartManager->updateChart(time);
 }
 
-
-// Implement TCP connection button handler
+/**
+ * @brief Obsługuje połączenie TCP.
+ */
 void MainWindow::on_buttCONN_clicked()
 {
     m_tofChartManager->clearChart();
@@ -132,16 +133,12 @@ void MainWindow::on_buttCONN_clicked()
     m_motorChartManager->clearChart();
     m_imuChartManager->clearChart();
 
-    // Get IP address and port from UI elements
-    // Adjust these lines to match your actual UI element names
     QString ipAddress = ui->lineIP->text();
     QString portText = ui->linePORT->text();
     QTextStream ts(&portText);
     quint16 port = 0;
     ts >> port;
 
-
-       // Try to connect
     if (m_tcpManager->connectToDevice(ipAddress, port)) {
         ui->statusBar->showMessage("Próba połączenia z ESP...");
     } else {
@@ -149,18 +146,22 @@ void MainWindow::on_buttCONN_clicked()
     }
 }
 
-// Implement TCP disconnection button handler
+/**
+ * @brief Obsługuje rozłączenie TCP.
+ */
 void MainWindow::on_buttDISS_clicked()
 {
     m_tcpManager->disconnectFromDevice();
     ui->statusBar->showMessage("Rozłączono z ESP");
 }
 
-// Handle connection status changes
+/**
+ * @brief Obsługuje zmianę statusu połączenia TCP.
+ * @param connected Czy połączono.
+ */
 void MainWindow::handleConnectionStatusChanged(bool connected)
 {
     m_visualManager->updateConnectionStatusUI(connected);
-
     if (connected) {
         ui->statusBar->showMessage("Połączono z ESP");
     } else {
@@ -168,31 +169,30 @@ void MainWindow::handleConnectionStatusChanged(bool connected)
     }
 }
 
-
-
+/**
+ * @brief Obsługuje kliknięcie przycisku zatrzymania odtwarzania CSV.
+ */
 void MainWindow::on_buttSTOPcsv_clicked()
 {
-    // Zatrzymaj odtwarzanie danych z CSV
     if (m_csvManager) {
         m_csvManager->stopPlayback();
         ui->statusBar->showMessage("Odtwarzanie CSV zatrzymane");
     }
 }
 
-
-
-
-// Handle TCP errors
+/**
+ * @brief Obsługuje błędy TCP oraz wyświetla je w pasku statusu i oknie dialogowym.
+ * @param errorMessage Komunikat błędu.
+ */
 void MainWindow::handleTcpError(const QString &errorMessage)
 {
     ui->statusBar->showMessage("Błąd: " + errorMessage);
-
-    // Optionally show a message box for critical errors
     QMessageBox::warning(this, "Błąd połączenia TCP", errorMessage);
 }
 
-
-
+/**
+ * @brief Wyświetla okno potwierdzenia wyjścia z aplikacji.
+ */
 void MainWindow::showExitConfirmation()
 {
     QMessageBox messageBox(this);
@@ -219,66 +219,52 @@ void MainWindow::showExitConfirmation()
     }
 
     int ret = messageBox.exec();
-
     if (ret == QMessageBox::Yes) {
         qApp->quit();
     }
 }
 
+/**
+ * @brief Konfiguruje widgety proporcjonalne dla czujników (lewy i prawy).
+ */
 void MainWindow::setupProportionalWidgets()
 {
-    // Create left and right sensor widgets
     leftSensorWidget = new ProportionalWidget(this);
     rightSensorWidget = new ProportionalWidget(this);
-
-    // Find the tof widgets
     QStackedWidget* tofLeft = ui->tofLEFT;
     QStackedWidget* tofRight = ui->tofRIGHT;
-
-    // Find the arrow widgets
     QStackedWidget* arrowLeft = ui->M1_arrow;
     QStackedWidget* arrowRight = ui->M2_arrow;
 
-    // Setup the left sensor widget
     if (tofLeft && arrowLeft) {
         leftSensorWidget->setupTofWidget(tofLeft);
         leftSensorWidget->setupArrowWidget(arrowLeft, true);
     }
-
-    // Setup the right sensor widget
     if (tofRight && arrowRight) {
         rightSensorWidget->setupTofWidget(tofRight);
         rightSensorWidget->setupArrowWidget(arrowRight, false);
     }
 
-    // Find the original widgets to replace
     QWidget* widget16 = ui->widget_16;
     QWidget* widget18 = ui->widget_18;
 
-    // Find the parent layout
     if (widget16 && widget18) {
         QWidget* parentWidget = widget16->parentWidget();
         QHBoxLayout* parentLayout = qobject_cast<QHBoxLayout*>(parentWidget->layout());
-
         if (parentLayout) {
-            // Get the indices of the widgets to replace
             int index16 = parentLayout->indexOf(widget16);
             int index18 = parentLayout->indexOf(widget18);
 
-            // Replace the widgets
             if (index16 >= 0) {
                 parentLayout->removeWidget(widget16);
                 parentLayout->insertWidget(index16, leftSensorWidget);
                 widget16->hide();
             }
-
             if (index18 >= 0) {
                 parentLayout->removeWidget(widget18);
                 parentLayout->insertWidget(index18, rightSensorWidget);
                 widget18->hide();
             }
-
-            // Force layout update
             parentLayout->update();
         }
     }
@@ -286,11 +272,11 @@ void MainWindow::setupProportionalWidgets()
     rightSensorWidget->show();
 }
 
-
-
+/**
+ * @brief Ustawia proporcje w grid layout dla centralnego widgetu.
+ */
 void MainWindow::adjustGridLayoutProportions()
 {
-    // Zakładamy, że używasz centralWidget i jego layoutem jest QGridLayout
     QGridLayout* grid = qobject_cast<QGridLayout*>(ui->centralwidget->layout());
     if (grid) {
         grid->setRowStretch(0, 10);
@@ -301,9 +287,9 @@ void MainWindow::adjustGridLayoutProportions()
     }
 }
 
-
-
-// Inicjalizacja tłumaczeń - tutaj zdefiniuj wszystkie teksty
+/**
+ * @brief Inicjalizuje tłumaczenia interfejsu (przypisuje teksty angielskie i polskie).
+ */
 void MainWindow::initializeTranslations()
 {
     QList<QLabel*> labels = findChildren<QLabel*>();
@@ -348,13 +334,9 @@ void MainWindow::initializeTranslations()
         }
     }
 
-    // Nowa część dla QPushButton
     QList<QPushButton*> buttons = findChildren<QPushButton*>();
     foreach (QPushButton* button, buttons) {
-        if (button->objectName() == "languageButton") {
-            continue;
-        }
-
+        if (button->objectName() == "languageButton") continue;
         m_englishButtonTexts[button] = button->text();
 
         if (button->objectName() == "buttSTOPcsv") {
@@ -375,6 +357,9 @@ void MainWindow::initializeTranslations()
     }
 }
 
+/**
+ * @brief Przełącza język interfejsu oraz zapisuje preferencję.
+ */
 void MainWindow::switchLanguage()
 {
     QPushButton* languageButton = qobject_cast<QPushButton*>(sender());
@@ -404,10 +389,7 @@ void MainWindow::switchLanguage()
 
     QList<QPushButton*> buttons = findChildren<QPushButton*>();
     foreach (QPushButton* button, buttons) {
-        if (button == languageButton) {
-            continue;
-        }
-
+        if (button == languageButton) continue;
         if (m_isEnglish) {
             if (m_englishButtonTexts.contains(button)) {
                 button->setText(m_englishButtonTexts[button]);
@@ -420,31 +402,33 @@ void MainWindow::switchLanguage()
     }
 
     refreshParentWidgets();
-
-    // Zapisz preferencję języka
     saveLanguagePreference();
 }
 
-
-// Dodaj tę implementację brakującej funkcji:
+/**
+ * @brief Zapisuje preferencję języka do ustawień aplikacji.
+ */
 void MainWindow::saveLanguagePreference()
 {
-    QSettings settings("Jakub Wilczynski", "SumoWilusRobotVisualizer"); // Dostosuj nazwę
+    QSettings settings("Jakub Wilczynski", "SumoWilusRobotVisualizer");
     settings.setValue("language", m_isEnglish ? "en" : "pl");
 }
 
-// Opcjonalnie: funkcja do wczytania preferencji przy starcie
+/**
+ * @brief Wczytuje preferencję języka z ustawień aplikacji.
+ */
 void MainWindow::loadLanguagePreference()
 {
-    QSettings settings("Jakub Wilczynski", "SumoWilusRobotVisualizer"); // Dostosuj nazwę
+    QSettings settings("Jakub Wilczynski", "SumoWilusRobotVisualizer");
     QString language = settings.value("language", "en").toString();
     m_isEnglish = (language == "en");
 }
 
-
+/**
+ * @brief Zastosowuje polskie tłumaczenie do wszystkich etykiet i przycisków.
+ */
 void MainWindow::applyPolishTranslation()
 {
-    // 1. Zmień teksty etykiet
     QList<QLabel*> labels = findChildren<QLabel*>();
     foreach (QLabel* label, labels) {
         if (m_polishTexts.contains(label)) {
@@ -452,14 +436,9 @@ void MainWindow::applyPolishTranslation()
         }
     }
 
-    // 2. Zmień teksty przycisków
     QList<QPushButton*> buttons = findChildren<QPushButton*>();
     foreach (QPushButton* button, buttons) {
-        // Pomijamy languageButton
-        if (button->objectName() == "languageButton") {
-            continue;
-        }
-
+        if (button->objectName() == "languageButton") continue;
         if (m_polishButtonTexts.contains(button)) {
             button->setText(m_polishButtonTexts[button]);
         }
@@ -468,7 +447,9 @@ void MainWindow::applyPolishTranslation()
     refreshParentWidgets();
 }
 
-
+/**
+ * @brief Tworzy i ustawia etykiety obrotowe zamiast zwykłych QLabel.
+ */
 void MainWindow::setupRotatedLabels(){
     RotatedLabel* labelIMU = new RotatedLabel(m_isEnglish ? "VALUE" : "WARTOŚĆ");
     labelIMU->setObjectName("rotatedLabelIMU");
@@ -486,7 +467,6 @@ void MainWindow::setupRotatedLabels(){
     labelTofY->setObjectName("rotatedLabelTofY");
     replaceLabel(ui->labelTofY, labelTofY);
 
-    // Dodaj nowe etykiety do słowników tłumaczeń
     m_englishTexts[labelIMU] = "VALUE";
     m_polishTexts[labelIMU] = "WARTOŚĆ";
 
@@ -500,54 +480,44 @@ void MainWindow::setupRotatedLabels(){
     m_polishTexts[labelTofY] = "WARTOŚĆ";
 }
 
-
-
-
+/**
+ * @brief Zastępuje wskazaną etykietę nową etykietą (np. obrotową).
+ * @param oldLabel Stara etykieta.
+ * @param newLabel Nowa etykieta.
+ */
 void MainWindow::replaceLabel(QLabel* oldLabel, QLabel* newLabel)
 {
     if (!oldLabel || !newLabel) return;
 
-    // Pobierz rodzica i layout
     QWidget* parent = oldLabel->parentWidget();
     QLayout* layout = parent->layout();
-
     if (!layout) return;
 
-    // Kopiuj ważne właściwości ze starej etykiety
     newLabel->setFont(oldLabel->font());
     newLabel->setStyleSheet(oldLabel->styleSheet());
     newLabel->setAlignment(oldLabel->alignment());
 
-    // Obsługa różnych typów layoutów
     if (QHBoxLayout* hLayout = qobject_cast<QHBoxLayout*>(layout)) {
         int index = layout->indexOf(oldLabel);
         if (index != -1) {
-            // Usuń starą etykietę
             oldLabel->hide();
             layout->removeWidget(oldLabel);
-
-            // Dodaj nową etykietę
             hLayout->insertWidget(index, newLabel);
         }
     }
 }
 
-
-
+/**
+ * @brief Wymusza odświeżenie widgetów rodzica dla wszystkich etykiet obrotowych.
+ */
 void MainWindow::refreshParentWidgets()
 {
-    // Znajdź wszystkie etykiety obrotowe
     QList<RotatedLabel*> rotatedLabels = findChildren<RotatedLabel*>();
-
-    // Dla każdej etykiety obrotowej odśwież widget rodzica
     foreach(RotatedLabel* label, rotatedLabels) {
         if (label) {
             QWidget* parent = label->parentWidget();
             if (parent) {
-                // Wymuś pełne odświeżenie widgetu rodzica
                 parent->update();
-
-                // Dodatkowe odświeżenie nadrzędnego kontenera (jeśli istnieje)
                 QWidget* grandparent = parent->parentWidget();
                 if (grandparent) {
                     grandparent->update();

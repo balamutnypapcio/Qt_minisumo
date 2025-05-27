@@ -23,6 +23,7 @@ class MainWindow;
 QT_END_NAMESPACE
 
 /**
+ * @class MainWindow
  * @brief Klasa reprezentująca główne okno aplikacji.
  *
  * Zarządza interfejsem użytkownika, obsługuje dane z czujników oraz ich wizualizację.
@@ -42,11 +43,17 @@ public:
      */
     ~MainWindow();
 
+    /**
+     * @brief Ustawia etykiety silników.
+     */
     void labelMotors();
 
 private slots:
-
+    /**
+     * @brief Obsługuje kliknięcie przycisku ładowania pliku CSV.
+     */
     void on_buttLOADcsv_clicked();
+
     //void on_buttSTOPcsv_clicked();
 
     /**
@@ -66,7 +73,7 @@ private slots:
     void on_buttDISS_clicked();
 
     /**
-     * @brief Obsługuje kliknięcie przycisku zatrzymania odtwarzania CSV
+     * @brief Obsługuje kliknięcie przycisku zatrzymania odtwarzania CSV.
      *
      * Ta metoda zatrzymuje odtwarzanie danych z pliku CSV poprzez wywołanie
      * odpowiedniej metody w CSVManager. Po zatrzymaniu wyświetla komunikat
@@ -86,7 +93,9 @@ private slots:
      */
     void handleTcpError(const QString &errorMessage);
 
-
+    /**
+     * @brief Wyświetla potwierdzenie wyjścia z aplikacji.
+     */
     void showExitConfirmation();
 
 private:
@@ -100,25 +109,65 @@ private:
     MotorChartManager* m_motorChartManager;      ///< Wskaźnik na menedżera wykresu silników.
     ImuChartManager* m_imuChartManager;          ///< Wskaźnik na menedżera wykresu IMU.
     VisualizationManager* m_visualManager;       ///< Wskaźnik na menedżera wizualizacji (strzałki, ikony itp.).
-    void setupProportionalWidgets();
-    ProportionalWidget *leftSensorWidget;
-    ProportionalWidget *rightSensorWidget;
-    void adjustGridLayoutProportions();
-    bool m_isEnglish = true; // Domyślnie angielski
-    QMap<QLabel*, QString> m_englishTexts; // Teksty angielskie
-    QMap<QLabel*, QString> m_polishTexts;  // Teksty polskie
-    QMap<QPushButton*, QString> m_englishButtonTexts;
-    QMap<QPushButton*, QString> m_polishButtonTexts;
-    void initializeTranslations(); // Inicjalizacja tekstów
-    void switchLanguage();         // Przełączanie języka
-    void loadLanguagePreference();
-    void saveLanguagePreference();
-    void applyPolishTranslation();
-    // Funkcja ustawiająca obrócone etykiety
-    void setupRotatedLabels();
-    void replaceLabel(QLabel* oldLabel, QLabel* newLabel);
+
     /**
-     * @brief Wymusza odświeżenie widgetów rodzica po zmianie języka
+     * @brief Konfiguruje widgety proporcjonalne dla czujników.
+     */
+    void setupProportionalWidgets();
+
+    ProportionalWidget *leftSensorWidget;        ///< Widget proporcjonalny dla lewego czujnika.
+    ProportionalWidget *rightSensorWidget;       ///< Widget proporcjonalny dla prawego czujnika.
+
+    /**
+     * @brief Ustawia proporcje w grid layout.
+     */
+    void adjustGridLayoutProportions();
+
+    bool m_isEnglish = true;                     ///< Flaga określająca aktualny język.
+    QMap<QLabel*, QString> m_englishTexts;       ///< Mapa etykiet i ich angielskich tekstów.
+    QMap<QLabel*, QString> m_polishTexts;        ///< Mapa etykiet i ich polskich tekstów.
+    QMap<QPushButton*, QString> m_englishButtonTexts; ///< Mapa przycisków i ich angielskich tekstów.
+    QMap<QPushButton*, QString> m_polishButtonTexts;  ///< Mapa przycisków i ich polskich tekstów.
+
+    /**
+     * @brief Inicjalizuje teksty do tłumaczeń.
+     */
+    void initializeTranslations();
+
+    /**
+     * @brief Przełącza język interfejsu.
+     */
+    void switchLanguage();
+
+    /**
+     * @brief Wczytuje preferencję języka z ustawień.
+     */
+    void loadLanguagePreference();
+
+    /**
+     * @brief Zapisuje preferencję języka do ustawień.
+     */
+    void saveLanguagePreference();
+
+    /**
+     * @brief Zastosuj polskie tłumaczenie do interfejsu.
+     */
+    void applyPolishTranslation();
+
+    /**
+     * @brief Tworzy i ustawia etykiety obrotowe.
+     */
+    void setupRotatedLabels();
+
+    /**
+     * @brief Zastępuje wskazaną etykietę nową etykietą.
+     * @param oldLabel Stara etykieta.
+     * @param newLabel Nowa etykieta.
+     */
+    void replaceLabel(QLabel* oldLabel, QLabel* newLabel);
+
+    /**
+     * @brief Wymusza odświeżenie widgetów rodzica po zmianie języka.
      */
     void refreshParentWidgets();
 };

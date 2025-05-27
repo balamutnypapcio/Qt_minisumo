@@ -1,0 +1,203 @@
+\doxysection{Dokumentacja klasy Horizontal\+Only\+Chart\+View}
+\hypertarget{classHorizontalOnlyChartView}{}\label{classHorizontalOnlyChartView}\index{HorizontalOnlyChartView@{HorizontalOnlyChartView}}
+
+
+Specjalny widok wykresu QChart\+View, który umożliwia przewijanie i zoomowanie wyłącznie w poziomie.  
+
+
+
+
+{\ttfamily \#include $<$chartviewhelper.\+h$>$}
+
+
+
+Diagram dziedziczenia dla Horizontal\+Only\+Chart\+View
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classHorizontalOnlyChartView__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagram współpracy dla Horizontal\+Only\+Chart\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classHorizontalOnlyChartView__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typy publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}\label{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b} 
+typedef std\+::function$<$ void()$>$ {\bfseries Mouse\+Callback}
+\begin{DoxyCompactList}\small\item\em Typ funkcji callback wywoływanej przy naciśnięciu/przesunięciu myszy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHorizontalOnlyChartView_a97b6fa55bfa712267b2c29db00a962fb}{Horizontal\+Only\+Chart\+View}} (QChart \texorpdfstring{$\ast$}{*}chart)
+\begin{DoxyCompactList}\small\item\em Konstruktor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classHorizontalOnlyChartView_af4fa096e706fad33f59803272de046c1}{\texorpdfstring{$\sim$}{\string~}\+Horizontal\+Only\+Chart\+View}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}{set\+Mouse\+Pressed\+Callback}} (\mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{Mouse\+Callback}} callback)
+\begin{DoxyCompactList}\small\item\em Ustawia callback wywoływany przy naciśnięciu przycisku myszy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}{set\+Mouse\+Released\+Callback}} (\mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{Mouse\+Callback}} callback)
+\begin{DoxyCompactList}\small\item\em Ustawia callback wywoływany przy puszczeniu przycisku myszy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody chronione}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classHorizontalOnlyChartView_a9c1211fa14c58981a51ca04128f82750}{wheel\+Event}} (QWheel\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Obsługa kółka myszy\+: umożliwia zoomowanie wyłącznie w poziomie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHorizontalOnlyChartView_ab91fa124fd95f6ac7927a3c117d94e20}{mouse\+Move\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Obsługa ruchu myszy\+: przesuwa wykres tylko w poziomie podczas przeciągania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHorizontalOnlyChartView_a4c89f560778513c03701bb27853aabb1}{mouse\+Release\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Obsługa puszczenia przycisku myszy\+: kończy przesuwanie wykresu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHorizontalOnlyChartView_a1e22032d9da3ed99ec35ed661098b792}{mouse\+Press\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Obsługa naciśnięcia przycisku myszy\+: rozpoczyna przesuwanie wykresu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Specjalny widok wykresu QChart\+View, który umożliwia przewijanie i zoomowanie wyłącznie w poziomie. 
+
+Klasa rozszerza QChart\+View, aby ograniczyć interakcje użytkownika tylko do osi X. Dodatkowo obsługuje callbacki dla naciśnięcia i puszczenia my // Zmiana kursora na rękę zamkniętąszy, co umożliwia np. zarządzanie auto-\/przewijaniem. 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classHorizontalOnlyChartView_a97b6fa55bfa712267b2c29db00a962fb}\label{classHorizontalOnlyChartView_a97b6fa55bfa712267b2c29db00a962fb} 
+\index{HorizontalOnlyChartView@{HorizontalOnlyChartView}!HorizontalOnlyChartView@{HorizontalOnlyChartView}}
+\index{HorizontalOnlyChartView@{HorizontalOnlyChartView}!HorizontalOnlyChartView@{HorizontalOnlyChartView}}
+\doxysubsubsection{\texorpdfstring{HorizontalOnlyChartView()}{HorizontalOnlyChartView()}}
+{\footnotesize\ttfamily Horizontal\+Only\+Chart\+View\+::\+Horizontal\+Only\+Chart\+View (\begin{DoxyParamCaption}\item[{QChart \texorpdfstring{$\ast$}{*}}]{chart }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Konstruktor. 
+
+Konstruktor widoku wykresu umożliwiającego jedynie poziome przewijanie i zoom.
+
+
+\begin{DoxyParams}{Parametry}
+{\em chart} & Wskaźnik do obiektu QChart wyświetlanego w widoku.\\
+\hline
+{\em chart} & Wskaźnik do obiektu QChart do wyświetlania. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classHorizontalOnlyChartView_af4fa096e706fad33f59803272de046c1}\label{classHorizontalOnlyChartView_af4fa096e706fad33f59803272de046c1} 
+\index{HorizontalOnlyChartView@{HorizontalOnlyChartView}!````~HorizontalOnlyChartView@{\texorpdfstring{$\sim$}{\string~}HorizontalOnlyChartView}}
+\index{````~HorizontalOnlyChartView@{\texorpdfstring{$\sim$}{\string~}HorizontalOnlyChartView}!HorizontalOnlyChartView@{HorizontalOnlyChartView}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}HorizontalOnlyChartView()}{\string~HorizontalOnlyChartView()}}
+{\footnotesize\ttfamily Horizontal\+Only\+Chart\+View\+::\texorpdfstring{$\sim$}{\string~}\+Horizontal\+Only\+Chart\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destruktor. 
+
+Destruktor widoku wykresu. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classHorizontalOnlyChartView_ab91fa124fd95f6ac7927a3c117d94e20}\label{classHorizontalOnlyChartView_ab91fa124fd95f6ac7927a3c117d94e20} 
+\index{HorizontalOnlyChartView@{HorizontalOnlyChartView}!mouseMoveEvent@{mouseMoveEvent}}
+\index{mouseMoveEvent@{mouseMoveEvent}!HorizontalOnlyChartView@{HorizontalOnlyChartView}}
+\doxysubsubsection{\texorpdfstring{mouseMoveEvent()}{mouseMoveEvent()}}
+{\footnotesize\ttfamily void Horizontal\+Only\+Chart\+View\+::mouse\+Move\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Obsługa ruchu myszy\+: przesuwa wykres tylko w poziomie podczas przeciągania. 
+
+Obsługuje ruch myszy – przesuwa wykres tylko w poziomie podczas przeciągania.
+
+
+\begin{DoxyParams}{Parametry}
+{\em event} & Zdarzenie ruchu myszy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classHorizontalOnlyChartView_a1e22032d9da3ed99ec35ed661098b792}\label{classHorizontalOnlyChartView_a1e22032d9da3ed99ec35ed661098b792} 
+\index{HorizontalOnlyChartView@{HorizontalOnlyChartView}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!HorizontalOnlyChartView@{HorizontalOnlyChartView}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}}
+{\footnotesize\ttfamily void Horizontal\+Only\+Chart\+View\+::mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Obsługa naciśnięcia przycisku myszy\+: rozpoczyna przesuwanie wykresu. 
+
+Obsługuje naciśnięcie przycisku myszy – rozpoczyna przeciąganie wykresu w poziomie.
+
+
+\begin{DoxyParams}{Parametry}
+{\em event} & Zdarzenie naciśnięcia przycisku myszy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classHorizontalOnlyChartView_a4c89f560778513c03701bb27853aabb1}\label{classHorizontalOnlyChartView_a4c89f560778513c03701bb27853aabb1} 
+\index{HorizontalOnlyChartView@{HorizontalOnlyChartView}!mouseReleaseEvent@{mouseReleaseEvent}}
+\index{mouseReleaseEvent@{mouseReleaseEvent}!HorizontalOnlyChartView@{HorizontalOnlyChartView}}
+\doxysubsubsection{\texorpdfstring{mouseReleaseEvent()}{mouseReleaseEvent()}}
+{\footnotesize\ttfamily void Horizontal\+Only\+Chart\+View\+::mouse\+Release\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Obsługa puszczenia przycisku myszy\+: kończy przesuwanie wykresu. 
+
+Obsługuje puszczenie przycisku myszy – kończy przeciąganie wykresu.
+
+
+\begin{DoxyParams}{Parametry}
+{\em event} & Zdarzenie puszczenia przycisku myszy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}\label{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688} 
+\index{HorizontalOnlyChartView@{HorizontalOnlyChartView}!setMousePressedCallback@{setMousePressedCallback}}
+\index{setMousePressedCallback@{setMousePressedCallback}!HorizontalOnlyChartView@{HorizontalOnlyChartView}}
+\doxysubsubsection{\texorpdfstring{setMousePressedCallback()}{setMousePressedCallback()}}
+{\footnotesize\ttfamily void Horizontal\+Only\+Chart\+View\+::set\+Mouse\+Pressed\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{Mouse\+Callback}}}]{callback }\end{DoxyParamCaption})}
+
+
+
+Ustawia callback wywoływany przy naciśnięciu przycisku myszy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em callback} & Funkcja typu void(). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}\label{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf} 
+\index{HorizontalOnlyChartView@{HorizontalOnlyChartView}!setMouseReleasedCallback@{setMouseReleasedCallback}}
+\index{setMouseReleasedCallback@{setMouseReleasedCallback}!HorizontalOnlyChartView@{HorizontalOnlyChartView}}
+\doxysubsubsection{\texorpdfstring{setMouseReleasedCallback()}{setMouseReleasedCallback()}}
+{\footnotesize\ttfamily void Horizontal\+Only\+Chart\+View\+::set\+Mouse\+Released\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{Mouse\+Callback}}}]{callback }\end{DoxyParamCaption})}
+
+
+
+Ustawia callback wywoływany przy puszczeniu przycisku myszy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em callback} & Funkcja typu void(). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classHorizontalOnlyChartView_a9c1211fa14c58981a51ca04128f82750}\label{classHorizontalOnlyChartView_a9c1211fa14c58981a51ca04128f82750} 
+\index{HorizontalOnlyChartView@{HorizontalOnlyChartView}!wheelEvent@{wheelEvent}}
+\index{wheelEvent@{wheelEvent}!HorizontalOnlyChartView@{HorizontalOnlyChartView}}
+\doxysubsubsection{\texorpdfstring{wheelEvent()}{wheelEvent()}}
+{\footnotesize\ttfamily void Horizontal\+Only\+Chart\+View\+::wheel\+Event (\begin{DoxyParamCaption}\item[{QWheel\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Obsługa kółka myszy\+: umożliwia zoomowanie wyłącznie w poziomie. 
+
+Obsługuje zdarzenie przewijania kółkiem myszy – pozwala tylko na przewijanie w poziomie.
+
+
+\begin{DoxyParams}{Parametry}
+{\em event} & Zdarzenie kółka myszy. \\
+\hline
+\end{DoxyParams}
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+chartviewhelper.\+h\item 
+chartviewhelper.\+cpp\end{DoxyCompactItemize}

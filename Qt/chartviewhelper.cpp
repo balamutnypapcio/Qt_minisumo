@@ -1,6 +1,10 @@
 #include "chartviewhelper.h"
 #include <QApplication>
 
+/**
+ * @brief Konstruktor widoku wykresu umożliwiającego jedynie poziome przewijanie i zoom.
+ * @param chart Wskaźnik do obiektu QChart do wyświetlania.
+ */
 HorizontalOnlyChartView::HorizontalOnlyChartView(QChart* chart)
     : QChartView(chart), lastMousePos(), isDragging(false)
 {
@@ -10,21 +14,34 @@ HorizontalOnlyChartView::HorizontalOnlyChartView(QChart* chart)
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 
+/**
+ * @brief Destruktor widoku wykresu.
+ */
 HorizontalOnlyChartView::~HorizontalOnlyChartView()
-{
-    // Destruktor może być pusty
-}
+{}
 
+/**
+ * @brief Ustawia callback wywoływany przy naciśnięciu przycisku myszy.
+ * @param callback Funkcja typu void().
+ */
 void HorizontalOnlyChartView::setMousePressedCallback(MouseCallback callback)
 {
     mousePressedCallback = callback;
 }
 
+/**
+ * @brief Ustawia callback wywoływany przy puszczeniu przycisku myszy.
+ * @param callback Funkcja typu void().
+ */
 void HorizontalOnlyChartView::setMouseReleasedCallback(MouseCallback callback)
 {
     mouseReleasedCallback = callback;
 }
 
+/**
+ * @brief Obsługuje zdarzenie przewijania kółkiem myszy – pozwala tylko na przewijanie w poziomie.
+ * @param event Zdarzenie kółka myszy.
+ */
 void HorizontalOnlyChartView::wheelEvent(QWheelEvent *event)
 {
     // Przechwycenie zdarzenia scroll i zamiana na tylko poziome
@@ -42,6 +59,10 @@ void HorizontalOnlyChartView::wheelEvent(QWheelEvent *event)
     QChartView::wheelEvent(&horizontalEvent);
 }
 
+/**
+ * @brief Obsługuje naciśnięcie przycisku myszy – rozpoczyna przeciąganie wykresu w poziomie.
+ * @param event Zdarzenie naciśnięcia przycisku myszy.
+ */
 void HorizontalOnlyChartView::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
@@ -55,6 +76,10 @@ void HorizontalOnlyChartView::mousePressEvent(QMouseEvent *event)
     QChartView::mousePressEvent(event);
 }
 
+/**
+ * @brief Obsługuje ruch myszy – przesuwa wykres tylko w poziomie podczas przeciągania.
+ * @param event Zdarzenie ruchu myszy.
+ */
 void HorizontalOnlyChartView::mouseMoveEvent(QMouseEvent *event)
 {
     if (isDragging && !lastMousePos.isNull()) {
@@ -74,6 +99,10 @@ void HorizontalOnlyChartView::mouseMoveEvent(QMouseEvent *event)
     QChartView::mouseMoveEvent(event);
 }
 
+/**
+ * @brief Obsługuje puszczenie przycisku myszy – kończy przeciąganie wykresu.
+ * @param event Zdarzenie puszczenia przycisku myszy.
+ */
 void HorizontalOnlyChartView::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton && isDragging) {

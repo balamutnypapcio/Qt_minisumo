@@ -1,0 +1,138 @@
+\doxysection{Dokumentacja klasy Proportional\+Widget}
+\hypertarget{classProportionalWidget}{}\label{classProportionalWidget}\index{ProportionalWidget@{ProportionalWidget}}
+
+
+Widget dzielący przestrzeń na część z czujnikiem TOF i strzałką według proporcji.  
+
+
+
+
+{\ttfamily \#include $<$proportionalwidget.\+h$>$}
+
+
+
+Diagram dziedziczenia dla Proportional\+Widget
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classProportionalWidget__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagram współpracy dla Proportional\+Widget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classProportionalWidget__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classProportionalWidget_a0d991ad0fd0a5982edfc3c1aa2a392ba}{Proportional\+Widget}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Konstruktor domyślny. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProportionalWidget_a1f70550b75c4d36905c3fe4f533a963b}{setup\+Tof\+Widget}} (QStacked\+Widget \texorpdfstring{$\ast$}{*}tof\+Widget)
+\begin{DoxyCompactList}\small\item\em Ustawia widget czujnika TOF (np. tof\+LEFT lub tof\+RIGHT). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProportionalWidget_aac48f0c6e5e119835f8183e7287ad4c6}{setup\+Arrow\+Widget}} (QStacked\+Widget \texorpdfstring{$\ast$}{*}arrow\+Widget, bool left\+Side)
+\begin{DoxyCompactList}\small\item\em Ustawia widget strzałki (np. M1\+\_\+arrow lub M2\+\_\+arrow). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody chronione}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classProportionalWidget_acd5c68499fed6ec9dcbdb3a6731f4db7}{resize\+Event}} (QResize\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Obsługa zdarzenia zmiany rozmiaru widgetu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Widget dzielący przestrzeń na część z czujnikiem TOF i strzałką według proporcji. 
+
+Klasa ułatwia układanie elementów interfejsu robota, dzieląc dostępną przestrzeń na górną część (czujnik TOF) i dolną (strzałka), zachowując określone proporcje. 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classProportionalWidget_a0d991ad0fd0a5982edfc3c1aa2a392ba}\label{classProportionalWidget_a0d991ad0fd0a5982edfc3c1aa2a392ba} 
+\index{ProportionalWidget@{ProportionalWidget}!ProportionalWidget@{ProportionalWidget}}
+\index{ProportionalWidget@{ProportionalWidget}!ProportionalWidget@{ProportionalWidget}}
+\doxysubsubsection{\texorpdfstring{ProportionalWidget()}{ProportionalWidget()}}
+{\footnotesize\ttfamily Proportional\+Widget\+::\+Proportional\+Widget (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Konstruktor domyślny. 
+
+Konstruktor widgetu proporcjonalnego.
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Rodzic widgetu. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classProportionalWidget_acd5c68499fed6ec9dcbdb3a6731f4db7}\label{classProportionalWidget_acd5c68499fed6ec9dcbdb3a6731f4db7} 
+\index{ProportionalWidget@{ProportionalWidget}!resizeEvent@{resizeEvent}}
+\index{resizeEvent@{resizeEvent}!ProportionalWidget@{ProportionalWidget}}
+\doxysubsubsection{\texorpdfstring{resizeEvent()}{resizeEvent()}}
+{\footnotesize\ttfamily void Proportional\+Widget\+::resize\+Event (\begin{DoxyParamCaption}\item[{QResize\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Obsługa zdarzenia zmiany rozmiaru widgetu. 
+
+Obsługa zmiany rozmiaru -\/ zachowuje odpowiednie proporcje elementów.
+
+
+\begin{DoxyParams}{Parametry}
+{\em event} & Zdarzenie zmiany rozmiaru. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classProportionalWidget_aac48f0c6e5e119835f8183e7287ad4c6}\label{classProportionalWidget_aac48f0c6e5e119835f8183e7287ad4c6} 
+\index{ProportionalWidget@{ProportionalWidget}!setupArrowWidget@{setupArrowWidget}}
+\index{setupArrowWidget@{setupArrowWidget}!ProportionalWidget@{ProportionalWidget}}
+\doxysubsubsection{\texorpdfstring{setupArrowWidget()}{setupArrowWidget()}}
+{\footnotesize\ttfamily void Proportional\+Widget\+::setup\+Arrow\+Widget (\begin{DoxyParamCaption}\item[{QStacked\+Widget \texorpdfstring{$\ast$}{*}}]{arrow\+Widget,  }\item[{bool}]{left\+Side }\end{DoxyParamCaption})}
+
+
+
+Ustawia widget strzałki (np. M1\+\_\+arrow lub M2\+\_\+arrow). 
+
+Ustawia widget strzałki (M1\+\_\+arrow lub M2\+\_\+arrow) w dolnej części.
+
+
+\begin{DoxyParams}{Parametry}
+{\em arrow\+Widget} & Wskaźnik do QStacked\+Widget ze strzałkami. \\
+\hline
+{\em left\+Side} & Czy to jest lewa strona (true) czy prawa (false).\\
+\hline
+{\em arrow\+Widget} & Wskaźnik do widgetu strzałki. \\
+\hline
+{\em left\+Side} & Czy strzałka ma być po lewej stronie (true) czy po prawej (false). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classProportionalWidget_a1f70550b75c4d36905c3fe4f533a963b}\label{classProportionalWidget_a1f70550b75c4d36905c3fe4f533a963b} 
+\index{ProportionalWidget@{ProportionalWidget}!setupTofWidget@{setupTofWidget}}
+\index{setupTofWidget@{setupTofWidget}!ProportionalWidget@{ProportionalWidget}}
+\doxysubsubsection{\texorpdfstring{setupTofWidget()}{setupTofWidget()}}
+{\footnotesize\ttfamily void Proportional\+Widget\+::setup\+Tof\+Widget (\begin{DoxyParamCaption}\item[{QStacked\+Widget \texorpdfstring{$\ast$}{*}}]{tof\+Widget }\end{DoxyParamCaption})}
+
+
+
+Ustawia widget czujnika TOF (np. tof\+LEFT lub tof\+RIGHT). 
+
+Ustawia widget TOF (np. tof\+LEFT albo tof\+RIGHT) w górnej części.
+
+
+\begin{DoxyParams}{Parametry}
+{\em tof\+Widget} & Wskaźnik do QStacked\+Widget z czujnikami TOF.\\
+\hline
+{\em tof\+Widget} & Wskaźnik do widgetu TOF. \\
+\hline
+\end{DoxyParams}
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+proportionalwidget.\+h\item 
+proportionalwidget.\+cpp\end{DoxyCompactItemize}

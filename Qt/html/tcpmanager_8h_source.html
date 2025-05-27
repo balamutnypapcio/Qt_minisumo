@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MiniSumo &#39;Wilus&#39; - wizualizacja: Plik źródłowy tcpmanager.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">MiniSumo &#39;Wilus&#39; - wizualizacja
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">tcpmanager.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef TCPMANAGER_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define TCPMANAGER_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;QTcpSocket&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;QTimer&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;QOverload&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;sensordata.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classTCPManager.html">   15</a></span><span class="keyword">class </span><a class="code hl_class" href="classTCPManager.html">TCPManager</a> : <span class="keyword">public</span> QObject {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    Q_OBJECT</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classTCPManager.html">TCPManager</a>(<a class="code hl_class" href="classSensorData.html">SensorData</a>* sensorData, QObject *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_function" href="classTCPManager.html#a9c24ac909211d3e0029d518d04b9f00d">~TCPManager</a>();</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classTCPManager.html#a4ce4783a94bb6bb4f3122397bd9d437b">connectToDevice</a>(<span class="keyword">const</span> QString &amp;hostAddress, quint16 port);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTCPManager.html#afee7fb4092d884354ccf66f0148a8b1f">disconnectFromDevice</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classTCPManager.html#a49bf45bb9b1545806780fe5458fa1155">isConnected</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>signals:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classTCPManager.html#a6c3543bf266491dcb529beb7a44fe012">   54</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="classTCPManager.html#a6c3543bf266491dcb529beb7a44fe012">dataUpdated</a>(<span class="keywordtype">int</span> time);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classTCPManager.html#a363c1b3b68d005feea5268decf210000">   60</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="classTCPManager.html#a363c1b3b68d005feea5268decf210000">connectionStatusChanged</a>(<span class="keywordtype">bool</span> connected);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classTCPManager.html#a26641c127869ce539809b188f653be04">   66</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="classTCPManager.html#a26641c127869ce539809b188f653be04">errorOccurred</a>(<span class="keyword">const</span> QString &amp;errorMessage);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">private</span> slots:</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">void</span> onReadyRead();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> onSocketStateChanged(QAbstractSocket::SocketState state);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">void</span> onSocketError(QAbstractSocket::SocketError error);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordtype">void</span> processDataLine(<span class="keyword">const</span> QString &amp;line);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <a class="code hl_class" href="classSensorData.html">SensorData</a>* m_sensorData;     </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    QTcpSocket* m_socket;         </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    QString m_buffer;             </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">int</span> m_timestamp;              </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>};</div>
+</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif </span><span class="comment">// TCPMANAGER_H</span></div>
+<div class="ttc" id="aclassSensorData_html"><div class="ttname"><a href="classSensorData.html">SensorData</a></div><div class="ttdoc">Przechowuje dane z różnych sensorów i udostępnia je aplikacji.</div><div class="ttdef"><b>Definition</b> sensordata.h:10</div></div>
+<div class="ttc" id="aclassTCPManager_html"><div class="ttname"><a href="classTCPManager.html">TCPManager</a></div><div class="ttdoc">Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów.</div><div class="ttdef"><b>Definition</b> tcpmanager.h:15</div></div>
+<div class="ttc" id="aclassTCPManager_html_a26641c127869ce539809b188f653be04"><div class="ttname"><a href="classTCPManager.html#a26641c127869ce539809b188f653be04">TCPManager::errorOccurred</a></div><div class="ttdeci">void errorOccurred(const QString &amp;errorMessage)</div><div class="ttdoc">Sygnał emitowany w przypadku wystąpienia błędu.</div></div>
+<div class="ttc" id="aclassTCPManager_html_a363c1b3b68d005feea5268decf210000"><div class="ttname"><a href="classTCPManager.html#a363c1b3b68d005feea5268decf210000">TCPManager::connectionStatusChanged</a></div><div class="ttdeci">void connectionStatusChanged(bool connected)</div><div class="ttdoc">Sygnał emitowany po zmianie stanu połączenia.</div></div>
+<div class="ttc" id="aclassTCPManager_html_a49bf45bb9b1545806780fe5458fa1155"><div class="ttname"><a href="classTCPManager.html#a49bf45bb9b1545806780fe5458fa1155">TCPManager::isConnected</a></div><div class="ttdeci">bool isConnected() const</div><div class="ttdoc">Sprawdza stan połączenia.</div><div class="ttdef"><b>Definition</b> tcpmanager.cpp:50</div></div>
+<div class="ttc" id="aclassTCPManager_html_a4ce4783a94bb6bb4f3122397bd9d437b"><div class="ttname"><a href="classTCPManager.html#a4ce4783a94bb6bb4f3122397bd9d437b">TCPManager::connectToDevice</a></div><div class="ttdeci">bool connectToDevice(const QString &amp;hostAddress, quint16 port)</div><div class="ttdoc">Nawiązuje połączenie z urządzeniem ESP.</div><div class="ttdef"><b>Definition</b> tcpmanager.cpp:27</div></div>
+<div class="ttc" id="aclassTCPManager_html_a6c3543bf266491dcb529beb7a44fe012"><div class="ttname"><a href="classTCPManager.html#a6c3543bf266491dcb529beb7a44fe012">TCPManager::dataUpdated</a></div><div class="ttdeci">void dataUpdated(int time)</div><div class="ttdoc">Sygnał informujący o aktualizacji danych.</div></div>
+<div class="ttc" id="aclassTCPManager_html_a9c24ac909211d3e0029d518d04b9f00d"><div class="ttname"><a href="classTCPManager.html#a9c24ac909211d3e0029d518d04b9f00d">TCPManager::~TCPManager</a></div><div class="ttdeci">~TCPManager()</div><div class="ttdoc">Destruktor.</div><div class="ttdef"><b>Definition</b> tcpmanager.cpp:18</div></div>
+<div class="ttc" id="aclassTCPManager_html_afee7fb4092d884354ccf66f0148a8b1f"><div class="ttname"><a href="classTCPManager.html#afee7fb4092d884354ccf66f0148a8b1f">TCPManager::disconnectFromDevice</a></div><div class="ttdeci">void disconnectFromDevice()</div><div class="ttdoc">Rozłącza połączenie z urządzeniem ESP.</div><div class="ttdef"><b>Definition</b> tcpmanager.cpp:43</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

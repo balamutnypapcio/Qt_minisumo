@@ -72,10 +72,10 @@ void TofChartManager::setupChart()
     m_series3 = new QLineSeries();
     m_series4 = new QLineSeries();
 
-    m_series1->setName("ToF 1");
-    m_series2->setName("ToF 2");
-    m_series3->setName("ToF 3");
-    m_series4->setName("ToF 4");
+    m_series1->setName("ToF L");
+    m_series2->setName("ToF FL");
+    m_series3->setName("ToF FR");
+    m_series4->setName("ToF R");
 
     // Ustawienie różnych kolorów dla serii i grubszych linii
     m_series1->setColor(QColor(255, 0, 0));     // Czerwony
@@ -163,7 +163,7 @@ void TofChartManager::setupChart()
 
     // Ustawiamy czcionkę dla legendy
     QFont legendFont;
-    legendFont.setPointSize(8);
+    legendFont.setPointSize(7);
     m_chart->legend()->setFont(legendFont);
 
     // Tworzenie niestandardowego widoku wykresu

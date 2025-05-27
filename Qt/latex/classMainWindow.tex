@@ -11,8 +11,7 @@ Klasa reprezentująca główne okno aplikacji.
 
 
 
-Diagram dziedziczenia dla Main\+Window
-\nopagebreak
+Diagram dziedziczenia dla Main\+Window\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Diagram dziedziczenia dla Main\+Window
 \end{figure}
 
 
-Diagram współpracy dla Main\+Window\+:
-\nopagebreak
+Diagram współpracy dla Main\+Window\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,9 +32,11 @@ Diagram współpracy dla Main\+Window\+:
 \item 
 \mbox{\hyperlink{classMainWindow_a996c5a2b6f77944776856f08ec30858d}{Main\+Window}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
 \begin{DoxyCompactList}\small\item\em Konstruktor klasy \doxylink{classMainWindow}{Main\+Window}. \end{DoxyCompactList}\item 
-\Hypertarget{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7}\label{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7} 
-{\bfseries \texorpdfstring{$\sim$}{\string~}\+Main\+Window} ()
-\begin{DoxyCompactList}\small\item\em Destruktor klasy \doxylink{classMainWindow}{Main\+Window}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7}{\texorpdfstring{$\sim$}{\string~}\+Main\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor klasy \doxylink{classMainWindow}{Main\+Window}. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a575e9a06ac63e1b97fc66985415587a0}\label{classMainWindow_a575e9a06ac63e1b97fc66985415587a0} 
+void {\bfseries label\+Motors} ()
+\begin{DoxyCompactList}\small\item\em Ustawia etykiety silników. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Opis szczegółowy}
@@ -55,12 +55,26 @@ Zarządza interfejsem użytkownika, obsługuje dane z czujników oraz ich wizual
 
 Konstruktor klasy \doxylink{classMainWindow}{Main\+Window}. 
 
+Konstruktor klasy \doxylink{classMainWindow}{Main\+Window}. Inicjalizuje interfejs i wszystkie menedżery oraz ustawia połączenia sygnałów i slotów.
+
 
 \begin{DoxyParams}{Parametry}
-{\em parent} & Wskaźnik na obiekt nadrzędny (domyślnie nullptr). \\
+{\em parent} & Wskaźnik na obiekt nadrzędny (domyślnie nullptr).\\
+\hline
+{\em parent} & Wskaźnik na obiekt nadrzędny. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7}\label{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7} 
+\index{MainWindow@{MainWindow}!````~MainWindow@{\texorpdfstring{$\sim$}{\string~}MainWindow}}
+\index{````~MainWindow@{\texorpdfstring{$\sim$}{\string~}MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MainWindow()}{\string~MainWindow()}}
+{\footnotesize\ttfamily Main\+Window\+::\texorpdfstring{$\sim$}{\string~}\+Main\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Destruktor klasy \doxylink{classMainWindow}{Main\+Window}. 
+
+Destruktor klasy \doxylink{classMainWindow}{Main\+Window}. Zwalnia zasoby i rozłącza TCP jeśli to konieczne. 
 
 Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
 \item 
