@@ -1,0 +1,307 @@
+\doxysection{tofchartmanager.\+cpp}
+\hypertarget{tofchartmanager_8cpp_source}{}\label{tofchartmanager_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}tofchartmanager.h"{}}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <QResizeEvent>}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QDateTime>}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <QFont>}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00008}00008\ \textcolor{comment}{/*\ Stała\ MAX\_POINTS\ –\ deklaracja\ */}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00009}00009\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TofChartManager::MAX\_POINTS;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00011}\mbox{\hyperlink{classTofChartManager_a004c9c1a278d99138a7e34802c175fc6}{00011}}\ \mbox{\hyperlink{classTofChartManager_a004c9c1a278d99138a7e34802c175fc6}{TofChartManager::TofChartManager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QWidget*\ container,\ QObject\ *parent)}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00012}00012\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData),\ m\_container(container),}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00013}00013\ \ \ \ \ m\_chart(nullptr),\ m\_chartView(nullptr),\ m\_currentPoint(0),}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00014}00014\ \ \ \ \ m\_isAutoScrollEnabled(true),\ m\_currentTimeOffset(0)}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Sprawdź\ poprawność\ wskaźników}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_sensorData\ ||\ !m\_container)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}TofChartManager:\ Nieprawidłowe\ wskaźniki\ do\ sensorData\ lub\ container!"{}};}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Instaluj\ filtr\ zdarzeń\ dla\ kontenera}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00023}00023\ \ \ \ \ m\_container-\/>installEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874}{setupChart}}();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Slot\ SensorData::tofDataChanged\ zostaje\ pusty\ –\ aktualizacja\ wywoływana\ z\ zewnątrz}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00028}00028\ \ \ \ \ connect(m\_sensorData,\ \&\mbox{\hyperlink{classSensorData_a93a841a87717c333f93c8e2ab1ba479e}{SensorData::tofDataChanged}},\ \textcolor{keyword}{this},\ [\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Slot\ pusty\ –\ aktualizacja\ wykresu\ przez\ updateChart(time)}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00030}00030\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00033}\mbox{\hyperlink{classTofChartManager_a6f4c1b85f96d66f1304af45da4c7e61e}{00033}}\ \mbox{\hyperlink{classTofChartManager_a6f4c1b85f96d66f1304af45da4c7e61e}{TofChartManager::\string~TofChartManager}}()}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Usuń\ filtr\ zdarzeń}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_container)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ m\_container-\/>removeEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{delete}\ m\_chart;\ \ \textcolor{comment}{//\ m\_chartView\ usuwany\ przez\ m\_container}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00043}\mbox{\hyperlink{classTofChartManager_a89703b8b34f39fac0281d3d21ba75f1b}{00043}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTofChartManager_a89703b8b34f39fac0281d3d21ba75f1b}{TofChartManager::eventFilter}}(QObject\ *watched,\ QEvent\ *event)}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00044}00044\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (watched\ ==\ m\_container\ \&\&\ event-\/>type()\ ==\ QEvent::Resize)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ m\_chartView-\/>resize(m\_container-\/>size());}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e}{adjustAxisLabels}}();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Pozwól\ na\ domyślną\ obsługę\ zdarzenia}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ QObject::eventFilter(watched,\ event);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00055}\mbox{\hyperlink{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874}{00055}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874}{TofChartManager::setupChart}}()}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00056}00056\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00057}00057\ \ \ \ \ m\_chart\ =\ \textcolor{keyword}{new}\ QChart();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00058}00058\ \ \ \ \ m\_chart-\/>setMargins(QMargins(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00059}00059\ \ \ \ \ m\_chart-\/>setBackgroundRoundness(0);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00060}00060\ \ \ \ \ m\_chart-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00061}00061\ \ \ \ \ m\_chart-\/>setAnimationOptions(QChart::NoAnimation);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00063}00063\ \ \ \ \ m\_series1\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00064}00064\ \ \ \ \ m\_series2\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00065}00065\ \ \ \ \ m\_series3\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00066}00066\ \ \ \ \ m\_series4\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00068}00068\ \ \ \ \ m\_series1-\/>setName(\textcolor{stringliteral}{"{}ToF\ L"{}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00069}00069\ \ \ \ \ m\_series2-\/>setName(\textcolor{stringliteral}{"{}ToF\ FL"{}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00070}00070\ \ \ \ \ m\_series3-\/>setName(\textcolor{stringliteral}{"{}ToF\ FR"{}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00071}00071\ \ \ \ \ m\_series4-\/>setName(\textcolor{stringliteral}{"{}ToF\ R"{}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00073}00073\ \ \ \ \ m\_series1-\/>setColor(QColor(255,\ 0,\ 0));}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00074}00074\ \ \ \ \ m\_series2-\/>setColor(QColor(0,\ 0,\ 255));}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00075}00075\ \ \ \ \ m\_series3-\/>setColor(QColor(0,\ 128,\ 0));}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00076}00076\ \ \ \ \ m\_series4-\/>setColor(QColor(128,\ 0,\ 128));}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00078}00078\ \ \ \ \ QPen\ pen1\ =\ m\_series1-\/>pen();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00079}00079\ \ \ \ \ QPen\ pen2\ =\ m\_series2-\/>pen();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00080}00080\ \ \ \ \ QPen\ pen3\ =\ m\_series3-\/>pen();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00081}00081\ \ \ \ \ QPen\ pen4\ =\ m\_series4-\/>pen();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00082}00082\ \ \ \ \ pen1.setWidth(2);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00083}00083\ \ \ \ \ pen2.setWidth(2);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00084}00084\ \ \ \ \ pen3.setWidth(2);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00085}00085\ \ \ \ \ pen4.setWidth(2);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00086}00086\ \ \ \ \ m\_series1-\/>setPen(pen1);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00087}00087\ \ \ \ \ m\_series2-\/>setPen(pen2);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00088}00088\ \ \ \ \ m\_series3-\/>setPen(pen3);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00089}00089\ \ \ \ \ m\_series4-\/>setPen(pen4);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00091}00091\ \ \ \ \ m\_chart-\/>addSeries(m\_series1);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00092}00092\ \ \ \ \ m\_chart-\/>addSeries(m\_series2);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00093}00093\ \ \ \ \ m\_chart-\/>addSeries(m\_series3);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00094}00094\ \ \ \ \ m\_chart-\/>addSeries(m\_series4);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00096}00096\ \ \ \ \ m\_axisX\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00097}00097\ \ \ \ \ m\_axisY\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00099}00099\ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00100}00100\ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00102}00102\ \ \ \ \ m\_axisX-\/>setTitleText(\textcolor{stringliteral}{"{}Czas\ (ms)"{}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00103}00103\ \ \ \ \ m\_axisY-\/>setTitleText(\textcolor{stringliteral}{"{}Stan"{}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00105}00105\ \ \ \ \ QFont\ axisFont;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00106}00106\ \ \ \ \ axisFont.setPointSize(8);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00108}00108\ \ \ \ \ m\_axisX-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00109}00109\ \ \ \ \ m\_axisY-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00111}00111\ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00112}00112\ \ \ \ \ m\_axisX-\/>setTickCount(5);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00114}00114\ \ \ \ \ m\_axisY-\/>setRange(0,\ 1.0);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00115}00115\ \ \ \ \ m\_axisY-\/>setTickCount(2);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00116}00116\ \ \ \ \ m\_axisY-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%d"{}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00118}00118\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00120}00120\ \ \ \ \ m\_chart-\/>addAxis(m\_axisX,\ Qt::AlignBottom);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00121}00121\ \ \ \ \ m\_chart-\/>addAxis(m\_axisY,\ Qt::AlignLeft);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00123}00123\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00124}00124\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00125}00125\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00126}00126\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00127}00127\ \ \ \ \ m\_series3-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00128}00128\ \ \ \ \ m\_series3-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00129}00129\ \ \ \ \ m\_series4-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00130}00130\ \ \ \ \ m\_series4-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00132}00132\ \ \ \ \ m\_chart-\/>legend()-\/>setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00133}00133\ \ \ \ \ m\_chart-\/>legend()-\/>setAlignment(Qt::AlignRight);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00134}00134\ \ \ \ \ m\_chart-\/>legend()-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00135}00135\ \ \ \ \ m\_chart-\/>legend()-\/>setBorderColor(Qt::transparent);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00137}00137\ \ \ \ \ QRectF\ legendRect\ =\ m\_chart-\/>legend()-\/>geometry();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00138}00138\ \ \ \ \ legendRect.moveTopRight(m\_chart-\/>plotArea().topRight()\ -\/\ QPointF(10,\ 10));}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00139}00139\ \ \ \ \ m\_chart-\/>legend()-\/>setGeometry(legendRect);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00141}00141\ \ \ \ \ QFont\ legendFont;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00142}00142\ \ \ \ \ legendFont.setPointSize(7);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00143}00143\ \ \ \ \ m\_chart-\/>legend()-\/>setFont(legendFont);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00145}00145\ \ \ \ \ m\_chartView\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}(m\_chart);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00146}00146\ \ \ \ \ m\_chartView-\/>setRenderHint(QPainter::Antialiasing);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00147}00147\ \ \ \ \ m\_chartView-\/>setRubberBand(QChartView::HorizontalRubberBand);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00148}00148\ \ \ \ \ m\_chartView-\/>setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00149}00149\ \ \ \ \ m\_chartView-\/>setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00151}00151\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}{setMousePressedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTofChartManager_ae0ac92098b83bc7ac69e227ae5b1b853}{handleChartMousePressed}}();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00153}00153\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00154}00154\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}{setMouseReleasedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTofChartManager_a01396fca8c9f1064cf7be0618484227b}{handleChartMouseReleased}}();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00156}00156\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00158}00158\ \ \ \ \ connect(m\_axisX,\ \&QValueAxis::rangeChanged,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7}{TofChartManager::enforceAxisLimits}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00160}00160\ \ \ \ \ QLayout*\ existingLayout\ =\ m\_container-\/>layout();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{keywordflow}{if}\ (existingLayout)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Czyszczenie\ istniejącego\ layoutu}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (QLayoutItem*\ item\ =\ existingLayout-\/>takeAt(0))\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (QWidget*\ widget\ =\ item-\/>widget())\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ widget-\/>setParent(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ widget;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ item;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ existingLayout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00172}00172\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ QVBoxLayout\ *layout\ =\ \textcolor{keyword}{new}\ QVBoxLayout(m\_container);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ layout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ layout-\/>setContentsMargins(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ layout-\/>setSpacing(0);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ m\_container-\/>setLayout(layout);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00178}00178\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00180}00180\ \ \ \ \ QTimer::singleShot(0,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e}{TofChartManager::adjustAxisLabels}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00181}00181\ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00183}\mbox{\hyperlink{classTofChartManager_a4c4fc6ae05b60d7808d408932f8fce3c}{00183}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTofChartManager_a4c4fc6ae05b60d7808d408932f8fce3c}{TofChartManager::updateChart}}(\textcolor{keywordtype}{int}\ time)}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00184}00184\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00185}00185\ \ \ \ \ m\_series1-\/>append(time,\ m\_sensorData-\/>getTof1()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00186}00186\ \ \ \ \ m\_series2-\/>append(time,\ m\_sensorData-\/>getTof2()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00187}00187\ \ \ \ \ m\_series3-\/>append(time,\ m\_sensorData-\/>getTof3()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00188}00188\ \ \ \ \ m\_series4-\/>append(time,\ m\_sensorData-\/>getTof4()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00190}00190\ \ \ \ \ m\_currentPoint++;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00191}00191\ \ \ \ \ m\_latestDataTime\ =\ time;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00193}00193\ \ \ \ \ qreal\ currentMax\ =\ m\_axisX-\/>max();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00195}00195\ \ \ \ \ \textcolor{keywordflow}{if}\ (time\ >\ currentMax\ ||\ m\_isAutoScrollEnabled)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(time\ -\/\ MAX\_POINTS\ *\ 100,\ time);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00197}00197\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00199}00199\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_HISTORY\ =\ MAX\_POINTS\ *\ 10;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_series1-\/>count()\ >\ MAX\_HISTORY)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pointsToRemove\ =\ m\_series1-\/>count()\ -\/\ MAX\_HISTORY;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ m\_series1-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ m\_series2-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ m\_series3-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ m\_series4-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00206}00206\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00207}00207\ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00209}\mbox{\hyperlink{classTofChartManager_ae1eea1cc7cff85d4d4464f33e7abeb35}{00209}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTofChartManager_ae1eea1cc7cff85d4d4464f33e7abeb35}{TofChartManager::clearChart}}()}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00210}00210\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00211}00211\ \ \ \ \ m\_series1-\/>clear();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00212}00212\ \ \ \ \ m\_series2-\/>clear();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00213}00213\ \ \ \ \ m\_series3-\/>clear();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00214}00214\ \ \ \ \ m\_series4-\/>clear();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00216}00216\ \ \ \ \ m\_currentPoint\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00217}00217\ \ \ \ \ m\_currentTimeOffset\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00218}00218\ \ \ \ \ m\_latestDataTime\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00219}00219\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00221}00221\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00222}00222\ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00224}\mbox{\hyperlink{classTofChartManager_ae0ac92098b83bc7ac69e227ae5b1b853}{00224}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTofChartManager_ae0ac92098b83bc7ac69e227ae5b1b853}{TofChartManager::handleChartMousePressed}}()}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00225}00225\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00226}00226\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00227}00227\ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00229}\mbox{\hyperlink{classTofChartManager_a01396fca8c9f1064cf7be0618484227b}{00229}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTofChartManager_a01396fca8c9f1064cf7be0618484227b}{TofChartManager::handleChartMouseReleased}}()}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00230}00230\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00231}00231\ \ \ \ \ \mbox{\hyperlink{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7}{enforceAxisLimits}}(m\_axisX-\/>min(),\ m\_axisX-\/>max());}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00232}00232\ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00234}\mbox{\hyperlink{classTofChartManager_a76e913782a964eccae9888beef763b6f}{00234}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTofChartManager_a76e913782a964eccae9888beef763b6f}{TofChartManager::resetToCurrentData}}()}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00235}00235\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00236}00236\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00238}00238\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(m\_latestDataTime\ -\/\ MAX\_POINTS\ *\ 100,\ m\_latestDataTime);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00240}00240\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00242}00242\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00243}00243\ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00245}\mbox{\hyperlink{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7}{00245}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7}{TofChartManager::enforceAxisLimits}}(qreal\ min,\ qreal\ max)}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00246}00246\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00247}00247\ \ \ \ \ \textcolor{keywordtype}{bool}\ needAdjustment\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00248}00248\ \ \ \ \ qreal\ newMin\ =\ min;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00249}00249\ \ \ \ \ qreal\ newMax\ =\ max;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00250}00250\ \ \ \ \ qreal\ rangeSize\ =\ max\ -\/\ min;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00252}00252\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ newMin\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ newMax\ =\ rangeSize;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00256}00256\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00258}00258\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ m\_latestDataTime\ \&\&\ m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ newMax\ =\ m\_latestDataTime;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ newMin\ =\ qMax(0.0,\ m\_latestDataTime\ -\/\ rangeSize);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00262}00262\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00264}00264\ \ \ \ \ \textcolor{keywordflow}{if}\ (needAdjustment)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ QSignalBlocker\ blocker(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(newMin,\ newMax);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00267}00267\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00268}00268\ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00270}\mbox{\hyperlink{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e}{00270}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e}{TofChartManager::adjustAxisLabels}}()}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00271}00271\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00272}00272\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView\ \&\&\ m\_axisX)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ chartWidth\ =\ m\_chartView-\/>width();}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ labelCount;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 100)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 200)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 300)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_axisX-\/>tickCount()\ !=\ labelCount)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setTickCount(labelCount);}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 150)\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00301}00301\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tofchartmanager_8cpp_source_l00302}00302\ \}}
+
+\end{DoxyCode}

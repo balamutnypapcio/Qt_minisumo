@@ -2,7 +2,7 @@
 \hypertarget{classCSVManager}{}\label{classCSVManager}\index{CSVManager@{CSVManager}}
 
 
-Zarządza odczytem i odtwarzaniem danych z pliku CSV.  
+Zarządza wczytywaniem, odtwarzaniem i symulacją danych z pliku CSV dla obiektów \doxylink{classSensorData}{Sensor\+Data}.  
 
 
 
@@ -11,8 +11,7 @@ Zarządza odczytem i odtwarzaniem danych z pliku CSV.
 
 
 
-Diagram dziedziczenia dla CSVManager
-\nopagebreak
+Diagram dziedziczenia dla CSVManager\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Diagram dziedziczenia dla CSVManager
 \end{figure}
 
 
-Diagram współpracy dla CSVManager\+:
-\nopagebreak
+Diagram współpracy dla CSVManager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,29 +32,55 @@ Diagram współpracy dla CSVManager\+:
 \item 
 void \mbox{\hyperlink{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}{data\+Updated}} (int time)
 \begin{DoxyCompactList}\small\item\em Sygnał informujący o aktualizacji danych. \end{DoxyCompactList}\item 
-\Hypertarget{classCSVManager_a10755abfed118a3625b213fcc61b8e3f}\label{classCSVManager_a10755abfed118a3625b213fcc61b8e3f} 
-void {\bfseries playback\+Finished} ()
-\begin{DoxyCompactList}\small\item\em Sygnał emitowany po zakończeniu odtwarzania. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classCSVManager_a10755abfed118a3625b213fcc61b8e3f}{playback\+Finished}} ()
+\begin{DoxyCompactList}\small\item\em Sygnał emitowany po zakończeniu odtwarzania (np. koniec pliku). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Metody publiczne}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classCSVManager_a41436a6ce1f97fed378776db1eac6e24}{CSVManager}} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
 \begin{DoxyCompactList}\small\item\em Konstruktor klasy \doxylink{classCSVManager}{CSVManager}. \end{DoxyCompactList}\item 
-\Hypertarget{classCSVManager_a97ab57c81378a5655ec36f52885316b1}\label{classCSVManager_a97ab57c81378a5655ec36f52885316b1} 
-{\bfseries \texorpdfstring{$\sim$}{\string~}\+CSVManager} ()
-\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCSVManager_a97ab57c81378a5655ec36f52885316b1}{\texorpdfstring{$\sim$}{\string~}\+CSVManager}} ()
+\begin{DoxyCompactList}\small\item\em Wirtualny destruktor. Zatrzymuje timery i sprząta zasoby. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCSVManager_aa83110a5d828a7dd9f18c6edcf661ea4}{load\+From\+File}} (const QString \&file\+Path)
-\begin{DoxyCompactList}\small\item\em Wczytuje dane z pliku CSV. \end{DoxyCompactList}\item 
-\Hypertarget{classCSVManager_aa421002b8c1b3562776ae67961680e71}\label{classCSVManager_aa421002b8c1b3562776ae67961680e71} 
-void {\bfseries start\+Playback} ()
-\begin{DoxyCompactList}\small\item\em Rozpoczyna odtwarzanie danych z CSV. \end{DoxyCompactList}\item 
-\Hypertarget{classCSVManager_a16a339a63758a4b594567faaedf4bc82}\label{classCSVManager_a16a339a63758a4b594567faaedf4bc82} 
-void {\bfseries stop\+Playback} ()
-\begin{DoxyCompactList}\small\item\em Zatrzymuje odtwarzanie danych. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Wczytuje dane z pliku CSV i przygotowuje je do odtwarzania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCSVManager_aa421002b8c1b3562776ae67961680e71}{start\+Playback}} ()
+\begin{DoxyCompactList}\small\item\em Rozpoczyna odtwarzanie/symulację danych z CSV. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCSVManager_a16a339a63758a4b594567faaedf4bc82}{stop\+Playback}} ()
+\begin{DoxyCompactList}\small\item\em Zatrzymuje odtwarzanie danych CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Opis szczegółowy}
-Zarządza odczytem i odtwarzaniem danych z pliku CSV. 
+Zarządza wczytywaniem, odtwarzaniem i symulacją danych z pliku CSV dla obiektów \doxylink{classSensorData}{Sensor\+Data}. 
+
+Klasa umożliwia\+:
+\begin{DoxyItemize}
+\item Wczytywanie danych eksperymentalnych z pliku CSV (z pominięciem nagłówka).
+\item Odtwarzanie tych danych w czasie rzeczywistym (symulacja).
+\item Emitowanie sygnałów aktualizacji danych (np. do wykresów lub innych komponentów GUI).
+\item Synchronizację odtwarzania z czasem rzeczywistym przy użyciu QElapsed\+Timer i QTimer.
+\end{DoxyItemize}
+
+Przykładowe użycie\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classCSVManager}{CSVManager}}*\ manager\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classCSVManager}{CSVManager}}(sensorData,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{connect(manager,\ \&\mbox{\hyperlink{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}{CSVManager::dataUpdated}},\ \textcolor{keyword}{this},\ \&MainWindow::onDataUpdated);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (manager-\/>\mbox{\hyperlink{classCSVManager_aa83110a5d828a7dd9f18c6edcf661ea4}{loadFromFile}}(\textcolor{stringliteral}{"{}dane.csv"{}}))\ \{}
+\DoxyCodeLine{\ \ \ \ manager-\/>\mbox{\hyperlink{classCSVManager_aa421002b8c1b3562776ae67961680e71}{startPlayback}}();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Plik CSV powinien mieć następujący format (jeden wiersz = jeden pomiar)\+: time, tof1, tof2, tof3, tof4, line\+S1, line\+S2, line\+S3, motor1, motor2, imuX, imuY
+
+\begin{DoxyAuthor}{Autor}
+Jakub Wilczyński 
+\end{DoxyAuthor}
+
+
+Definicja w linii \mbox{\hyperlink{csvmanager_8h_source_l00035}{35}} pliku \mbox{\hyperlink{csvmanager_8h_source}{csvmanager.\+h}}.
+
+
 
 \doxysubsection{Dokumentacja konstruktora i destruktora}
 \Hypertarget{classCSVManager_a41436a6ce1f97fed378776db1eac6e24}\label{classCSVManager_a41436a6ce1f97fed378776db1eac6e24} 
@@ -71,11 +95,45 @@ Konstruktor klasy \doxylink{classCSVManager}{CSVManager}.
 
 
 \begin{DoxyParams}{Parametry}
-{\em sensor\+Data} & Wskaźnik do obiektu \doxylink{classSensorData}{Sensor\+Data}. \\
+{\em sensor\+Data} & Wskaźnik do obiektu \doxylink{classSensorData}{Sensor\+Data}, który będzie aktualizowany na podstawie CSV. \\
 \hline
 {\em parent} & Opcjonalny rodzic QObject. \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{csvmanager_8cpp_source_l00006}{6}} pliku \mbox{\hyperlink{csvmanager_8cpp_source}{csvmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00007\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData)\ \{}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classCSVManager_a97ab57c81378a5655ec36f52885316b1}\label{classCSVManager_a97ab57c81378a5655ec36f52885316b1} 
+\index{CSVManager@{CSVManager}!````~CSVManager@{\texorpdfstring{$\sim$}{\string~}CSVManager}}
+\index{````~CSVManager@{\texorpdfstring{$\sim$}{\string~}CSVManager}!CSVManager@{CSVManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CSVManager()}{\string~CSVManager()}}
+{\footnotesize\ttfamily CSVManager\+::\texorpdfstring{$\sim$}{\string~}\+CSVManager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Wirtualny destruktor. Zatrzymuje timery i sprząta zasoby. 
+
+
+
+Definicja w linii \mbox{\hyperlink{csvmanager_8cpp_source_l00010}{10}} pliku \mbox{\hyperlink{csvmanager_8cpp_source}{csvmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_dataUpdateTimer)\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ m\_dataUpdateTimer-\/>stop();}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ m\_dataUpdateTimer;}
+\DoxyCodeLine{00014\ \ \ \ \ \}}
+\DoxyCodeLine{00015\ \}}
+
+\end{DoxyCode}
 
 
 \doxysubsection{Dokumentacja funkcji składowych}
@@ -91,9 +149,27 @@ Sygnał informujący o aktualizacji danych.
 
 
 \begin{DoxyParams}{Parametry}
-{\em time} & Znacznik czasu aktualizacji. \\
+{\em time} & Znacznik czasu (w ms) aktualizacji. \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{moc__csvmanager_8cpp_source_l00127}{127}} pliku \mbox{\hyperlink{moc__csvmanager_8cpp_source}{moc\+\_\+csvmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00128\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ QMetaObject::activate<void>(\textcolor{keyword}{this},\ \&staticMetaObject,\ 0,\ \textcolor{keyword}{nullptr},\ \_t1);}
+\DoxyCodeLine{00130\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCSVManager_ac8dfd7524b2fe204986084c3accbd839_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classCSVManager_aa83110a5d828a7dd9f18c6edcf661ea4}\label{classCSVManager_aa83110a5d828a7dd9f18c6edcf661ea4} 
 \index{CSVManager@{CSVManager}!loadFromFile@{loadFromFile}}
 \index{loadFromFile@{loadFromFile}!CSVManager@{CSVManager}}
@@ -102,7 +178,7 @@ Sygnał informujący o aktualizacji danych.
 
 
 
-Wczytuje dane z pliku CSV. 
+Wczytuje dane z pliku CSV i przygotowuje je do odtwarzania. 
 
 
 \begin{DoxyParams}{Parametry}
@@ -110,11 +186,151 @@ Wczytuje dane z pliku CSV.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Zwraca}
-true jeśli wczytywanie się powiodło. 
+true jeśli wczytywanie się powiodło, false w przypadku błędu (np. uszkodzony plik).
 \end{DoxyReturn}
+Wczytuje wszystkie wiersze (z pominięciem nagłówka) i waliduje liczbę kolumn (minimum 12). 
+
+Definicja w linii \mbox{\hyperlink{csvmanager_8cpp_source_l00017}{17}} pliku \mbox{\hyperlink{csvmanager_8cpp_source}{csvmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ QFile\ file(filePath);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.open(QIODevice::ReadOnly\ |\ QIODevice::Text))\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}Nie\ udało\ się\ otworzyć\ pliku\ CSV"{}};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Reset\ bufora\ na\ wypadek\ ponownego\ ładowania}}
+\DoxyCodeLine{00025\ \ \ \ \ m\_csvData.clear();}
+\DoxyCodeLine{00026\ \ \ \ \ m\_currentRow\ =\ 0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ QTextStream\ in(\&file);}
+\DoxyCodeLine{00029\ \ \ \ \ QString\ line;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ firstLine\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Wczytywanie\ wszystkich\ wierszy\ z\ pominięciem\ nagłówka}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{while}\ (!in.atEnd())\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ line\ =\ in.readLine();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (firstLine)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ firstLine\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \ \textcolor{comment}{//\ Pomijamy\ pierwszą\ linię\ (nagłówki\ kolumn)}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ QStringList\ data\ =\ line.split(\textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Walidacja\ liczby\ kolumn\ (12\ wymaganych)}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.size()\ >=\ 12)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ m\_csvData.append(data);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ file.close();}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ !m\_csvData.isEmpty();}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classCSVManager_a10755abfed118a3625b213fcc61b8e3f}\label{classCSVManager_a10755abfed118a3625b213fcc61b8e3f} 
+\index{CSVManager@{CSVManager}!playbackFinished@{playbackFinished}}
+\index{playbackFinished@{playbackFinished}!CSVManager@{CSVManager}}
+\doxysubsubsection{\texorpdfstring{playbackFinished}{playbackFinished}}
+{\footnotesize\ttfamily void CSVManager\+::playback\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Sygnał emitowany po zakończeniu odtwarzania (np. koniec pliku). 
+
+
+
+Definicja w linii \mbox{\hyperlink{moc__csvmanager_8cpp_source_l00133}{133}} pliku \mbox{\hyperlink{moc__csvmanager_8cpp_source}{moc\+\_\+csvmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00134\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ QMetaObject::activate(\textcolor{keyword}{this},\ \&staticMetaObject,\ 1,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00136\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCSVManager_a10755abfed118a3625b213fcc61b8e3f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classCSVManager_aa421002b8c1b3562776ae67961680e71}\label{classCSVManager_aa421002b8c1b3562776ae67961680e71} 
+\index{CSVManager@{CSVManager}!startPlayback@{startPlayback}}
+\index{startPlayback@{startPlayback}!CSVManager@{CSVManager}}
+\doxysubsubsection{\texorpdfstring{startPlayback()}{startPlayback()}}
+{\footnotesize\ttfamily void CSVManager\+::start\+Playback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Rozpoczyna odtwarzanie/symulację danych z CSV. 
+
+Inicjuje timer odtwarzania i rozpoczyna cykliczne aktualizacje poprzez QTimer. 
+
+Definicja w linii \mbox{\hyperlink{csvmanager_8cpp_source_l00050}{50}} pliku \mbox{\hyperlink{csvmanager_8cpp_source}{csvmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ m\_currentRow\ =\ 0;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ Rozpocznij\ pomiar\ czasu\ (od\ t=0)}}
+\DoxyCodeLine{00054\ \ \ \ \ m\_playbackTimer.start();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Zatrzymaj\ i\ usuń\ poprzedni\ timer\ (jeśli\ był)}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_dataUpdateTimer)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ m\_dataUpdateTimer-\/>stop();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ m\_dataUpdateTimer;}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ m\_dataUpdateTimer\ =\ \textcolor{keyword}{new}\ QTimer(\textcolor{keyword}{this});}
+\DoxyCodeLine{00063\ \ \ \ \ connect(m\_dataUpdateTimer,\ \&QTimer::timeout,\ \textcolor{keyword}{this},\ \&CSVManager::updateData);}
+\DoxyCodeLine{00064\ \ \ \ \ m\_dataUpdateTimer-\/>start(20);\ \textcolor{comment}{//\ 50\ Hz\ odświeżania}}
+\DoxyCodeLine{00065\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classCSVManager_a16a339a63758a4b594567faaedf4bc82}\label{classCSVManager_a16a339a63758a4b594567faaedf4bc82} 
+\index{CSVManager@{CSVManager}!stopPlayback@{stopPlayback}}
+\index{stopPlayback@{stopPlayback}!CSVManager@{CSVManager}}
+\doxysubsubsection{\texorpdfstring{stopPlayback()}{stopPlayback()}}
+{\footnotesize\ttfamily void CSVManager\+::stop\+Playback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zatrzymuje odtwarzanie danych CSV. 
+
+Zatrzymuje timery i emituje sygnał \doxylink{classCSVManager_a10755abfed118a3625b213fcc61b8e3f}{playback\+Finished}. 
+
+Definicja w linii \mbox{\hyperlink{csvmanager_8cpp_source_l00067}{67}} pliku \mbox{\hyperlink{csvmanager_8cpp_source}{csvmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//\ Zatrzymaj\ timer\ QTimer}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_dataUpdateTimer)\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ m\_dataUpdateTimer-\/>stop();}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Zresetuj\ timer\ czasu\ rzeczywistego}}
+\DoxyCodeLine{00075\ \ \ \ \ m\_playbackTimer.invalidate();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ Powiadom\ o\ zakończeniu\ odtwarzania}}
+\DoxyCodeLine{00078\ \ \ \ \ emit\ \mbox{\hyperlink{classCSVManager_a10755abfed118a3625b213fcc61b8e3f}{playbackFinished}}();}
+\DoxyCodeLine{00079\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCSVManager_a16a339a63758a4b594567faaedf4bc82_cgraph}
+\end{center}
+\end{figure}
 
 
 Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
 \item 
 csvmanager.\+h\item 
+build/\+Desktop\+\_\+\+Qt\+\_\+6\+\_\+9\+\_\+0-\/\+Debug/moc\+\_\+csvmanager.\+cpp\item 
 csvmanager.\+cpp\end{DoxyCompactItemize}

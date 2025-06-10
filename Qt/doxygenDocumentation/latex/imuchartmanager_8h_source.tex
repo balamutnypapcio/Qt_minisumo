@@ -1,66 +1,67 @@
 \doxysection{imuchartmanager.\+h}
 \hypertarget{imuchartmanager_8h_source}{}\label{imuchartmanager_8h_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ IMUCHARTMANAGER\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ IMUCHARTMANAGER\_H}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QtCharts/QLineSeries>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QtCharts/QChart>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QtCharts/QValueAxis>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QTimer>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}sensordata.h"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}chartviewhelper.h"{}}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }QGraphicsTextItem;}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classImuChartManager}{ImuChartManager}}\ :\ \textcolor{keyword}{public}\ QObject}
-\DoxyCodeLine{00019\ \{}
-\DoxyCodeLine{00020\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classImuChartManager}{ImuChartManager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QWidget*\ container,\ QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classImuChartManager}{\string~ImuChartManager}}();}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc}{setupChart}}();}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a95d10d88aa329e1b46ee4c0d4384f40d}{updateChart}}(\textcolor{keywordtype}{int}\ time);}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a903b5ae94e64acce3182a0e463f12686}{clearChart}}();}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_aa8b6bbd521b767c384a437b43e9b56b2}{resetToCurrentData}}();}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classImuChartManager_ad90158920eb8dddb4a66fa9449973338}{eventFilter}}(QObject\ *watched,\ QEvent\ *event)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a4881022db1594a1449f50862c33645cb}{handleChartMousePressed}}();}
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ handleChartMouseReleased();}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a3704b4340f459b08b6ba87d462b149c0}{enforceAxisLimits}}(qreal\ min,\ qreal\ max);}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a3f3d8399066e516e13bc1c288bf8c097}{adjustAxisLabels}}();}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{classSensorData}{SensorData}}*\ m\_sensorData;\ \ \ \ \ \ }
-\DoxyCodeLine{00071\ \ \ \ \ QWidget*\ m\_container;\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00072\ \ \ \ \ QChart*\ m\_chart;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00073\ \ \ \ \ QLineSeries*\ m\_series1;\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00074\ \ \ \ \ QLineSeries*\ m\_series2;\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00075\ \ \ \ \ QValueAxis*\ m\_axisX;\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00076\ \ \ \ \ QValueAxis*\ m\_axisY;\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}*\ m\_chartView;\ }
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Dodajemy\ własne\ etykiety\ tytułów\ osi}}
-\DoxyCodeLine{00080\ \ \ \ \ QGraphicsTextItem*\ m\_xAxisTitle;\ \ }
-\DoxyCodeLine{00081\ \ \ \ \ QGraphicsTextItem*\ m\_yAxisTitle;\ \ }
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_POINTS\ =\ 100;\ \ }
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_currentPoint\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00085\ \ \ \ \ qint64\ m\_currentTimeOffset;\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isAutoScrollEnabled;\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00087\ \ \ \ \ qreal\ m\_latestDataTime\ =\ 0;\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00088\ \};}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ IMUCHARTMANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ IMUCHARTMANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ IMUCHARTMANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <QtCharts/QLineSeries>}}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <QtCharts/QChart>}}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <QtCharts/QValueAxis>}}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}sensordata.h"{}}}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}chartviewhelper.h"{}}}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00012}00012\ \textcolor{keyword}{class\ }QGraphicsTextItem;}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00034}\mbox{\hyperlink{classImuChartManager}{00034}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classImuChartManager}{ImuChartManager}}\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00036}00036\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00038}00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classImuChartManager}{ImuChartManager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QWidget*\ container,\ QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{classImuChartManager_a43336e1bbc7342b5e0299a85c9f32990}{\string~ImuChartManager}}();}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc}{setupChart}}();}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00061}00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a95d10d88aa329e1b46ee4c0d4384f40d}{updateChart}}(\textcolor{keywordtype}{int}\ time);}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a903b5ae94e64acce3182a0e463f12686}{clearChart}}();}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00071}00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_aa8b6bbd521b767c384a437b43e9b56b2}{resetToCurrentData}}();}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00073}00073\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classImuChartManager_ad90158920eb8dddb4a66fa9449973338}{eventFilter}}(QObject\ *watched,\ QEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00085}00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a4881022db1594a1449f50862c33645cb}{handleChartMousePressed}}();}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00090}00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a6dc6132459a4453282200157560215b5}{handleChartMouseReleased}}();}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a3704b4340f459b08b6ba87d462b149c0}{enforceAxisLimits}}(qreal\ min,\ qreal\ max);}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImuChartManager_a3f3d8399066e516e13bc1c288bf8c097}{adjustAxisLabels}}();}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00104}00104\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{classSensorData}{SensorData}}*\ m\_sensorData;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00106}00106\ \ \ \ \ QWidget*\ m\_container;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00107}00107\ \ \ \ \ QChart*\ m\_chart;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00108}00108\ \ \ \ \ QLineSeries*\ m\_series1;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00109}00109\ \ \ \ \ QLineSeries*\ m\_series2;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00110}00110\ \ \ \ \ QValueAxis*\ m\_axisX;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00111}00111\ \ \ \ \ QValueAxis*\ m\_axisY;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00112}00112\ \ \ \ \ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}*\ m\_chartView;\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00114}00114\ \ \ \ \ QGraphicsTextItem*\ m\_xAxisTitle;\ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00115}00115\ \ \ \ \ QGraphicsTextItem*\ m\_yAxisTitle;\ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00117}00117\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_POINTS\ =\ 100;\ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00118}00118\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_currentPoint\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00119}00119\ \ \ \ \ qint64\ m\_currentTimeOffset;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00120}00120\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isAutoScrollEnabled;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00121}00121\ \ \ \ \ qreal\ m\_latestDataTime\ =\ 0;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00122}00122\ \};}
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{imuchartmanager_8h_source_l00124}00124\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ IMUCHARTMANAGER\_H}}
 
 \end{DoxyCode}

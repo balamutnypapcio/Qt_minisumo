@@ -1,42 +1,42 @@
 \doxysection{chartviewhelper.\+h}
 \hypertarget{chartviewhelper_8h_source}{}\label{chartviewhelper_8h_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CHARTVIEWHELPER\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CHARTVIEWHELPER\_H}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QtCharts/QChartView>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QWheelEvent>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QMouseEvent>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <functional>}}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}\ :\ \textcolor{keyword}{public}\ QChartView\ \{}
-\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}(QChart*\ chart);}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classHorizontalOnlyChartView_af4fa096e706fad33f59803272de046c1}{\string~HorizontalOnlyChartView}}();}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{typedef}\ std::function<void()>\ \mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{MouseCallback}};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}{setMousePressedCallback}}(\mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{MouseCallback}}\ callback);}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}{setMouseReleasedCallback}}(\mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{MouseCallback}}\ callback);}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_a9c1211fa14c58981a51ca04128f82750}{wheelEvent}}(QWheelEvent\ *event)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_ab91fa124fd95f6ac7927a3c117d94e20}{mouseMoveEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_a4c89f560778513c03701bb27853aabb1}{mouseReleaseEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_a1e22032d9da3ed99ec35ed661098b792}{mousePressEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00072\ \ \ \ \ QPoint\ lastMousePos;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ isDragging\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{MouseCallback}}\ mousePressedCallback;\ \ \ }
-\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{MouseCallback}}\ mouseReleasedCallback;\ \ }
-\DoxyCodeLine{00076\ \};}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CHARTVIEWHELPER\_H}}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ CHARTVIEWHELPER\_H}}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ CHARTVIEWHELPER\_H}}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QtCharts/QChartView>}}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <QWheelEvent>}}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <QMouseEvent>}}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00029}\mbox{\hyperlink{classHorizontalOnlyChartView}{00029}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}\ :\ \textcolor{keyword}{public}\ QChartView\ \{}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00030}00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}(QChart*\ chart);}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classHorizontalOnlyChartView_af4fa096e706fad33f59803272de046c1}{\string~HorizontalOnlyChartView}}();}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00046}\mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{00046}}\ \ \ \ \ \textcolor{keyword}{typedef}\ std::function<void()>\ \mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{MouseCallback}};}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}{setMousePressedCallback}}(\mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{MouseCallback}}\ callback);}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}{setMouseReleasedCallback}}(\mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{MouseCallback}}\ callback);}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00064}00064\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00071}00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_a9c1211fa14c58981a51ca04128f82750}{wheelEvent}}(QWheelEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00079}00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_ab91fa124fd95f6ac7927a3c117d94e20}{mouseMoveEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_a4c89f560778513c03701bb27853aabb1}{mouseReleaseEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHorizontalOnlyChartView_a1e22032d9da3ed99ec35ed661098b792}{mousePressEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00097}00097\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00098}00098\ \ \ \ \ QPoint\ lastMousePos;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00099}00099\ \ \ \ \ \textcolor{keywordtype}{bool}\ isDragging\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00100}00100\ \ \ \ \ \mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{MouseCallback}}\ mousePressedCallback;\ \ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00101}00101\ \ \ \ \ \mbox{\hyperlink{classHorizontalOnlyChartView_aa58ca4fc9099cdeecda268d40790b37b}{MouseCallback}}\ mouseReleasedCallback;\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00102}00102\ \};}
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{chartviewhelper_8h_source_l00104}00104\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CHARTVIEWHELPER\_H}}
 
 \end{DoxyCode}

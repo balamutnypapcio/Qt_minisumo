@@ -1,0 +1,352 @@
+\doxysection{linechartmenager.\+cpp}
+\hypertarget{linechartmenager_8cpp_source}{}\label{linechartmenager_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}linechartmenager.h"{}}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <QResizeEvent>}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QDateTime>}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <QFont>}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00008}00008\ \textcolor{comment}{//\ Definicja\ stałej\ MAX\_POINTS,\ jeśli\ nie\ jest\ zdefiniowana\ w\ nagłówku}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00009}00009\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ LineChartMenager::MAX\_POINTS;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00011}\mbox{\hyperlink{classLineChartMenager_ab1b8488eceb8d1267945658eb1ba9242}{00011}}\ \mbox{\hyperlink{classLineChartMenager_ab1b8488eceb8d1267945658eb1ba9242}{LineChartMenager::LineChartMenager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QWidget*\ container,\ QObject\ *parent)}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00012}00012\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData),\ m\_container(container),}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00013}00013\ \ \ \ \ m\_chart(nullptr),\ m\_chartView(nullptr),\ m\_currentPoint(0),}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00014}00014\ \ \ \ \ m\_isAutoScrollEnabled(true),\ m\_currentTimeOffset(0)}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Sprawdzamy\ czy\ przekazane\ wskaźniki\ są\ poprawne}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_sensorData\ ||\ !m\_container)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}LineChartMenager:\ Nieprawidłowe\ wskaźniki\ do\ sensorData\ lub\ container!"{}};}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Instaluj\ filtr\ zdarzeń,\ aby\ reagować\ na\ zmianę\ rozmiaru}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00023}00023\ \ \ \ \ m\_container-\/>installEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}{setupChart}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Podobnie\ jak\ w\ MotorChartManager\ -\/\ nie\ aktualizujemy\ wykresu\ bezpośrednio\ w\ slotach}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00028}00028\ \ \ \ \ connect(m\_sensorData,\ \&\mbox{\hyperlink{classSensorData_a0ebd4e4804899960c3708d6ff6b4641e}{SensorData::lineSDataChanged}},\ \textcolor{keyword}{this},\ [\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Slot\ jest\ pusty\ -\/\ aktualizacja\ będzie\ wywoływana\ z\ zewnątrz}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00030}00030\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Usuwamy\ błędną\ linię\ łączącą\ z\ sygnałem\ resized,\ którego\ nie\ ma\ w\ QWidget}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00035}\mbox{\hyperlink{classLineChartMenager_aaae9e0c93e7319d61dd744970a6aa2c0}{00035}}\ \mbox{\hyperlink{classLineChartMenager_aaae9e0c93e7319d61dd744970a6aa2c0}{LineChartMenager::\string~LineChartMenager}}()}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Usuń\ filtr\ zdarzeń}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_container)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ m\_container-\/>removeEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ Nie\ usuwamy\ m\_container\ i\ m\_sensorData,\ bo\ zostały\ przekazane\ z\ zewnątrz}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{delete}\ m\_chart;\ \ \textcolor{comment}{//\ m\_chartView\ jest\ własnością\ m\_container\ i\ zostanie\ usunięty\ wraz\ z\ nim}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00046}\mbox{\hyperlink{classLineChartMenager_ad4b84cbb138d5ab9ffc414bf6416e24f}{00046}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classLineChartMenager_ad4b84cbb138d5ab9ffc414bf6416e24f}{LineChartMenager::eventFilter}}(QObject\ *watched,\ QEvent\ *event)}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00047}00047\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ Jeśli\ to\ zdarzenie\ zmiany\ rozmiaru\ dla\ kontenera}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (watched\ ==\ m\_container\ \&\&\ event-\/>type()\ ==\ QEvent::Resize)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dostosuj\ rozmiar\ widoku\ wykresu\ do\ kontenera}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ m\_chartView-\/>resize(m\_container-\/>size());}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dostosuj\ etykiety\ osi\ po\ zmianie\ rozmiaru\ -\/\ wywołujemy\ bezpośrednio\ tutaj}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}{adjustAxisLabels}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Pozwól\ na\ standardową\ obsługę\ zdarzenia}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{return}\ QObject::eventFilter(watched,\ event);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00063}\mbox{\hyperlink{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}{00063}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}{LineChartMenager::setupChart}}()}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00064}00064\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ Tworzenie\ wykresu}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00066}00066\ \ \ \ \ m\_chart\ =\ \textcolor{keyword}{new}\ QChart();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00067}00067\ \ \ \ \ m\_chart-\/>setMargins(QMargins(0,\ 0,\ 0,\ 0));\ \ \textcolor{comment}{//\ Przywracamy\ marginesy\ 0\ jak\ w\ oryginalnym\ kodzie}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00068}00068\ \ \ \ \ m\_chart-\/>setBackgroundRoundness(0);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00069}00069\ \ \ \ \ m\_chart-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00070}00070\ \ \ \ \ m\_chart-\/>setAnimationOptions(QChart::NoAnimation);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Tworzenie\ serii\ danych}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00073}00073\ \ \ \ \ m\_series1\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00074}00074\ \ \ \ \ m\_series2\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00075}00075\ \ \ \ \ m\_series3\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00077}00077\ \ \ \ \ m\_series1-\/>setName(\textcolor{stringliteral}{"{}LS\ 1"{}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00078}00078\ \ \ \ \ m\_series2-\/>setName(\textcolor{stringliteral}{"{}LS\ 2"{}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00079}00079\ \ \ \ \ m\_series3-\/>setName(\textcolor{stringliteral}{"{}LS\ 3"{}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ różnych\ kolorów\ dla\ serii}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00082}00082\ \ \ \ \ m\_series1-\/>setColor(QColor(255,\ 0,\ 0));\ \ \ \ \ \textcolor{comment}{//\ Czerwony}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00083}00083\ \ \ \ \ m\_series2-\/>setColor(QColor(0,\ 0,\ 255));\ \ \ \ \ \textcolor{comment}{//\ Niebieski}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00084}00084\ \ \ \ \ m\_series3-\/>setColor(QColor(0,\ 128,\ 0));\ \ \ \ \ \textcolor{comment}{//\ Zielony}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ grubszych\ linii}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00087}00087\ \ \ \ \ QPen\ pen1\ =\ m\_series1-\/>pen();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00088}00088\ \ \ \ \ QPen\ pen2\ =\ m\_series2-\/>pen();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00089}00089\ \ \ \ \ QPen\ pen3\ =\ m\_series3-\/>pen();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00090}00090\ \ \ \ \ pen1.setWidth(2);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00091}00091\ \ \ \ \ pen2.setWidth(2);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00092}00092\ \ \ \ \ pen3.setWidth(2);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00093}00093\ \ \ \ \ m\_series1-\/>setPen(pen1);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00094}00094\ \ \ \ \ m\_series2-\/>setPen(pen2);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00095}00095\ \ \ \ \ m\_series3-\/>setPen(pen3);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{comment}{//\ Dodawanie\ serii\ do\ wykresu}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00098}00098\ \ \ \ \ m\_chart-\/>addSeries(m\_series1);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00099}00099\ \ \ \ \ m\_chart-\/>addSeries(m\_series2);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00100}00100\ \ \ \ \ m\_chart-\/>addSeries(m\_series3);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ Tworzenie\ osi}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00103}00103\ \ \ \ \ m\_axisX\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00104}00104\ \ \ \ \ m\_axisY\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ Ukrywamy\ podpisy\ osi\ (zgodnie\ z\ wymaganiem)}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00107}00107\ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00108}00108\ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ Ustawiamy\ teksty\ osi\ (mimo\ że\ są\ ukryte)}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00111}00111\ \ \ \ \ m\_axisX-\/>setTitleText(\textcolor{stringliteral}{"{}Czas\ (ms)"{}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00112}00112\ \ \ \ \ m\_axisY-\/>setTitleText(\textcolor{stringliteral}{"{}Stan"{}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ Czcionka\ dla\ osi\ -\/\ ustawiamy\ na\ 8\ punktów\ jak\ w\ MotorChartManager}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00115}00115\ \ \ \ \ QFont\ axisFont;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00116}00116\ \ \ \ \ axisFont.setPointSize(8);\ \ \textcolor{comment}{//\ Stały\ rozmiar,\ identyczny\ jak\ w\ MotorChartManager}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00118}00118\ \ \ \ \ m\_axisX-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00119}00119\ \ \ \ \ m\_axisY-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00121}00121\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ formatu\ etykiet\ osi\ X\ -\/\ pełne\ wartości}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00122}00122\ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{comment}{//\ Dynamiczna\ liczba\ etykiet\ na\ osi\ X}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00125}00125\ \ \ \ \ m\_axisX-\/>setTickCount(5);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ osi\ Y\ dla\ wartości\ 0/1}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00128}00128\ \ \ \ \ m\_axisY-\/>setRange(0,\ 1.0);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00129}00129\ \ \ \ \ m\_axisY-\/>setTickCount(2);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00130}00130\ \ \ \ \ m\_axisY-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%d"{}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ początkowego\ zakresu\ osi\ X}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00133}00133\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ Dodawanie\ osi\ do\ wykresu}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00136}00136\ \ \ \ \ m\_chart-\/>addAxis(m\_axisX,\ Qt::AlignBottom);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00137}00137\ \ \ \ \ m\_chart-\/>addAxis(m\_axisY,\ Qt::AlignLeft);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{comment}{//\ Dołączanie\ osi\ do\ serii}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00140}00140\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00141}00141\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00142}00142\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00143}00143\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00144}00144\ \ \ \ \ m\_series3-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00145}00145\ \ \ \ \ m\_series3-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00147}00147\ \ \ \ \ m\_chart-\/>legend()-\/>setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00148}00148\ \ \ \ \ m\_chart-\/>legend()-\/>setAlignment(Qt::AlignRight);\ \ \textcolor{comment}{//\ Ustawia\ legendę\ po\ prawej\ stronie}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00149}00149\ \ \ \ \ m\_chart-\/>legend()-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00150}00150\ \ \ \ \ m\_chart-\/>legend()-\/>setBorderColor(Qt::transparent);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00152}00152\ \ \ \ \ \textcolor{comment}{//\ Dostosowanie\ położenia\ legendy}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00153}00153\ \ \ \ \ QRectF\ legendRect\ =\ m\_chart-\/>legend()-\/>geometry();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00154}00154\ \ \ \ \ legendRect.moveTopRight(m\_chart-\/>plotArea().topRight()\ -\/\ QPointF(10,\ 10));}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00155}00155\ \ \ \ \ m\_chart-\/>legend()-\/>setGeometry(legendRect);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ Ustawiamy\ czcionkę\ dla\ legendy}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00158}00158\ \ \ \ \ QFont\ legendFont;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00159}00159\ \ \ \ \ legendFont.setPointSize(8);\ \ \textcolor{comment}{//\ Stały\ rozmiar\ czcionki\ dla\ legendy}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00160}00160\ \ \ \ \ m\_chart-\/>legend()-\/>setFont(legendFont);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{comment}{//\ Tworzenie\ niestandardowego\ widoku\ wykresu}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00163}00163\ \ \ \ \ m\_chartView\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}(m\_chart);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00164}00164\ \ \ \ \ m\_chartView-\/>setRenderHint(QPainter::Antialiasing);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{comment}{//\ Wyłączamy\ paski\ przewijania,\ ale\ włączamy\ możliwość\ przeciągania}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00167}00167\ \ \ \ \ m\_chartView-\/>setRubberBand(QChartView::HorizontalRubberBand);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00168}00168\ \ \ \ \ m\_chartView-\/>setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00169}00169\ \ \ \ \ m\_chartView-\/>setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{comment}{//\ Podłączamy\ callbacki\ dla\ obsługi\ myszy}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00172}00172\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}{setMousePressedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99}{handleChartMousePressed}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00174}00174\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00175}00175\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}{setMouseReleasedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7}{handleChartMouseReleased}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00177}00177\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{comment}{//\ Nasłuchujemy\ zmiany\ zakresu\ osi\ X\ by\ ograniczyć\ przesuwanie}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00180}00180\ \ \ \ \ connect(m\_axisX,\ \&QValueAxis::rangeChanged,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}{LineChartMenager::enforceAxisLimits}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00182}00182\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ layoutu\ -\/\ identycznie\ jak\ w\ motorchartmanager}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00183}00183\ \ \ \ \ QLayout*\ existingLayout\ =\ m\_container-\/>layout();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00185}00185\ \ \ \ \ \textcolor{keywordflow}{if}\ (existingLayout)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Czyszczenie\ istniejącego\ layoutu}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (QLayoutItem*\ item\ =\ existingLayout-\/>takeAt(0))\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (QWidget*\ widget\ =\ item-\/>widget())\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ widget-\/>setParent(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ widget;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ item;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ existingLayout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00195}00195\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ QVBoxLayout\ *layout\ =\ \textcolor{keyword}{new}\ QVBoxLayout(m\_container);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ layout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ layout-\/>setContentsMargins(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ layout-\/>setSpacing(0);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ m\_container-\/>setLayout(layout);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00201}00201\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00203}00203\ \ \ \ \ \textcolor{comment}{//\ Początkowe\ dostosowanie\ etykiet\ osi\ X\ do\ rozmiaru}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00204}00204\ \ \ \ \ QTimer::singleShot(0,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}{LineChartMenager::adjustAxisLabels}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00205}00205\ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00207}\mbox{\hyperlink{classLineChartMenager_aeea626a786f77e752dcb62ff11a266fc}{00207}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_aeea626a786f77e752dcb62ff11a266fc}{LineChartMenager::updateChart}}(\textcolor{keywordtype}{int}\ time)}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00208}00208\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00209}00209\ \ \ \ \ \textcolor{comment}{//\ Dodanie\ nowych\ punktów\ do\ wykresów\ na\ podstawie\ bieżących\ danych\ z\ SensorData}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00210}00210\ \ \ \ \ m\_series1-\/>append(time,\ m\_sensorData-\/>getLineS1Active()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00211}00211\ \ \ \ \ m\_series2-\/>append(time,\ m\_sensorData-\/>getLineS2Active()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00212}00212\ \ \ \ \ m\_series3-\/>append(time,\ m\_sensorData-\/>getLineS3Active()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00214}00214\ \ \ \ \ m\_currentPoint++;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00215}00215\ \ \ \ \ m\_latestDataTime\ =\ time;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00217}00217\ \ \ \ \ \textcolor{comment}{//\ Automatyczne\ przesuwanie\ wykresu\ gdy\ nowe\ dane\ wykraczają\ poza\ widoczny\ obszar}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00218}00218\ \ \ \ \ qreal\ currentMax\ =\ m\_axisX-\/>max();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00220}00220\ \ \ \ \ \textcolor{keywordflow}{if}\ (time\ >\ currentMax\ ||\ m\_isAutoScrollEnabled)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Przesuwamy\ zakres\ osi\ X,\ aby\ pokazać\ najnowsze\ dane}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(time\ -\/\ MAX\_POINTS\ *\ 100,\ time);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00223}00223\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00225}00225\ \ \ \ \ \textcolor{comment}{//\ Usuwamy\ stare\ punkty,\ tylko\ gdy\ jest\ ich\ za\ dużo\ (dla\ wydajności)}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00226}00226\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_HISTORY\ =\ MAX\_POINTS\ *\ 10;\ \textcolor{comment}{//\ Przechowujemy\ więcej\ danych\ do\ przewijania}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00228}00228\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_series1-\/>count()\ >\ MAX\_HISTORY)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pointsToRemove\ =\ m\_series1-\/>count()\ -\/\ MAX\_HISTORY;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ m\_series1-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ m\_series2-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ m\_series3-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00233}00233\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00234}00234\ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00236}\mbox{\hyperlink{classLineChartMenager_ac69f0c1db373525cdcf1fb2223b789d0}{00236}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_ac69f0c1db373525cdcf1fb2223b789d0}{LineChartMenager::clearChart}}()}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00237}00237\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00238}00238\ \ \ \ \ m\_series1-\/>clear();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00239}00239\ \ \ \ \ m\_series2-\/>clear();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00240}00240\ \ \ \ \ m\_series3-\/>clear();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00242}00242\ \ \ \ \ m\_currentPoint\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00243}00243\ \ \ \ \ m\_currentTimeOffset\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00244}00244\ \ \ \ \ m\_latestDataTime\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00245}00245\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00247}00247\ \ \ \ \ \textcolor{comment}{//\ Resetowanie\ zakresu\ osi\ X}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00248}00248\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00249}00249\ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00251}\mbox{\hyperlink{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99}{00251}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99}{LineChartMenager::handleChartMousePressed}}()}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00252}00252\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00253}00253\ \ \ \ \ \textcolor{comment}{//\ Gdy\ użytkownik\ kliknie\ i\ zacznie\ przesuwać,\ wyłączamy\ auto-\/scrolling}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00254}00254\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00255}00255\ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00257}\mbox{\hyperlink{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7}{00257}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7}{LineChartMenager::handleChartMouseReleased}}()}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00258}00258\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00259}00259\ \ \ \ \ \textcolor{comment}{//\ Wymuszamy\ przestrzeganie\ limitów\ osi}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00260}00260\ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}{enforceAxisLimits}}(m\_axisX-\/>min(),\ m\_axisX-\/>max());}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00261}00261\ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00263}\mbox{\hyperlink{classLineChartMenager_a81b170401c7cf07380d64dde3b00b738}{00263}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_a81b170401c7cf07380d64dde3b00b738}{LineChartMenager::resetToCurrentData}}()}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00264}00264\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00265}00265\ \ \ \ \ \textcolor{comment}{//\ Przywracamy\ auto-\/scrolling\ i\ pokazujemy\ najnowsze\ dane}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00266}00266\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00268}00268\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(m\_latestDataTime\ -\/\ MAX\_POINTS\ *\ 100,\ m\_latestDataTime);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00270}00270\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00272}00272\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00273}00273\ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00275}\mbox{\hyperlink{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}{00275}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}{LineChartMenager::enforceAxisLimits}}(qreal\ min,\ qreal\ max)}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00276}00276\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00277}00277\ \ \ \ \ \textcolor{comment}{//\ Blokujemy\ przesuwanie\ poza\ zakres\ danych}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00278}00278\ \ \ \ \ \textcolor{keywordtype}{bool}\ needAdjustment\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00279}00279\ \ \ \ \ qreal\ newMin\ =\ min;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00280}00280\ \ \ \ \ qreal\ newMax\ =\ max;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00281}00281\ \ \ \ \ qreal\ rangeSize\ =\ max\ -\/\ min;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00283}00283\ \ \ \ \ \textcolor{comment}{//\ Nie\ pozwalamy\ przesunąć\ w\ lewo\ poniżej\ zera}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00284}00284\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ newMin\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ newMax\ =\ rangeSize;\ \ \textcolor{comment}{//\ Zachowujemy\ szerokość\ zakresu}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00288}00288\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00290}00290\ \ \ \ \ \textcolor{comment}{//\ Nie\ pozwalamy\ przesunąć\ w\ prawo\ poza\ aktualny\ czas\ danych}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00291}00291\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ m\_latestDataTime\ \&\&\ m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ newMax\ =\ m\_latestDataTime;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ newMin\ =\ qMax(0.0,\ m\_latestDataTime\ -\/\ rangeSize);\ \ \textcolor{comment}{//\ Zachowujemy\ szerokość\ zakresu,\ ale\ nie\ poniżej\ zera}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00295}00295\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00297}00297\ \ \ \ \ \textcolor{comment}{//\ Jeśli\ potrzebna\ korekta,\ to\ blokujemy\ sygnał\ zmiany\ zakresu\ i\ ustawiamy\ nowy\ zakres}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00298}00298\ \ \ \ \ \textcolor{keywordflow}{if}\ (needAdjustment)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Blokujemy\ sygnały,\ aby\ zapobiec\ pętli\ sygnałów}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ QSignalBlocker\ blocker(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(newMin,\ newMax);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00302}00302\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00303}00303\ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00305}\mbox{\hyperlink{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}{00305}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}{LineChartMenager::adjustAxisLabels}}()}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00306}00306\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00307}00307\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView\ \&\&\ m\_axisX)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obliczamy\ szerokość\ dostępną\ dla\ wykresu}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ chartWidth\ =\ m\_chartView-\/>width();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \ \textcolor{comment}{//\ Wykres\ jeszcze\ nie\ ma\ poprawnych\ wymiarów}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dostosowujemy\ liczbę\ etykiet\ w\ zależności\ od\ szerokości}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ labelCount;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 100)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bardzo\ mały\ wykres\ -\/\ tylko\ 2\ etykiety\ (początek\ i\ koniec)}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 200)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mały\ wykres\ -\/\ 3\ etykiety}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 300)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Średni\ wykres\ -\/\ 4\ etykiety}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Duży\ wykres\ -\/\ 5\ etykiet}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ustawiamy\ nową\ liczbę\ etykiet}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_axisX-\/>tickCount()\ !=\ labelCount)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setTickCount(labelCount);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Upewniamy\ się,\ że\ tytuł\ osi\ X\ jest\ zawsze\ widoczny}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dodatkowo\ modyfikujemy\ sposób\ wyświetlania\ etykiet}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 150)\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dla\ bardzo\ małych\ wykresów\ skracamy\ format\ etykiet}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dla\ większych\ wykresów\ pokazujemy\ pełny\ format}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00346}00346\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8cpp_source_l00347}00347\ \}}
+
+\end{DoxyCode}

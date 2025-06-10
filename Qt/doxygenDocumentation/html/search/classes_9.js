@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['visualizationmanager_0',['VisualizationManager',['../classVisualizationManager.html',1,'']]]
+  ['tcpmanager_0',['TCPManager',['../classTCPManager.html',1,'']]],
+  ['tofchartmanager_1',['TofChartManager',['../classTofChartManager.html',1,'']]]
 ];

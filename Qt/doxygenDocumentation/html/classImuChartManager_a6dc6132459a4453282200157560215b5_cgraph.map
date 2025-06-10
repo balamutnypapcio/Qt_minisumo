@@ -1,0 +1,5 @@
+<map id="ImuChartManager::handleChartMouseReleased" name="ImuChartManager::handleChartMouseReleased">
+<area shape="rect" id="Node000001" title="Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania." alt="" coords="5,5,232,45"/>
+<area shape="rect" id="Node000002" href="$classImuChartManager.html#a3704b4340f459b08b6ba87d462b149c0" title="Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas])." alt="" coords="280,5,476,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,23,266,23,266,28,232,28"/>
+</map>

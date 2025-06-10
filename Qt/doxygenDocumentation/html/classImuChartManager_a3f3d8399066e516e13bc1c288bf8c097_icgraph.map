@@ -1,0 +1,11 @@
+<map id="ImuChartManager::adjustAxisLabels" name="ImuChartManager::adjustAxisLabels">
+<area shape="rect" id="Node000001" title="Dostosowuje liczbę etykiet osi X do rozmiaru wykresu." alt="" coords="527,23,741,63"/>
+<area shape="rect" id="Node000002" href="$classImuChartManager.html#ad90158920eb8dddb4a66fa9449973338" title="Filtr zdarzeń do obsługi resize kontenera wykresu." alt="" coords="261,5,478,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="513,34,478,31,479,26,513,29"/>
+<area shape="rect" id="Node000003" href="$classImuChartManager.html#af43ca7f8c5f2ab7db02c2fa72ee1a8fc" title="Inicjalizuje (tworzy) wykres IMU i ustawia wszystkie parametry." alt="" coords="260,55,479,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="513,57,479,60,478,55,513,52"/>
+<area shape="rect" id="Node000004" href="$classImuChartManager.html#a0cbf6e4e9759f2b79c9162598bb7aa4b" title="Konstruktor." alt="" coords="5,18,212,58"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="246,56,212,52,213,47,247,51"/>
+<area shape="rect" id="Node000005" href="$classMainWindow.html#a996c5a2b6f77944776856f08ec30858d" title="Konstruktor klasy MainWindow." alt="" coords="10,83,207,108"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="246,83,208,87,207,82,246,78"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="MotorChartManager::enforceAxisLimits" name="MotorChartManager::enforceAxisLimits">
+<area shape="rect" id="Node000001" title="Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas])." alt="" coords="711,35,871,75"/>
+<area shape="rect" id="Node000002" href="$classMotorChartManager.html#ae0ac3fc2c8546fbcf5e9b4dee08c575d" title="Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania." alt="" coords="459,5,663,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="697,45,662,41,663,36,697,40"/>
+<area shape="rect" id="Node000003" href="$classMotorChartManager.html#a85717a01fbee0e8d8ddd24e83f6bc418" title="Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry." alt="" coords="251,35,411,75"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="697,60,663,60,459,60,411,59,411,54,459,55,663,55,697,54"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="445,43,411,47,411,42,444,37"/>
+<area shape="rect" id="Node000004" href="$classMainWindow.html#a996c5a2b6f77944776856f08ec30858d" title="Konstruktor klasy MainWindow." alt="" coords="5,13,203,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="237,45,202,41,203,35,237,40"/>
+<area shape="rect" id="Node000005" href="$classMotorChartManager.html#aa5b587327b9d86bc367fcb6bf20dd1e0" title="Konstruktor." alt="" coords="24,63,184,103"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="237,69,185,75,184,70,237,64"/>
+</map>

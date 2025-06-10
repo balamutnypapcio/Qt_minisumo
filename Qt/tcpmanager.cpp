@@ -12,7 +12,6 @@ TCPManager::TCPManager(SensorData* sensorData, QObject *parent)
     connect(m_socket, &QTcpSocket::stateChanged, this, &TCPManager::onSocketStateChanged);
     connect(m_socket, static_cast<void (QTcpSocket::*)(QAbstractSocket::SocketError)>(&QTcpSocket::errorOccurred),
             this, &TCPManager::onSocketError);
-
 }
 
 TCPManager::~TCPManager()
@@ -42,14 +41,12 @@ bool TCPManager::connectToDevice(const QString &hostAddress, quint16 port)
 
 void TCPManager::disconnectFromDevice()
 {
-    // Rozłączenie z urządzeniem
     m_socket->close();
     qDebug() << "Rozłączono z ESP";
 }
 
 bool TCPManager::isConnected() const
 {
-    // Sprawdzenie stanu połączenia
     return m_socket->state() == QAbstractSocket::ConnectedState;
 }
 
@@ -84,7 +81,6 @@ void TCPManager::processDataLine(const QString &line)
     }
 
     try {
-        // Parsowanie danych
         m_timestamp = data[0].toInt();
         bool tof1 = (data[1].toInt() == 1);
         bool tof2 = (data[2].toInt() == 1);
@@ -98,10 +94,8 @@ void TCPManager::processDataLine(const QString &line)
         float imuX = data[10].toFloat();
         float imuY = data[11].toFloat();
 
-        // Aktualizacja danych sensorów
         m_sensorData->updateAllData(tof1, tof2, tof3, tof4, lineS1, lineS2, lineS3, motor1, motor2, imuX, imuY);
 
-        // Emitowanie sygnału o aktualizacji danych
         emit dataUpdated(m_timestamp);
     } catch (...) {
         qWarning() << "Błąd przetwarzania linii danych:" << line;
@@ -110,7 +104,6 @@ void TCPManager::processDataLine(const QString &line)
 
 void TCPManager::onSocketStateChanged(QAbstractSocket::SocketState state)
 {
-    // Obsługa zmiany stanu gniazda
     switch (state) {
     case QAbstractSocket::ConnectedState:
         qDebug() << "Połączono z ESP";
@@ -128,7 +121,7 @@ void TCPManager::onSocketStateChanged(QAbstractSocket::SocketState state)
 
 void TCPManager::onSocketError(QAbstractSocket::SocketError error)
 {
-    // Obsługa błędów gniazda
+    Q_UNUSED(error);
     QString errorMsg = "Błąd gniazda: " + m_socket->errorString();
     qWarning() << errorMsg;
     emit errorOccurred(errorMsg);

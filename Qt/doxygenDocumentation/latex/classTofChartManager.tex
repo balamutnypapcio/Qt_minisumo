@@ -2,7 +2,7 @@
 \hypertarget{classTofChartManager}{}\label{classTofChartManager}\index{TofChartManager@{TofChartManager}}
 
 
-Zarządza wykresem danych z czujników ToF (Time of Flight).  
+Zarządza dynamicznym wykresem prezentującym dane z czujników ToF (Time of Flight).  
 
 
 
@@ -11,8 +11,7 @@ Zarządza wykresem danych z czujników ToF (Time of Flight).
 
 
 
-Diagram dziedziczenia dla Tof\+Chart\+Manager
-\nopagebreak
+Diagram dziedziczenia dla Tof\+Chart\+Manager\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Diagram dziedziczenia dla Tof\+Chart\+Manager
 \end{figure}
 
 
-Diagram współpracy dla Tof\+Chart\+Manager\+:
-\nopagebreak
+Diagram współpracy dla Tof\+Chart\+Manager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,44 +30,583 @@ Diagram współpracy dla Tof\+Chart\+Manager\+:
 \doxysubsubsection*{Metody publiczne}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classTofChartManager_a004c9c1a278d99138a7e34802c175fc6}\label{classTofChartManager_a004c9c1a278d99138a7e34802c175fc6} 
-{\bfseries Tof\+Chart\+Manager} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QWidget \texorpdfstring{$\ast$}{*}container, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
-\item 
-\Hypertarget{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874}\label{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874} 
-void {\bfseries setup\+Chart} ()
-\begin{DoxyCompactList}\small\item\em Inicjalizuje wykres. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTofChartManager_a004c9c1a278d99138a7e34802c175fc6}{Tof\+Chart\+Manager}} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QWidget \texorpdfstring{$\ast$}{*}container, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Konstruktor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTofChartManager_a6f4c1b85f96d66f1304af45da4c7e61e}{\texorpdfstring{$\sim$}{\string~}\+Tof\+Chart\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. Usuwa wykres i zwalnia zasoby. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874}{setup\+Chart}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classTofChartManager_a4c4fc6ae05b60d7808d408932f8fce3c}{update\+Chart}} (int time)
-\begin{DoxyCompactList}\small\item\em Aktualizuje dane na wykresie. \end{DoxyCompactList}\item 
-\Hypertarget{classTofChartManager_ae1eea1cc7cff85d4d4464f33e7abeb35}\label{classTofChartManager_ae1eea1cc7cff85d4d4464f33e7abeb35} 
-void {\bfseries clear\+Chart} ()
-\begin{DoxyCompactList}\small\item\em Czyści dane z wykresu. \end{DoxyCompactList}\item 
-\Hypertarget{classTofChartManager_a76e913782a964eccae9888beef763b6f}\label{classTofChartManager_a76e913782a964eccae9888beef763b6f} 
-void {\bfseries reset\+To\+Current\+Data} ()
-\begin{DoxyCompactList}\small\item\em Przywraca widok do aktualnych danych (włącza auto-\/scrolling). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Aktualizuje wykres o nowe dane z \doxylink{classSensorData}{Sensor\+Data}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTofChartManager_ae1eea1cc7cff85d4d4464f33e7abeb35}{clear\+Chart}} ()
+\begin{DoxyCompactList}\small\item\em Czyści wszystkie próbki z wykresu oraz resetuje oś X. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTofChartManager_a76e913782a964eccae9888beef763b6f}{reset\+To\+Current\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Przywraca widok wykresu do najnowszych danych (włącza auto-\/scroll). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Metody chronione}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classTofChartManager_a89703b8b34f39fac0281d3d21ba75f1b}\label{classTofChartManager_a89703b8b34f39fac0281d3d21ba75f1b} 
-bool {\bfseries event\+Filter} (QObject \texorpdfstring{$\ast$}{*}watched, QEvent \texorpdfstring{$\ast$}{*}event) override
-\begin{DoxyCompactList}\small\item\em Filtr zdarzeń do obsługi zmiany rozmiaru kontenera. \end{DoxyCompactList}\item 
-\Hypertarget{classTofChartManager_ae0ac92098b83bc7ac69e227ae5b1b853}\label{classTofChartManager_ae0ac92098b83bc7ac69e227ae5b1b853} 
-void {\bfseries handle\+Chart\+Mouse\+Pressed} ()
-\begin{DoxyCompactList}\small\item\em Obsługa kliknięcia i przesunięcia myszy na wykresie. \end{DoxyCompactList}\item 
-\Hypertarget{classTofChartManager_a01396fca8c9f1064cf7be0618484227b}\label{classTofChartManager_a01396fca8c9f1064cf7be0618484227b} 
-void {\bfseries handle\+Chart\+Mouse\+Released} ()
-\item 
-\Hypertarget{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7}\label{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7} 
-void {\bfseries enforce\+Axis\+Limits} (qreal min, qreal max)
-\begin{DoxyCompactList}\small\item\em Wymusza przestrzeganie limitów osi X (min ≥ 0, max ≤ aktualny\+\_\+czas). \end{DoxyCompactList}\item 
-\Hypertarget{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e}\label{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e} 
-void {\bfseries adjust\+Axis\+Labels} ()
-\begin{DoxyCompactList}\small\item\em Dostosowuje etykiety osi X do bieżącego rozmiaru wykresu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{classTofChartManager_a89703b8b34f39fac0281d3d21ba75f1b}{event\+Filter}} (QObject \texorpdfstring{$\ast$}{*}watched, QEvent \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Filtr zdarzeń do obsługi resize kontenera wykresu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTofChartManager_ae0ac92098b83bc7ac69e227ae5b1b853}{handle\+Chart\+Mouse\+Pressed}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-\/scroll. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTofChartManager_a01396fca8c9f1064cf7be0618484227b}{handle\+Chart\+Mouse\+Released}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7}{enforce\+Axis\+Limits}} (qreal min, qreal max)
+\begin{DoxyCompactList}\small\item\em Wymusza przestrzeganie limitów osi X (brak przewijania poza \mbox{[}0, aktualny\+\_\+czas\mbox{]}). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e}{adjust\+Axis\+Labels}} ()
+\begin{DoxyCompactList}\small\item\em Dostosowuje liczbę etykiet osi X do rozmiaru wykresu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Opis szczegółowy}
-Zarządza wykresem danych z czujników ToF (Time of Flight). 
+Zarządza dynamicznym wykresem prezentującym dane z czujników ToF (Time of Flight). 
+
+Odpowiada za\+:
+\begin{DoxyItemize}
+\item Tworzenie i konfigurację wykresu (QChart) dla czterech sygnałów ToF.
+\item Dodawanie nowych próbek, automatyczne przewijanie oraz czyszczenie danych.
+\item Dynamiczne dopasowywanie osi do okna i blokowanie przewijania poza zakres danych.
+\item Obsługę auto-\/scrollingu oraz wyłączanie go przy ręcznej interakcji użytkownika.
+\end{DoxyItemize}
+
+Współpracuje z \doxylink{classHorizontalOnlyChartView}{Horizontal\+Only\+Chart\+View} (ograniczenie interakcji do osi X).
+
+Przykład użycia\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classTofChartManager}{TofChartManager}}*\ tofMgr\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classTofChartManager}{TofChartManager}}(sensorData,\ ui-\/>tofChartContainer,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{connect(csvManager,\ \&\mbox{\hyperlink{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}{CSVManager::dataUpdated}},\ tofMgr,\ \&\mbox{\hyperlink{classTofChartManager_a4c4fc6ae05b60d7808d408932f8fce3c}{TofChartManager::updateChart}});}
+
+\end{DoxyCode}
+
+
+\begin{DoxyAuthor}{Autor}
+Jakub Wilczyński 
+\end{DoxyAuthor}
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8h_source_l00034}{34}} pliku \mbox{\hyperlink{tofchartmanager_8h_source}{tofchartmanager.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classTofChartManager_a004c9c1a278d99138a7e34802c175fc6}\label{classTofChartManager_a004c9c1a278d99138a7e34802c175fc6} 
+\index{TofChartManager@{TofChartManager}!TofChartManager@{TofChartManager}}
+\index{TofChartManager@{TofChartManager}!TofChartManager@{TofChartManager}}
+\doxysubsubsection{\texorpdfstring{TofChartManager()}{TofChartManager()}}
+{\footnotesize\ttfamily Tof\+Chart\+Manager\+::\+Tof\+Chart\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}}]{sensor\+Data,  }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{container,  }\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Konstruktor. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em sensor\+Data} & Wskaźnik do \doxylink{classSensorData}{Sensor\+Data} (źródło danych ToF). \\
+\hline
+{\em container} & QWidget, w którym osadzany jest wykres. \\
+\hline
+{\em parent} & Opcjonalny rodzic QObject. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00011}{11}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData),\ m\_container(container),}
+\DoxyCodeLine{00013\ \ \ \ \ m\_chart(\textcolor{keyword}{nullptr}),\ m\_chartView(\textcolor{keyword}{nullptr}),\ m\_currentPoint(0),}
+\DoxyCodeLine{00014\ \ \ \ \ m\_isAutoScrollEnabled(\textcolor{keyword}{true}),\ m\_currentTimeOffset(0)}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Sprawdź\ poprawność\ wskaźników}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_sensorData\ ||\ !m\_container)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}TofChartManager:\ Nieprawidłowe\ wskaźniki\ do\ sensorData\ lub\ container!"{}};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Instaluj\ filtr\ zdarzeń\ dla\ kontenera}}
+\DoxyCodeLine{00023\ \ \ \ \ m\_container-\/>installEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874}{setupChart}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Slot\ SensorData::tofDataChanged\ zostaje\ pusty\ –\ aktualizacja\ wywoływana\ z\ zewnątrz}}
+\DoxyCodeLine{00028\ \ \ \ \ connect(m\_sensorData,\ \&\mbox{\hyperlink{classSensorData_a93a841a87717c333f93c8e2ab1ba479e}{SensorData::tofDataChanged}},\ \textcolor{keyword}{this},\ [\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Slot\ pusty\ –\ aktualizacja\ wykresu\ przez\ updateChart(time)}}
+\DoxyCodeLine{00030\ \ \ \ \ \});}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTofChartManager_a004c9c1a278d99138a7e34802c175fc6_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classTofChartManager_a6f4c1b85f96d66f1304af45da4c7e61e}\label{classTofChartManager_a6f4c1b85f96d66f1304af45da4c7e61e} 
+\index{TofChartManager@{TofChartManager}!````~TofChartManager@{\texorpdfstring{$\sim$}{\string~}TofChartManager}}
+\index{````~TofChartManager@{\texorpdfstring{$\sim$}{\string~}TofChartManager}!TofChartManager@{TofChartManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TofChartManager()}{\string~TofChartManager()}}
+{\footnotesize\ttfamily Tof\+Chart\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Tof\+Chart\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destruktor. Usuwa wykres i zwalnia zasoby. 
+
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00033}{33}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Usuń\ filtr\ zdarzeń}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_container)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ m\_container-\/>removeEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{delete}\ m\_chart;\ \ \textcolor{comment}{//\ m\_chartView\ usuwany\ przez\ m\_container}}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}
+
 
 \doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e}\label{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e} 
+\index{TofChartManager@{TofChartManager}!adjustAxisLabels@{adjustAxisLabels}}
+\index{adjustAxisLabels@{adjustAxisLabels}!TofChartManager@{TofChartManager}}
+\doxysubsubsection{\texorpdfstring{adjustAxisLabels()}{adjustAxisLabels()}}
+{\footnotesize\ttfamily void Tof\+Chart\+Manager\+::adjust\+Axis\+Labels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Dostosowuje liczbę etykiet osi X do rozmiaru wykresu. 
+
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00270}{270}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00271\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView\ \&\&\ m\_axisX)\ \{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ chartWidth\ =\ m\_chartView-\/>width();}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <=\ 0)}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ labelCount;}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 100)\ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 2;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 200)\ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 3;}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 300)\ \{}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 4;}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 5;}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_axisX-\/>tickCount()\ !=\ labelCount)\ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setTickCount(labelCount);}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 150)\ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00301\ \ \ \ \ \}}
+\DoxyCodeLine{00302\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classTofChartManager_ae1eea1cc7cff85d4d4464f33e7abeb35}\label{classTofChartManager_ae1eea1cc7cff85d4d4464f33e7abeb35} 
+\index{TofChartManager@{TofChartManager}!clearChart@{clearChart}}
+\index{clearChart@{clearChart}!TofChartManager@{TofChartManager}}
+\doxysubsubsection{\texorpdfstring{clearChart()}{clearChart()}}
+{\footnotesize\ttfamily void Tof\+Chart\+Manager\+::clear\+Chart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Czyści wszystkie próbki z wykresu oraz resetuje oś X. 
+
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00209}{209}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00210\ \{}
+\DoxyCodeLine{00211\ \ \ \ \ m\_series1-\/>clear();}
+\DoxyCodeLine{00212\ \ \ \ \ m\_series2-\/>clear();}
+\DoxyCodeLine{00213\ \ \ \ \ m\_series3-\/>clear();}
+\DoxyCodeLine{00214\ \ \ \ \ m\_series4-\/>clear();}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ m\_currentPoint\ =\ 0;}
+\DoxyCodeLine{00217\ \ \ \ \ m\_currentTimeOffset\ =\ 0;}
+\DoxyCodeLine{00218\ \ \ \ \ m\_latestDataTime\ =\ 0;}
+\DoxyCodeLine{00219\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00222\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7}\label{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7} 
+\index{TofChartManager@{TofChartManager}!enforceAxisLimits@{enforceAxisLimits}}
+\index{enforceAxisLimits@{enforceAxisLimits}!TofChartManager@{TofChartManager}}
+\doxysubsubsection{\texorpdfstring{enforceAxisLimits()}{enforceAxisLimits()}}
+{\footnotesize\ttfamily void Tof\+Chart\+Manager\+::enforce\+Axis\+Limits (\begin{DoxyParamCaption}\item[{qreal}]{min,  }\item[{qreal}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wymusza przestrzeganie limitów osi X (brak przewijania poza \mbox{[}0, aktualny\+\_\+czas\mbox{]}). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em min} & Aktualne minimum zakresu osi X. \\
+\hline
+{\em max} & Aktualne maksimum zakresu osi X. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00245}{245}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00246\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordtype}{bool}\ needAdjustment\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00248\ \ \ \ \ qreal\ newMin\ =\ min;}
+\DoxyCodeLine{00249\ \ \ \ \ qreal\ newMax\ =\ max;}
+\DoxyCodeLine{00250\ \ \ \ \ qreal\ rangeSize\ =\ max\ -\/\ min;}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\ <\ 0)\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ newMin\ =\ 0;}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ newMax\ =\ rangeSize;}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00256\ \ \ \ \ \}}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ m\_latestDataTime\ \&\&\ m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ newMax\ =\ m\_latestDataTime;}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ newMin\ =\ qMax(0.0,\ m\_latestDataTime\ -\/\ rangeSize);}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00262\ \ \ \ \ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordflow}{if}\ (needAdjustment)\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ QSignalBlocker\ blocker(m\_axisX);}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(newMin,\ newMax);}
+\DoxyCodeLine{00267\ \ \ \ \ \}}
+\DoxyCodeLine{00268\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classTofChartManager_a89703b8b34f39fac0281d3d21ba75f1b}\label{classTofChartManager_a89703b8b34f39fac0281d3d21ba75f1b} 
+\index{TofChartManager@{TofChartManager}!eventFilter@{eventFilter}}
+\index{eventFilter@{eventFilter}!TofChartManager@{TofChartManager}}
+\doxysubsubsection{\texorpdfstring{eventFilter()}{eventFilter()}}
+{\footnotesize\ttfamily bool Tof\+Chart\+Manager\+::event\+Filter (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{watched,  }\item[{QEvent \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Filtr zdarzeń do obsługi resize kontenera wykresu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em watched} & Obiekt obserwowany. \\
+\hline
+{\em event} & Wskaźnik do zdarzenia. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+true jeśli filtr przechwycił zdarzenie. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00043}{43}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (watched\ ==\ m\_container\ \&\&\ event-\/>type()\ ==\ QEvent::Resize)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ m\_chartView-\/>resize(m\_container-\/>size());}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e}{adjustAxisLabels}}();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Pozwól\ na\ domyślną\ obsługę\ zdarzenia}}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{return}\ QObject::eventFilter(watched,\ event);}
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTofChartManager_a89703b8b34f39fac0281d3d21ba75f1b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classTofChartManager_ae0ac92098b83bc7ac69e227ae5b1b853}\label{classTofChartManager_ae0ac92098b83bc7ac69e227ae5b1b853} 
+\index{TofChartManager@{TofChartManager}!handleChartMousePressed@{handleChartMousePressed}}
+\index{handleChartMousePressed@{handleChartMousePressed}!TofChartManager@{TofChartManager}}
+\doxysubsubsection{\texorpdfstring{handleChartMousePressed()}{handleChartMousePressed()}}
+{\footnotesize\ttfamily void Tof\+Chart\+Manager\+::handle\+Chart\+Mouse\+Pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-\/scroll. 
+
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00224}{224}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00225\ \{}
+\DoxyCodeLine{00226\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00227\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTofChartManager_ae0ac92098b83bc7ac69e227ae5b1b853_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classTofChartManager_a01396fca8c9f1064cf7be0618484227b}\label{classTofChartManager_a01396fca8c9f1064cf7be0618484227b} 
+\index{TofChartManager@{TofChartManager}!handleChartMouseReleased@{handleChartMouseReleased}}
+\index{handleChartMouseReleased@{handleChartMouseReleased}!TofChartManager@{TofChartManager}}
+\doxysubsubsection{\texorpdfstring{handleChartMouseReleased()}{handleChartMouseReleased()}}
+{\footnotesize\ttfamily void Tof\+Chart\+Manager\+::handle\+Chart\+Mouse\+Released (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania. 
+
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00229}{229}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00230\ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \mbox{\hyperlink{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7}{enforceAxisLimits}}(m\_axisX-\/>min(),\ m\_axisX-\/>max());}
+\DoxyCodeLine{00232\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTofChartManager_a01396fca8c9f1064cf7be0618484227b_cgraph}
+\end{center}
+\end{figure}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTofChartManager_a01396fca8c9f1064cf7be0618484227b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classTofChartManager_a76e913782a964eccae9888beef763b6f}\label{classTofChartManager_a76e913782a964eccae9888beef763b6f} 
+\index{TofChartManager@{TofChartManager}!resetToCurrentData@{resetToCurrentData}}
+\index{resetToCurrentData@{resetToCurrentData}!TofChartManager@{TofChartManager}}
+\doxysubsubsection{\texorpdfstring{resetToCurrentData()}{resetToCurrentData()}}
+{\footnotesize\ttfamily void Tof\+Chart\+Manager\+::reset\+To\+Current\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Przywraca widok wykresu do najnowszych danych (włącza auto-\/scroll). 
+
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00234}{234}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00235\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(m\_latestDataTime\ -\/\ MAX\_POINTS\ *\ 100,\ m\_latestDataTime);}
+\DoxyCodeLine{00240\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874}\label{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874} 
+\index{TofChartManager@{TofChartManager}!setupChart@{setupChart}}
+\index{setupChart@{setupChart}!TofChartManager@{TofChartManager}}
+\doxysubsubsection{\texorpdfstring{setupChart()}{setupChart()}}
+{\footnotesize\ttfamily void Tof\+Chart\+Manager\+::setup\+Chart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry. 
+
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00055}{55}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ m\_chart\ =\ \textcolor{keyword}{new}\ QChart();}
+\DoxyCodeLine{00058\ \ \ \ \ m\_chart-\/>setMargins(QMargins(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00059\ \ \ \ \ m\_chart-\/>setBackgroundRoundness(0);}
+\DoxyCodeLine{00060\ \ \ \ \ m\_chart-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00061\ \ \ \ \ m\_chart-\/>setAnimationOptions(QChart::NoAnimation);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ m\_series1\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00064\ \ \ \ \ m\_series2\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00065\ \ \ \ \ m\_series3\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00066\ \ \ \ \ m\_series4\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ m\_series1-\/>setName(\textcolor{stringliteral}{"{}ToF\ L"{}});}
+\DoxyCodeLine{00069\ \ \ \ \ m\_series2-\/>setName(\textcolor{stringliteral}{"{}ToF\ FL"{}});}
+\DoxyCodeLine{00070\ \ \ \ \ m\_series3-\/>setName(\textcolor{stringliteral}{"{}ToF\ FR"{}});}
+\DoxyCodeLine{00071\ \ \ \ \ m\_series4-\/>setName(\textcolor{stringliteral}{"{}ToF\ R"{}});}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ m\_series1-\/>setColor(QColor(255,\ 0,\ 0));}
+\DoxyCodeLine{00074\ \ \ \ \ m\_series2-\/>setColor(QColor(0,\ 0,\ 255));}
+\DoxyCodeLine{00075\ \ \ \ \ m\_series3-\/>setColor(QColor(0,\ 128,\ 0));}
+\DoxyCodeLine{00076\ \ \ \ \ m\_series4-\/>setColor(QColor(128,\ 0,\ 128));}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ QPen\ pen1\ =\ m\_series1-\/>pen();}
+\DoxyCodeLine{00079\ \ \ \ \ QPen\ pen2\ =\ m\_series2-\/>pen();}
+\DoxyCodeLine{00080\ \ \ \ \ QPen\ pen3\ =\ m\_series3-\/>pen();}
+\DoxyCodeLine{00081\ \ \ \ \ QPen\ pen4\ =\ m\_series4-\/>pen();}
+\DoxyCodeLine{00082\ \ \ \ \ pen1.setWidth(2);}
+\DoxyCodeLine{00083\ \ \ \ \ pen2.setWidth(2);}
+\DoxyCodeLine{00084\ \ \ \ \ pen3.setWidth(2);}
+\DoxyCodeLine{00085\ \ \ \ \ pen4.setWidth(2);}
+\DoxyCodeLine{00086\ \ \ \ \ m\_series1-\/>setPen(pen1);}
+\DoxyCodeLine{00087\ \ \ \ \ m\_series2-\/>setPen(pen2);}
+\DoxyCodeLine{00088\ \ \ \ \ m\_series3-\/>setPen(pen3);}
+\DoxyCodeLine{00089\ \ \ \ \ m\_series4-\/>setPen(pen4);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ m\_chart-\/>addSeries(m\_series1);}
+\DoxyCodeLine{00092\ \ \ \ \ m\_chart-\/>addSeries(m\_series2);}
+\DoxyCodeLine{00093\ \ \ \ \ m\_chart-\/>addSeries(m\_series3);}
+\DoxyCodeLine{00094\ \ \ \ \ m\_chart-\/>addSeries(m\_series4);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ m\_axisX\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{00097\ \ \ \ \ m\_axisY\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00100\ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ m\_axisX-\/>setTitleText(\textcolor{stringliteral}{"{}Czas\ (ms)"{}});}
+\DoxyCodeLine{00103\ \ \ \ \ m\_axisY-\/>setTitleText(\textcolor{stringliteral}{"{}Stan"{}});}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ QFont\ axisFont;}
+\DoxyCodeLine{00106\ \ \ \ \ axisFont.setPointSize(8);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ m\_axisX-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{00109\ \ \ \ \ m\_axisY-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00112\ \ \ \ \ m\_axisX-\/>setTickCount(5);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ m\_axisY-\/>setRange(0,\ 1.0);}
+\DoxyCodeLine{00115\ \ \ \ \ m\_axisY-\/>setTickCount(2);}
+\DoxyCodeLine{00116\ \ \ \ \ m\_axisY-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%d"{}});}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ m\_chart-\/>addAxis(m\_axisX,\ Qt::AlignBottom);}
+\DoxyCodeLine{00121\ \ \ \ \ m\_chart-\/>addAxis(m\_axisY,\ Qt::AlignLeft);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00124\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00125\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00126\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00127\ \ \ \ \ m\_series3-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00128\ \ \ \ \ m\_series3-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00129\ \ \ \ \ m\_series4-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00130\ \ \ \ \ m\_series4-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ m\_chart-\/>legend()-\/>setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{00133\ \ \ \ \ m\_chart-\/>legend()-\/>setAlignment(Qt::AlignRight);}
+\DoxyCodeLine{00134\ \ \ \ \ m\_chart-\/>legend()-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00135\ \ \ \ \ m\_chart-\/>legend()-\/>setBorderColor(Qt::transparent);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ QRectF\ legendRect\ =\ m\_chart-\/>legend()-\/>geometry();}
+\DoxyCodeLine{00138\ \ \ \ \ legendRect.moveTopRight(m\_chart-\/>plotArea().topRight()\ -\/\ QPointF(10,\ 10));}
+\DoxyCodeLine{00139\ \ \ \ \ m\_chart-\/>legend()-\/>setGeometry(legendRect);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ QFont\ legendFont;}
+\DoxyCodeLine{00142\ \ \ \ \ legendFont.setPointSize(7);}
+\DoxyCodeLine{00143\ \ \ \ \ m\_chart-\/>legend()-\/>setFont(legendFont);}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ m\_chartView\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}(m\_chart);}
+\DoxyCodeLine{00146\ \ \ \ \ m\_chartView-\/>setRenderHint(QPainter::Antialiasing);}
+\DoxyCodeLine{00147\ \ \ \ \ m\_chartView-\/>setRubberBand(QChartView::HorizontalRubberBand);}
+\DoxyCodeLine{00148\ \ \ \ \ m\_chartView-\/>setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{00149\ \ \ \ \ m\_chartView-\/>setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}{setMousePressedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTofChartManager_ae0ac92098b83bc7ac69e227ae5b1b853}{handleChartMousePressed}}();}
+\DoxyCodeLine{00153\ \ \ \ \ \});}
+\DoxyCodeLine{00154\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}{setMouseReleasedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTofChartManager_a01396fca8c9f1064cf7be0618484227b}{handleChartMouseReleased}}();}
+\DoxyCodeLine{00156\ \ \ \ \ \});}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ connect(m\_axisX,\ \&QValueAxis::rangeChanged,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classTofChartManager_a8ac57c7f9e2ca93abfcdeb41b45562e7}{TofChartManager::enforceAxisLimits}});}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ QLayout*\ existingLayout\ =\ m\_container-\/>layout();}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordflow}{if}\ (existingLayout)\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Czyszczenie\ istniejącego\ layoutu}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (QLayoutItem*\ item\ =\ existingLayout-\/>takeAt(0))\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (QWidget*\ widget\ =\ item-\/>widget())\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ widget-\/>setParent(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ widget;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ item;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ existingLayout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{00172\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ QVBoxLayout\ *layout\ =\ \textcolor{keyword}{new}\ QVBoxLayout(m\_container);}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ layout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ layout-\/>setContentsMargins(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ layout-\/>setSpacing(0);}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ m\_container-\/>setLayout(layout);}
+\DoxyCodeLine{00178\ \ \ \ \ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ QTimer::singleShot(0,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classTofChartManager_aef81c689ee20264f5258b5a776f86a2e}{TofChartManager::adjustAxisLabels}});}
+\DoxyCodeLine{00181\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874_cgraph}
+\end{center}
+\end{figure}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classTofChartManager_a4c4fc6ae05b60d7808d408932f8fce3c}\label{classTofChartManager_a4c4fc6ae05b60d7808d408932f8fce3c} 
 \index{TofChartManager@{TofChartManager}!updateChart@{updateChart}}
 \index{updateChart@{updateChart}!TofChartManager@{TofChartManager}}
@@ -78,13 +615,45 @@ Zarządza wykresem danych z czujników ToF (Time of Flight).
 
 
 
-Aktualizuje dane na wykresie. 
+Aktualizuje wykres o nowe dane z \doxylink{classSensorData}{Sensor\+Data}. 
 
 
 \begin{DoxyParams}{Parametry}
-{\em time} & Znacznik czasu. \\
+{\em time} & Znacznik czasu nowej próbki (ms). \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{tofchartmanager_8cpp_source_l00183}{183}} pliku \mbox{\hyperlink{tofchartmanager_8cpp_source}{tofchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00184\ \{}
+\DoxyCodeLine{00185\ \ \ \ \ m\_series1-\/>append(time,\ m\_sensorData-\/>getTof1()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{00186\ \ \ \ \ m\_series2-\/>append(time,\ m\_sensorData-\/>getTof2()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{00187\ \ \ \ \ m\_series3-\/>append(time,\ m\_sensorData-\/>getTof3()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{00188\ \ \ \ \ m\_series4-\/>append(time,\ m\_sensorData-\/>getTof4()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ m\_currentPoint++;}
+\DoxyCodeLine{00191\ \ \ \ \ m\_latestDataTime\ =\ time;}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ qreal\ currentMax\ =\ m\_axisX-\/>max();}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordflow}{if}\ (time\ >\ currentMax\ ||\ m\_isAutoScrollEnabled)\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(time\ -\/\ MAX\_POINTS\ *\ 100,\ time);}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_HISTORY\ =\ MAX\_POINTS\ *\ 10;}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_series1-\/>count()\ >\ MAX\_HISTORY)\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pointsToRemove\ =\ m\_series1-\/>count()\ -\/\ MAX\_HISTORY;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ m\_series1-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ m\_series2-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ m\_series3-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ m\_series4-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00206\ \ \ \ \ \}}
+\DoxyCodeLine{00207\ \}}
+
+\end{DoxyCode}
 
 
 Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}

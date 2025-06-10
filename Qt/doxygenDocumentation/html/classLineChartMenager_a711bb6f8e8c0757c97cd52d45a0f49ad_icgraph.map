@@ -1,0 +1,12 @@
+<map id="LineChartMenager::enforceAxisLimits" name="LineChartMenager::enforceAxisLimits">
+<area shape="rect" id="Node000001" title="Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas])." alt="" coords="773,35,972,75"/>
+<area shape="rect" id="Node000002" href="$classLineChartMenager.html#aa940e9e26f3d2953abca44de085a0bf7" title="Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania." alt="" coords="532,5,725,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="759,44,725,40,726,34,760,38"/>
+<area shape="rect" id="Node000003" href="$classLineChartMenager.html#af4ae0b8f7efd7713d2e1b3faabe96977" title="Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry." alt="" coords="264,42,484,67"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="760,60,725,60,532,60,484,59,484,54,532,55,725,55,760,54"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="518,41,485,45,484,39,518,35"/>
+<area shape="rect" id="Node000004" href="$classLineChartMenager.html#ab1b8488eceb8d1267945658eb1ba9242" title="Konstruktor." alt="" coords="5,5,216,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="250,44,216,40,216,34,251,38"/>
+<area shape="rect" id="Node000005" href="$classMainWindow.html#a996c5a2b6f77944776856f08ec30858d" title="Konstruktor klasy MainWindow." alt="" coords="12,70,209,95"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="250,70,210,75,209,70,250,65"/>
+</map>

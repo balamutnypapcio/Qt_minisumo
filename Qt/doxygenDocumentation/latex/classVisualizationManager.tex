@@ -11,8 +11,7 @@ Zarządza wizualizacją stanu robota oraz aktualizuje widok na podstawie danych 
 
 
 
-Diagram dziedziczenia dla Visualization\+Manager
-\nopagebreak
+Diagram dziedziczenia dla Visualization\+Manager\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Diagram dziedziczenia dla Visualization\+Manager
 \end{figure}
 
 
-Diagram współpracy dla Visualization\+Manager\+:
-\nopagebreak
+Diagram współpracy dla Visualization\+Manager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -37,7 +35,7 @@ void \mbox{\hyperlink{classVisualizationManager_a5f945fcf791c213972cc8762d0cc196
 \doxysubsubsection*{Metody publiczne}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classVisualizationManager_adccff85e05c01b68d27df2ca59c6fe98}{Visualization\+Manager}} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, Ui\+::\+Main\+Window \texorpdfstring{$\ast$}{*}ui, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\mbox{\hyperlink{classVisualizationManager_adccff85e05c01b68d27df2ca59c6fe98}{Visualization\+Manager}} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, \mbox{\hyperlink{classUi_1_1MainWindow}{Ui\+::\+Main\+Window}} \texorpdfstring{$\ast$}{*}ui, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
 \begin{DoxyCompactList}\small\item\em Konstruktor menedżera wizualizacji. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classVisualizationManager_a89c8db228d60d6e69f919deeaa93a10c}{setup\+Arrows}} ()
 \begin{DoxyCompactList}\small\item\em Inicjalizuje strzałki kierunku silników na starcie. \end{DoxyCompactList}\item 
@@ -48,18 +46,40 @@ void \mbox{\hyperlink{classVisualizationManager_aeb8e73440ea7c33ab33770cc7783ca0
 \doxysubsection{Opis szczegółowy}
 Zarządza wizualizacją stanu robota oraz aktualizuje widok na podstawie danych z sensorów. 
 
+Klasa odpowiada za\+:
+\begin{DoxyItemize}
+\item Dynamiczną aktualizację graficznych elementów GUI związanych ze stanem robota (strzałki silników, czujniki, IMU, status Wi\+Fi).
+\item Synchronizację stanów graficznych z wartościami z \doxylink{classSensorData}{Sensor\+Data}.
+\item Obsługę zdarzeń resize/paint dla wybranych widgetów.
+\end{DoxyItemize}
+
+Przykład użycia\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classVisualizationManager}{VisualizationManager}}*\ visMan\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classVisualizationManager}{VisualizationManager}}(sensorData,\ ui,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{connect(sensorData,\ \&\mbox{\hyperlink{classSensorData_ac852da69eccb449b75153160aa56676b}{SensorData::dataChanged}},\ visMan,\ \&\mbox{\hyperlink{classVisualizationManager_a5f945fcf791c213972cc8762d0cc196b}{VisualizationManager::updateAll}});}
+
+\end{DoxyCode}
+
+
+\begin{DoxyAuthor}{Autor}
+Jakub Wilczyński 
+\end{DoxyAuthor}
+
+
+Definicja w linii \mbox{\hyperlink{visualizationmanager_8h_source_l00031}{31}} pliku \mbox{\hyperlink{visualizationmanager_8h_source}{visualizationmanager.\+h}}.
+
+
+
 \doxysubsection{Dokumentacja konstruktora i destruktora}
 \Hypertarget{classVisualizationManager_adccff85e05c01b68d27df2ca59c6fe98}\label{classVisualizationManager_adccff85e05c01b68d27df2ca59c6fe98} 
 \index{VisualizationManager@{VisualizationManager}!VisualizationManager@{VisualizationManager}}
 \index{VisualizationManager@{VisualizationManager}!VisualizationManager@{VisualizationManager}}
 \doxysubsubsection{\texorpdfstring{VisualizationManager()}{VisualizationManager()}}
-{\footnotesize\ttfamily Visualization\+Manager\+::\+Visualization\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}}]{sensor\+Data,  }\item[{Ui\+::\+Main\+Window \texorpdfstring{$\ast$}{*}}]{ui,  }\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily Visualization\+Manager\+::\+Visualization\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}}]{sensor\+Data,  }\item[{\mbox{\hyperlink{classUi_1_1MainWindow}{Ui\+::\+Main\+Window}} \texorpdfstring{$\ast$}{*}}]{ui,  }\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
 Konstruktor menedżera wizualizacji. 
-
-Konstruktor menedżera wizualizacji. Ustawia wskaźniki i rejestruje filtr zdarzeń.
 
 
 \begin{DoxyParams}{Parametry}
@@ -67,9 +87,29 @@ Konstruktor menedżera wizualizacji. Ustawia wskaźniki i rejestruje filtr zdarz
 \hline
 {\em ui} & Wskaźnik do interfejsu użytkownika (\doxylink{classMainWindow}{Main\+Window}). \\
 \hline
-{\em parent} & Rodzic QObject. \\
+{\em parent} & Rodzic QObject (opcjonalnie). \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{visualizationmanager_8cpp_source_l00010}{10}} pliku \mbox{\hyperlink{visualizationmanager_8cpp_source}{visualizationmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData),\ m\_ui(ui)}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classVisualizationManager_aeb8e73440ea7c33ab33770cc7783ca0c}{updateConnectionStatusUI}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00014\ \ \ \ \ m\_ui-\/>imuArrow-\/>installEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{00015\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classVisualizationManager_adccff85e05c01b68d27df2ca59c6fe98_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Dokumentacja funkcji składowych}
@@ -83,7 +123,67 @@ Konstruktor menedżera wizualizacji. Ustawia wskaźniki i rejestruje filtr zdarz
 
 Inicjalizuje strzałki kierunku silników na starcie. 
 
-Inicjalizuje strzałki silników (ustawia domyślny kierunek i style). \Hypertarget{classVisualizationManager_a5f945fcf791c213972cc8762d0cc196b}\label{classVisualizationManager_a5f945fcf791c213972cc8762d0cc196b} 
+Ustawia obrazy (np. QPixmap) i przygotowuje elementy wizualne. 
+
+Definicja w linii \mbox{\hyperlink{visualizationmanager_8cpp_source_l00017}{17}} pliku \mbox{\hyperlink{visualizationmanager_8cpp_source}{visualizationmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Silnik\ 1\ (lewy)\ -\/\ domyślnie\ do\ góry}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_ui-\/>M1\_arrow)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ m\_ui-\/>M1\_arrow-\/>setCurrentIndex(0);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ m\_ui-\/>M1\_arrow-\/>count();\ i++)\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ QWidget*\ page\ =\ m\_ui-\/>M1\_arrow-\/>widget(i);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ page-\/>setStyleSheet(}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border-\/image:\ none;\ "{}}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}background:\ transparent;\ "{}}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border:\ none;\ "{}}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image:\ url(:/new/image/img/arrowUp.png);\ "{}}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image-\/position:\ center;"{}}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ m\_ui-\/>M1\_arrow-\/>widget(1)-\/>setStyleSheet(}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border-\/image:\ none;\ "{}}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}background:\ transparent;\ "{}}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border:\ none;\ "{}}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image:\ url(:/new/image/img/arrowDown.png);\ "{}}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image-\/position:\ center;"{}}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Silnik\ 2\ (prawy)\ -\/\ domyślnie\ do\ góry}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_ui-\/>M2\_arrow)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ m\_ui-\/>M2\_arrow-\/>setCurrentIndex(0);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ m\_ui-\/>M2\_arrow-\/>count();\ i++)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ QWidget*\ page\ =\ m\_ui-\/>M2\_arrow-\/>widget(i);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ page-\/>setStyleSheet(}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border-\/image:\ none;\ "{}}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}background:\ transparent;\ "{}}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border:\ none;\ "{}}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image:\ url(:/new/image/img/arrowUp.png);\ "{}}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image-\/position:\ center;"{}}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ m\_ui-\/>M2\_arrow-\/>widget(1)-\/>setStyleSheet(}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border-\/image:\ none;\ "{}}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}background:\ transparent;\ "{}}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border:\ none;\ "{}}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image:\ url(:/new/image/img/arrowDown.png);\ "{}}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image-\/position:\ center;"{}}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classVisualizationManager_a89c8db228d60d6e69f919deeaa93a10c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classVisualizationManager_a5f945fcf791c213972cc8762d0cc196b}\label{classVisualizationManager_a5f945fcf791c213972cc8762d0cc196b} 
 \index{VisualizationManager@{VisualizationManager}!updateAll@{updateAll}}
 \index{updateAll@{updateAll}!VisualizationManager@{VisualizationManager}}
 \doxysubsubsection{\texorpdfstring{updateAll}{updateAll}}
@@ -93,7 +193,29 @@ Inicjalizuje strzałki silników (ustawia domyślny kierunek i style). \Hypertar
 
 Odświeża wszystkie elementy wizualizacji na podstawie bieżących danych sensorów. 
 
-Odświeża wszystkie elementy wizualne na podstawie bieżących danych. \Hypertarget{classVisualizationManager_aeb8e73440ea7c33ab33770cc7783ca0c}\label{classVisualizationManager_aeb8e73440ea7c33ab33770cc7783ca0c} 
+Wywoływane przy każdej zmianie danych – aktualizuje silniki, czujniki, IMU, itp. 
+
+Definicja w linii \mbox{\hyperlink{visualizationmanager_8cpp_source_l00071}{71}} pliku \mbox{\hyperlink{visualizationmanager_8cpp_source}{visualizationmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ updateMotorArrows();}
+\DoxyCodeLine{00074\ \ \ \ \ updateTofSensors();}
+\DoxyCodeLine{00075\ \ \ \ \ updateMotorLabels();}
+\DoxyCodeLine{00076\ \ \ \ \ updateLsSensors();}
+\DoxyCodeLine{00077\ \ \ \ \ updateImuArrow();}
+\DoxyCodeLine{00078\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classVisualizationManager_a5f945fcf791c213972cc8762d0cc196b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classVisualizationManager_aeb8e73440ea7c33ab33770cc7783ca0c}\label{classVisualizationManager_aeb8e73440ea7c33ab33770cc7783ca0c} 
 \index{VisualizationManager@{VisualizationManager}!updateConnectionStatusUI@{updateConnectionStatusUI}}
 \index{updateConnectionStatusUI@{updateConnectionStatusUI}!VisualizationManager@{VisualizationManager}}
 \doxysubsubsection{\texorpdfstring{updateConnectionStatusUI()}{updateConnectionStatusUI()}}
@@ -103,13 +225,31 @@ Odświeża wszystkie elementy wizualne na podstawie bieżących danych. \Hyperta
 
 Aktualizuje wskaźnik połączenia Wi\+Fi na podstawie statusu. 
 
-Aktualizuje status połączenia (ikona Wi\+Fi).
-
 
 \begin{DoxyParams}{Parametry}
-{\em connected} & Czy połączono z ESP. \\
+{\em connected} & True jeśli ESP jest połączone, false jeśli nie. \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{visualizationmanager_8cpp_source_l00064}{64}} pliku \mbox{\hyperlink{visualizationmanager_8cpp_source}{visualizationmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00065\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_ui-\/>wifi)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ m\_ui-\/>wifi-\/>setCurrentIndex(connected\ ?\ 0\ :\ 1);\ \textcolor{comment}{//\ 0\ =\ zielona,\ 1\ =\ czerwona}}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classVisualizationManager_aeb8e73440ea7c33ab33770cc7783ca0c_icgraph}
+\end{center}
+\end{figure}
 
 
 Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}

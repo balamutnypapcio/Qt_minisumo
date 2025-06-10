@@ -1,0 +1,5 @@
+<map id="MotorChartManager::handleChartMouseReleased" name="MotorChartManager::handleChartMouseReleased">
+<area shape="rect" id="Node000001" title="Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania." alt="" coords="5,5,209,45"/>
+<area shape="rect" id="Node000002" href="$classMotorChartManager.html#a76c5f53509d19a22b047cc777241eecc" title="Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas])." alt="" coords="257,5,417,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,23,244,23,244,28,210,28"/>
+</map>

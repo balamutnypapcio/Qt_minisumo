@@ -11,8 +11,7 @@ Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów.
 
 
 
-Diagram dziedziczenia dla TCPManager
-\nopagebreak
+Diagram dziedziczenia dla TCPManager\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Diagram dziedziczenia dla TCPManager
 \end{figure}
 
 
-Diagram współpracy dla TCPManager\+:
-\nopagebreak
+Diagram współpracy dla TCPManager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -43,13 +41,11 @@ void \mbox{\hyperlink{classTCPManager_a26641c127869ce539809b188f653be04}{error\+
 \item 
 \mbox{\hyperlink{classTCPManager_a895d7f1d6f214b008c540fdd376a1014}{TCPManager}} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
 \begin{DoxyCompactList}\small\item\em Konstruktor klasy \doxylink{classTCPManager}{TCPManager}. \end{DoxyCompactList}\item 
-\Hypertarget{classTCPManager_a9c24ac909211d3e0029d518d04b9f00d}\label{classTCPManager_a9c24ac909211d3e0029d518d04b9f00d} 
-{\bfseries \texorpdfstring{$\sim$}{\string~}\+TCPManager} ()
-\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTCPManager_a9c24ac909211d3e0029d518d04b9f00d}{\texorpdfstring{$\sim$}{\string~}\+TCPManager}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. Zamyka gniazdo TCP. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classTCPManager_a4ce4783a94bb6bb4f3122397bd9d437b}{connect\+To\+Device}} (const QString \&host\+Address, quint16 port)
 \begin{DoxyCompactList}\small\item\em Nawiązuje połączenie z urządzeniem ESP. \end{DoxyCompactList}\item 
-\Hypertarget{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f}\label{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f} 
-void {\bfseries disconnect\+From\+Device} ()
+void \mbox{\hyperlink{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f}{disconnect\+From\+Device}} ()
 \begin{DoxyCompactList}\small\item\em Rozłącza połączenie z urządzeniem ESP. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classTCPManager_a49bf45bb9b1545806780fe5458fa1155}{is\+Connected}} () const
 \begin{DoxyCompactList}\small\item\em Sprawdza stan połączenia. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -57,6 +53,32 @@ bool \mbox{\hyperlink{classTCPManager_a49bf45bb9b1545806780fe5458fa1155}{is\+Con
 
 \doxysubsection{Opis szczegółowy}
 Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów. 
+
+Klasa odpowiada za\+:
+\begin{DoxyItemize}
+\item Nawiązanie i rozłączanie połączenia TCP z urządzeniem (np. ESP32).
+\item Odbiór, buforowanie i parsowanie danych przesyłanych przez ESP w formacie CSV.
+\item Aktualizację obiektu \doxylink{classSensorData}{Sensor\+Data} na podstawie odebranych danych.
+\item Emisję sygnałów Qt o aktualizacji danych, zmianie statusu połączenia oraz błędach sieciowych.
+\end{DoxyItemize}
+
+Przykład użycia\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classTCPManager}{TCPManager}}*\ tcpMgr\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classTCPManager}{TCPManager}}(sensorData,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{connect(tcpMgr,\ \&\mbox{\hyperlink{classTCPManager_a6c3543bf266491dcb529beb7a44fe012}{TCPManager::dataUpdated}},\ \textcolor{keyword}{this},\ \&MainWindow::onDataUpdated);}
+\DoxyCodeLine{tcpMgr-\/>\mbox{\hyperlink{classTCPManager_a4ce4783a94bb6bb4f3122397bd9d437b}{connectToDevice}}(\textcolor{stringliteral}{"{}192.168.4.1"{}},\ 8888);}
+
+\end{DoxyCode}
+
+
+\begin{DoxyAuthor}{Autor}
+Jakub Wilczyński 
+\end{DoxyAuthor}
+
+
+Definicja w linii \mbox{\hyperlink{tcpmanager_8h_source_l00030}{30}} pliku \mbox{\hyperlink{tcpmanager_8h_source}{tcpmanager.\+h}}.
+
+
 
 \doxysubsection{Dokumentacja konstruktora i destruktora}
 \Hypertarget{classTCPManager_a895d7f1d6f214b008c540fdd376a1014}\label{classTCPManager_a895d7f1d6f214b008c540fdd376a1014} 
@@ -78,6 +100,50 @@ Konstruktor klasy \doxylink{classTCPManager}{TCPManager}.
 \end{DoxyParams}
 
 
+Definicja w linii \mbox{\hyperlink{tcpmanager_8cpp_source_l00004}{4}} pliku \mbox{\hyperlink{tcpmanager_8cpp_source}{tcpmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData),\ m\_socket(\textcolor{keyword}{nullptr}),\ m\_timestamp(0)}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{comment}{//\ Inicjalizacja\ gniazda\ TCP}}
+\DoxyCodeLine{00008\ \ \ \ \ m\_socket\ =\ \textcolor{keyword}{new}\ QTcpSocket(\textcolor{keyword}{this});}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//\ Podłączenie\ sygnałów\ gniazda}}
+\DoxyCodeLine{00011\ \ \ \ \ connect(m\_socket,\ \&QTcpSocket::readyRead,\ \textcolor{keyword}{this},\ \&TCPManager::onReadyRead);}
+\DoxyCodeLine{00012\ \ \ \ \ connect(m\_socket,\ \&QTcpSocket::stateChanged,\ \textcolor{keyword}{this},\ \&TCPManager::onSocketStateChanged);}
+\DoxyCodeLine{00013\ \ \ \ \ connect(m\_socket,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\ (QTcpSocket::*)(QAbstractSocket::SocketError)\textcolor{keyword}{>}(\&QTcpSocket::errorOccurred),}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},\ \&TCPManager::onSocketError);}
+\DoxyCodeLine{00015\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classTCPManager_a9c24ac909211d3e0029d518d04b9f00d}\label{classTCPManager_a9c24ac909211d3e0029d518d04b9f00d} 
+\index{TCPManager@{TCPManager}!````~TCPManager@{\texorpdfstring{$\sim$}{\string~}TCPManager}}
+\index{````~TCPManager@{\texorpdfstring{$\sim$}{\string~}TCPManager}!TCPManager@{TCPManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TCPManager()}{\string~TCPManager()}}
+{\footnotesize\ttfamily TCPManager\+::\texorpdfstring{$\sim$}{\string~}\+TCPManager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destruktor. Zamyka gniazdo TCP. 
+
+
+
+Definicja w linii \mbox{\hyperlink{tcpmanager_8cpp_source_l00017}{17}} pliku \mbox{\hyperlink{tcpmanager_8cpp_source}{tcpmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Zamknięcie\ połączenia\ przy\ niszczeniu\ obiektu}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_socket)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ m\_socket-\/>close();}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ m\_socket;}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}
+
+
 \doxysubsection{Dokumentacja funkcji składowych}
 \Hypertarget{classTCPManager_a363c1b3b68d005feea5268decf210000}\label{classTCPManager_a363c1b3b68d005feea5268decf210000} 
 \index{TCPManager@{TCPManager}!connectionStatusChanged@{connectionStatusChanged}}
@@ -94,6 +160,13 @@ Sygnał emitowany po zmianie stanu połączenia.
 {\em connected} & Stan połączenia (true -\/ połączony, false -\/ rozłączony). \\
 \hline
 \end{DoxyParams}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTCPManager_a363c1b3b68d005feea5268decf210000_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classTCPManager_a4ce4783a94bb6bb4f3122397bd9d437b}\label{classTCPManager_a4ce4783a94bb6bb4f3122397bd9d437b} 
 \index{TCPManager@{TCPManager}!connectToDevice@{connectToDevice}}
 \index{connectToDevice@{connectToDevice}!TCPManager@{TCPManager}}
@@ -112,8 +185,30 @@ Nawiązuje połączenie z urządzeniem ESP.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Zwraca}
-true jeśli próba połączenia została zainicjowana. 
+true jeśli próba połączenia została zainicjowana.
 \end{DoxyReturn}
+Połączenie inicjowane jest asynchronicznie. 
+
+Definicja w linii \mbox{\hyperlink{tcpmanager_8cpp_source_l00026}{26}} pliku \mbox{\hyperlink{tcpmanager_8cpp_source}{tcpmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Rozłączenie,\ jeśli\ istnieje\ aktywne\ połączenie}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_socket-\/>state()\ !=\ QAbstractSocket::UnconnectedState)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ m\_socket-\/>close();}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Próba\ połączenia\ z\ urządzeniem\ ESP}}
+\DoxyCodeLine{00034\ \ \ \ \ m\_socket-\/>connectToHost(hostAddress,\ port);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Zwraca\ true\ jeśli\ udało\ się\ zainicjować\ połączenie}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ (samo\ połączenie\ jest\ asynchroniczne)}}
+\DoxyCodeLine{00038\ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Próba\ połączenia\ z\ ESP\ na"{}}\ <<\ hostAddress\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ port;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00040\ \}}
+
+\end{DoxyCode}
 \Hypertarget{classTCPManager_a6c3543bf266491dcb529beb7a44fe012}\label{classTCPManager_a6c3543bf266491dcb529beb7a44fe012} 
 \index{TCPManager@{TCPManager}!dataUpdated@{dataUpdated}}
 \index{dataUpdated@{dataUpdated}!TCPManager@{TCPManager}}
@@ -129,6 +224,42 @@ Sygnał informujący o aktualizacji danych.
 {\em time} & Znacznik czasu aktualizacji. \\
 \hline
 \end{DoxyParams}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTCPManager_a6c3543bf266491dcb529beb7a44fe012_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f}\label{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f} 
+\index{TCPManager@{TCPManager}!disconnectFromDevice@{disconnectFromDevice}}
+\index{disconnectFromDevice@{disconnectFromDevice}!TCPManager@{TCPManager}}
+\doxysubsubsection{\texorpdfstring{disconnectFromDevice()}{disconnectFromDevice()}}
+{\footnotesize\ttfamily void TCPManager\+::disconnect\+From\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Rozłącza połączenie z urządzeniem ESP. 
+
+
+
+Definicja w linii \mbox{\hyperlink{tcpmanager_8cpp_source_l00042}{42}} pliku \mbox{\hyperlink{tcpmanager_8cpp_source}{tcpmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ m\_socket-\/>close();}
+\DoxyCodeLine{00045\ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Rozłączono\ z\ ESP"{}};}
+\DoxyCodeLine{00046\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classTCPManager_a26641c127869ce539809b188f653be04}\label{classTCPManager_a26641c127869ce539809b188f653be04} 
 \index{TCPManager@{TCPManager}!errorOccurred@{errorOccurred}}
 \index{errorOccurred@{errorOccurred}!TCPManager@{TCPManager}}
@@ -157,6 +288,24 @@ Sprawdza stan połączenia.
 \begin{DoxyReturn}{Zwraca}
 true jeśli połączenie jest aktywne. 
 \end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{tcpmanager_8cpp_source_l00048}{48}} pliku \mbox{\hyperlink{tcpmanager_8cpp_source}{tcpmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_socket-\/>state()\ ==\ QAbstractSocket::ConnectedState;}
+\DoxyCodeLine{00051\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTCPManager_a49bf45bb9b1545806780fe5458fa1155_icgraph}
+\end{center}
+\end{figure}
 
 
 Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}

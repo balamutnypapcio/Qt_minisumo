@@ -27,6 +27,24 @@ QT_END_NAMESPACE
  * @brief Klasa reprezentująca główne okno aplikacji.
  *
  * Zarządza interfejsem użytkownika, obsługuje dane z czujników oraz ich wizualizację.
+ *
+ * - Ładuje i odtwarza pliki CSV z danymi.
+ * - Obsługuje połączenie TCP z ESP.
+ * - Synchronizuje wykresy i wizualizacje z danymi.
+ * - Pozwala przełączać język interfejsu (PL/EN).
+ * - Dynamicznie zamienia etykiety na pionowe (RotatedLabel).
+ *
+ * Przykład użycia:
+ * @code
+ * int main(int argc, char* argv[]) {
+ *     QApplication app(argc, argv);
+ *     MainWindow w;
+ *     w.show();
+ *     return app.exec();
+ * }
+ * @endcode
+ *
+ * @author Jakub Wilczyński
  */
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -53,8 +71,6 @@ private slots:
      * @brief Obsługuje kliknięcie przycisku ładowania pliku CSV.
      */
     void on_buttLOADcsv_clicked();
-
-    //void on_buttSTOPcsv_clicked();
 
     /**
      * @brief Slot aktualizujący dane przy odtwarzaniu z pliku CSV.

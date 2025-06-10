@@ -1,0 +1,7 @@
+<map id="SensorData::setTof1" name="SensorData::setTof1">
+<area shape="rect" id="Node000001" title="Ustawia wartość czujnika TOF1 i emituje sygnały przy zmianie." alt="" coords="5,31,157,56"/>
+<area shape="rect" id="Node000002" href="$classSensorData.html#ac852da69eccb449b75153160aa56676b" title="Sygnał emitowany przy jakiejkolwiek zmianie danych." alt="" coords="215,5,406,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,32,201,27,202,33,158,38"/>
+<area shape="rect" id="Node000003" href="$classSensorData.html#a93a841a87717c333f93c8e2ab1ba479e" title="Sygnał emitowany przy zmianie dowolnych danych TOF." alt="" coords="205,55,416,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,49,192,52,191,58,157,54"/>
+</map>

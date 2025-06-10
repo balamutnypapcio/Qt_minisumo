@@ -21,7 +21,7 @@ bool CSVManager::loadFromFile(const QString &filePath) {
         return false;
     }
 
-    // Wyczyść poprzednie dane
+    // Reset bufora na wypadek ponownego ładowania
     m_csvData.clear();
     m_currentRow = 0;
 
@@ -29,31 +29,31 @@ bool CSVManager::loadFromFile(const QString &filePath) {
     QString line;
     bool firstLine = true;
 
-    // Wczytywanie danych do csvData
+    // Wczytywanie wszystkich wierszy z pominięciem nagłówka
     while (!in.atEnd()) {
         line = in.readLine();
         if (firstLine) {
             firstLine = false;
-            continue;  // Pomijamy pierwszą linię z nagłówkami
+            continue;  // Pomijamy pierwszą linię (nagłówki kolumn)
         }
         QStringList data = line.split(",");
-        // Walidacja danych
-        if (data.size() >= 12) { // Upewnij się, że mamy wszystkie wymagane kolumny
+        // Walidacja liczby kolumn (12 wymaganych)
+        if (data.size() >= 12) {
             m_csvData.append(data);
         }
     }
 
     file.close();
-    return true;
+    return !m_csvData.isEmpty();
 }
 
 void CSVManager::startPlayback() {
     m_currentRow = 0;
 
-    // Rozpocznij pomiar czasu dla odtwarzania
+    // Rozpocznij pomiar czasu (od t=0)
     m_playbackTimer.start();
 
-    // Zatrzymaj istniejący timer, jeśli istnieje
+    // Zatrzymaj i usuń poprzedni timer (jeśli był)
     if (m_dataUpdateTimer) {
         m_dataUpdateTimer->stop();
         delete m_dataUpdateTimer;
@@ -61,35 +61,33 @@ void CSVManager::startPlayback() {
 
     m_dataUpdateTimer = new QTimer(this);
     connect(m_dataUpdateTimer, &QTimer::timeout, this, &CSVManager::updateData);
-    m_dataUpdateTimer->start(20);
+    m_dataUpdateTimer->start(20); // 50 Hz odświeżania
 }
-
 
 void CSVManager::stopPlayback()
 {
-    // Zatrzymaj timer aktualizujący dane
+    // Zatrzymaj timer QTimer
     if (m_dataUpdateTimer) {
         m_dataUpdateTimer->stop();
     }
 
-    // Zresetuj timer pomiarowy
+    // Zresetuj timer czasu rzeczywistego
     m_playbackTimer.invalidate();
 
-    // Emisja sygnału o zakończeniu odtwarzania
+    // Powiadom o zakończeniu odtwarzania
     emit playbackFinished();
 }
 
-
-
 void CSVManager::updateData() {
-    // Jeśli nie mamy danych lub timer nie jest aktywny, wyjdź
+    // Bez danych lub timer nieaktywny – wyjdź
     if (m_csvData.isEmpty() || !m_playbackTimer.isValid()) {
         return;
     }
 
-    // Oblicz aktualny czas od początku odtwarzania
+    // Oblicz ile ms minęło od rozpoczęcia odtwarzania
     qint64 elapsedMs = m_playbackTimer.elapsed();
 
+    // Przetwarzaj wszystkie wiersze, których znacznik czasu już minął
     while (m_currentRow < m_csvData.size()) {
         int timeInCSV = m_csvData[m_currentRow][0].toInt();
 
@@ -97,11 +95,11 @@ void CSVManager::updateData() {
             updateVariablesFromCSV(m_currentRow);
             m_currentRow++;
         } else {
-            break; // Czekaj na następne wywołanie timera
+            break; // Poczekaj na kolejne wywołanie timera
         }
     }
 
-    // Sprawdź, czy odtwarzanie zakończone
+    // Jeśli doszliśmy do końca – zatrzymaj odtwarzanie i powiadom
     if (m_currentRow >= m_csvData.size()) {
         m_dataUpdateTimer->stop();
         emit playbackFinished();

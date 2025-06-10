@@ -84,22 +84,12 @@ $(function() {
 <div class="dynheader">
 Diagram dziedziczenia dla RotatedLabel</div>
 <div class="dyncontent">
-<div class="center"><img src="classRotatedLabel__inherit__graph.png" border="0" usemap="#aRotatedLabel_inherit__map" alt="Inheritance graph"/></div>
-<map name="aRotatedLabel_inherit__map" id="aRotatedLabel_inherit__map">
-<area shape="rect" title="Etykieta z obróconym o 90 stopni tekstem." alt="" coords="5,79,113,104"/>
-<area shape="rect" title=" " alt="" coords="26,5,93,31"/>
-<area shape="poly" title=" " alt="" coords="62,44,62,79,57,79,57,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classRotatedLabel__inherit__graph.svg" width="119" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <div class="dynheader">
 Diagram współpracy dla RotatedLabel:</div>
 <div class="dyncontent">
-<div class="center"><img src="classRotatedLabel__coll__graph.png" border="0" usemap="#aRotatedLabel_coll__map" alt="Collaboration graph"/></div>
-<map name="aRotatedLabel_coll__map" id="aRotatedLabel_coll__map">
-<area shape="rect" title="Etykieta z obróconym o 90 stopni tekstem." alt="" coords="5,79,113,104"/>
-<area shape="rect" title=" " alt="" coords="26,5,93,31"/>
-<area shape="poly" title=" " alt="" coords="62,44,62,79,57,79,57,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classRotatedLabel__coll__graph.svg" width="119" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -108,13 +98,13 @@ Metody publiczne</h2></td></tr>
 <tr class="memdesc:a724ff0d442df92369310df710c9972ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor domyślny.  <br /></td></tr>
 <tr class="separator:a724ff0d442df92369310df710c9972ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7383f5563cb41a12cdaab4b3a6fb951" id="r_aa7383f5563cb41a12cdaab4b3a6fb951"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRotatedLabel.html#aa7383f5563cb41a12cdaab4b3a6fb951">RotatedLabel</a> (const QString &amp;text, QWidget *parent=nullptr)</td></tr>
-<tr class="memdesc:aa7383f5563cb41a12cdaab4b3a6fb951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor z tekstem.  <br /></td></tr>
+<tr class="memdesc:aa7383f5563cb41a12cdaab4b3a6fb951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor z tekstem inicjalnym.  <br /></td></tr>
 <tr class="separator:aa7383f5563cb41a12cdaab4b3a6fb951"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Metody chronione</h2></td></tr>
 <tr class="memitem:a7366514aa4dbca45c715cd66181ae3f4" id="r_a7366514aa4dbca45c715cd66181ae3f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRotatedLabel.html#a7366514aa4dbca45c715cd66181ae3f4">paintEvent</a> (QPaintEvent *event) override</td></tr>
-<tr class="memdesc:a7366514aa4dbca45c715cd66181ae3f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda obsługująca zdarzenie rysowania widgetu.  <br /></td></tr>
+<tr class="memdesc:a7366514aa4dbca45c715cd66181ae3f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje zdarzenie rysowania widgetu.  <br /></td></tr>
 <tr class="separator:a7366514aa4dbca45c715cd66181ae3f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a266ec1ec78421f85658fad0276bfbec8" id="r_a266ec1ec78421f85658fad0276bfbec8"><td class="memItemLeft" align="right" valign="top">QSize&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRotatedLabel.html#a266ec1ec78421f85658fad0276bfbec8">sizeHint</a> () const override</td></tr>
 <tr class="memdesc:a266ec1ec78421f85658fad0276bfbec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sugerowany rozmiar widgetu.  <br /></td></tr>
@@ -125,7 +115,19 @@ Metody chronione</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Etykieta z obróconym o 90 stopni tekstem. </p>
-<p>Klasa rozszerzająca standardową QLabel, która wyświetla tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara. Używana głównie do wyświetlania pionowych etykiet osi na wykresach. </p>
+<p>Klasa rozszerzająca standardową QLabel, która wyświetla tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara. Używana głównie do pionowych etykiet osi na wykresach, lecz może być wykorzystana wszędzie, gdzie potrzebny jest pionowy napis.</p>
+<ul>
+<li>Rozszerza QLabel.</li>
+<li>Obraca tekst o -90 stopni (CCW) wokół środka widgetu.</li>
+<li>Dba o czytelność i poprawne czyszczenie tła.</li>
+<li>Sugeruje rozmiar zamieniając szerokość z wysokością (względem standardowej etykiety).</li>
+</ul>
+<p>Przykład użycia: </p><div class="fragment"><div class="line"><span class="keyword">auto</span>* label = <span class="keyword">new</span> <a class="code hl_class" href="classRotatedLabel.html">RotatedLabel</a>(<span class="stringliteral">&quot;Oś Y&quot;</span>, <span class="keyword">this</span>);</div>
+<div class="line">layout-&gt;addWidget(label);</div>
+<div class="ttc" id="aclassRotatedLabel_html"><div class="ttname"><a href="classRotatedLabel.html">RotatedLabel</a></div><div class="ttdoc">Etykieta z obróconym o 90 stopni tekstem.</div><div class="ttdef"><b>Definition</b> <a href="rotatedlabel_8h_source.html#l00029">rotatedlabel.h:30</a></div></div>
+</div><!-- fragment --><dl class="section author"><dt>Autor</dt><dd>Jakub Wilczyński </dd></dl>
+
+<p class="definition">Definicja w linii <a class="el" href="rotatedlabel_8h_source.html#l00029">29</a> pliku <a class="el" href="rotatedlabel_8h_source.html">rotatedlabel.h</a>.</p>
 </div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a id="a724ff0d442df92369310df710c9972ba" name="a724ff0d442df92369310df710c9972ba"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a724ff0d442df92369310df710c9972ba">&#9670;&#160;</a></span>RotatedLabel() <span class="overload">[1/2]</span></h2>
@@ -154,11 +156,14 @@ Metody chronione</h2></td></tr>
 <p>Konstruktor domyślny. </p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parent</td><td>Wskaźnik do widgetu rodzica </td></tr>
+    <tr><td class="paramname">parent</td><td>Wskaźnik do widgetu rodzica. </td></tr>
   </table>
   </dd>
 </dl>
 
+<p class="definition">Definicja w linii <a class="el" href="rotatedlabel_8h_source.html#l00038">38</a> pliku <a class="el" href="rotatedlabel_8h_source.html">rotatedlabel.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>: QLabel(parent) {}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa7383f5563cb41a12cdaab4b3a6fb951" name="aa7383f5563cb41a12cdaab4b3a6fb951"></a>
@@ -195,15 +200,18 @@ Metody chronione</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Konstruktor z tekstem. </p>
+<p>Konstruktor z tekstem inicjalnym. </p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">text</td><td>Tekst do wyświetlenia </td></tr>
-    <tr><td class="paramname">parent</td><td>Wskaźnik do widgetu rodzica </td></tr>
+    <tr><td class="paramname">text</td><td>Tekst do wyświetlenia. </td></tr>
+    <tr><td class="paramname">parent</td><td>Wskaźnik do widgetu rodzica. </td></tr>
   </table>
   </dd>
 </dl>
 
+<p class="definition">Definicja w linii <a class="el" href="rotatedlabel_8h_source.html#l00045">45</a> pliku <a class="el" href="rotatedlabel_8h_source.html">rotatedlabel.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>: QLabel(text, parent) {}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Dokumentacja funkcji składowych</h2>
@@ -231,8 +239,18 @@ Metody chronione</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Minimalny sugerowany rozmiar widgetu. </p>
-<p>Zwraca minimalny rozmiar widgetu potrzebny do poprawnego wyświetlenia obroconego tekstu.</p>
-<dl class="section return"><dt>Zwraca</dt><dd>QSize Minimalny sugerowany rozmiar widgetu </dd></dl>
+<dl class="section return"><dt>Zwraca</dt><dd>QSize minimalny rozmiar widgetu. </dd></dl>
+
+<p class="definition">Definicja w linii <a class="el" href="rotatedlabel_8h_source.html#l00102">102</a> pliku <a class="el" href="rotatedlabel_8h_source.html">rotatedlabel.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>                                           {</div>
+<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classRotatedLabel.html#a266ec1ec78421f85658fad0276bfbec8">sizeHint</a>();</div>
+<div class="line"><span class="lineno">  104</span>    }</div>
+<div class="ttc" id="aclassRotatedLabel_html_a266ec1ec78421f85658fad0276bfbec8"><div class="ttname"><a href="classRotatedLabel.html#a266ec1ec78421f85658fad0276bfbec8">RotatedLabel::sizeHint</a></div><div class="ttdeci">QSize sizeHint() const override</div><div class="ttdoc">Sugerowany rozmiar widgetu.</div><div class="ttdef"><b>Definition</b> <a href="rotatedlabel_8h_source.html#l00092">rotatedlabel.h:92</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classRotatedLabel_a290423f574e51b54b58408665857f506_cgraph.svg" width="462" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -260,15 +278,45 @@ Metody chronione</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Metoda obsługująca zdarzenie rysowania widgetu. </p>
-<p>Implementacja rysuje tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara. Przed rysowaniem czyści całe tło, aby zapobiec pozostawaniu artefaktów po poprzednim tekście.</p>
+<p>Obsługuje zdarzenie rysowania widgetu. </p>
+<p>Rysuje tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara. Przed rysowaniem czyści tło, aby nie zostawiać artefaktów.</p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td>Obiekt zdarzenia rysowania </td></tr>
+    <tr><td class="paramname">event</td><td>Obiekt zdarzenia rysowania. </td></tr>
   </table>
   </dd>
 </dl>
 
+<p class="definition">Definicja w linii <a class="el" href="rotatedlabel_8h_source.html#l00056">56</a> pliku <a class="el" href="rotatedlabel_8h_source.html">rotatedlabel.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>                                                 {</div>
+<div class="line"><span class="lineno">   57</span>        Q_UNUSED(event);</div>
+<div class="line"><span class="lineno">   58</span>        QPainter painter(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   59</span>        painter.setRenderHint(QPainter::Antialiasing);</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>        <span class="comment">// Wyczyść tło</span></div>
+<div class="line"><span class="lineno">   62</span>        painter.fillRect(rect(), palette().color(QPalette::Window));</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">if</span> (text().isEmpty())</div>
+<div class="line"><span class="lineno">   65</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>        painter.save();</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>        <span class="comment">// Obrót o -90 stopni wokół środka widgetu</span></div>
+<div class="line"><span class="lineno">   70</span>        painter.translate(width() / 2, height() / 2);</div>
+<div class="line"><span class="lineno">   71</span>        painter.rotate(-90);</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>        <span class="comment">// Oblicz prostokąt pod tekst</span></div>
+<div class="line"><span class="lineno">   74</span>        QFontMetrics fm(font());</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordtype">int</span> textWidth = fm.horizontalAdvance(text());</div>
+<div class="line"><span class="lineno">   76</span>        <span class="keywordtype">int</span> textHeight = fm.height();</div>
+<div class="line"><span class="lineno">   77</span>        QRect textRect(-textWidth / 2, -textHeight / 2, textWidth, textHeight);</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>        painter.setPen(palette().color(QPalette::WindowText));</div>
+<div class="line"><span class="lineno">   80</span>        painter.drawText(textRect, Qt::AlignCenter, text());</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>        painter.restore();</div>
+<div class="line"><span class="lineno">   83</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a266ec1ec78421f85658fad0276bfbec8" name="a266ec1ec78421f85658fad0276bfbec8"></a>
@@ -295,8 +343,19 @@ Metody chronione</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sugerowany rozmiar widgetu. </p>
-<p>Zwraca sugerowany rozmiar widgetu, zamieniający szerokość i wysokość w porównaniu do standardowej etykiety, aby uwzględnić obrót tekstu o 90 stopni.</p>
-<dl class="section return"><dt>Zwraca</dt><dd>QSize Sugerowany rozmiar widgetu </dd></dl>
+<p>Zamienia szerokość i wysokość standardowej etykiety, aby uwzględnić obrót tekstu.</p>
+<dl class="section return"><dt>Zwraca</dt><dd>QSize sugerowany rozmiar widgetu. </dd></dl>
+
+<p class="definition">Definicja w linii <a class="el" href="rotatedlabel_8h_source.html#l00092">92</a> pliku <a class="el" href="rotatedlabel_8h_source.html">rotatedlabel.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   92</span>                                    {</div>
+<div class="line"><span class="lineno">   93</span>        QFontMetrics fm(font());</div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span> QSize(fm.height(), fm.horizontalAdvance(text()));</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classRotatedLabel_a266ec1ec78421f85658fad0276bfbec8_icgraph.svg" width="462" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>

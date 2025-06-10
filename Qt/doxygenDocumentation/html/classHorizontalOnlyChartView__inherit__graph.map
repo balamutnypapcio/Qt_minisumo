@@ -1,5 +1,5 @@
 <map id="HorizontalOnlyChartView" name="HorizontalOnlyChartView">
-<area shape="rect" id="Node000001" title="Specjalny widok wykresu QChartView, który umożliwia przewijanie i zoomowanie wyłącznie w poziomie." alt="" coords="5,79,192,104"/>
+<area shape="rect" id="Node000001" title="Specjalistyczny widok QChartView umożliwiający przewijanie i zoomowanie wyłącznie w osi poziomej (X)." alt="" coords="5,79,192,104"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="49,5,148,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,44,101,79,96,79,96,44"/>
 </map>

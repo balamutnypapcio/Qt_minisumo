@@ -11,8 +11,7 @@ Klasa reprezentująca główne okno aplikacji.
 
 
 
-Diagram dziedziczenia dla Main\+Window
-\nopagebreak
+Diagram dziedziczenia dla Main\+Window\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Diagram dziedziczenia dla Main\+Window
 \end{figure}
 
 
-Diagram współpracy dla Main\+Window\+:
-\nopagebreak
+Diagram współpracy dla Main\+Window\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -44,7 +42,37 @@ void {\bfseries label\+Motors} ()
 \doxysubsection{Opis szczegółowy}
 Klasa reprezentująca główne okno aplikacji. 
 
-Zarządza interfejsem użytkownika, obsługuje dane z czujników oraz ich wizualizację. 
+Zarządza interfejsem użytkownika, obsługuje dane z czujników oraz ich wizualizację.
+
+
+\begin{DoxyItemize}
+\item Ładuje i odtwarza pliki CSV z danymi.
+\item Obsługuje połączenie TCP z ESP.
+\item Synchronizuje wykresy i wizualizacje z danymi.
+\item Pozwala przełączać język interfejsu (PL/\+EN).
+\item Dynamicznie zamienia etykiety na pionowe (\doxylink{classRotatedLabel}{Rotated\+Label}).
+\end{DoxyItemize}
+
+Przykład użycia\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}*\ argv[])\ \{}
+\DoxyCodeLine{\ \ \ \ QApplication\ app(argc,\ argv);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classMainWindow}{MainWindow}}\ w;}
+\DoxyCodeLine{\ \ \ \ w.show();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ app.exec();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyAuthor}{Autor}
+Jakub Wilczyński 
+\end{DoxyAuthor}
+
+
+Definicja w linii \mbox{\hyperlink{mainwindow_8h_source_l00049}{49}} pliku \mbox{\hyperlink{mainwindow_8h_source}{mainwindow.\+h}}.
+
+
 
 \doxysubsection{Dokumentacja konstruktora i destruktora}
 \Hypertarget{classMainWindow_a996c5a2b6f77944776856f08ec30858d}\label{classMainWindow_a996c5a2b6f77944776856f08ec30858d} 
@@ -57,15 +85,105 @@ Zarządza interfejsem użytkownika, obsługuje dane z czujników oraz ich wizual
 
 Konstruktor klasy \doxylink{classMainWindow}{Main\+Window}. 
 
-Konstruktor klasy \doxylink{classMainWindow}{Main\+Window}. Inicjalizuje interfejs i wszystkie menedżery oraz ustawia połączenia sygnałów i slotów.
-
 
 \begin{DoxyParams}{Parametry}
-{\em parent} & Wskaźnik na obiekt nadrzędny (domyślnie nullptr).\\
-\hline
-{\em parent} & Wskaźnik na obiekt nadrzędny. \\
+{\em parent} & Wskaźnik na obiekt nadrzędny (domyślnie nullptr). \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{mainwindow_8cpp_source_l00005}{5}} pliku \mbox{\hyperlink{mainwindow_8cpp_source}{mainwindow.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006\ \ \ \ \ :\ QMainWindow(parent)}
+\DoxyCodeLine{00007\ \ \ \ \ ,\ ui(\textcolor{keyword}{new}\ \mbox{\hyperlink{classUi_1_1MainWindow}{Ui::MainWindow}})}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ ui-\/>setupUi(\textcolor{keyword}{this});}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ setupProportionalWidgets();}
+\DoxyCodeLine{00012\ \ \ \ \ adjustGridLayoutProportions();}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ Pobieranie\ i\ konfiguracja\ widgetów}}
+\DoxyCodeLine{00015\ \ \ \ \ QWidget*\ widget\_14\ =\ findChild<QWidget*>(\textcolor{stringliteral}{"{}widget\_14"{}});}
+\DoxyCodeLine{00016\ \ \ \ \ QWidget*\ widget\_16\ =\ findChild<QWidget*>(\textcolor{stringliteral}{"{}widget\_16"{}});}
+\DoxyCodeLine{00017\ \ \ \ \ QWidget*\ widget\_18\ =\ findChild<QWidget*>(\textcolor{stringliteral}{"{}widget\_18"{}});}
+\DoxyCodeLine{00018\ \ \ \ \ QWidget*\ robotView\ =\ findChild<QWidget*>(\textcolor{stringliteral}{"{}robotView"{}});}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ QHBoxLayout*\ hLayout\ =\ qobject\_cast<QHBoxLayout*>(widget\_14-\/>layout());}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (hLayout)\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ hLayout-\/>setStretch(0,\ 1);}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ hLayout-\/>setStretch(1,\ 1);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ hLayout-\/>setStretch(2,\ 1);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ widget\_16-\/>setSizePolicy(QSizePolicy::Expanding,\ QSizePolicy::Expanding);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ widget\_18-\/>setSizePolicy(QSizePolicy::Expanding,\ QSizePolicy::Expanding);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ robotView-\/>setSizePolicy(QSizePolicy::Expanding,\ QSizePolicy::Expanding);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ widget\_16-\/>setMinimumWidth(60);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ widget\_18-\/>setMinimumWidth(60);}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Połączenie\ przycisku\ wyjścia\ z\ oknem\ potwierdzenia}}
+\DoxyCodeLine{00035\ \ \ \ \ connect(ui-\/>buttEXIT,\ \&QPushButton::clicked,\ \textcolor{keyword}{this},\ \&MainWindow::showExitConfirmation);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Tworzenie\ obiektów\ zarządzających\ danymi\ i\ wizualizacją}}
+\DoxyCodeLine{00038\ \ \ \ \ m\_sensorData\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classSensorData}{SensorData}}(\textcolor{keyword}{this});}
+\DoxyCodeLine{00039\ \ \ \ \ m\_csvManager\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classCSVManager}{CSVManager}}(m\_sensorData,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00040\ \ \ \ \ m\_tofChartManager\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classTofChartManager}{TofChartManager}}(m\_sensorData,\ ui-\/>chartTof,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00041\ \ \ \ \ m\_lineChartManager\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classLineChartMenager}{LineChartMenager}}(m\_sensorData,\ ui-\/>chartLS,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00042\ \ \ \ \ m\_motorChartManager\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classMotorChartManager}{MotorChartManager}}(m\_sensorData,\ ui-\/>chartMotors,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00043\ \ \ \ \ m\_imuChartManager\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classImuChartManager}{ImuChartManager}}(m\_sensorData,\ ui-\/>chartIMU,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00044\ \ \ \ \ m\_visualManager\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classVisualizationManager}{VisualizationManager}}(m\_sensorData,\ ui,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ Inicjalizacja\ wykresów}}
+\DoxyCodeLine{00047\ \ \ \ \ m\_tofChartManager-\/>\mbox{\hyperlink{classTofChartManager_ac4c44afd699ff240c3564bfb619a3874}{setupChart}}();}
+\DoxyCodeLine{00048\ \ \ \ \ m\_lineChartManager-\/>\mbox{\hyperlink{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}{setupChart}}();}
+\DoxyCodeLine{00049\ \ \ \ \ m\_motorChartManager-\/>\mbox{\hyperlink{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418}{setupChart}}();}
+\DoxyCodeLine{00050\ \ \ \ \ m\_imuChartManager-\/>\mbox{\hyperlink{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc}{setupChart}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Połączenia\ sygnałów\ i\ slotów}}
+\DoxyCodeLine{00053\ \ \ \ \ m\_tcpManager\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classTCPManager}{TCPManager}}(m\_sensorData,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00054\ \ \ \ \ connect(m\_csvManager,\ \&\mbox{\hyperlink{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}{CSVManager::dataUpdated}},\ \textcolor{keyword}{this},\ \&MainWindow::handleDataUpdated);}
+\DoxyCodeLine{00055\ \ \ \ \ connect(m\_sensorData,\ \&\mbox{\hyperlink{classSensorData_ac852da69eccb449b75153160aa56676b}{SensorData::dataChanged}},\ m\_visualManager,\ \&\mbox{\hyperlink{classVisualizationManager_a5f945fcf791c213972cc8762d0cc196b}{VisualizationManager::updateAll}});}
+\DoxyCodeLine{00056\ \ \ \ \ connect(m\_tcpManager,\ \&\mbox{\hyperlink{classTCPManager_a363c1b3b68d005feea5268decf210000}{TCPManager::connectionStatusChanged}},\ \textcolor{keyword}{this},\ \&MainWindow::handleConnectionStatusChanged);}
+\DoxyCodeLine{00057\ \ \ \ \ connect(m\_tcpManager,\ \&\mbox{\hyperlink{classTCPManager_a6c3543bf266491dcb529beb7a44fe012}{TCPManager::dataUpdated}},\ \textcolor{keyword}{this},\ \&MainWindow::handleDataUpdated);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Początkowa\ konfiguracja\ wizualizacji}}
+\DoxyCodeLine{00060\ \ \ \ \ m\_visualManager-\/>\mbox{\hyperlink{classVisualizationManager_a89c8db228d60d6e69f919deeaa93a10c}{setupArrows}}();}
+\DoxyCodeLine{00061\ \ \ \ \ m\_visualManager-\/>\mbox{\hyperlink{classVisualizationManager_a5f945fcf791c213972cc8762d0cc196b}{updateAll}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ Wczytanie\ preferencji\ języka\ i\ inicjalizacja\ tłumaczeń}}
+\DoxyCodeLine{00064\ \ \ \ \ loadLanguagePreference();}
+\DoxyCodeLine{00065\ \ \ \ \ initializeTranslations();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ Konfiguracja\ przycisku\ języka}}
+\DoxyCodeLine{00068\ \ \ \ \ QPushButton*\ languageButton\ =\ findChild<QPushButton*>(\textcolor{stringliteral}{"{}languageButton"{}});}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{if}\ (languageButton)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ languageButton-\/>setIcon(QIcon(m\_isEnglish\ ?\ \textcolor{stringliteral}{"{}:/new/image/img/eng.png"{}}\ :\ \textcolor{stringliteral}{"{}:/new/image/img/pl.png"{}}));}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ languageButton-\/>setIconSize(QSize(32,\ 32));}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ connect(languageButton,\ \&QPushButton::clicked,\ \textcolor{keyword}{this},\ \&MainWindow::switchLanguage);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ languageButton-\/>setStyleSheet(\textcolor{stringliteral}{"{}QPushButton\ \{\ border-\/radius:\ 16px;\ min-\/width:\ 32px;\ max-\/width:\ 32px;\ min-\/height:\ 32px;\ max-\/height:\ 32px;\ \}"{}});}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ Tworzenie\ obrotowych\ etykiet}}
+\DoxyCodeLine{00077\ \ \ \ \ setupRotatedLabels();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Jeżeli\ zapisany\ język\ to\ polski,\ zastosuj\ tłumaczenie}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_isEnglish)\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ applyPolishTranslation();}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMainWindow_a996c5a2b6f77944776856f08ec30858d_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7}\label{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7} 
 \index{MainWindow@{MainWindow}!````~MainWindow@{\texorpdfstring{$\sim$}{\string~}MainWindow}}
 \index{````~MainWindow@{\texorpdfstring{$\sim$}{\string~}MainWindow}!MainWindow@{MainWindow}}
@@ -76,7 +194,28 @@ Konstruktor klasy \doxylink{classMainWindow}{Main\+Window}. Inicjalizuje interfe
 
 Destruktor klasy \doxylink{classMainWindow}{Main\+Window}. 
 
-Destruktor klasy \doxylink{classMainWindow}{Main\+Window}. Zwalnia zasoby i rozłącza TCP jeśli to konieczne. 
+
+
+Definicja w linii \mbox{\hyperlink{mainwindow_8cpp_source_l00085}{85}} pliku \mbox{\hyperlink{mainwindow_8cpp_source}{mainwindow.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_tcpManager\ \&\&\ m\_tcpManager-\/>\mbox{\hyperlink{classTCPManager_a49bf45bb9b1545806780fe5458fa1155}{isConnected}}())\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ m\_tcpManager-\/>\mbox{\hyperlink{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f}{disconnectFromDevice}}();}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{delete}\ ui;}
+\DoxyCodeLine{00090\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7_cgraph}
+\end{center}
+\end{figure}
+
 
 Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
 \item 

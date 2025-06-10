@@ -1,0 +1,16 @@
+<map id="TofChartManager::setupChart" name="TofChartManager::setupChart">
+<area shape="rect" id="Node000001" title="Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry." alt="" coords="5,159,217,185"/>
+<area shape="rect" id="Node000002" href="$classTofChartManager.html#aef81c689ee20264f5258b5a776f86a2e" title="Dostosowuje liczbę etykiet osi X do rozmiaru wykresu." alt="" coords="271,5,480,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,157,185,112,264,62,295,48,297,53,267,66,188,116,129,161"/>
+<area shape="rect" id="Node000003" href="$classTofChartManager.html#a8ac57c7f9e2ca93abfcdeb41b45562e7" title="Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas])." alt="" coords="533,124,724,164"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,157,192,129,228,115,265,105,326,96,375,94,486,105,550,118,549,123,485,111,375,99,327,101,266,111,229,120,194,134,136,162"/>
+<area shape="rect" id="Node000004" href="$classTofChartManager.html#ae0ac92098b83bc7ac69e227ae5b1b853" title="Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto&#45;scroll." alt="" coords="265,120,485,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="216,157,252,152,252,158,217,162"/>
+<area shape="rect" id="Node000005" href="$classTofChartManager.html#a01396fca8c9f1064cf7be0618484227b" title="Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania." alt="" coords="265,184,485,224"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="217,182,252,186,252,192,216,187"/>
+<area shape="rect" id="Node000006" href="$classHorizontalOnlyChartView.html#a5ef619d9b976147eb7fe9f83da3b6688" title="Ustawia callback wywoływany przy naciśnięciu lewego przycisku myszy na wykresie." alt="" coords="275,248,475,288"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="141,182,266,234,289,241,288,246,264,238,139,187"/>
+<area shape="rect" id="Node000007" href="$classHorizontalOnlyChartView.html#a12bd31146864d4ca20b2da4544f6c2bf" title="Ustawia callback wywoływany przy puszczeniu lewego przycisku myszy na wykresie." alt="" coords="271,312,480,352"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="126,183,183,238,223,270,267,298,281,305,279,309,264,302,220,274,180,242,123,187"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="460,181,530,165,531,170,461,187"/>
+</map>

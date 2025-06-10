@@ -77,77 +77,680 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Zarządza wykresem danych z silników.  
+<p>Zarządza dynamicznym wykresem prezentującym dane z silników (np. prędkości lub sterowania).  
  <a href="classMotorChartManager.html#details">Więcej...</a></p>
 
 <p><code>#include &lt;<a class="el" href="motorchartmanager_8h_source.html">motorchartmanager.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagram dziedziczenia dla MotorChartManager</div>
 <div class="dyncontent">
-<div class="center"><img src="classMotorChartManager__inherit__graph.png" border="0" usemap="#aMotorChartManager_inherit__map" alt="Inheritance graph"/></div>
-<map name="aMotorChartManager_inherit__map" id="aMotorChartManager_inherit__map">
-<area shape="rect" title="Zarządza wykresem danych z silników." alt="" coords="5,79,157,104"/>
-<area shape="rect" title=" " alt="" coords="44,5,119,31"/>
-<area shape="poly" title=" " alt="" coords="84,44,84,79,79,79,79,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager__inherit__graph.svg" width="163" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <div class="dynheader">
 Diagram współpracy dla MotorChartManager:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMotorChartManager__coll__graph.png" border="0" usemap="#aMotorChartManager_coll__map" alt="Collaboration graph"/></div>
-<map name="aMotorChartManager_coll__map" id="aMotorChartManager_coll__map">
-<area shape="rect" title="Zarządza wykresem danych z silników." alt="" coords="5,79,157,104"/>
-<area shape="rect" title=" " alt="" coords="44,5,119,31"/>
-<area shape="poly" title=" " alt="" coords="84,44,84,79,79,79,79,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager__coll__graph.svg" width="163" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Metody publiczne</h2></td></tr>
-<tr class="memitem:aa5b587327b9d86bc367fcb6bf20dd1e0" id="r_aa5b587327b9d86bc367fcb6bf20dd1e0"><td class="memItemLeft" align="right" valign="top"><a id="aa5b587327b9d86bc367fcb6bf20dd1e0" name="aa5b587327b9d86bc367fcb6bf20dd1e0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MotorChartManager</b> (<a class="el" href="classSensorData.html">SensorData</a> *sensorData, QWidget *container, QObject *parent=nullptr)</td></tr>
+<tr class="memitem:aa5b587327b9d86bc367fcb6bf20dd1e0" id="r_aa5b587327b9d86bc367fcb6bf20dd1e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#aa5b587327b9d86bc367fcb6bf20dd1e0">MotorChartManager</a> (<a class="el" href="classSensorData.html">SensorData</a> *sensorData, QWidget *container, QObject *parent=nullptr)</td></tr>
+<tr class="memdesc:aa5b587327b9d86bc367fcb6bf20dd1e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor.  <br /></td></tr>
 <tr class="separator:aa5b587327b9d86bc367fcb6bf20dd1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85717a01fbee0e8d8ddd24e83f6bc418" id="r_a85717a01fbee0e8d8ddd24e83f6bc418"><td class="memItemLeft" align="right" valign="top"><a id="a85717a01fbee0e8d8ddd24e83f6bc418" name="a85717a01fbee0e8d8ddd24e83f6bc418"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setupChart</b> ()</td></tr>
-<tr class="memdesc:a85717a01fbee0e8d8ddd24e83f6bc418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje wykres. <br /></td></tr>
+<tr class="memitem:af263546de1d6ce102dc625de8bdd641a" id="r_af263546de1d6ce102dc625de8bdd641a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#af263546de1d6ce102dc625de8bdd641a">~MotorChartManager</a> ()</td></tr>
+<tr class="memdesc:af263546de1d6ce102dc625de8bdd641a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruktor. Usuwa wykres i zwalnia zasoby.  <br /></td></tr>
+<tr class="separator:af263546de1d6ce102dc625de8bdd641a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85717a01fbee0e8d8ddd24e83f6bc418" id="r_a85717a01fbee0e8d8ddd24e83f6bc418"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#a85717a01fbee0e8d8ddd24e83f6bc418">setupChart</a> ()</td></tr>
+<tr class="memdesc:a85717a01fbee0e8d8ddd24e83f6bc418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry.  <br /></td></tr>
 <tr class="separator:a85717a01fbee0e8d8ddd24e83f6bc418"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a206f54b54240cda87c8e80d79ae904" id="r_a1a206f54b54240cda87c8e80d79ae904"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#a1a206f54b54240cda87c8e80d79ae904">updateChart</a> (int time)</td></tr>
-<tr class="memdesc:a1a206f54b54240cda87c8e80d79ae904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje dane na wykresie.  <br /></td></tr>
+<tr class="memdesc:a1a206f54b54240cda87c8e80d79ae904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje wykres o nowe dane z <a class="el" href="classSensorData.html" title="Przechowuje dane z różnych sensorów i udostępnia je aplikacji.">SensorData</a>.  <br /></td></tr>
 <tr class="separator:a1a206f54b54240cda87c8e80d79ae904"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b83bb3d9ee73e6ac3321dcef78ef858" id="r_a7b83bb3d9ee73e6ac3321dcef78ef858"><td class="memItemLeft" align="right" valign="top"><a id="a7b83bb3d9ee73e6ac3321dcef78ef858" name="a7b83bb3d9ee73e6ac3321dcef78ef858"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearChart</b> ()</td></tr>
-<tr class="memdesc:a7b83bb3d9ee73e6ac3321dcef78ef858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czyści dane z wykresu. <br /></td></tr>
+<tr class="memitem:a7b83bb3d9ee73e6ac3321dcef78ef858" id="r_a7b83bb3d9ee73e6ac3321dcef78ef858"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#a7b83bb3d9ee73e6ac3321dcef78ef858">clearChart</a> ()</td></tr>
+<tr class="memdesc:a7b83bb3d9ee73e6ac3321dcef78ef858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czyści wszystkie próbki z wykresu oraz resetuje oś X.  <br /></td></tr>
 <tr class="separator:a7b83bb3d9ee73e6ac3321dcef78ef858"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9dad637e7a0563ae60ab5a225e91fce" id="r_aa9dad637e7a0563ae60ab5a225e91fce"><td class="memItemLeft" align="right" valign="top"><a id="aa9dad637e7a0563ae60ab5a225e91fce" name="aa9dad637e7a0563ae60ab5a225e91fce"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resetToCurrentData</b> ()</td></tr>
-<tr class="memdesc:aa9dad637e7a0563ae60ab5a225e91fce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przywraca widok do aktualnych danych (włącza auto-scrolling). <br /></td></tr>
+<tr class="memitem:aa9dad637e7a0563ae60ab5a225e91fce" id="r_aa9dad637e7a0563ae60ab5a225e91fce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#aa9dad637e7a0563ae60ab5a225e91fce">resetToCurrentData</a> ()</td></tr>
+<tr class="memdesc:aa9dad637e7a0563ae60ab5a225e91fce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przywraca widok wykresu do najnowszych danych (włącza auto-scroll).  <br /></td></tr>
 <tr class="separator:aa9dad637e7a0563ae60ab5a225e91fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Metody chronione</h2></td></tr>
-<tr class="memitem:a280c414156ff43bba10d6e63778e29c0" id="r_a280c414156ff43bba10d6e63778e29c0"><td class="memItemLeft" align="right" valign="top"><a id="a280c414156ff43bba10d6e63778e29c0" name="a280c414156ff43bba10d6e63778e29c0"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>eventFilter</b> (QObject *watched, QEvent *event) override</td></tr>
-<tr class="memdesc:a280c414156ff43bba10d6e63778e29c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filtr zdarzeń do obsługi zmiany rozmiaru kontenera. <br /></td></tr>
+<tr class="memitem:a280c414156ff43bba10d6e63778e29c0" id="r_a280c414156ff43bba10d6e63778e29c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#a280c414156ff43bba10d6e63778e29c0">eventFilter</a> (QObject *watched, QEvent *event) override</td></tr>
+<tr class="memdesc:a280c414156ff43bba10d6e63778e29c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filtr zdarzeń do obsługi resize kontenera wykresu.  <br /></td></tr>
 <tr class="separator:a280c414156ff43bba10d6e63778e29c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3abfa18078ea0a68ee37fef72323b70" id="r_ae3abfa18078ea0a68ee37fef72323b70"><td class="memItemLeft" align="right" valign="top"><a id="ae3abfa18078ea0a68ee37fef72323b70" name="ae3abfa18078ea0a68ee37fef72323b70"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleChartMousePressed</b> ()</td></tr>
-<tr class="memdesc:ae3abfa18078ea0a68ee37fef72323b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługa kliknięcia i przesunięcia myszy na wykresie. <br /></td></tr>
+<tr class="memitem:ae3abfa18078ea0a68ee37fef72323b70" id="r_ae3abfa18078ea0a68ee37fef72323b70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#ae3abfa18078ea0a68ee37fef72323b70">handleChartMousePressed</a> ()</td></tr>
+<tr class="memdesc:ae3abfa18078ea0a68ee37fef72323b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-scroll.  <br /></td></tr>
 <tr class="separator:ae3abfa18078ea0a68ee37fef72323b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0ac3fc2c8546fbcf5e9b4dee08c575d" id="r_ae0ac3fc2c8546fbcf5e9b4dee08c575d"><td class="memItemLeft" align="right" valign="top"><a id="ae0ac3fc2c8546fbcf5e9b4dee08c575d" name="ae0ac3fc2c8546fbcf5e9b4dee08c575d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleChartMouseReleased</b> ()</td></tr>
+<tr class="memitem:ae0ac3fc2c8546fbcf5e9b4dee08c575d" id="r_ae0ac3fc2c8546fbcf5e9b4dee08c575d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#ae0ac3fc2c8546fbcf5e9b4dee08c575d">handleChartMouseReleased</a> ()</td></tr>
+<tr class="memdesc:ae0ac3fc2c8546fbcf5e9b4dee08c575d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania.  <br /></td></tr>
 <tr class="separator:ae0ac3fc2c8546fbcf5e9b4dee08c575d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76c5f53509d19a22b047cc777241eecc" id="r_a76c5f53509d19a22b047cc777241eecc"><td class="memItemLeft" align="right" valign="top"><a id="a76c5f53509d19a22b047cc777241eecc" name="a76c5f53509d19a22b047cc777241eecc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>enforceAxisLimits</b> (qreal min, qreal max)</td></tr>
-<tr class="memdesc:a76c5f53509d19a22b047cc777241eecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wymusza przestrzeganie limitów osi X (min ≥ 0, max ≤ aktualny_czas). <br /></td></tr>
+<tr class="memitem:a76c5f53509d19a22b047cc777241eecc" id="r_a76c5f53509d19a22b047cc777241eecc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#a76c5f53509d19a22b047cc777241eecc">enforceAxisLimits</a> (qreal min, qreal max)</td></tr>
+<tr class="memdesc:a76c5f53509d19a22b047cc777241eecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas]).  <br /></td></tr>
 <tr class="separator:a76c5f53509d19a22b047cc777241eecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2701ef1432db59dddda13f740613b2a" id="r_ad2701ef1432db59dddda13f740613b2a"><td class="memItemLeft" align="right" valign="top"><a id="ad2701ef1432db59dddda13f740613b2a" name="ad2701ef1432db59dddda13f740613b2a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>adjustAxisLabels</b> ()</td></tr>
-<tr class="memdesc:ad2701ef1432db59dddda13f740613b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dostosowuje etykiety osi X do bieżącego rozmiaru wykresu. <br /></td></tr>
+<tr class="memitem:ad2701ef1432db59dddda13f740613b2a" id="r_ad2701ef1432db59dddda13f740613b2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMotorChartManager.html#ad2701ef1432db59dddda13f740613b2a">adjustAxisLabels</a> ()</td></tr>
+<tr class="memdesc:ad2701ef1432db59dddda13f740613b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dostosowuje liczbę etykiet osi X do rozmiaru wykresu.  <br /></td></tr>
 <tr class="separator:ad2701ef1432db59dddda13f740613b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
-<div class="textblock"><p>Zarządza wykresem danych z silników. </p>
-</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<div class="textblock"><p>Zarządza dynamicznym wykresem prezentującym dane z silników (np. prędkości lub sterowania). </p>
+<p>Odpowiada za:</p><ul>
+<li>Tworzenie i konfigurację wykresu (QChart) dla dwóch sygnałów z silników (np. lewy i prawy).</li>
+<li>Dodawanie nowych próbek, automatyczne przewijanie oraz czyszczenie danych.</li>
+<li>Dynamiczne dopasowywanie osi do okna i blokowanie przewijania poza zakres danych.</li>
+<li>Obsługę auto-scrollingu oraz wyłączanie go przy ręcznej interakcji użytkownika.</li>
+</ul>
+<p>Współpracuje z <a class="el" href="classHorizontalOnlyChartView.html" title="Specjalistyczny widok QChartView umożliwiający przewijanie i zoomowanie wyłącznie w osi poziomej (X).">HorizontalOnlyChartView</a> (ograniczenie interakcji do osi X).</p>
+<p>Przykład użycia: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classMotorChartManager.html">MotorChartManager</a>* motorMgr = <span class="keyword">new</span> <a class="code hl_class" href="classMotorChartManager.html">MotorChartManager</a>(sensorData, ui-&gt;motorChartContainer, <span class="keyword">this</span>);</div>
+<div class="line">connect(csvManager, &amp;<a class="code hl_signal" href="classCSVManager.html#ac8dfd7524b2fe204986084c3accbd839">CSVManager::dataUpdated</a>, motorMgr, &amp;<a class="code hl_function" href="classMotorChartManager.html#a1a206f54b54240cda87c8e80d79ae904">MotorChartManager::updateChart</a>);</div>
+<div class="ttc" id="aclassCSVManager_html_ac8dfd7524b2fe204986084c3accbd839"><div class="ttname"><a href="classCSVManager.html#ac8dfd7524b2fe204986084c3accbd839">CSVManager::dataUpdated</a></div><div class="ttdeci">void dataUpdated(int time)</div><div class="ttdoc">Sygnał informujący o aktualizacji danych.</div><div class="ttdef"><b>Definition</b> <a href="moc__csvmanager_8cpp_source.html#l00127">moc_csvmanager.cpp:127</a></div></div>
+<div class="ttc" id="aclassMotorChartManager_html"><div class="ttname"><a href="classMotorChartManager.html">MotorChartManager</a></div><div class="ttdoc">Zarządza dynamicznym wykresem prezentującym dane z silników (np. prędkości lub sterowania).</div><div class="ttdef"><b>Definition</b> <a href="motorchartmanager_8h_source.html#l00034">motorchartmanager.h:35</a></div></div>
+<div class="ttc" id="aclassMotorChartManager_html_a1a206f54b54240cda87c8e80d79ae904"><div class="ttname"><a href="classMotorChartManager.html#a1a206f54b54240cda87c8e80d79ae904">MotorChartManager::updateChart</a></div><div class="ttdeci">void updateChart(int time)</div><div class="ttdoc">Aktualizuje wykres o nowe dane z SensorData.</div><div class="ttdef"><b>Definition</b> <a href="motorchartmanager_8cpp_source.html#l00165">motorchartmanager.cpp:165</a></div></div>
+</div><!-- fragment --><dl class="section author"><dt>Autor</dt><dd>Jakub Wilczyński </dd></dl>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8h_source.html#l00034">34</a> pliku <a class="el" href="motorchartmanager_8h_source.html">motorchartmanager.h</a>.</p>
+</div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a id="aa5b587327b9d86bc367fcb6bf20dd1e0" name="aa5b587327b9d86bc367fcb6bf20dd1e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5b587327b9d86bc367fcb6bf20dd1e0">&#9670;&#160;</a></span>MotorChartManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MotorChartManager::MotorChartManager </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSensorData.html">SensorData</a> *&#160;</td>
+          <td class="paramname"><em>sensorData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QObject *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konstruktor. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sensorData</td><td>Wskaźnik do <a class="el" href="classSensorData.html" title="Przechowuje dane z różnych sensorów i udostępnia je aplikacji.">SensorData</a> (źródło danych z silników). </td></tr>
+    <tr><td class="paramname">container</td><td>QWidget, w którym osadzany jest wykres. </td></tr>
+    <tr><td class="paramname">parent</td><td>Opcjonalny rodzic QObject. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00011">11</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>    : QObject(parent), m_sensorData(sensorData), m_container(container),</div>
+<div class="line"><span class="lineno">   13</span>    m_chart(<span class="keyword">nullptr</span>), m_chartView(<span class="keyword">nullptr</span>), m_currentPoint(0),</div>
+<div class="line"><span class="lineno">   14</span>    m_isAutoScrollEnabled(<span class="keyword">true</span>), m_currentTimeOffset(0)</div>
+<div class="line"><span class="lineno">   15</span>{</div>
+<div class="line"><span class="lineno">   16</span>    <span class="comment">// Sprawdź poprawność wskaźników</span></div>
+<div class="line"><span class="lineno">   17</span>    <span class="keywordflow">if</span> (!m_sensorData || !m_container) {</div>
+<div class="line"><span class="lineno">   18</span>        qWarning() &lt;&lt; <span class="stringliteral">&quot;MotorChartManager: Nieprawidłowe wskaźniki do sensorData lub container!&quot;</span>;</div>
+<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   20</span>    }</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>    <span class="comment">// Instaluj filtr zdarzeń dla kontenera</span></div>
+<div class="line"><span class="lineno">   23</span>    m_container-&gt;installEventFilter(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_function" href="classMotorChartManager.html#a85717a01fbee0e8d8ddd24e83f6bc418">setupChart</a>();</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>    <span class="comment">// Slot SensorData::motorDataChanged zostaje pusty – aktualizacja wywoływana z zewnątrz</span></div>
+<div class="line"><span class="lineno">   28</span>    connect(m_sensorData, &amp;<a class="code hl_signal" href="classSensorData.html#a3d394763776fdce03f4c9130ca35b39e">SensorData::motorDataChanged</a>, <span class="keyword">this</span>, [<span class="keyword">this</span>]() {</div>
+<div class="line"><span class="lineno">   29</span>        <span class="comment">// Slot pusty – aktualizacja wykresu przez updateChart(time)</span></div>
+<div class="line"><span class="lineno">   30</span>    });</div>
+<div class="line"><span class="lineno">   31</span>}</div>
+<div class="ttc" id="aclassMotorChartManager_html_a85717a01fbee0e8d8ddd24e83f6bc418"><div class="ttname"><a href="classMotorChartManager.html#a85717a01fbee0e8d8ddd24e83f6bc418">MotorChartManager::setupChart</a></div><div class="ttdeci">void setupChart()</div><div class="ttdoc">Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry.</div><div class="ttdef"><b>Definition</b> <a href="motorchartmanager_8cpp_source.html#l00055">motorchartmanager.cpp:55</a></div></div>
+<div class="ttc" id="aclassSensorData_html_a3d394763776fdce03f4c9130ca35b39e"><div class="ttname"><a href="classSensorData.html#a3d394763776fdce03f4c9130ca35b39e">SensorData::motorDataChanged</a></div><div class="ttdeci">void motorDataChanged()</div><div class="ttdoc">Sygnał emitowany przy zmianie danych silników.</div><div class="ttdef"><b>Definition</b> <a href="moc__sensordata_8cpp_source.html#l00150">moc_sensordata.cpp:150</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager_aa5b587327b9d86bc367fcb6bf20dd1e0_cgraph.svg" width="916" height="358"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="af263546de1d6ce102dc625de8bdd641a" name="af263546de1d6ce102dc625de8bdd641a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af263546de1d6ce102dc625de8bdd641a">&#9670;&#160;</a></span>~MotorChartManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MotorChartManager::~MotorChartManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destruktor. Usuwa wykres i zwalnia zasoby. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00033">33</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
+<div class="line"><span class="lineno">   35</span>    <span class="comment">// Usuń filtr zdarzeń</span></div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (m_container) {</div>
+<div class="line"><span class="lineno">   37</span>        m_container-&gt;removeEventFilter(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>    <span class="keyword">delete</span> m_chart;  <span class="comment">// m_chartView usuwany przez m_container</span></div>
+<div class="line"><span class="lineno">   41</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ad2701ef1432db59dddda13f740613b2a" name="ad2701ef1432db59dddda13f740613b2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2701ef1432db59dddda13f740613b2a">&#9670;&#160;</a></span>adjustAxisLabels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotorChartManager::adjustAxisLabels </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dostosowuje liczbę etykiet osi X do rozmiaru wykresu. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00246">246</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  247</span>{</div>
+<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">if</span> (m_chartView &amp;&amp; m_axisX) {</div>
+<div class="line"><span class="lineno">  249</span>        <span class="keywordtype">int</span> chartWidth = m_chartView-&gt;width();</div>
+<div class="line"><span class="lineno">  250</span> </div>
+<div class="line"><span class="lineno">  251</span>        <span class="keywordflow">if</span> (chartWidth &lt;= 0)</div>
+<div class="line"><span class="lineno">  252</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  253</span> </div>
+<div class="line"><span class="lineno">  254</span>        <span class="keywordtype">int</span> labelCount;</div>
+<div class="line"><span class="lineno">  255</span>        <span class="keywordflow">if</span> (chartWidth &lt; 100) {</div>
+<div class="line"><span class="lineno">  256</span>            labelCount = 2;</div>
+<div class="line"><span class="lineno">  257</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (chartWidth &lt; 200) {</div>
+<div class="line"><span class="lineno">  258</span>            labelCount = 3;</div>
+<div class="line"><span class="lineno">  259</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (chartWidth &lt; 300) {</div>
+<div class="line"><span class="lineno">  260</span>            labelCount = 4;</div>
+<div class="line"><span class="lineno">  261</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  262</span>            labelCount = 5;</div>
+<div class="line"><span class="lineno">  263</span>        }</div>
+<div class="line"><span class="lineno">  264</span> </div>
+<div class="line"><span class="lineno">  265</span>        <span class="keywordflow">if</span> (m_axisX-&gt;tickCount() != labelCount) {</div>
+<div class="line"><span class="lineno">  266</span>            m_axisX-&gt;setTickCount(labelCount);</div>
+<div class="line"><span class="lineno">  267</span>        }</div>
+<div class="line"><span class="lineno">  268</span> </div>
+<div class="line"><span class="lineno">  269</span>        m_axisX-&gt;setTitleVisible(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  270</span>        m_axisY-&gt;setTitleVisible(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  271</span> </div>
+<div class="line"><span class="lineno">  272</span>        <span class="keywordflow">if</span> (chartWidth &lt; 150) {</div>
+<div class="line"><span class="lineno">  273</span>            m_axisX-&gt;setLabelFormat(<span class="stringliteral">&quot;%.0f&quot;</span>);</div>
+<div class="line"><span class="lineno">  274</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  275</span>            m_axisX-&gt;setLabelFormat(<span class="stringliteral">&quot;%.0f&quot;</span>);</div>
+<div class="line"><span class="lineno">  276</span>        }</div>
+<div class="line"><span class="lineno">  277</span>    }</div>
+<div class="line"><span class="lineno">  278</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager_ad2701ef1432db59dddda13f740613b2a_icgraph.svg" width="624" height="143"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a7b83bb3d9ee73e6ac3321dcef78ef858" name="a7b83bb3d9ee73e6ac3321dcef78ef858"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b83bb3d9ee73e6ac3321dcef78ef858">&#9670;&#160;</a></span>clearChart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotorChartManager::clearChart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Czyści wszystkie próbki z wykresu oraz resetuje oś X. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00187">187</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  188</span>{</div>
+<div class="line"><span class="lineno">  189</span>    m_series1-&gt;clear();</div>
+<div class="line"><span class="lineno">  190</span>    m_series2-&gt;clear();</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>    m_currentPoint = 0;</div>
+<div class="line"><span class="lineno">  193</span>    m_currentTimeOffset = 0;</div>
+<div class="line"><span class="lineno">  194</span>    m_latestDataTime = 0;</div>
+<div class="line"><span class="lineno">  195</span>    m_isAutoScrollEnabled = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  196</span> </div>
+<div class="line"><span class="lineno">  197</span>    m_axisX-&gt;setRange(0, MAX_POINTS * 100);</div>
+<div class="line"><span class="lineno">  198</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a76c5f53509d19a22b047cc777241eecc" name="a76c5f53509d19a22b047cc777241eecc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c5f53509d19a22b047cc777241eecc">&#9670;&#160;</a></span>enforceAxisLimits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotorChartManager::enforceAxisLimits </td>
+          <td>(</td>
+          <td class="paramtype">qreal&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">qreal&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas]). </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td>Aktualne minimum zakresu osi X. </td></tr>
+    <tr><td class="paramname">max</td><td>Aktualne maksimum zakresu osi X. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00221">221</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  222</span>{</div>
+<div class="line"><span class="lineno">  223</span>    <span class="keywordtype">bool</span> needAdjustment = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  224</span>    qreal newMin = min;</div>
+<div class="line"><span class="lineno">  225</span>    qreal newMax = max;</div>
+<div class="line"><span class="lineno">  226</span>    qreal rangeSize = max - min;</div>
+<div class="line"><span class="lineno">  227</span> </div>
+<div class="line"><span class="lineno">  228</span>    <span class="keywordflow">if</span> (min &lt; 0) {</div>
+<div class="line"><span class="lineno">  229</span>        newMin = 0;</div>
+<div class="line"><span class="lineno">  230</span>        newMax = rangeSize;</div>
+<div class="line"><span class="lineno">  231</span>        needAdjustment = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  232</span>    }</div>
+<div class="line"><span class="lineno">  233</span> </div>
+<div class="line"><span class="lineno">  234</span>    <span class="keywordflow">if</span> (max &gt; m_latestDataTime &amp;&amp; m_latestDataTime &gt; 0) {</div>
+<div class="line"><span class="lineno">  235</span>        newMax = m_latestDataTime;</div>
+<div class="line"><span class="lineno">  236</span>        newMin = qMax(0.0, m_latestDataTime - rangeSize);</div>
+<div class="line"><span class="lineno">  237</span>        needAdjustment = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  238</span>    }</div>
+<div class="line"><span class="lineno">  239</span> </div>
+<div class="line"><span class="lineno">  240</span>    <span class="keywordflow">if</span> (needAdjustment) {</div>
+<div class="line"><span class="lineno">  241</span>        QSignalBlocker blocker(m_axisX);</div>
+<div class="line"><span class="lineno">  242</span>        m_axisX-&gt;setRange(newMin, newMax);</div>
+<div class="line"><span class="lineno">  243</span>    }</div>
+<div class="line"><span class="lineno">  244</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager_a76c5f53509d19a22b047cc777241eecc_icgraph.svg" width="876" height="108"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a280c414156ff43bba10d6e63778e29c0" name="a280c414156ff43bba10d6e63778e29c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a280c414156ff43bba10d6e63778e29c0">&#9670;&#160;</a></span>eventFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MotorChartManager::eventFilter </td>
+          <td>(</td>
+          <td class="paramtype">QObject *&#160;</td>
+          <td class="paramname"><em>watched</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QEvent *&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Filtr zdarzeń do obsługi resize kontenera wykresu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">watched</td><td>Obiekt obserwowany. </td></tr>
+    <tr><td class="paramname">event</td><td>Wskaźnik do zdarzenia. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>true jeśli filtr przechwycił zdarzenie. </dd></dl>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00043">43</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>{</div>
+<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">if</span> (watched == m_container &amp;&amp; event-&gt;type() == QEvent::Resize) {</div>
+<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">if</span> (m_chartView) {</div>
+<div class="line"><span class="lineno">   47</span>            m_chartView-&gt;resize(m_container-&gt;size());</div>
+<div class="line"><span class="lineno">   48</span>            <a class="code hl_function" href="classMotorChartManager.html#ad2701ef1432db59dddda13f740613b2a">adjustAxisLabels</a>();</div>
+<div class="line"><span class="lineno">   49</span>        }</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Pozwól na domyślną obsługę zdarzenia</span></div>
+<div class="line"><span class="lineno">   51</span>    }</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">return</span> QObject::eventFilter(watched, event);</div>
+<div class="line"><span class="lineno">   53</span>}</div>
+<div class="ttc" id="aclassMotorChartManager_html_ad2701ef1432db59dddda13f740613b2a"><div class="ttname"><a href="classMotorChartManager.html#ad2701ef1432db59dddda13f740613b2a">MotorChartManager::adjustAxisLabels</a></div><div class="ttdeci">void adjustAxisLabels()</div><div class="ttdoc">Dostosowuje liczbę etykiet osi X do rozmiaru wykresu.</div><div class="ttdef"><b>Definition</b> <a href="motorchartmanager_8cpp_source.html#l00246">motorchartmanager.cpp:246</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager_a280c414156ff43bba10d6e63778e29c0_cgraph.svg" width="379" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ae3abfa18078ea0a68ee37fef72323b70" name="ae3abfa18078ea0a68ee37fef72323b70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3abfa18078ea0a68ee37fef72323b70">&#9670;&#160;</a></span>handleChartMousePressed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotorChartManager::handleChartMousePressed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-scroll. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00200">200</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  201</span>{</div>
+<div class="line"><span class="lineno">  202</span>    m_isAutoScrollEnabled = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  203</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70_icgraph.svg" width="659" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ae0ac3fc2c8546fbcf5e9b4dee08c575d" name="ae0ac3fc2c8546fbcf5e9b4dee08c575d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0ac3fc2c8546fbcf5e9b4dee08c575d">&#9670;&#160;</a></span>handleChartMouseReleased()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotorChartManager::handleChartMouseReleased </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00205">205</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  206</span>{</div>
+<div class="line"><span class="lineno">  207</span>    <a class="code hl_function" href="classMotorChartManager.html#a76c5f53509d19a22b047cc777241eecc">enforceAxisLimits</a>(m_axisX-&gt;min(), m_axisX-&gt;max());</div>
+<div class="line"><span class="lineno">  208</span>}</div>
+<div class="ttc" id="aclassMotorChartManager_html_a76c5f53509d19a22b047cc777241eecc"><div class="ttname"><a href="classMotorChartManager.html#a76c5f53509d19a22b047cc777241eecc">MotorChartManager::enforceAxisLimits</a></div><div class="ttdeci">void enforceAxisLimits(qreal min, qreal max)</div><div class="ttdoc">Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas]).</div><div class="ttdef"><b>Definition</b> <a href="motorchartmanager_8cpp_source.html#l00221">motorchartmanager.cpp:221</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d_cgraph.svg" width="423" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d_icgraph.svg" width="668" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aa9dad637e7a0563ae60ab5a225e91fce" name="aa9dad637e7a0563ae60ab5a225e91fce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9dad637e7a0563ae60ab5a225e91fce">&#9670;&#160;</a></span>resetToCurrentData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotorChartManager::resetToCurrentData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Przywraca widok wykresu do najnowszych danych (włącza auto-scroll). </p>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00210">210</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  211</span>{</div>
+<div class="line"><span class="lineno">  212</span>    m_isAutoScrollEnabled = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  213</span> </div>
+<div class="line"><span class="lineno">  214</span>    <span class="keywordflow">if</span> (m_latestDataTime &gt; 0) {</div>
+<div class="line"><span class="lineno">  215</span>        m_axisX-&gt;setRange(m_latestDataTime - MAX_POINTS * 100, m_latestDataTime);</div>
+<div class="line"><span class="lineno">  216</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  217</span>        m_axisX-&gt;setRange(0, MAX_POINTS * 100);</div>
+<div class="line"><span class="lineno">  218</span>    }</div>
+<div class="line"><span class="lineno">  219</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a85717a01fbee0e8d8ddd24e83f6bc418" name="a85717a01fbee0e8d8ddd24e83f6bc418"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85717a01fbee0e8d8ddd24e83f6bc418">&#9670;&#160;</a></span>setupChart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotorChartManager::setupChart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00055">55</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>{</div>
+<div class="line"><span class="lineno">   57</span>    m_chart = <span class="keyword">new</span> QChart();</div>
+<div class="line"><span class="lineno">   58</span>    m_chart-&gt;setMargins(QMargins(0, 0, 0, 0));</div>
+<div class="line"><span class="lineno">   59</span>    m_chart-&gt;setBackgroundRoundness(0);</div>
+<div class="line"><span class="lineno">   60</span>    m_chart-&gt;setBackgroundVisible(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   61</span>    m_chart-&gt;setAnimationOptions(QChart::NoAnimation);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    m_series1 = <span class="keyword">new</span> QLineSeries();</div>
+<div class="line"><span class="lineno">   64</span>    m_series2 = <span class="keyword">new</span> QLineSeries();</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    m_series1-&gt;setName(<span class="stringliteral">&quot;M. Left&quot;</span>);</div>
+<div class="line"><span class="lineno">   67</span>    m_series2-&gt;setName(<span class="stringliteral">&quot;M. Right&quot;</span>);</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>    m_series1-&gt;setColor(QColor(255, 0, 0));</div>
+<div class="line"><span class="lineno">   70</span>    m_series2-&gt;setColor(QColor(0, 0, 255));</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>    QPen pen1 = m_series1-&gt;pen();</div>
+<div class="line"><span class="lineno">   73</span>    QPen pen2 = m_series2-&gt;pen();</div>
+<div class="line"><span class="lineno">   74</span>    pen1.setWidth(2);</div>
+<div class="line"><span class="lineno">   75</span>    pen2.setWidth(2);</div>
+<div class="line"><span class="lineno">   76</span>    m_series1-&gt;setPen(pen1);</div>
+<div class="line"><span class="lineno">   77</span>    m_series2-&gt;setPen(pen2);</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>    m_chart-&gt;addSeries(m_series1);</div>
+<div class="line"><span class="lineno">   80</span>    m_chart-&gt;addSeries(m_series2);</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>    m_axisX = <span class="keyword">new</span> QValueAxis();</div>
+<div class="line"><span class="lineno">   83</span>    m_axisY = <span class="keyword">new</span> QValueAxis();</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>    m_axisX-&gt;setTitleVisible(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   86</span>    m_axisY-&gt;setTitleVisible(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   87</span> </div>
+<div class="line"><span class="lineno">   88</span>    m_axisX-&gt;setTitleText(<span class="stringliteral">&quot;Czas (ms)&quot;</span>);</div>
+<div class="line"><span class="lineno">   89</span>    m_axisY-&gt;setTitleText(<span class="stringliteral">&quot;%&quot;</span>);</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>    QFont axisFont;</div>
+<div class="line"><span class="lineno">   92</span>    axisFont.setPointSize(8);</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>    m_axisX-&gt;setLabelsFont(axisFont);</div>
+<div class="line"><span class="lineno">   95</span>    m_axisY-&gt;setLabelsFont(axisFont);</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>    m_axisX-&gt;setLabelFormat(<span class="stringliteral">&quot;%.0f&quot;</span>);</div>
+<div class="line"><span class="lineno">   98</span>    m_axisX-&gt;setTickCount(5);</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>    m_axisY-&gt;setRange(-100, 100);</div>
+<div class="line"><span class="lineno">  101</span>    m_axisY-&gt;setTickCount(5);</div>
+<div class="line"><span class="lineno">  102</span>    m_axisY-&gt;setLabelFormat(<span class="stringliteral">&quot;%.0f&quot;</span>);</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>    m_axisX-&gt;setRange(0, MAX_POINTS * 100);</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>    m_chart-&gt;addAxis(m_axisX, Qt::AlignBottom);</div>
+<div class="line"><span class="lineno">  107</span>    m_chart-&gt;addAxis(m_axisY, Qt::AlignLeft);</div>
+<div class="line"><span class="lineno">  108</span> </div>
+<div class="line"><span class="lineno">  109</span>    m_series1-&gt;attachAxis(m_axisX);</div>
+<div class="line"><span class="lineno">  110</span>    m_series1-&gt;attachAxis(m_axisY);</div>
+<div class="line"><span class="lineno">  111</span>    m_series2-&gt;attachAxis(m_axisX);</div>
+<div class="line"><span class="lineno">  112</span>    m_series2-&gt;attachAxis(m_axisY);</div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>    m_chart-&gt;legend()-&gt;setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  115</span>    m_chart-&gt;legend()-&gt;setAlignment(Qt::AlignRight);</div>
+<div class="line"><span class="lineno">  116</span>    m_chart-&gt;legend()-&gt;setBackgroundVisible(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  117</span>    m_chart-&gt;legend()-&gt;setBorderColor(Qt::transparent);</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span>    QRectF legendRect = m_chart-&gt;legend()-&gt;geometry();</div>
+<div class="line"><span class="lineno">  120</span>    legendRect.moveTopRight(m_chart-&gt;plotArea().topRight() - QPointF(10, 10));</div>
+<div class="line"><span class="lineno">  121</span>    m_chart-&gt;legend()-&gt;setGeometry(legendRect);</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>    QFont legendFont;</div>
+<div class="line"><span class="lineno">  124</span>    legendFont.setPointSize(8);</div>
+<div class="line"><span class="lineno">  125</span>    m_chart-&gt;legend()-&gt;setFont(legendFont);</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>    m_chartView = <span class="keyword">new</span> <a class="code hl_class" href="classHorizontalOnlyChartView.html">HorizontalOnlyChartView</a>(m_chart);</div>
+<div class="line"><span class="lineno">  128</span>    m_chartView-&gt;setRenderHint(QPainter::Antialiasing);</div>
+<div class="line"><span class="lineno">  129</span>    m_chartView-&gt;setRubberBand(QChartView::HorizontalRubberBand);</div>
+<div class="line"><span class="lineno">  130</span>    m_chartView-&gt;setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);</div>
+<div class="line"><span class="lineno">  131</span>    m_chartView-&gt;setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>    m_chartView-&gt;<a class="code hl_function" href="classHorizontalOnlyChartView.html#a5ef619d9b976147eb7fe9f83da3b6688">setMousePressedCallback</a>([<span class="keyword">this</span>]() {</div>
+<div class="line"><span class="lineno">  134</span>        <a class="code hl_function" href="classMotorChartManager.html#ae3abfa18078ea0a68ee37fef72323b70">handleChartMousePressed</a>();</div>
+<div class="line"><span class="lineno">  135</span>    });</div>
+<div class="line"><span class="lineno">  136</span>    m_chartView-&gt;<a class="code hl_function" href="classHorizontalOnlyChartView.html#a12bd31146864d4ca20b2da4544f6c2bf">setMouseReleasedCallback</a>([<span class="keyword">this</span>]() {</div>
+<div class="line"><span class="lineno">  137</span>        <a class="code hl_function" href="classMotorChartManager.html#ae0ac3fc2c8546fbcf5e9b4dee08c575d">handleChartMouseReleased</a>();</div>
+<div class="line"><span class="lineno">  138</span>    });</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>    connect(m_axisX, &amp;QValueAxis::rangeChanged, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classMotorChartManager.html#a76c5f53509d19a22b047cc777241eecc">MotorChartManager::enforceAxisLimits</a>);</div>
+<div class="line"><span class="lineno">  141</span> </div>
+<div class="line"><span class="lineno">  142</span>    QLayout* existingLayout = m_container-&gt;layout();</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">if</span> (existingLayout) {</div>
+<div class="line"><span class="lineno">  145</span>        <span class="comment">// Czyszczenie istniejącego layoutu</span></div>
+<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">while</span> (QLayoutItem* item = existingLayout-&gt;takeAt(0)) {</div>
+<div class="line"><span class="lineno">  147</span>            <span class="keywordflow">if</span> (QWidget* widget = item-&gt;widget()) {</div>
+<div class="line"><span class="lineno">  148</span>                widget-&gt;setParent(<span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  149</span>                <span class="keyword">delete</span> widget;</div>
+<div class="line"><span class="lineno">  150</span>            }</div>
+<div class="line"><span class="lineno">  151</span>            <span class="keyword">delete</span> item;</div>
+<div class="line"><span class="lineno">  152</span>        }</div>
+<div class="line"><span class="lineno">  153</span>        existingLayout-&gt;addWidget(m_chartView);</div>
+<div class="line"><span class="lineno">  154</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  155</span>        QVBoxLayout *layout = <span class="keyword">new</span> QVBoxLayout(m_container);</div>
+<div class="line"><span class="lineno">  156</span>        layout-&gt;addWidget(m_chartView);</div>
+<div class="line"><span class="lineno">  157</span>        layout-&gt;setContentsMargins(0, 0, 0, 0);</div>
+<div class="line"><span class="lineno">  158</span>        layout-&gt;setSpacing(0);</div>
+<div class="line"><span class="lineno">  159</span>        m_container-&gt;setLayout(layout);</div>
+<div class="line"><span class="lineno">  160</span>    }</div>
+<div class="line"><span class="lineno">  161</span> </div>
+<div class="line"><span class="lineno">  162</span>    QTimer::singleShot(0, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classMotorChartManager.html#ad2701ef1432db59dddda13f740613b2a">MotorChartManager::adjustAxisLabels</a>);</div>
+<div class="line"><span class="lineno">  163</span>}</div>
+<div class="ttc" id="aclassHorizontalOnlyChartView_html"><div class="ttname"><a href="classHorizontalOnlyChartView.html">HorizontalOnlyChartView</a></div><div class="ttdoc">Specjalistyczny widok QChartView umożliwiający przewijanie i zoomowanie wyłącznie w osi poziomej (X).</div><div class="ttdef"><b>Definition</b> <a href="chartviewhelper_8h_source.html#l00029">chartviewhelper.h:29</a></div></div>
+<div class="ttc" id="aclassHorizontalOnlyChartView_html_a12bd31146864d4ca20b2da4544f6c2bf"><div class="ttname"><a href="classHorizontalOnlyChartView.html#a12bd31146864d4ca20b2da4544f6c2bf">HorizontalOnlyChartView::setMouseReleasedCallback</a></div><div class="ttdeci">void setMouseReleasedCallback(MouseCallback callback)</div><div class="ttdoc">Ustawia callback wywoływany przy puszczeniu lewego przycisku myszy na wykresie.</div><div class="ttdef"><b>Definition</b> <a href="chartviewhelper_8cpp_source.html#l00019">chartviewhelper.cpp:19</a></div></div>
+<div class="ttc" id="aclassHorizontalOnlyChartView_html_a5ef619d9b976147eb7fe9f83da3b6688"><div class="ttname"><a href="classHorizontalOnlyChartView.html#a5ef619d9b976147eb7fe9f83da3b6688">HorizontalOnlyChartView::setMousePressedCallback</a></div><div class="ttdeci">void setMousePressedCallback(MouseCallback callback)</div><div class="ttdoc">Ustawia callback wywoływany przy naciśnięciu lewego przycisku myszy na wykresie.</div><div class="ttdef"><b>Definition</b> <a href="chartviewhelper_8cpp_source.html#l00014">chartviewhelper.cpp:14</a></div></div>
+<div class="ttc" id="aclassMotorChartManager_html_ae0ac3fc2c8546fbcf5e9b4dee08c575d"><div class="ttname"><a href="classMotorChartManager.html#ae0ac3fc2c8546fbcf5e9b4dee08c575d">MotorChartManager::handleChartMouseReleased</a></div><div class="ttdeci">void handleChartMouseReleased()</div><div class="ttdoc">Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania.</div><div class="ttdef"><b>Definition</b> <a href="motorchartmanager_8cpp_source.html#l00205">motorchartmanager.cpp:205</a></div></div>
+<div class="ttc" id="aclassMotorChartManager_html_ae3abfa18078ea0a68ee37fef72323b70"><div class="ttname"><a href="classMotorChartManager.html#ae3abfa18078ea0a68ee37fef72323b70">MotorChartManager::handleChartMousePressed</a></div><div class="ttdeci">void handleChartMousePressed()</div><div class="ttdoc">Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-scroll.</div><div class="ttdef"><b>Definition</b> <a href="motorchartmanager_8cpp_source.html#l00200">motorchartmanager.cpp:200</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418_cgraph.svg" width="636" height="358"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418_icgraph.svg" width="416" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="a1a206f54b54240cda87c8e80d79ae904" name="a1a206f54b54240cda87c8e80d79ae904"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a206f54b54240cda87c8e80d79ae904">&#9670;&#160;</a></span>updateChart()</h2>
 
@@ -164,19 +767,41 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>adjustAxisLabels</b> 
       </table>
 </div><div class="memdoc">
 
-<p>Aktualizuje dane na wykresie. </p>
+<p>Aktualizuje wykres o nowe dane z <a class="el" href="classSensorData.html" title="Przechowuje dane z różnych sensorów i udostępnia je aplikacji.">SensorData</a>. </p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">time</td><td>Znacznik czasu. </td></tr>
+    <tr><td class="paramname">time</td><td>Znacznik czasu nowej próbki (ms). </td></tr>
   </table>
   </dd>
 </dl>
 
+<p class="definition">Definicja w linii <a class="el" href="motorchartmanager_8cpp_source.html#l00165">165</a> pliku <a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  166</span>{</div>
+<div class="line"><span class="lineno">  167</span>    m_series1-&gt;append(time, m_sensorData-&gt;getMotor1Speed());</div>
+<div class="line"><span class="lineno">  168</span>    m_series2-&gt;append(time, m_sensorData-&gt;getMotor2Speed());</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>    m_currentPoint++;</div>
+<div class="line"><span class="lineno">  171</span>    m_latestDataTime = time;</div>
+<div class="line"><span class="lineno">  172</span> </div>
+<div class="line"><span class="lineno">  173</span>    qreal currentMax = m_axisX-&gt;max();</div>
+<div class="line"><span class="lineno">  174</span> </div>
+<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">if</span> (time &gt; currentMax || m_isAutoScrollEnabled) {</div>
+<div class="line"><span class="lineno">  176</span>        m_axisX-&gt;setRange(time - MAX_POINTS * 100, time);</div>
+<div class="line"><span class="lineno">  177</span>    }</div>
+<div class="line"><span class="lineno">  178</span> </div>
+<div class="line"><span class="lineno">  179</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> MAX_HISTORY = MAX_POINTS * 10;</div>
+<div class="line"><span class="lineno">  180</span>    <span class="keywordflow">if</span> (m_series1-&gt;count() &gt; MAX_HISTORY) {</div>
+<div class="line"><span class="lineno">  181</span>        <span class="keywordtype">int</span> pointsToRemove = m_series1-&gt;count() - MAX_HISTORY;</div>
+<div class="line"><span class="lineno">  182</span>        m_series1-&gt;removePoints(0, pointsToRemove);</div>
+<div class="line"><span class="lineno">  183</span>        m_series2-&gt;removePoints(0, pointsToRemove);</div>
+<div class="line"><span class="lineno">  184</span>    }</div>
+<div class="line"><span class="lineno">  185</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li><a class="el" href="motorchartmanager_8h_source.html">motorchartmanager.h</a></li>
-<li><b>motorchartmanager.cpp</b></li>
+<li><a class="el" href="motorchartmanager_8cpp_source.html">motorchartmanager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

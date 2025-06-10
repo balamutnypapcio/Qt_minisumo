@@ -1,0 +1,7 @@
+<map id="SensorData::tofDataChanged" name="SensorData::tofDataChanged">
+<area shape="rect" id="Node000001" title="Sygnał emitowany przy zmianie dowolnych danych TOF." alt="" coords="252,42,463,67"/>
+<area shape="rect" id="Node000002" href="$classTofChartManager.html#a004c9c1a278d99138a7e34802c175fc6" title="Konstruktor." alt="" coords="7,5,202,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,43,202,39,202,34,238,38"/>
+<area shape="rect" id="Node000003" href="$classSensorData.html#a3a985eab247604ab102f4015df8d66e8" title="Aktualizuje wszystkie dane naraz, optymalnie emitując tylko niezbędne sygnały." alt="" coords="5,70,204,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,70,204,74,204,69,238,65"/>
+</map>

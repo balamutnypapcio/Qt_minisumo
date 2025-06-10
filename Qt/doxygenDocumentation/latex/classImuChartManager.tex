@@ -2,7 +2,7 @@
 \hypertarget{classImuChartManager}{}\label{classImuChartManager}\index{ImuChartManager@{ImuChartManager}}
 
 
-Zarządza wykresem danych z czujnika IMU.  
+Zarządza dynamicznym wykresem prezentującym dane z czujnika IMU (akcelerometru/żyroskopu).  
 
 
 
@@ -11,8 +11,7 @@ Zarządza wykresem danych z czujnika IMU.
 
 
 
-Diagram dziedziczenia dla Imu\+Chart\+Manager
-\nopagebreak
+Diagram dziedziczenia dla Imu\+Chart\+Manager\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Diagram dziedziczenia dla Imu\+Chart\+Manager
 \end{figure}
 
 
-Diagram współpracy dla Imu\+Chart\+Manager\+:
-\nopagebreak
+Diagram współpracy dla Imu\+Chart\+Manager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,44 +30,571 @@ Diagram współpracy dla Imu\+Chart\+Manager\+:
 \doxysubsubsection*{Metody publiczne}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classImuChartManager_a0cbf6e4e9759f2b79c9162598bb7aa4b}\label{classImuChartManager_a0cbf6e4e9759f2b79c9162598bb7aa4b} 
-{\bfseries Imu\+Chart\+Manager} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QWidget \texorpdfstring{$\ast$}{*}container, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
-\item 
-\Hypertarget{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc}\label{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc} 
-void {\bfseries setup\+Chart} ()
-\begin{DoxyCompactList}\small\item\em Inicjalizuje wykres. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classImuChartManager_a0cbf6e4e9759f2b79c9162598bb7aa4b}{Imu\+Chart\+Manager}} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QWidget \texorpdfstring{$\ast$}{*}container, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Konstruktor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classImuChartManager_a43336e1bbc7342b5e0299a85c9f32990}{\texorpdfstring{$\sim$}{\string~}\+Imu\+Chart\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. Usuwa wykres i zwalnia zasoby. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc}{setup\+Chart}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje (tworzy) wykres IMU i ustawia wszystkie parametry. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classImuChartManager_a95d10d88aa329e1b46ee4c0d4384f40d}{update\+Chart}} (int time)
-\begin{DoxyCompactList}\small\item\em Aktualizuje dane na wykresie. \end{DoxyCompactList}\item 
-\Hypertarget{classImuChartManager_a903b5ae94e64acce3182a0e463f12686}\label{classImuChartManager_a903b5ae94e64acce3182a0e463f12686} 
-void {\bfseries clear\+Chart} ()
-\begin{DoxyCompactList}\small\item\em Czyści dane z wykresu. \end{DoxyCompactList}\item 
-\Hypertarget{classImuChartManager_aa8b6bbd521b767c384a437b43e9b56b2}\label{classImuChartManager_aa8b6bbd521b767c384a437b43e9b56b2} 
-void {\bfseries reset\+To\+Current\+Data} ()
-\begin{DoxyCompactList}\small\item\em Przywraca widok do aktualnych danych (włącza auto-\/scrolling). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Aktualizuje wykres o nowe dane z \doxylink{classSensorData}{Sensor\+Data}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classImuChartManager_a903b5ae94e64acce3182a0e463f12686}{clear\+Chart}} ()
+\begin{DoxyCompactList}\small\item\em Czyści wszystkie próbki z wykresu oraz resetuje oś X. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classImuChartManager_aa8b6bbd521b767c384a437b43e9b56b2}{reset\+To\+Current\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Przywraca widok wykresu do najnowszych danych (włącza auto-\/scroll). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Metody chronione}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classImuChartManager_ad90158920eb8dddb4a66fa9449973338}\label{classImuChartManager_ad90158920eb8dddb4a66fa9449973338} 
-bool {\bfseries event\+Filter} (QObject \texorpdfstring{$\ast$}{*}watched, QEvent \texorpdfstring{$\ast$}{*}event) override
-\begin{DoxyCompactList}\small\item\em Filtr zdarzeń do obsługi zmiany rozmiaru kontenera. \end{DoxyCompactList}\item 
-\Hypertarget{classImuChartManager_a4881022db1594a1449f50862c33645cb}\label{classImuChartManager_a4881022db1594a1449f50862c33645cb} 
-void {\bfseries handle\+Chart\+Mouse\+Pressed} ()
-\begin{DoxyCompactList}\small\item\em Obsługa kliknięcia i przesunięcia myszy na wykresie. \end{DoxyCompactList}\item 
-\Hypertarget{classImuChartManager_a6dc6132459a4453282200157560215b5}\label{classImuChartManager_a6dc6132459a4453282200157560215b5} 
-void {\bfseries handle\+Chart\+Mouse\+Released} ()
-\item 
-\Hypertarget{classImuChartManager_a3704b4340f459b08b6ba87d462b149c0}\label{classImuChartManager_a3704b4340f459b08b6ba87d462b149c0} 
-void {\bfseries enforce\+Axis\+Limits} (qreal min, qreal max)
-\begin{DoxyCompactList}\small\item\em Wymusza przestrzeganie limitów osi X (min ≥ 0, max ≤ aktualny\+\_\+czas). \end{DoxyCompactList}\item 
-\Hypertarget{classImuChartManager_a3f3d8399066e516e13bc1c288bf8c097}\label{classImuChartManager_a3f3d8399066e516e13bc1c288bf8c097} 
-void {\bfseries adjust\+Axis\+Labels} ()
-\begin{DoxyCompactList}\small\item\em Dostosowuje etykiety osi X do bieżącego rozmiaru wykresu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{classImuChartManager_ad90158920eb8dddb4a66fa9449973338}{event\+Filter}} (QObject \texorpdfstring{$\ast$}{*}watched, QEvent \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Filtr zdarzeń do obsługi resize kontenera wykresu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classImuChartManager_a4881022db1594a1449f50862c33645cb}{handle\+Chart\+Mouse\+Pressed}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-\/scroll. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classImuChartManager_a6dc6132459a4453282200157560215b5}{handle\+Chart\+Mouse\+Released}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classImuChartManager_a3704b4340f459b08b6ba87d462b149c0}{enforce\+Axis\+Limits}} (qreal min, qreal max)
+\begin{DoxyCompactList}\small\item\em Wymusza przestrzeganie limitów osi X (brak przewijania poza \mbox{[}0, aktualny\+\_\+czas\mbox{]}). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classImuChartManager_a3f3d8399066e516e13bc1c288bf8c097}{adjust\+Axis\+Labels}} ()
+\begin{DoxyCompactList}\small\item\em Dostosowuje liczbę etykiet osi X do rozmiaru wykresu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Opis szczegółowy}
-Zarządza wykresem danych z czujnika IMU. 
+Zarządza dynamicznym wykresem prezentującym dane z czujnika IMU (akcelerometru/żyroskopu). 
+
+Odpowiada za\+:
+\begin{DoxyItemize}
+\item Tworzenie i konfigurację wykresu (QChart) dla sygnałów IMU (X, Y).
+\item Dodawanie nowych próbek, automatyczne przewijanie oraz czyszczenie danych.
+\item Dynamiczne dopasowywanie osi do okna i blokowanie przewijania poza zakres danych.
+\item Obsługę auto-\/scrollingu oraz wyłączanie go przy ręcznej interakcji użytkownika.
+\end{DoxyItemize}
+
+Współpracuje z \doxylink{classHorizontalOnlyChartView}{Horizontal\+Only\+Chart\+View} (ograniczenie interakcji do osi X).
+
+Przykład użycia\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classImuChartManager}{ImuChartManager}}*\ imuMgr\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classImuChartManager}{ImuChartManager}}(sensorData,\ ui-\/>imuChartContainer,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{connect(csvManager,\ \&\mbox{\hyperlink{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}{CSVManager::dataUpdated}},\ imuMgr,\ \&\mbox{\hyperlink{classImuChartManager_a95d10d88aa329e1b46ee4c0d4384f40d}{ImuChartManager::updateChart}});}
+
+\end{DoxyCode}
+
+
+\begin{DoxyAuthor}{Autor}
+Jakub Wilczyński 
+\end{DoxyAuthor}
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8h_source_l00034}{34}} pliku \mbox{\hyperlink{imuchartmanager_8h_source}{imuchartmanager.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classImuChartManager_a0cbf6e4e9759f2b79c9162598bb7aa4b}\label{classImuChartManager_a0cbf6e4e9759f2b79c9162598bb7aa4b} 
+\index{ImuChartManager@{ImuChartManager}!ImuChartManager@{ImuChartManager}}
+\index{ImuChartManager@{ImuChartManager}!ImuChartManager@{ImuChartManager}}
+\doxysubsubsection{\texorpdfstring{ImuChartManager()}{ImuChartManager()}}
+{\footnotesize\ttfamily Imu\+Chart\+Manager\+::\+Imu\+Chart\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}}]{sensor\+Data,  }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{container,  }\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Konstruktor. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em sensor\+Data} & Wskaźnik do \doxylink{classSensorData}{Sensor\+Data} (źródło danych IMU). \\
+\hline
+{\em container} & QWidget, w którym osadzany jest wykres. \\
+\hline
+{\em parent} & Opcjonalny rodzic QObject. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00011}{11}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData),\ m\_container(container),}
+\DoxyCodeLine{00013\ \ \ \ \ m\_chart(\textcolor{keyword}{nullptr}),\ m\_chartView(\textcolor{keyword}{nullptr}),\ m\_currentPoint(0),}
+\DoxyCodeLine{00014\ \ \ \ \ m\_isAutoScrollEnabled(\textcolor{keyword}{true}),\ m\_currentTimeOffset(0)}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Sprawdź\ poprawność\ wskaźników}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_sensorData\ ||\ !m\_container)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}ImuChartManager:\ Nieprawidłowe\ wskaźniki\ do\ sensorData\ lub\ container!"{}};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Instaluj\ filtr\ zdarzeń\ dla\ kontenera}}
+\DoxyCodeLine{00023\ \ \ \ \ m\_container-\/>installEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc}{setupChart}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Slot\ SensorData::imuDataChanged\ zostaje\ pusty\ –\ aktualizacja\ wywoływana\ z\ zewnątrz}}
+\DoxyCodeLine{00028\ \ \ \ \ connect(m\_sensorData,\ \&\mbox{\hyperlink{classSensorData_aeeb25bc8f4aa7c531044fc6b0ef98c73}{SensorData::imuDataChanged}},\ \textcolor{keyword}{this},\ [\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Slot\ pusty\ –\ aktualizacja\ wykresu\ przez\ updateChart(time)}}
+\DoxyCodeLine{00030\ \ \ \ \ \});}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classImuChartManager_a0cbf6e4e9759f2b79c9162598bb7aa4b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classImuChartManager_a43336e1bbc7342b5e0299a85c9f32990}\label{classImuChartManager_a43336e1bbc7342b5e0299a85c9f32990} 
+\index{ImuChartManager@{ImuChartManager}!````~ImuChartManager@{\texorpdfstring{$\sim$}{\string~}ImuChartManager}}
+\index{````~ImuChartManager@{\texorpdfstring{$\sim$}{\string~}ImuChartManager}!ImuChartManager@{ImuChartManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ImuChartManager()}{\string~ImuChartManager()}}
+{\footnotesize\ttfamily Imu\+Chart\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Imu\+Chart\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destruktor. Usuwa wykres i zwalnia zasoby. 
+
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00033}{33}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Usuń\ filtr\ zdarzeń}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_container)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ m\_container-\/>removeEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{delete}\ m\_chart;\ \ \textcolor{comment}{//\ m\_chartView\ usuwany\ przez\ m\_container}}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}
+
 
 \doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classImuChartManager_a3f3d8399066e516e13bc1c288bf8c097}\label{classImuChartManager_a3f3d8399066e516e13bc1c288bf8c097} 
+\index{ImuChartManager@{ImuChartManager}!adjustAxisLabels@{adjustAxisLabels}}
+\index{adjustAxisLabels@{adjustAxisLabels}!ImuChartManager@{ImuChartManager}}
+\doxysubsubsection{\texorpdfstring{adjustAxisLabels()}{adjustAxisLabels()}}
+{\footnotesize\ttfamily void Imu\+Chart\+Manager\+::adjust\+Axis\+Labels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Dostosowuje liczbę etykiet osi X do rozmiaru wykresu. 
+
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00245}{245}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00246\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView\ \&\&\ m\_axisX)\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ chartWidth\ =\ m\_chartView-\/>width();}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <=\ 0)}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ labelCount;}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 100)\ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 2;}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 200)\ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 3;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 300)\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 4;}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 5;}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_axisX-\/>tickCount()\ !=\ labelCount)\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setTickCount(labelCount);}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 150)\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ \}}
+\DoxyCodeLine{00277\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classImuChartManager_a3f3d8399066e516e13bc1c288bf8c097_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classImuChartManager_a903b5ae94e64acce3182a0e463f12686}\label{classImuChartManager_a903b5ae94e64acce3182a0e463f12686} 
+\index{ImuChartManager@{ImuChartManager}!clearChart@{clearChart}}
+\index{clearChart@{clearChart}!ImuChartManager@{ImuChartManager}}
+\doxysubsubsection{\texorpdfstring{clearChart()}{clearChart()}}
+{\footnotesize\ttfamily void Imu\+Chart\+Manager\+::clear\+Chart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Czyści wszystkie próbki z wykresu oraz resetuje oś X. 
+
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00186}{186}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00187\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ m\_series1-\/>clear();}
+\DoxyCodeLine{00189\ \ \ \ \ m\_series2-\/>clear();}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ m\_currentPoint\ =\ 0;}
+\DoxyCodeLine{00192\ \ \ \ \ m\_currentTimeOffset\ =\ 0;}
+\DoxyCodeLine{00193\ \ \ \ \ m\_latestDataTime\ =\ 0;}
+\DoxyCodeLine{00194\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00197\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classImuChartManager_a3704b4340f459b08b6ba87d462b149c0}\label{classImuChartManager_a3704b4340f459b08b6ba87d462b149c0} 
+\index{ImuChartManager@{ImuChartManager}!enforceAxisLimits@{enforceAxisLimits}}
+\index{enforceAxisLimits@{enforceAxisLimits}!ImuChartManager@{ImuChartManager}}
+\doxysubsubsection{\texorpdfstring{enforceAxisLimits()}{enforceAxisLimits()}}
+{\footnotesize\ttfamily void Imu\+Chart\+Manager\+::enforce\+Axis\+Limits (\begin{DoxyParamCaption}\item[{qreal}]{min,  }\item[{qreal}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wymusza przestrzeganie limitów osi X (brak przewijania poza \mbox{[}0, aktualny\+\_\+czas\mbox{]}). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em min} & Aktualne minimum zakresu osi X. \\
+\hline
+{\em max} & Aktualne maksimum zakresu osi X. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00220}{220}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00221\ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordtype}{bool}\ needAdjustment\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00223\ \ \ \ \ qreal\ newMin\ =\ min;}
+\DoxyCodeLine{00224\ \ \ \ \ qreal\ newMax\ =\ max;}
+\DoxyCodeLine{00225\ \ \ \ \ qreal\ rangeSize\ =\ max\ -\/\ min;}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\ <\ 0)\ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ newMin\ =\ 0;}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ newMax\ =\ rangeSize;}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ m\_latestDataTime\ \&\&\ m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ newMax\ =\ m\_latestDataTime;}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ newMin\ =\ qMax(0.0,\ m\_latestDataTime\ -\/\ rangeSize);}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00237\ \ \ \ \ \}}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordflow}{if}\ (needAdjustment)\ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ QSignalBlocker\ blocker(m\_axisX);}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(newMin,\ newMax);}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classImuChartManager_a3704b4340f459b08b6ba87d462b149c0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classImuChartManager_ad90158920eb8dddb4a66fa9449973338}\label{classImuChartManager_ad90158920eb8dddb4a66fa9449973338} 
+\index{ImuChartManager@{ImuChartManager}!eventFilter@{eventFilter}}
+\index{eventFilter@{eventFilter}!ImuChartManager@{ImuChartManager}}
+\doxysubsubsection{\texorpdfstring{eventFilter()}{eventFilter()}}
+{\footnotesize\ttfamily bool Imu\+Chart\+Manager\+::event\+Filter (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{watched,  }\item[{QEvent \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Filtr zdarzeń do obsługi resize kontenera wykresu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em watched} & Obiekt obserwowany. \\
+\hline
+{\em event} & Wskaźnik do zdarzenia. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+true jeśli filtr przechwycił zdarzenie. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00043}{43}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (watched\ ==\ m\_container\ \&\&\ event-\/>type()\ ==\ QEvent::Resize)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ m\_chartView-\/>resize(m\_container-\/>size());}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classImuChartManager_a3f3d8399066e516e13bc1c288bf8c097}{adjustAxisLabels}}();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Pozwól\ na\ domyślną\ obsługę\ zdarzenia}}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{return}\ QObject::eventFilter(watched,\ event);}
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classImuChartManager_ad90158920eb8dddb4a66fa9449973338_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classImuChartManager_a4881022db1594a1449f50862c33645cb}\label{classImuChartManager_a4881022db1594a1449f50862c33645cb} 
+\index{ImuChartManager@{ImuChartManager}!handleChartMousePressed@{handleChartMousePressed}}
+\index{handleChartMousePressed@{handleChartMousePressed}!ImuChartManager@{ImuChartManager}}
+\doxysubsubsection{\texorpdfstring{handleChartMousePressed()}{handleChartMousePressed()}}
+{\footnotesize\ttfamily void Imu\+Chart\+Manager\+::handle\+Chart\+Mouse\+Pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-\/scroll. 
+
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00199}{199}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00200\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00202\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classImuChartManager_a4881022db1594a1449f50862c33645cb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classImuChartManager_a6dc6132459a4453282200157560215b5}\label{classImuChartManager_a6dc6132459a4453282200157560215b5} 
+\index{ImuChartManager@{ImuChartManager}!handleChartMouseReleased@{handleChartMouseReleased}}
+\index{handleChartMouseReleased@{handleChartMouseReleased}!ImuChartManager@{ImuChartManager}}
+\doxysubsubsection{\texorpdfstring{handleChartMouseReleased()}{handleChartMouseReleased()}}
+{\footnotesize\ttfamily void Imu\+Chart\+Manager\+::handle\+Chart\+Mouse\+Released (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania. 
+
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00204}{204}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00205\ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \mbox{\hyperlink{classImuChartManager_a3704b4340f459b08b6ba87d462b149c0}{enforceAxisLimits}}(m\_axisX-\/>min(),\ m\_axisX-\/>max());}
+\DoxyCodeLine{00207\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classImuChartManager_a6dc6132459a4453282200157560215b5_cgraph}
+\end{center}
+\end{figure}
+Oto graf wywoływań tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classImuChartManager_a6dc6132459a4453282200157560215b5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classImuChartManager_aa8b6bbd521b767c384a437b43e9b56b2}\label{classImuChartManager_aa8b6bbd521b767c384a437b43e9b56b2} 
+\index{ImuChartManager@{ImuChartManager}!resetToCurrentData@{resetToCurrentData}}
+\index{resetToCurrentData@{resetToCurrentData}!ImuChartManager@{ImuChartManager}}
+\doxysubsubsection{\texorpdfstring{resetToCurrentData()}{resetToCurrentData()}}
+{\footnotesize\ttfamily void Imu\+Chart\+Manager\+::reset\+To\+Current\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Przywraca widok wykresu do najnowszych danych (włącza auto-\/scroll). 
+
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00209}{209}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00210\ \{}
+\DoxyCodeLine{00211\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(m\_latestDataTime\ -\/\ MAX\_POINTS\ *\ 100,\ m\_latestDataTime);}
+\DoxyCodeLine{00215\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00217\ \ \ \ \ \}}
+\DoxyCodeLine{00218\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc}\label{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc} 
+\index{ImuChartManager@{ImuChartManager}!setupChart@{setupChart}}
+\index{setupChart@{setupChart}!ImuChartManager@{ImuChartManager}}
+\doxysubsubsection{\texorpdfstring{setupChart()}{setupChart()}}
+{\footnotesize\ttfamily void Imu\+Chart\+Manager\+::setup\+Chart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicjalizuje (tworzy) wykres IMU i ustawia wszystkie parametry. 
+
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00055}{55}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ m\_chart\ =\ \textcolor{keyword}{new}\ QChart();}
+\DoxyCodeLine{00058\ \ \ \ \ m\_chart-\/>setMargins(QMargins(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00059\ \ \ \ \ m\_chart-\/>setBackgroundRoundness(0);}
+\DoxyCodeLine{00060\ \ \ \ \ m\_chart-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00061\ \ \ \ \ m\_chart-\/>setAnimationOptions(QChart::NoAnimation);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ m\_series1\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00064\ \ \ \ \ m\_series2\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ m\_series1-\/>setName(\textcolor{stringliteral}{"{}X"{}});}
+\DoxyCodeLine{00067\ \ \ \ \ m\_series2-\/>setName(\textcolor{stringliteral}{"{}Y"{}});}
+\DoxyCodeLine{00068\ \ \ \ \ m\_series1-\/>setColor(QColor(255,\ 0,\ 0));\ \ \ \ \ \textcolor{comment}{//\ Czerwony}}
+\DoxyCodeLine{00069\ \ \ \ \ m\_series2-\/>setColor(QColor(0,\ 0,\ 255));\ \ \ \ \ \textcolor{comment}{//\ Niebieski}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ QPen\ pen1\ =\ m\_series1-\/>pen();}
+\DoxyCodeLine{00072\ \ \ \ \ QPen\ pen2\ =\ m\_series2-\/>pen();}
+\DoxyCodeLine{00073\ \ \ \ \ pen1.setWidth(2);}
+\DoxyCodeLine{00074\ \ \ \ \ pen2.setWidth(2);}
+\DoxyCodeLine{00075\ \ \ \ \ m\_series1-\/>setPen(pen1);}
+\DoxyCodeLine{00076\ \ \ \ \ m\_series2-\/>setPen(pen2);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ m\_chart-\/>addSeries(m\_series1);}
+\DoxyCodeLine{00079\ \ \ \ \ m\_chart-\/>addSeries(m\_series2);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ m\_axisX\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{00082\ \ \ \ \ m\_axisY\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00085\ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ m\_axisX-\/>setTitleText(\textcolor{stringliteral}{"{}Czas\ (ms)"{}});}
+\DoxyCodeLine{00088\ \ \ \ \ m\_axisY-\/>setTitleText(\textcolor{stringliteral}{"{}Wartość"{}});}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ QFont\ axisFont;}
+\DoxyCodeLine{00091\ \ \ \ \ axisFont.setPointSize(8);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ m\_axisX-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{00094\ \ \ \ \ m\_axisY-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00097\ \ \ \ \ m\_axisX-\/>setTickCount(5);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ m\_axisY-\/>setRange(-\/100,\ 100);}
+\DoxyCodeLine{00100\ \ \ \ \ m\_axisY-\/>setTickCount(5);}
+\DoxyCodeLine{00101\ \ \ \ \ m\_axisY-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ m\_chart-\/>addAxis(m\_axisX,\ Qt::AlignBottom);}
+\DoxyCodeLine{00106\ \ \ \ \ m\_chart-\/>addAxis(m\_axisY,\ Qt::AlignLeft);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00109\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00110\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00111\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ m\_chart-\/>legend()-\/>setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{00114\ \ \ \ \ m\_chart-\/>legend()-\/>setAlignment(Qt::AlignRight);}
+\DoxyCodeLine{00115\ \ \ \ \ m\_chart-\/>legend()-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00116\ \ \ \ \ m\_chart-\/>legend()-\/>setBorderColor(Qt::transparent);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ QRectF\ legendRect\ =\ m\_chart-\/>legend()-\/>geometry();}
+\DoxyCodeLine{00119\ \ \ \ \ legendRect.moveTopRight(m\_chart-\/>plotArea().topRight()\ -\/\ QPointF(10,\ 10));}
+\DoxyCodeLine{00120\ \ \ \ \ m\_chart-\/>legend()-\/>setGeometry(legendRect);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ QFont\ legendFont;}
+\DoxyCodeLine{00123\ \ \ \ \ legendFont.setPointSize(8);}
+\DoxyCodeLine{00124\ \ \ \ \ m\_chart-\/>legend()-\/>setFont(legendFont);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ m\_chartView\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}(m\_chart);}
+\DoxyCodeLine{00127\ \ \ \ \ m\_chartView-\/>setRenderHint(QPainter::Antialiasing);}
+\DoxyCodeLine{00128\ \ \ \ \ m\_chartView-\/>setRubberBand(QChartView::HorizontalRubberBand);}
+\DoxyCodeLine{00129\ \ \ \ \ m\_chartView-\/>setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{00130\ \ \ \ \ m\_chartView-\/>setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}{setMousePressedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classImuChartManager_a4881022db1594a1449f50862c33645cb}{handleChartMousePressed}}();}
+\DoxyCodeLine{00134\ \ \ \ \ \});}
+\DoxyCodeLine{00135\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}{setMouseReleasedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classImuChartManager_a6dc6132459a4453282200157560215b5}{handleChartMouseReleased}}();}
+\DoxyCodeLine{00137\ \ \ \ \ \});}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ connect(m\_axisX,\ \&QValueAxis::rangeChanged,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classImuChartManager_a3704b4340f459b08b6ba87d462b149c0}{ImuChartManager::enforceAxisLimits}});}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ QLayout*\ existingLayout\ =\ m\_container-\/>layout();}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordflow}{if}\ (existingLayout)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Czyszczenie\ istniejącego\ layoutu}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (QLayoutItem*\ item\ =\ existingLayout-\/>takeAt(0))\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (QWidget*\ widget\ =\ item-\/>widget())\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ widget-\/>setParent(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ widget;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ item;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ existingLayout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{00153\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ QVBoxLayout\ *layout\ =\ \textcolor{keyword}{new}\ QVBoxLayout(m\_container);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ layout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ layout-\/>setContentsMargins(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ layout-\/>setSpacing(0);}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ m\_container-\/>setLayout(layout);}
+\DoxyCodeLine{00159\ \ \ \ \ \}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ QTimer::singleShot(0,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classImuChartManager_a3f3d8399066e516e13bc1c288bf8c097}{ImuChartManager::adjustAxisLabels}});}
+\DoxyCodeLine{00162\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc_cgraph}
+\end{center}
+\end{figure}
+Oto graf wywoływań tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classImuChartManager_af43ca7f8c5f2ab7db02c2fa72ee1a8fc_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classImuChartManager_a95d10d88aa329e1b46ee4c0d4384f40d}\label{classImuChartManager_a95d10d88aa329e1b46ee4c0d4384f40d} 
 \index{ImuChartManager@{ImuChartManager}!updateChart@{updateChart}}
 \index{updateChart@{updateChart}!ImuChartManager@{ImuChartManager}}
@@ -78,13 +603,41 @@ Zarządza wykresem danych z czujnika IMU.
 
 
 
-Aktualizuje dane na wykresie. 
+Aktualizuje wykres o nowe dane z \doxylink{classSensorData}{Sensor\+Data}. 
 
 
 \begin{DoxyParams}{Parametry}
-{\em time} & Znacznik czasu. \\
+{\em time} & Znacznik czasu nowej próbki (ms). \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{imuchartmanager_8cpp_source_l00164}{164}} pliku \mbox{\hyperlink{imuchartmanager_8cpp_source}{imuchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00165\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ m\_series1-\/>append(time,\ m\_sensorData-\/>getImuX());}
+\DoxyCodeLine{00167\ \ \ \ \ m\_series2-\/>append(time,\ m\_sensorData-\/>getImuY());}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ m\_currentPoint++;}
+\DoxyCodeLine{00170\ \ \ \ \ m\_latestDataTime\ =\ time;}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ qreal\ currentMax\ =\ m\_axisX-\/>max();}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordflow}{if}\ (time\ >\ currentMax\ ||\ m\_isAutoScrollEnabled)\ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(time\ -\/\ MAX\_POINTS\ *\ 100,\ time);}
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_HISTORY\ =\ MAX\_POINTS\ *\ 10;}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_series1-\/>count()\ >\ MAX\_HISTORY)\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pointsToRemove\ =\ m\_series1-\/>count()\ -\/\ MAX\_HISTORY;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ m\_series1-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ m\_series2-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00183\ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \}}
+
+\end{DoxyCode}
 
 
 Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}

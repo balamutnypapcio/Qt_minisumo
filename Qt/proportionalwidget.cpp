@@ -6,10 +6,6 @@
 #include <QHBoxLayout>
 #include <QDebug>
 
-/**
- * @brief Konstruktor widgetu proporcjonalnego.
- * @param parent Rodzic widgetu.
- */
 ProportionalWidget::ProportionalWidget(QWidget *parent)
     : QWidget(parent)
 {
@@ -26,10 +22,6 @@ ProportionalWidget::ProportionalWidget(QWidget *parent)
     m_arrowWidget = nullptr;
 }
 
-/**
- * @brief Ustawia widget TOF (np. tofLEFT albo tofRIGHT) w górnej części.
- * @param tofWidget Wskaźnik do widgetu TOF.
- */
 void ProportionalWidget::setupTofWidget(QStackedWidget* tofWidget)
 {
     if (!tofWidget) return;
@@ -62,11 +54,6 @@ void ProportionalWidget::setupTofWidget(QStackedWidget* tofWidget)
     }
 }
 
-/**
- * @brief Ustawia widget strzałki (M1_arrow lub M2_arrow) w dolnej części.
- * @param arrowWidget Wskaźnik do widgetu strzałki.
- * @param leftSide Czy strzałka ma być po lewej stronie (true) czy po prawej (false).
- */
 void ProportionalWidget::setupArrowWidget(QStackedWidget* arrowWidget, bool leftSide)
 {
     if (!arrowWidget || !m_arrowContainer) return;
@@ -132,10 +119,6 @@ void ProportionalWidget::setupArrowWidget(QStackedWidget* arrowWidget, bool left
     }
 }
 
-/**
- * @brief Obsługa zmiany rozmiaru - zachowuje odpowiednie proporcje elementów.
- * @param event Zdarzenie zmiany rozmiaru.
- */
 void ProportionalWidget::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);

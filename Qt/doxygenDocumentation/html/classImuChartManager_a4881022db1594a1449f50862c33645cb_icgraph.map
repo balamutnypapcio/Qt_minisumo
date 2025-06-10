@@ -1,0 +1,9 @@
+<map id="ImuChartManager::handleChartMousePressed" name="ImuChartManager::handleChartMousePressed">
+<area shape="rect" id="Node000001" title="Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto&#45;scroll." alt="" coords="527,35,753,75"/>
+<area shape="rect" id="Node000002" href="$classImuChartManager.html#af43ca7f8c5f2ab7db02c2fa72ee1a8fc" title="Inicjalizuje (tworzy) wykres IMU i ustawia wszystkie parametry." alt="" coords="260,42,479,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="513,57,479,57,479,52,513,52"/>
+<area shape="rect" id="Node000003" href="$classImuChartManager.html#a0cbf6e4e9759f2b79c9162598bb7aa4b" title="Konstruktor." alt="" coords="5,5,212,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="246,43,212,40,213,34,247,38"/>
+<area shape="rect" id="Node000004" href="$classMainWindow.html#a996c5a2b6f77944776856f08ec30858d" title="Konstruktor klasy MainWindow." alt="" coords="10,70,207,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="246,71,208,75,207,69,246,65"/>
+</map>

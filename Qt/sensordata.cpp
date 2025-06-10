@@ -1,16 +1,8 @@
 #include "sensordata.h"
 
-/**
- * @brief Konstruktor klasy SensorData.
- * @param parent Rodzic QObject.
- */
 SensorData::SensorData(QObject *parent) : QObject(parent) {
 }
 
-/**
- * @brief Ustawia wartość czujnika TOF1.
- * @param value Nowa wartość.
- */
 void SensorData::setTof1(bool value) {
     if (m_isTof_1 != value) {
         m_isTof_1 = value;
@@ -19,10 +11,6 @@ void SensorData::setTof1(bool value) {
     }
 }
 
-/**
- * @brief Ustawia wartość czujnika TOF2.
- * @param value Nowa wartość.
- */
 void SensorData::setTof2(bool value) {
     if (m_isTof_2 != value) {
         m_isTof_2 = value;
@@ -31,10 +19,6 @@ void SensorData::setTof2(bool value) {
     }
 }
 
-/**
- * @brief Ustawia wartość czujnika TOF3.
- * @param value Nowa wartość.
- */
 void SensorData::setTof3(bool value) {
     if (m_isTof_3 != value) {
         m_isTof_3 = value;
@@ -43,10 +27,6 @@ void SensorData::setTof3(bool value) {
     }
 }
 
-/**
- * @brief Ustawia wartość czujnika TOF4.
- * @param value Nowa wartość.
- */
 void SensorData::setTof4(bool value) {
     if (m_isTof_4 != value) {
         m_isTof_4 = value;
@@ -55,10 +35,6 @@ void SensorData::setTof4(bool value) {
     }
 }
 
-/**
- * @brief Ustawia aktywność czujnika linii S1.
- * @param value Nowa wartość.
- */
 void SensorData::setLineS1Active(bool value) {
     if (m_islineS_1_Active != value) {
         m_islineS_1_Active = value;
@@ -67,10 +43,6 @@ void SensorData::setLineS1Active(bool value) {
     }
 }
 
-/**
- * @brief Ustawia aktywność czujnika linii S2.
- * @param value Nowa wartość.
- */
 void SensorData::setLineS2Active(bool value) {
     if (m_islineS_2_Active != value) {
         m_islineS_2_Active = value;
@@ -79,10 +51,6 @@ void SensorData::setLineS2Active(bool value) {
     }
 }
 
-/**
- * @brief Ustawia aktywność czujnika linii S3.
- * @param value Nowa wartość.
- */
 void SensorData::setLineS3Active(bool value) {
     if (m_islineS_3_Active != value) {
         m_islineS_3_Active = value;
@@ -91,10 +59,6 @@ void SensorData::setLineS3Active(bool value) {
     }
 }
 
-/**
- * @brief Ustawia prędkość silnika 1.
- * @param value Nowa wartość prędkości.
- */
 void SensorData::setMotor1Speed(int value) {
     if (m_motor1_speed != value) {
         m_motor1_speed = value;
@@ -103,10 +67,6 @@ void SensorData::setMotor1Speed(int value) {
     }
 }
 
-/**
- * @brief Ustawia prędkość silnika 2.
- * @param value Nowa wartość prędkości.
- */
 void SensorData::setMotor2Speed(int value) {
     if (m_motor2_speed != value) {
         m_motor2_speed = value;
@@ -115,10 +75,6 @@ void SensorData::setMotor2Speed(int value) {
     }
 }
 
-/**
- * @brief Ustawia wartość osi X z IMU.
- * @param value Nowa wartość.
- */
 void SensorData::setImuX(float value) {
     if (m_imuX != value) {
         m_imuX = value;
@@ -127,10 +83,6 @@ void SensorData::setImuX(float value) {
     }
 }
 
-/**
- * @brief Ustawia wartość osi Y z IMU.
- * @param value Nowa wartość.
- */
 void SensorData::setImuY(float value) {
     if (m_imuY != value) {
         m_imuY = value;
@@ -139,20 +91,6 @@ void SensorData::setImuY(float value) {
     }
 }
 
-/**
- * @brief Jednocześnie ustawia wszystkie dane sensorów i emituje odpowiednie sygnały przy zmianie.
- * @param tof1 Stan TOF1
- * @param tof2 Stan TOF2
- * @param tof3 Stan TOF3
- * @param tof4 Stan TOF4
- * @param lineS1 Stan czujnika linii S1
- * @param lineS2 Stan czujnika linii S2
- * @param lineS3 Stan czujnika linii S3
- * @param motor1 Prędkość silnika 1
- * @param motor2 Prędkość silnika 2
- * @param imuX Wartość osi X IMU
- * @param imuY Wartość osi Y IMU
- */
 void SensorData::updateAllData(bool tof1, bool tof2, bool tof3, bool tof4,
                                bool lineS1, bool lineS2, bool lineS3,
                                int motor1, int motor2,

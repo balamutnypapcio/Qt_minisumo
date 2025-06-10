@@ -1,52 +1,52 @@
 \doxysection{tcpmanager.\+h}
 \hypertarget{tcpmanager_8h_source}{}\label{tcpmanager_8h_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TCPMANAGER\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TCPMANAGER\_H}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QTcpSocket>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QTimer>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QString>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QOverload>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}sensordata.h"{}}}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTCPManager}{TCPManager}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
-\DoxyCodeLine{00016\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classTCPManager}{TCPManager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{classTCPManager_a9c24ac909211d3e0029d518d04b9f00d}{\string~TCPManager}}();}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTCPManager_a4ce4783a94bb6bb4f3122397bd9d437b}{connectToDevice}}(\textcolor{keyword}{const}\ QString\ \&hostAddress,\ quint16\ port);}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f}{disconnectFromDevice}}();}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTCPManager_a49bf45bb9b1545806780fe5458fa1155}{isConnected}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ signals:}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTCPManager_a6c3543bf266491dcb529beb7a44fe012}{dataUpdated}}(\textcolor{keywordtype}{int}\ time);}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTCPManager_a363c1b3b68d005feea5268decf210000}{connectionStatusChanged}}(\textcolor{keywordtype}{bool}\ connected);}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTCPManager_a26641c127869ce539809b188f653be04}{errorOccurred}}(\textcolor{keyword}{const}\ QString\ \&errorMessage);}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \textcolor{keyword}{private}\ slots:}
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ onReadyRead();}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ onSocketStateChanged(QAbstractSocket::SocketState\ state);}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ onSocketError(QAbstractSocket::SocketError\ error);}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00086\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ processDataLine(\textcolor{keyword}{const}\ QString\ \&line);}
-\DoxyCodeLine{00092\ }
-\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{classSensorData}{SensorData}}*\ m\_sensorData;\ \ \ \ \ }
-\DoxyCodeLine{00094\ \ \ \ \ QTcpSocket*\ m\_socket;\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00095\ \ \ \ \ QString\ m\_buffer;\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_timestamp;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00097\ \};}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TCPMANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ TCPMANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ TCPMANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <QTcpSocket>}}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <QOverload>}}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}sensordata.h"{}}}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00030}\mbox{\hyperlink{classTCPManager}{00030}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTCPManager}{TCPManager}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00031}00031\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00032}00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classTCPManager}{TCPManager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{classTCPManager_a9c24ac909211d3e0029d518d04b9f00d}{\string~TCPManager}}();}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTCPManager_a4ce4783a94bb6bb4f3122397bd9d437b}{connectToDevice}}(\textcolor{keyword}{const}\ QString\ \&hostAddress,\ quint16\ port);}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTCPManager_afee7fb4092d884354ccf66f0148a8b1f}{disconnectFromDevice}}();}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTCPManager_a49bf45bb9b1545806780fe5458fa1155}{isConnected}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00066}00066\ signals:}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00071}\mbox{\hyperlink{classTCPManager_a6c3543bf266491dcb529beb7a44fe012}{00071}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTCPManager_a6c3543bf266491dcb529beb7a44fe012}{dataUpdated}}(\textcolor{keywordtype}{int}\ time);}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00077}\mbox{\hyperlink{classTCPManager_a363c1b3b68d005feea5268decf210000}{00077}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTCPManager_a363c1b3b68d005feea5268decf210000}{connectionStatusChanged}}(\textcolor{keywordtype}{bool}\ connected);}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00083}\mbox{\hyperlink{classTCPManager_a26641c127869ce539809b188f653be04}{00083}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTCPManager_a26641c127869ce539809b188f653be04}{errorOccurred}}(\textcolor{keyword}{const}\ QString\ \&errorMessage);}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00085}00085\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00089}00089\ \ \ \ \ \textcolor{keywordtype}{void}\ onReadyRead();}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{void}\ onSocketStateChanged(QAbstractSocket::SocketState\ state);}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00101}00101\ \ \ \ \ \textcolor{keywordtype}{void}\ onSocketError(QAbstractSocket::SocketError\ error);}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00103}00103\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00110}00110\ \ \ \ \ \textcolor{keywordtype}{void}\ processDataLine(\textcolor{keyword}{const}\ QString\ \&line);}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00112}00112\ \ \ \ \ \mbox{\hyperlink{classSensorData}{SensorData}}*\ m\_sensorData;\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00113}00113\ \ \ \ \ QTcpSocket*\ m\_socket;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00114}00114\ \ \ \ \ QString\ m\_buffer;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_timestamp;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00116}00116\ \};}
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{tcpmanager_8h_source_l00118}00118\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TCPMANAGER\_H}}
 
 \end{DoxyCode}

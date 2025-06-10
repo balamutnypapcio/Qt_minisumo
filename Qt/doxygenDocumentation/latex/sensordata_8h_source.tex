@@ -1,81 +1,86 @@
 \doxysection{sensordata.\+h}
 \hypertarget{sensordata_8h_source}{}\label{sensordata_8h_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SENSORDATA\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SENSORDATA\_H}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSensorData}{SensorData}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
-\DoxyCodeLine{00011\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classSensorData}{SensorData}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Gettery\ i\ settery\ dla\ danych\ sensorów}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSensorData_af44dc21742b6625197b018e22837b42d}{getTof1}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_1;\ \}}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a83d7ef96da281c8e1174549f82a3aac2}{setTof1}}(\textcolor{keywordtype}{bool}\ value);}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSensorData_aa6b558d735fc064e465894567f56b75a}{getTof2}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_2;\ \}}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a7ec6d5f81e1217238569ae8f849178b0}{setTof2}}(\textcolor{keywordtype}{bool}\ value);}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSensorData_a8bf8f9e8a1f20ee70d813a8f6fe850c4}{getTof3}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_3;\ \}}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a5a50e07551f1fff071f5a6c987c086ae}{setTof3}}(\textcolor{keywordtype}{bool}\ value);}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSensorData_a201e2f4719c4e16df262017324c757b3}{getTof4}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_4;\ \}}
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a66721d68a94fd516c56e13668b4fa62c}{setTof4}}(\textcolor{keywordtype}{bool}\ value);}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSensorData_a24eb6108f3bda24bf75d45408533a940}{getLineS1Active}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_islineS\_1\_Active;\ \}}
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_aa90ffd81486a062a307b20e0cf6d758f}{setLineS1Active}}(\textcolor{keywordtype}{bool}\ value);}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSensorData_ae3897165469492b6f77b74e64574f357}{getLineS2Active}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_islineS\_2\_Active;\ \}}
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a1c1d1671f67942687f784fbb54259741}{setLineS2Active}}(\textcolor{keywordtype}{bool}\ value);}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSensorData_a7bea6a8d8248abbb5a68ac10e9827de8}{getLineS3Active}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_islineS\_3\_Active;\ \}}
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a58dbe7b4a31ae67315b790caa3dd9131}{setLineS3Active}}(\textcolor{keywordtype}{bool}\ value);}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSensorData_a1be7773329f4a5e1ac61112e94075988}{getMotor1Speed}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_motor1\_speed;\ \}}
-\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a485c5643f25b9a4f4e023c3e44b9a1ce}{setMotor1Speed}}(\textcolor{keywordtype}{int}\ value);}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSensorData_ac8a1dfd8386c538e5772906519a76211}{getMotor2Speed}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_motor2\_speed;\ \}}
-\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a10ee9e936eb6637f198bb724e79cfe51}{setMotor2Speed}}(\textcolor{keywordtype}{int}\ value);}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSensorData_a0184257f45592ade4fd34b975c6792cd}{getImuX}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_imuX;\ \}}
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_affba870f7752c0deb2438e69e02ef53a}{setImuX}}(\textcolor{keywordtype}{float}\ value);}
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSensorData_ac1375b4be88832978daa10b80e7ddfa7}{getImuY}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_imuY;\ \}}
-\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_af309ff8aee4255fd470078d496b9237f}{setImuY}}(\textcolor{keywordtype}{float}\ value);}
-\DoxyCodeLine{00142\ }
-\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a3a985eab247604ab102f4015df8d66e8}{updateAllData}}(\textcolor{keywordtype}{bool}\ tof1,\ \textcolor{keywordtype}{bool}\ tof2,\ \textcolor{keywordtype}{bool}\ tof3,\ \textcolor{keywordtype}{bool}\ tof4,}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ lineS1,\ \textcolor{keywordtype}{bool}\ lineS2,\ \textcolor{keywordtype}{bool}\ lineS3,}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ motor1,\ \textcolor{keywordtype}{int}\ motor2,}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ imuX,\ \textcolor{keywordtype}{float}\ imuY);}
-\DoxyCodeLine{00161\ }
-\DoxyCodeLine{00162\ signals:}
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a93a841a87717c333f93c8e2ab1ba479e}{tofDataChanged}}();}
-\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a0ebd4e4804899960c3708d6ff6b4641e}{lineSDataChanged}}();}
-\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a3d394763776fdce03f4c9130ca35b39e}{motorDataChanged}}();}
-\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_aeeb25bc8f4aa7c531044fc6b0ef98c73}{imuDataChanged}}();}
-\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_ac852da69eccb449b75153160aa56676b}{dataChanged}}();}
-\DoxyCodeLine{00183\ }
-\DoxyCodeLine{00184\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_1\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_2\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_3\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_4\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_islineS\_1\_Active\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
-\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_islineS\_2\_Active\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
-\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_islineS\_3\_Active\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
-\DoxyCodeLine{00193\ }
-\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_motor1\_speed\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_motor2\_speed\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00196\ }
-\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_imuX\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_imuY\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00199\ \};}
-\DoxyCodeLine{00200\ }
-\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SENSORDATA\_H}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ SENSORDATA\_H}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ SENSORDATA\_H}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00027}\mbox{\hyperlink{classSensorData}{00027}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSensorData}{SensorData}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00028}00028\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00030}00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classSensorData}{SensorData}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Gettery\ i\ settery\ dla\ wszystkich\ sensorów\ i\ aktuatorów\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ getTof1()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_1;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00042}00042\ \ \ \ \ \textcolor{keywordtype}{void}\ setTof1(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ getTof2()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_2;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{void}\ setTof2(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00047}00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ getTof3()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_3;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{void}\ setTof3(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ getTof4()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_isTof\_4;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{void}\ setTof4(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ getLineS1Active()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_islineS\_1\_Active;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{void}\ setLineS1Active(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ getLineS2Active()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_islineS\_2\_Active;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00060}00060\ \ \ \ \ \textcolor{keywordtype}{void}\ setLineS2Active(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ getLineS3Active()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_islineS\_3\_Active;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{void}\ setLineS3Active(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00068}00068\ \ \ \ \ \textcolor{keywordtype}{int}\ getMotor1Speed()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_motor1\_speed;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{void}\ setMotor1Speed(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00071}00071\ \ \ \ \ \textcolor{keywordtype}{int}\ getMotor2Speed()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_motor2\_speed;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{void}\ setMotor2Speed(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{float}\ getImuX()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_imuX;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00078}00078\ \ \ \ \ \textcolor{keywordtype}{void}\ setImuX(\textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{float}\ getImuY()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_imuY;\ \}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00081}00081\ \ \ \ \ \textcolor{keywordtype}{void}\ setImuY(\textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a3a985eab247604ab102f4015df8d66e8}{updateAllData}}(\textcolor{keywordtype}{bool}\ tof1,\ \textcolor{keywordtype}{bool}\ tof2,\ \textcolor{keywordtype}{bool}\ tof3,\ \textcolor{keywordtype}{bool}\ tof4,}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ lineS1,\ \textcolor{keywordtype}{bool}\ lineS2,\ \textcolor{keywordtype}{bool}\ lineS3,}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ motor1,\ \textcolor{keywordtype}{int}\ motor2,}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ imuX,\ \textcolor{keywordtype}{float}\ imuY);}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00103}00103\ signals:}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00107}00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a93a841a87717c333f93c8e2ab1ba479e}{tofDataChanged}}();}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00112}00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a0ebd4e4804899960c3708d6ff6b4641e}{lineSDataChanged}}();}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00117}00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_a3d394763776fdce03f4c9130ca35b39e}{motorDataChanged}}();}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00122}00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_aeeb25bc8f4aa7c531044fc6b0ef98c73}{imuDataChanged}}();}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00127}00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSensorData_ac852da69eccb449b75153160aa56676b}{dataChanged}}();}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00129}00129\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Pola\ przechowujące\ aktualny\ stan\ wszystkich\ sensorów\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00131}00131\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_1\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00132}00132\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_2\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00133}00133\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_3\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00134}00134\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTof\_4\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00136}00136\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_islineS\_1\_Active\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00137}00137\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_islineS\_2\_Active\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00138}00138\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_islineS\_3\_Active\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00140}00140\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_motor1\_speed\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00141}00141\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_motor2\_speed\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00143}00143\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_imuX\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00144}00144\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_imuY\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00145}00145\ \};}
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{sensordata_8h_source_l00147}00147\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SENSORDATA\_H}}
 
 \end{DoxyCode}

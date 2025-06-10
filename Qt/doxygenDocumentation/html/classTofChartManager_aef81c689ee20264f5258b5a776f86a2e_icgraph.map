@@ -1,0 +1,11 @@
+<map id="TofChartManager::adjustAxisLabels" name="TofChartManager::adjustAxisLabels">
+<area shape="rect" id="Node000001" title="Dostosowuje liczbę etykiet osi X do rozmiaru wykresu." alt="" coords="511,23,720,63"/>
+<area shape="rect" id="Node000002" href="$classTofChartManager.html#a89703b8b34f39fac0281d3d21ba75f1b" title="Filtr zdarzeń do obsługi resize kontenera wykresu." alt="" coords="251,5,462,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="497,34,462,31,462,26,497,29"/>
+<area shape="rect" id="Node000003" href="$classTofChartManager.html#ac4c44afd699ff240c3564bfb619a3874" title="Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry." alt="" coords="251,55,463,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="498,57,463,60,463,55,497,52"/>
+<area shape="rect" id="Node000004" href="$classMainWindow.html#a996c5a2b6f77944776856f08ec30858d" title="Konstruktor klasy MainWindow." alt="" coords="5,25,203,51"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="237,56,203,52,203,47,237,51"/>
+<area shape="rect" id="Node000005" href="$classTofChartManager.html#a004c9c1a278d99138a7e34802c175fc6" title="Konstruktor." alt="" coords="7,75,201,115"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="237,83,202,87,201,82,237,78"/>
+</map>

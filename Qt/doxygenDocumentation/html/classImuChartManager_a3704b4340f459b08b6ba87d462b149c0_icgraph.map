@@ -1,0 +1,12 @@
+<map id="ImuChartManager::enforceAxisLimits" name="ImuChartManager::enforceAxisLimits">
+<area shape="rect" id="Node000001" title="Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas])." alt="" coords="801,35,997,75"/>
+<area shape="rect" id="Node000002" href="$classImuChartManager.html#a6dc6132459a4453282200157560215b5" title="Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania." alt="" coords="527,5,753,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="788,45,753,41,754,35,788,39"/>
+<area shape="rect" id="Node000003" href="$classImuChartManager.html#af43ca7f8c5f2ab7db02c2fa72ee1a8fc" title="Inicjalizuje (tworzy) wykres IMU i ustawia wszystkie parametry." alt="" coords="260,42,479,67"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="788,60,753,60,527,60,479,59,479,54,527,55,753,55,788,54"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="513,42,479,45,479,40,513,36"/>
+<area shape="rect" id="Node000004" href="$classImuChartManager.html#a0cbf6e4e9759f2b79c9162598bb7aa4b" title="Konstruktor." alt="" coords="5,5,212,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="246,43,212,40,213,34,247,38"/>
+<area shape="rect" id="Node000005" href="$classMainWindow.html#a996c5a2b6f77944776856f08ec30858d" title="Konstruktor klasy MainWindow." alt="" coords="10,70,207,95"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="246,71,208,75,207,69,246,65"/>
+</map>

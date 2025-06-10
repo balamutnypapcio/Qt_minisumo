@@ -1,0 +1,11 @@
+<map id="LineChartMenager::adjustAxisLabels" name="LineChartMenager::adjustAxisLabels">
+<area shape="rect" id="Node000001" title="Dostosowuje liczbę etykiet osi X do rozmiaru wykresu." alt="" coords="532,23,721,63"/>
+<area shape="rect" id="Node000002" href="$classLineChartMenager.html#ad4b84cbb138d5ab9ffc414bf6416e24f" title="Filtr zdarzeń do obsługi resize kontenera wykresu." alt="" coords="265,5,483,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="518,35,483,32,484,26,519,30"/>
+<area shape="rect" id="Node000003" href="$classLineChartMenager.html#af4ae0b8f7efd7713d2e1b3faabe96977" title="Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry." alt="" coords="264,55,484,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="519,56,485,60,484,54,518,51"/>
+<area shape="rect" id="Node000004" href="$classLineChartMenager.html#ab1b8488eceb8d1267945658eb1ba9242" title="Konstruktor." alt="" coords="5,18,216,58"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="250,56,216,52,216,47,251,51"/>
+<area shape="rect" id="Node000005" href="$classMainWindow.html#a996c5a2b6f77944776856f08ec30858d" title="Konstruktor klasy MainWindow." alt="" coords="12,83,209,108"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="250,83,210,88,209,82,250,78"/>
+</map>

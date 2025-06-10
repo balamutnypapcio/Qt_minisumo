@@ -1,0 +1,69 @@
+\doxysection{csv\+\_\+generator.\+cpp}
+\hypertarget{csv__generator_8cpp_source}{}\label{csv__generator_8cpp_source}\index{GeneratorCSV/csv\_generator.cpp@{GeneratorCSV/csv\_generator.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00007}00007\ \textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}*\ argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Sprawdzenie\ liczby\ argumentów}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ !=\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Użycie:\ "{}}\ <<\ argv[0]\ <<\ \textcolor{stringliteral}{"{}\ <przedział\_czasu\_ms>\ <liczba\_wierszy>\ <nazwa\_pliku.csv>"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Parsowanie\ argumentów}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{int}\ timeInterval\ =\ std::stoi(argv[1]);\ \textcolor{comment}{//\ przedział\ czasu\ w\ ms}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordtype}{int}\ rowCount\ =\ std::stoi(argv[2]);\ \ \ \ \ \textcolor{comment}{//\ liczba\ wierszy\ do\ wygenerowania}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00017}00017\ \ \ \ \ std::string\ fileName\ =\ argv[3];\ \ \ \ \ \ \ \ \textcolor{comment}{//\ nazwa\ pliku\ wyjściowego}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ Inicjalizacja\ generatora\ liczb\ losowych}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00020}00020\ \ \ \ \ std::random\_device\ rd;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00021}00021\ \ \ \ \ std::mt19937\ gen(rd());}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00022}00022\ \ \ \ \ std::uniform\_int\_distribution<>\ binary(0,\ 1);\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ wartości\ 0\ lub\ 1}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00023}00023\ \ \ \ \ std::uniform\_int\_distribution<>\ motor(-\/100,\ 100);\ \ \ \ \ \ \ \textcolor{comment}{//\ dla\ wartości\ silników\ -\/100\ do\ 100}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00024}00024\ \ \ \ \ std::uniform\_real\_distribution<float>\ imu(-\/100.0,\ 100.0);\ \textcolor{comment}{//\ dla\ wartości\ IMU\ -\/100.0\ do\ 100.0}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ Otwarcie\ pliku}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00027}00027\ \ \ \ \ std::ofstream\ outFile(fileName);}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (!outFile)\ \{}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Błąd:\ Nie\ można\ otworzyć\ pliku\ "{}}\ <<\ fileName\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ Nagłówek\ CSV}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00034}00034\ \ \ \ \ outFile\ <<\ \textcolor{stringliteral}{"{}czas,isTof\_1,isTof\_2,isTof\_3,isTof\_4,islineS\_1\_Active,islineS\_2\_Active,islineS\_3\_Active,motor1\_speed,motor2\_speed,imuX,imuY"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ Generowanie\ danych}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ rowCount;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ time\ =\ i\ *\ timeInterval;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ outFile\ <<\ time\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ czas}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ outFile\ <<\ binary(gen)\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ isTof\_1}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ outFile\ <<\ binary(gen)\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ isTof\_2}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ outFile\ <<\ binary(gen)\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ isTof\_3}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ outFile\ <<\ binary(gen)\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ isTof\_4}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ outFile\ <<\ binary(gen)\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ islineS\_1\_Active}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ outFile\ <<\ binary(gen)\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ islineS\_2\_Active}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ outFile\ <<\ binary(gen)\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ islineS\_3\_Active}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ outFile\ <<\ motor(gen)\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ motor1\_speed}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ outFile\ <<\ motor(gen)\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ motor2\_speed}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Wartości\ IMU\ z\ dwoma\ miejscami\ po\ przecinku}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ outFile.precision(2);}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ outFile\ <<\ std::fixed\ <<\ imu(gen)\ <<\ \textcolor{stringliteral}{"{},"{}};\ \ \textcolor{comment}{//\ imuX}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ outFile\ <<\ std::fixed\ <<\ imu(gen);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ imuY}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ outFile\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00058}00058\ \ \ \ \ outFile.close();}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00059}00059\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Wygenerowano\ "{}}\ <<\ rowCount\ <<\ \textcolor{stringliteral}{"{}\ wierszy\ danych\ do\ pliku\ "{}}\ <<\ fileName\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00060}00060\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Przedział\ czasu:\ "{}}\ <<\ timeInterval\ <<\ \textcolor{stringliteral}{"{}\ ms"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{csv__generator_8cpp_source_l00063}00063\ \}}
+
+\end{DoxyCode}

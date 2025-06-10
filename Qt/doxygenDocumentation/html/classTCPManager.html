@@ -84,22 +84,12 @@ $(function() {
 <div class="dynheader">
 Diagram dziedziczenia dla TCPManager</div>
 <div class="dyncontent">
-<div class="center"><img src="classTCPManager__inherit__graph.png" border="0" usemap="#aTCPManager_inherit__map" alt="Inheritance graph"/></div>
-<map name="aTCPManager_inherit__map" id="aTCPManager_inherit__map">
-<area shape="rect" title="Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów." alt="" coords="5,79,108,104"/>
-<area shape="rect" title=" " alt="" coords="19,5,94,31"/>
-<area shape="poly" title=" " alt="" coords="59,44,59,79,54,79,54,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classTCPManager__inherit__graph.svg" width="114" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <div class="dynheader">
 Diagram współpracy dla TCPManager:</div>
 <div class="dyncontent">
-<div class="center"><img src="classTCPManager__coll__graph.png" border="0" usemap="#aTCPManager_coll__map" alt="Collaboration graph"/></div>
-<map name="aTCPManager_coll__map" id="aTCPManager_coll__map">
-<area shape="rect" title="Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów." alt="" coords="5,79,108,104"/>
-<area shape="rect" title=" " alt="" coords="19,5,94,31"/>
-<area shape="poly" title=" " alt="" coords="59,44,59,79,54,79,54,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classTCPManager__coll__graph.svg" width="114" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
@@ -119,16 +109,14 @@ Metody publiczne</h2></td></tr>
 <tr class="memitem:a895d7f1d6f214b008c540fdd376a1014" id="r_a895d7f1d6f214b008c540fdd376a1014"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#a895d7f1d6f214b008c540fdd376a1014">TCPManager</a> (<a class="el" href="classSensorData.html">SensorData</a> *sensorData, QObject *parent=nullptr)</td></tr>
 <tr class="memdesc:a895d7f1d6f214b008c540fdd376a1014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor klasy <a class="el" href="classTCPManager.html" title="Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów.">TCPManager</a>.  <br /></td></tr>
 <tr class="separator:a895d7f1d6f214b008c540fdd376a1014"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c24ac909211d3e0029d518d04b9f00d" id="r_a9c24ac909211d3e0029d518d04b9f00d"><td class="memItemLeft" align="right" valign="top"><a id="a9c24ac909211d3e0029d518d04b9f00d" name="a9c24ac909211d3e0029d518d04b9f00d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>~TCPManager</b> ()</td></tr>
-<tr class="memdesc:a9c24ac909211d3e0029d518d04b9f00d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruktor. <br /></td></tr>
+<tr class="memitem:a9c24ac909211d3e0029d518d04b9f00d" id="r_a9c24ac909211d3e0029d518d04b9f00d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#a9c24ac909211d3e0029d518d04b9f00d">~TCPManager</a> ()</td></tr>
+<tr class="memdesc:a9c24ac909211d3e0029d518d04b9f00d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruktor. Zamyka gniazdo TCP.  <br /></td></tr>
 <tr class="separator:a9c24ac909211d3e0029d518d04b9f00d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ce4783a94bb6bb4f3122397bd9d437b" id="r_a4ce4783a94bb6bb4f3122397bd9d437b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#a4ce4783a94bb6bb4f3122397bd9d437b">connectToDevice</a> (const QString &amp;hostAddress, quint16 port)</td></tr>
 <tr class="memdesc:a4ce4783a94bb6bb4f3122397bd9d437b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nawiązuje połączenie z urządzeniem ESP.  <br /></td></tr>
 <tr class="separator:a4ce4783a94bb6bb4f3122397bd9d437b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afee7fb4092d884354ccf66f0148a8b1f" id="r_afee7fb4092d884354ccf66f0148a8b1f"><td class="memItemLeft" align="right" valign="top"><a id="afee7fb4092d884354ccf66f0148a8b1f" name="afee7fb4092d884354ccf66f0148a8b1f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnectFromDevice</b> ()</td></tr>
-<tr class="memdesc:afee7fb4092d884354ccf66f0148a8b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rozłącza połączenie z urządzeniem ESP. <br /></td></tr>
+<tr class="memitem:afee7fb4092d884354ccf66f0148a8b1f" id="r_afee7fb4092d884354ccf66f0148a8b1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#afee7fb4092d884354ccf66f0148a8b1f">disconnectFromDevice</a> ()</td></tr>
+<tr class="memdesc:afee7fb4092d884354ccf66f0148a8b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rozłącza połączenie z urządzeniem ESP.  <br /></td></tr>
 <tr class="separator:afee7fb4092d884354ccf66f0148a8b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49bf45bb9b1545806780fe5458fa1155" id="r_a49bf45bb9b1545806780fe5458fa1155"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTCPManager.html#a49bf45bb9b1545806780fe5458fa1155">isConnected</a> () const</td></tr>
 <tr class="memdesc:a49bf45bb9b1545806780fe5458fa1155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza stan połączenia.  <br /></td></tr>
@@ -136,6 +124,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnectFromDevice<
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów. </p>
+<p>Klasa odpowiada za:</p><ul>
+<li>Nawiązanie i rozłączanie połączenia TCP z urządzeniem (np. ESP32).</li>
+<li>Odbiór, buforowanie i parsowanie danych przesyłanych przez ESP w formacie CSV.</li>
+<li>Aktualizację obiektu <a class="el" href="classSensorData.html" title="Przechowuje dane z różnych sensorów i udostępnia je aplikacji.">SensorData</a> na podstawie odebranych danych.</li>
+<li>Emisję sygnałów Qt o aktualizacji danych, zmianie statusu połączenia oraz błędach sieciowych.</li>
+</ul>
+<p>Przykład użycia: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classTCPManager.html">TCPManager</a>* tcpMgr = <span class="keyword">new</span> <a class="code hl_class" href="classTCPManager.html">TCPManager</a>(sensorData, <span class="keyword">this</span>);</div>
+<div class="line">connect(tcpMgr, &amp;<a class="code hl_signal" href="classTCPManager.html#a6c3543bf266491dcb529beb7a44fe012">TCPManager::dataUpdated</a>, <span class="keyword">this</span>, &amp;MainWindow::onDataUpdated);</div>
+<div class="line">tcpMgr-&gt;<a class="code hl_function" href="classTCPManager.html#a4ce4783a94bb6bb4f3122397bd9d437b">connectToDevice</a>(<span class="stringliteral">&quot;192.168.4.1&quot;</span>, 8888);</div>
+<div class="ttc" id="aclassTCPManager_html"><div class="ttname"><a href="classTCPManager.html">TCPManager</a></div><div class="ttdoc">Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów.</div><div class="ttdef"><b>Definition</b> <a href="tcpmanager_8h_source.html#l00030">tcpmanager.h:30</a></div></div>
+<div class="ttc" id="aclassTCPManager_html_a4ce4783a94bb6bb4f3122397bd9d437b"><div class="ttname"><a href="classTCPManager.html#a4ce4783a94bb6bb4f3122397bd9d437b">TCPManager::connectToDevice</a></div><div class="ttdeci">bool connectToDevice(const QString &amp;hostAddress, quint16 port)</div><div class="ttdoc">Nawiązuje połączenie z urządzeniem ESP.</div><div class="ttdef"><b>Definition</b> <a href="tcpmanager_8cpp_source.html#l00026">tcpmanager.cpp:26</a></div></div>
+<div class="ttc" id="aclassTCPManager_html_a6c3543bf266491dcb529beb7a44fe012"><div class="ttname"><a href="classTCPManager.html#a6c3543bf266491dcb529beb7a44fe012">TCPManager::dataUpdated</a></div><div class="ttdeci">void dataUpdated(int time)</div><div class="ttdoc">Sygnał informujący o aktualizacji danych.</div></div>
+</div><!-- fragment --><dl class="section author"><dt>Autor</dt><dd>Jakub Wilczyński </dd></dl>
+
+<p class="definition">Definicja w linii <a class="el" href="tcpmanager_8h_source.html#l00030">30</a> pliku <a class="el" href="tcpmanager_8h_source.html">tcpmanager.h</a>.</p>
 </div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a id="a895d7f1d6f214b008c540fdd376a1014" name="a895d7f1d6f214b008c540fdd376a1014"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a895d7f1d6f214b008c540fdd376a1014">&#9670;&#160;</a></span>TCPManager()</h2>
@@ -180,6 +183,47 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnectFromDevice<
   </dd>
 </dl>
 
+<p class="definition">Definicja w linii <a class="el" href="tcpmanager_8cpp_source.html#l00004">4</a> pliku <a class="el" href="tcpmanager_8cpp_source.html">tcpmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    5</span>    : QObject(parent), m_sensorData(sensorData), m_socket(<span class="keyword">nullptr</span>), m_timestamp(0)</div>
+<div class="line"><span class="lineno">    6</span>{</div>
+<div class="line"><span class="lineno">    7</span>    <span class="comment">// Inicjalizacja gniazda TCP</span></div>
+<div class="line"><span class="lineno">    8</span>    m_socket = <span class="keyword">new</span> QTcpSocket(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">    9</span> </div>
+<div class="line"><span class="lineno">   10</span>    <span class="comment">// Podłączenie sygnałów gniazda</span></div>
+<div class="line"><span class="lineno">   11</span>    connect(m_socket, &amp;QTcpSocket::readyRead, <span class="keyword">this</span>, &amp;TCPManager::onReadyRead);</div>
+<div class="line"><span class="lineno">   12</span>    connect(m_socket, &amp;QTcpSocket::stateChanged, <span class="keyword">this</span>, &amp;TCPManager::onSocketStateChanged);</div>
+<div class="line"><span class="lineno">   13</span>    connect(m_socket, <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span> (QTcpSocket::*)(QAbstractSocket::SocketError)<span class="keyword">&gt;</span>(&amp;QTcpSocket::errorOccurred),</div>
+<div class="line"><span class="lineno">   14</span>            <span class="keyword">this</span>, &amp;TCPManager::onSocketError);</div>
+<div class="line"><span class="lineno">   15</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9c24ac909211d3e0029d518d04b9f00d" name="a9c24ac909211d3e0029d518d04b9f00d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c24ac909211d3e0029d518d04b9f00d">&#9670;&#160;</a></span>~TCPManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCPManager::~TCPManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destruktor. Zamyka gniazdo TCP. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="tcpmanager_8cpp_source.html#l00017">17</a> pliku <a class="el" href="tcpmanager_8cpp_source.html">tcpmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
+<div class="line"><span class="lineno">   19</span>    <span class="comment">// Zamknięcie połączenia przy niszczeniu obiektu</span></div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">if</span> (m_socket) {</div>
+<div class="line"><span class="lineno">   21</span>        m_socket-&gt;close();</div>
+<div class="line"><span class="lineno">   22</span>        <span class="keyword">delete</span> m_socket;</div>
+<div class="line"><span class="lineno">   23</span>    }</div>
+<div class="line"><span class="lineno">   24</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Dokumentacja funkcji składowych</h2>
@@ -214,6 +258,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnectFromDevice<
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classTCPManager_a363c1b3b68d005feea5268decf210000_icgraph.svg" width="479" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -251,8 +300,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnectFromDevice<
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Zwraca</dt><dd>true jeśli próba połączenia została zainicjowana. </dd></dl>
+<dl class="section return"><dt>Zwraca</dt><dd>true jeśli próba połączenia została zainicjowana.</dd></dl>
+<p>Połączenie inicjowane jest asynchronicznie. </p>
 
+<p class="definition">Definicja w linii <a class="el" href="tcpmanager_8cpp_source.html#l00026">26</a> pliku <a class="el" href="tcpmanager_8cpp_source.html">tcpmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    <span class="comment">// Rozłączenie, jeśli istnieje aktywne połączenie</span></div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">if</span> (m_socket-&gt;state() != QAbstractSocket::UnconnectedState) {</div>
+<div class="line"><span class="lineno">   30</span>        m_socket-&gt;close();</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>    <span class="comment">// Próba połączenia z urządzeniem ESP</span></div>
+<div class="line"><span class="lineno">   34</span>    m_socket-&gt;connectToHost(hostAddress, port);</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>    <span class="comment">// Zwraca true jeśli udało się zainicjować połączenie</span></div>
+<div class="line"><span class="lineno">   37</span>    <span class="comment">// (samo połączenie jest asynchroniczne)</span></div>
+<div class="line"><span class="lineno">   38</span>    qDebug() &lt;&lt; <span class="stringliteral">&quot;Próba połączenia z ESP na&quot;</span> &lt;&lt; hostAddress &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; port;</div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   40</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a6c3543bf266491dcb529beb7a44fe012" name="a6c3543bf266491dcb529beb7a44fe012"></a>
@@ -286,6 +352,41 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnectFromDevice<
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classTCPManager_a6c3543bf266491dcb529beb7a44fe012_icgraph.svg" width="451" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="afee7fb4092d884354ccf66f0148a8b1f" name="afee7fb4092d884354ccf66f0148a8b1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afee7fb4092d884354ccf66f0148a8b1f">&#9670;&#160;</a></span>disconnectFromDevice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TCPManager::disconnectFromDevice </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rozłącza połączenie z urządzeniem ESP. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="tcpmanager_8cpp_source.html#l00042">42</a> pliku <a class="el" href="tcpmanager_8cpp_source.html">tcpmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>{</div>
+<div class="line"><span class="lineno">   44</span>    m_socket-&gt;close();</div>
+<div class="line"><span class="lineno">   45</span>    qDebug() &lt;&lt; <span class="stringliteral">&quot;Rozłączono z ESP&quot;</span>;</div>
+<div class="line"><span class="lineno">   46</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classTCPManager_afee7fb4092d884354ccf66f0148a8b1f_icgraph.svg" width="482" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -341,11 +442,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnectFromDevice<
 <p>Sprawdza stan połączenia. </p>
 <dl class="section return"><dt>Zwraca</dt><dd>true jeśli połączenie jest aktywne. </dd></dl>
 
+<p class="definition">Definicja w linii <a class="el" href="tcpmanager_8cpp_source.html#l00048">48</a> pliku <a class="el" href="tcpmanager_8cpp_source.html">tcpmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>{</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> m_socket-&gt;state() == QAbstractSocket::ConnectedState;</div>
+<div class="line"><span class="lineno">   51</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classTCPManager_a49bf45bb9b1545806780fe5458fa1155_icgraph.svg" width="458" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
 </div>
 </div>
 <hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li><a class="el" href="tcpmanager_8h_source.html">tcpmanager.h</a></li>
-<li><b>tcpmanager.cpp</b></li>
+<li><a class="el" href="tcpmanager_8cpp_source.html">tcpmanager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,0 +1,13 @@
+<map id="SensorData::updateAllData" name="SensorData::updateAllData">
+<area shape="rect" id="Node000001" title="Aktualizuje wszystkie dane naraz, optymalnie emitując tylko niezbędne sygnały." alt="" coords="5,104,204,129"/>
+<area shape="rect" id="Node000002" href="$classSensorData.html#ac852da69eccb449b75153160aa56676b" title="Sygnał emitowany przy jakiejkolwiek zmianie danych." alt="" coords="273,5,463,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,102,181,71,251,40,277,31,279,37,253,44,183,75,128,106"/>
+<area shape="rect" id="Node000003" href="$classSensorData.html#aeeb25bc8f4aa7c531044fc6b0ef98c73" title="Sygnał emitowany przy zmianie danych IMU." alt="" coords="259,55,477,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,101,285,80,286,85,174,107"/>
+<area shape="rect" id="Node000004" href="$classSensorData.html#a0ebd4e4804899960c3708d6ff6b4641e" title="Sygnał emitowany przy zmianie dowolnych czujników linii." alt="" coords="255,104,481,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="204,114,241,114,241,119,204,119"/>
+<area shape="rect" id="Node000005" href="$classSensorData.html#a3d394763776fdce03f4c9130ca35b39e" title="Sygnał emitowany przy zmianie danych silników." alt="" coords="252,153,484,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="174,127,286,148,285,153,173,132"/>
+<area shape="rect" id="Node000006" href="$classSensorData.html#a93a841a87717c333f93c8e2ab1ba479e" title="Sygnał emitowany przy zmianie dowolnych danych TOF." alt="" coords="263,203,473,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="129,127,184,157,253,187,284,197,282,202,251,193,182,162,126,132"/>
+</map>

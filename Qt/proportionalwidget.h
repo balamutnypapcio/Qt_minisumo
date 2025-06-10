@@ -12,6 +12,15 @@ class QResizeEvent;
  *
  * Klasa ułatwia układanie elementów interfejsu robota, dzieląc dostępną przestrzeń
  * na górną część (czujnik TOF) i dolną (strzałka), zachowując określone proporcje.
+ *
+ * Przykład użycia:
+ * @code
+ * auto* propWidget = new ProportionalWidget(parent);
+ * propWidget->setupTofWidget(ui->tofLEFT);
+ * propWidget->setupArrowWidget(ui->M1_arrow, true);
+ * @endcode
+ *
+ * @author Jakub Wilczyński
  */
 class ProportionalWidget : public QWidget
 {

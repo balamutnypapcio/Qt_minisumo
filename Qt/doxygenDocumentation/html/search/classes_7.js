@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sensordata_0',['SensorData',['../classSensorData.html',1,'']]]
+  ['rotatedlabel_0',['RotatedLabel',['../classRotatedLabel.html',1,'']]]
 ];

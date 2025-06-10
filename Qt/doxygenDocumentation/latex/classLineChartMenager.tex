@@ -2,7 +2,7 @@
 \hypertarget{classLineChartMenager}{}\label{classLineChartMenager}\index{LineChartMenager@{LineChartMenager}}
 
 
-Zarządza wykresem danych z czujników linii.  
+Zarządza dynamicznym wykresem prezentującym dane z czujników linii.  
 
 
 
@@ -11,8 +11,7 @@ Zarządza wykresem danych z czujników linii.
 
 
 
-Diagram dziedziczenia dla Line\+Chart\+Menager
-\nopagebreak
+Diagram dziedziczenia dla Line\+Chart\+Menager\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Diagram dziedziczenia dla Line\+Chart\+Menager
 \end{figure}
 
 
-Diagram współpracy dla Line\+Chart\+Menager\+:
-\nopagebreak
+Diagram współpracy dla Line\+Chart\+Menager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,44 +30,625 @@ Diagram współpracy dla Line\+Chart\+Menager\+:
 \doxysubsubsection*{Metody publiczne}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classLineChartMenager_ab1b8488eceb8d1267945658eb1ba9242}\label{classLineChartMenager_ab1b8488eceb8d1267945658eb1ba9242} 
-{\bfseries Line\+Chart\+Menager} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QWidget \texorpdfstring{$\ast$}{*}container, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
-\item 
-\Hypertarget{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}\label{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977} 
-void {\bfseries setup\+Chart} ()
-\begin{DoxyCompactList}\small\item\em Inicjalizuje wykres. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLineChartMenager_ab1b8488eceb8d1267945658eb1ba9242}{Line\+Chart\+Menager}} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QWidget \texorpdfstring{$\ast$}{*}container, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Konstruktor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLineChartMenager_aaae9e0c93e7319d61dd744970a6aa2c0}{\texorpdfstring{$\sim$}{\string~}\+Line\+Chart\+Menager}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. Usuwa wykres i zwalnia zasoby. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}{setup\+Chart}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLineChartMenager_aeea626a786f77e752dcb62ff11a266fc}{update\+Chart}} (int time)
-\begin{DoxyCompactList}\small\item\em Aktualizuje dane na wykresie. \end{DoxyCompactList}\item 
-\Hypertarget{classLineChartMenager_ac69f0c1db373525cdcf1fb2223b789d0}\label{classLineChartMenager_ac69f0c1db373525cdcf1fb2223b789d0} 
-void {\bfseries clear\+Chart} ()
-\begin{DoxyCompactList}\small\item\em Czyści dane z wykresu. \end{DoxyCompactList}\item 
-\Hypertarget{classLineChartMenager_a81b170401c7cf07380d64dde3b00b738}\label{classLineChartMenager_a81b170401c7cf07380d64dde3b00b738} 
-void {\bfseries reset\+To\+Current\+Data} ()
-\begin{DoxyCompactList}\small\item\em Przywraca widok do aktualnych danych (włącza auto-\/scrolling). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Aktualizuje wykres o nowe dane z \doxylink{classSensorData}{Sensor\+Data}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLineChartMenager_ac69f0c1db373525cdcf1fb2223b789d0}{clear\+Chart}} ()
+\begin{DoxyCompactList}\small\item\em Czyści wszystkie próbki z wykresu oraz resetuje oś X. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLineChartMenager_a81b170401c7cf07380d64dde3b00b738}{reset\+To\+Current\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Przywraca widok wykresu do najnowszych danych (włącza auto-\/scroll). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Metody chronione}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classLineChartMenager_ad4b84cbb138d5ab9ffc414bf6416e24f}\label{classLineChartMenager_ad4b84cbb138d5ab9ffc414bf6416e24f} 
-bool {\bfseries event\+Filter} (QObject \texorpdfstring{$\ast$}{*}watched, QEvent \texorpdfstring{$\ast$}{*}event) override
-\begin{DoxyCompactList}\small\item\em Filtr zdarzeń do obsługi zmiany rozmiaru kontenera. \end{DoxyCompactList}\item 
-\Hypertarget{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99}\label{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99} 
-void {\bfseries handle\+Chart\+Mouse\+Pressed} ()
-\begin{DoxyCompactList}\small\item\em Obsługa kliknięcia i przesunięcia myszy na wykresie. \end{DoxyCompactList}\item 
-\Hypertarget{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7}\label{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7} 
-void {\bfseries handle\+Chart\+Mouse\+Released} ()
-\item 
-\Hypertarget{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}\label{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad} 
-void {\bfseries enforce\+Axis\+Limits} (qreal min, qreal max)
-\begin{DoxyCompactList}\small\item\em Wymusza przestrzeganie limitów osi X (min ≥ 0, max ≤ aktualny\+\_\+czas). \end{DoxyCompactList}\item 
-\Hypertarget{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}\label{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94} 
-void {\bfseries adjust\+Axis\+Labels} ()
-\begin{DoxyCompactList}\small\item\em Dostosowuje etykiety osi X do bieżącego rozmiaru wykresu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{classLineChartMenager_ad4b84cbb138d5ab9ffc414bf6416e24f}{event\+Filter}} (QObject \texorpdfstring{$\ast$}{*}watched, QEvent \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Filtr zdarzeń do obsługi resize kontenera wykresu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99}{handle\+Chart\+Mouse\+Pressed}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-\/scroll. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7}{handle\+Chart\+Mouse\+Released}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}{enforce\+Axis\+Limits}} (qreal min, qreal max)
+\begin{DoxyCompactList}\small\item\em Wymusza przestrzeganie limitów osi X (brak przewijania poza \mbox{[}0, aktualny\+\_\+czas\mbox{]}). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}{adjust\+Axis\+Labels}} ()
+\begin{DoxyCompactList}\small\item\em Dostosowuje liczbę etykiet osi X do rozmiaru wykresu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Opis szczegółowy}
-Zarządza wykresem danych z czujników linii. 
+Zarządza dynamicznym wykresem prezentującym dane z czujników linii. 
+
+Odpowiada za\+:
+\begin{DoxyItemize}
+\item Tworzenie i konfigurację wykresu (QChart) dla trzech sygnałów z czujników linii.
+\item Dodawanie nowych próbek, automatyczne przewijanie oraz czyszczenie danych.
+\item Dynamiczne dopasowywanie osi do okna i blokowanie przewijania poza zakres danych.
+\item Obsługę auto-\/scrollingu oraz wyłączanie go przy ręcznej interakcji użytkownika.
+\end{DoxyItemize}
+
+Współpracuje z \doxylink{classHorizontalOnlyChartView}{Horizontal\+Only\+Chart\+View} (ograniczenie interakcji do osi X).
+
+Przykład użycia\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classLineChartMenager}{LineChartMenager}}*\ lineMgr\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classLineChartMenager}{LineChartMenager}}(sensorData,\ ui-\/>lineChartContainer,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{connect(csvManager,\ \&\mbox{\hyperlink{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}{CSVManager::dataUpdated}},\ lineMgr,\ \&\mbox{\hyperlink{classLineChartMenager_aeea626a786f77e752dcb62ff11a266fc}{LineChartMenager::updateChart}});}
+
+\end{DoxyCode}
+
+
+\begin{DoxyAuthor}{Autor}
+Jakub Wilczyński 
+\end{DoxyAuthor}
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8h_source_l00034}{34}} pliku \mbox{\hyperlink{linechartmenager_8h_source}{linechartmenager.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classLineChartMenager_ab1b8488eceb8d1267945658eb1ba9242}\label{classLineChartMenager_ab1b8488eceb8d1267945658eb1ba9242} 
+\index{LineChartMenager@{LineChartMenager}!LineChartMenager@{LineChartMenager}}
+\index{LineChartMenager@{LineChartMenager}!LineChartMenager@{LineChartMenager}}
+\doxysubsubsection{\texorpdfstring{LineChartMenager()}{LineChartMenager()}}
+{\footnotesize\ttfamily Line\+Chart\+Menager\+::\+Line\+Chart\+Menager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}}]{sensor\+Data,  }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{container,  }\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Konstruktor. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em sensor\+Data} & Wskaźnik do \doxylink{classSensorData}{Sensor\+Data} (źródło danych z czujników linii). \\
+\hline
+{\em container} & QWidget, w którym osadzany jest wykres. \\
+\hline
+{\em parent} & Opcjonalny rodzic QObject. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00011}{11}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData),\ m\_container(container),}
+\DoxyCodeLine{00013\ \ \ \ \ m\_chart(\textcolor{keyword}{nullptr}),\ m\_chartView(\textcolor{keyword}{nullptr}),\ m\_currentPoint(0),}
+\DoxyCodeLine{00014\ \ \ \ \ m\_isAutoScrollEnabled(\textcolor{keyword}{true}),\ m\_currentTimeOffset(0)}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Sprawdzamy\ czy\ przekazane\ wskaźniki\ są\ poprawne}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_sensorData\ ||\ !m\_container)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}LineChartMenager:\ Nieprawidłowe\ wskaźniki\ do\ sensorData\ lub\ container!"{}};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Instaluj\ filtr\ zdarzeń,\ aby\ reagować\ na\ zmianę\ rozmiaru}}
+\DoxyCodeLine{00023\ \ \ \ \ m\_container-\/>installEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}{setupChart}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Podobnie\ jak\ w\ MotorChartManager\ -\/\ nie\ aktualizujemy\ wykresu\ bezpośrednio\ w\ slotach}}
+\DoxyCodeLine{00028\ \ \ \ \ connect(m\_sensorData,\ \&\mbox{\hyperlink{classSensorData_a0ebd4e4804899960c3708d6ff6b4641e}{SensorData::lineSDataChanged}},\ \textcolor{keyword}{this},\ [\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Slot\ jest\ pusty\ -\/\ aktualizacja\ będzie\ wywoływana\ z\ zewnątrz}}
+\DoxyCodeLine{00030\ \ \ \ \ \});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Usuwamy\ błędną\ linię\ łączącą\ z\ sygnałem\ resized,\ którego\ nie\ ma\ w\ QWidget}}
+\DoxyCodeLine{00033\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLineChartMenager_ab1b8488eceb8d1267945658eb1ba9242_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLineChartMenager_aaae9e0c93e7319d61dd744970a6aa2c0}\label{classLineChartMenager_aaae9e0c93e7319d61dd744970a6aa2c0} 
+\index{LineChartMenager@{LineChartMenager}!````~LineChartMenager@{\texorpdfstring{$\sim$}{\string~}LineChartMenager}}
+\index{````~LineChartMenager@{\texorpdfstring{$\sim$}{\string~}LineChartMenager}!LineChartMenager@{LineChartMenager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}LineChartMenager()}{\string~LineChartMenager()}}
+{\footnotesize\ttfamily Line\+Chart\+Menager\+::\texorpdfstring{$\sim$}{\string~}\+Line\+Chart\+Menager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destruktor. Usuwa wykres i zwalnia zasoby. 
+
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00035}{35}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Usuń\ filtr\ zdarzeń}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_container)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ m\_container-\/>removeEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ Nie\ usuwamy\ m\_container\ i\ m\_sensorData,\ bo\ zostały\ przekazane\ z\ zewnątrz}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{delete}\ m\_chart;\ \ \textcolor{comment}{//\ m\_chartView\ jest\ własnością\ m\_container\ i\ zostanie\ usunięty\ wraz\ z\ nim}}
+\DoxyCodeLine{00044\ \}}
+
+\end{DoxyCode}
+
 
 \doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}\label{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94} 
+\index{LineChartMenager@{LineChartMenager}!adjustAxisLabels@{adjustAxisLabels}}
+\index{adjustAxisLabels@{adjustAxisLabels}!LineChartMenager@{LineChartMenager}}
+\doxysubsubsection{\texorpdfstring{adjustAxisLabels()}{adjustAxisLabels()}}
+{\footnotesize\ttfamily void Line\+Chart\+Menager\+::adjust\+Axis\+Labels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Dostosowuje liczbę etykiet osi X do rozmiaru wykresu. 
+
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00305}{305}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00306\ \{}
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView\ \&\&\ m\_axisX)\ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obliczamy\ szerokość\ dostępną\ dla\ wykresu}}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ chartWidth\ =\ m\_chartView-\/>width();}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <=\ 0)}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \ \textcolor{comment}{//\ Wykres\ jeszcze\ nie\ ma\ poprawnych\ wymiarów}}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dostosowujemy\ liczbę\ etykiet\ w\ zależności\ od\ szerokości}}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ labelCount;}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 100)\ \{}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bardzo\ mały\ wykres\ -\/\ tylko\ 2\ etykiety\ (początek\ i\ koniec)}}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 2;}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 200)\ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mały\ wykres\ -\/\ 3\ etykiety}}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 3;}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 300)\ \{}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Średni\ wykres\ -\/\ 4\ etykiety}}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 4;}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Duży\ wykres\ -\/\ 5\ etykiet}}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 5;}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ustawiamy\ nową\ liczbę\ etykiet}}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_axisX-\/>tickCount()\ !=\ labelCount)\ \{}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setTickCount(labelCount);}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Upewniamy\ się,\ że\ tytuł\ osi\ X\ jest\ zawsze\ widoczny}}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dodatkowo\ modyfikujemy\ sposób\ wyświetlania\ etykiet}}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 150)\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dla\ bardzo\ małych\ wykresów\ skracamy\ format\ etykiet}}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dla\ większych\ wykresów\ pokazujemy\ pełny\ format}}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00346\ \ \ \ \ \}}
+\DoxyCodeLine{00347\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLineChartMenager_ac69f0c1db373525cdcf1fb2223b789d0}\label{classLineChartMenager_ac69f0c1db373525cdcf1fb2223b789d0} 
+\index{LineChartMenager@{LineChartMenager}!clearChart@{clearChart}}
+\index{clearChart@{clearChart}!LineChartMenager@{LineChartMenager}}
+\doxysubsubsection{\texorpdfstring{clearChart()}{clearChart()}}
+{\footnotesize\ttfamily void Line\+Chart\+Menager\+::clear\+Chart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Czyści wszystkie próbki z wykresu oraz resetuje oś X. 
+
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00236}{236}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00237\ \{}
+\DoxyCodeLine{00238\ \ \ \ \ m\_series1-\/>clear();}
+\DoxyCodeLine{00239\ \ \ \ \ m\_series2-\/>clear();}
+\DoxyCodeLine{00240\ \ \ \ \ m\_series3-\/>clear();}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \ \ m\_currentPoint\ =\ 0;}
+\DoxyCodeLine{00243\ \ \ \ \ m\_currentTimeOffset\ =\ 0;}
+\DoxyCodeLine{00244\ \ \ \ \ m\_latestDataTime\ =\ 0;}
+\DoxyCodeLine{00245\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{comment}{//\ Resetowanie\ zakresu\ osi\ X}}
+\DoxyCodeLine{00248\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00249\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}\label{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad} 
+\index{LineChartMenager@{LineChartMenager}!enforceAxisLimits@{enforceAxisLimits}}
+\index{enforceAxisLimits@{enforceAxisLimits}!LineChartMenager@{LineChartMenager}}
+\doxysubsubsection{\texorpdfstring{enforceAxisLimits()}{enforceAxisLimits()}}
+{\footnotesize\ttfamily void Line\+Chart\+Menager\+::enforce\+Axis\+Limits (\begin{DoxyParamCaption}\item[{qreal}]{min,  }\item[{qreal}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wymusza przestrzeganie limitów osi X (brak przewijania poza \mbox{[}0, aktualny\+\_\+czas\mbox{]}). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em min} & Aktualne minimum zakresu osi X. \\
+\hline
+{\em max} & Aktualne maksimum zakresu osi X. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00275}{275}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00276\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{comment}{//\ Blokujemy\ przesuwanie\ poza\ zakres\ danych}}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordtype}{bool}\ needAdjustment\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00279\ \ \ \ \ qreal\ newMin\ =\ min;}
+\DoxyCodeLine{00280\ \ \ \ \ qreal\ newMax\ =\ max;}
+\DoxyCodeLine{00281\ \ \ \ \ qreal\ rangeSize\ =\ max\ -\/\ min;}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{comment}{//\ Nie\ pozwalamy\ przesunąć\ w\ lewo\ poniżej\ zera}}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\ <\ 0)\ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ newMin\ =\ 0;}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ newMax\ =\ rangeSize;\ \ \textcolor{comment}{//\ Zachowujemy\ szerokość\ zakresu}}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00288\ \ \ \ \ \}}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{comment}{//\ Nie\ pozwalamy\ przesunąć\ w\ prawo\ poza\ aktualny\ czas\ danych}}
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ m\_latestDataTime\ \&\&\ m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ newMax\ =\ m\_latestDataTime;}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ newMin\ =\ qMax(0.0,\ m\_latestDataTime\ -\/\ rangeSize);\ \ \textcolor{comment}{//\ Zachowujemy\ szerokość\ zakresu,\ ale\ nie\ poniżej\ zera}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00295\ \ \ \ \ \}}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{comment}{//\ Jeśli\ potrzebna\ korekta,\ to\ blokujemy\ sygnał\ zmiany\ zakresu\ i\ ustawiamy\ nowy\ zakres}}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keywordflow}{if}\ (needAdjustment)\ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Blokujemy\ sygnały,\ aby\ zapobiec\ pętli\ sygnałów}}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ QSignalBlocker\ blocker(m\_axisX);}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(newMin,\ newMax);}
+\DoxyCodeLine{00302\ \ \ \ \ \}}
+\DoxyCodeLine{00303\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLineChartMenager_ad4b84cbb138d5ab9ffc414bf6416e24f}\label{classLineChartMenager_ad4b84cbb138d5ab9ffc414bf6416e24f} 
+\index{LineChartMenager@{LineChartMenager}!eventFilter@{eventFilter}}
+\index{eventFilter@{eventFilter}!LineChartMenager@{LineChartMenager}}
+\doxysubsubsection{\texorpdfstring{eventFilter()}{eventFilter()}}
+{\footnotesize\ttfamily bool Line\+Chart\+Menager\+::event\+Filter (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{watched,  }\item[{QEvent \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Filtr zdarzeń do obsługi resize kontenera wykresu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em watched} & Obiekt obserwowany. \\
+\hline
+{\em event} & Wskaźnik do zdarzenia. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+true jeśli filtr przechwycił zdarzenie. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00046}{46}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ Jeśli\ to\ zdarzenie\ zmiany\ rozmiaru\ dla\ kontenera}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (watched\ ==\ m\_container\ \&\&\ event-\/>type()\ ==\ QEvent::Resize)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dostosuj\ rozmiar\ widoku\ wykresu\ do\ kontenera}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ m\_chartView-\/>resize(m\_container-\/>size());}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dostosuj\ etykiety\ osi\ po\ zmianie\ rozmiaru\ -\/\ wywołujemy\ bezpośrednio\ tutaj}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}{adjustAxisLabels}}();}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Pozwól\ na\ standardową\ obsługę\ zdarzenia}}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{return}\ QObject::eventFilter(watched,\ event);}
+\DoxyCodeLine{00060\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLineChartMenager_ad4b84cbb138d5ab9ffc414bf6416e24f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99}\label{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99} 
+\index{LineChartMenager@{LineChartMenager}!handleChartMousePressed@{handleChartMousePressed}}
+\index{handleChartMousePressed@{handleChartMousePressed}!LineChartMenager@{LineChartMenager}}
+\doxysubsubsection{\texorpdfstring{handleChartMousePressed()}{handleChartMousePressed()}}
+{\footnotesize\ttfamily void Line\+Chart\+Menager\+::handle\+Chart\+Mouse\+Pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-\/scroll. 
+
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00251}{251}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00252\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{comment}{//\ Gdy\ użytkownik\ kliknie\ i\ zacznie\ przesuwać,\ wyłączamy\ auto-\/scrolling}}
+\DoxyCodeLine{00254\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00255\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7}\label{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7} 
+\index{LineChartMenager@{LineChartMenager}!handleChartMouseReleased@{handleChartMouseReleased}}
+\index{handleChartMouseReleased@{handleChartMouseReleased}!LineChartMenager@{LineChartMenager}}
+\doxysubsubsection{\texorpdfstring{handleChartMouseReleased()}{handleChartMouseReleased()}}
+{\footnotesize\ttfamily void Line\+Chart\+Menager\+::handle\+Chart\+Mouse\+Released (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania. 
+
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00257}{257}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00258\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{comment}{//\ Wymuszamy\ przestrzeganie\ limitów\ osi}}
+\DoxyCodeLine{00260\ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}{enforceAxisLimits}}(m\_axisX-\/>min(),\ m\_axisX-\/>max());}
+\DoxyCodeLine{00261\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7_cgraph}
+\end{center}
+\end{figure}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLineChartMenager_a81b170401c7cf07380d64dde3b00b738}\label{classLineChartMenager_a81b170401c7cf07380d64dde3b00b738} 
+\index{LineChartMenager@{LineChartMenager}!resetToCurrentData@{resetToCurrentData}}
+\index{resetToCurrentData@{resetToCurrentData}!LineChartMenager@{LineChartMenager}}
+\doxysubsubsection{\texorpdfstring{resetToCurrentData()}{resetToCurrentData()}}
+{\footnotesize\ttfamily void Line\+Chart\+Menager\+::reset\+To\+Current\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Przywraca widok wykresu do najnowszych danych (włącza auto-\/scroll). 
+
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00263}{263}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00264\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{comment}{//\ Przywracamy\ auto-\/scrolling\ i\ pokazujemy\ najnowsze\ dane}}
+\DoxyCodeLine{00266\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(m\_latestDataTime\ -\/\ MAX\_POINTS\ *\ 100,\ m\_latestDataTime);}
+\DoxyCodeLine{00270\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00272\ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}\label{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977} 
+\index{LineChartMenager@{LineChartMenager}!setupChart@{setupChart}}
+\index{setupChart@{setupChart}!LineChartMenager@{LineChartMenager}}
+\doxysubsubsection{\texorpdfstring{setupChart()}{setupChart()}}
+{\footnotesize\ttfamily void Line\+Chart\+Menager\+::setup\+Chart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry. 
+
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00063}{63}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Tworzenie\ wykresu}}
+\DoxyCodeLine{00066\ \ \ \ \ m\_chart\ =\ \textcolor{keyword}{new}\ QChart();}
+\DoxyCodeLine{00067\ \ \ \ \ m\_chart-\/>setMargins(QMargins(0,\ 0,\ 0,\ 0));\ \ \textcolor{comment}{//\ Przywracamy\ marginesy\ 0\ jak\ w\ oryginalnym\ kodzie}}
+\DoxyCodeLine{00068\ \ \ \ \ m\_chart-\/>setBackgroundRoundness(0);}
+\DoxyCodeLine{00069\ \ \ \ \ m\_chart-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00070\ \ \ \ \ m\_chart-\/>setAnimationOptions(QChart::NoAnimation);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ Tworzenie\ serii\ danych}}
+\DoxyCodeLine{00073\ \ \ \ \ m\_series1\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00074\ \ \ \ \ m\_series2\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00075\ \ \ \ \ m\_series3\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ m\_series1-\/>setName(\textcolor{stringliteral}{"{}LS\ 1"{}});}
+\DoxyCodeLine{00078\ \ \ \ \ m\_series2-\/>setName(\textcolor{stringliteral}{"{}LS\ 2"{}});}
+\DoxyCodeLine{00079\ \ \ \ \ m\_series3-\/>setName(\textcolor{stringliteral}{"{}LS\ 3"{}});}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ różnych\ kolorów\ dla\ serii}}
+\DoxyCodeLine{00082\ \ \ \ \ m\_series1-\/>setColor(QColor(255,\ 0,\ 0));\ \ \ \ \ \textcolor{comment}{//\ Czerwony}}
+\DoxyCodeLine{00083\ \ \ \ \ m\_series2-\/>setColor(QColor(0,\ 0,\ 255));\ \ \ \ \ \textcolor{comment}{//\ Niebieski}}
+\DoxyCodeLine{00084\ \ \ \ \ m\_series3-\/>setColor(QColor(0,\ 128,\ 0));\ \ \ \ \ \textcolor{comment}{//\ Zielony}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ grubszych\ linii}}
+\DoxyCodeLine{00087\ \ \ \ \ QPen\ pen1\ =\ m\_series1-\/>pen();}
+\DoxyCodeLine{00088\ \ \ \ \ QPen\ pen2\ =\ m\_series2-\/>pen();}
+\DoxyCodeLine{00089\ \ \ \ \ QPen\ pen3\ =\ m\_series3-\/>pen();}
+\DoxyCodeLine{00090\ \ \ \ \ pen1.setWidth(2);}
+\DoxyCodeLine{00091\ \ \ \ \ pen2.setWidth(2);}
+\DoxyCodeLine{00092\ \ \ \ \ pen3.setWidth(2);}
+\DoxyCodeLine{00093\ \ \ \ \ m\_series1-\/>setPen(pen1);}
+\DoxyCodeLine{00094\ \ \ \ \ m\_series2-\/>setPen(pen2);}
+\DoxyCodeLine{00095\ \ \ \ \ m\_series3-\/>setPen(pen3);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{//\ Dodawanie\ serii\ do\ wykresu}}
+\DoxyCodeLine{00098\ \ \ \ \ m\_chart-\/>addSeries(m\_series1);}
+\DoxyCodeLine{00099\ \ \ \ \ m\_chart-\/>addSeries(m\_series2);}
+\DoxyCodeLine{00100\ \ \ \ \ m\_chart-\/>addSeries(m\_series3);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ Tworzenie\ osi}}
+\DoxyCodeLine{00103\ \ \ \ \ m\_axisX\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{00104\ \ \ \ \ m\_axisY\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ Ukrywamy\ podpisy\ osi\ (zgodnie\ z\ wymaganiem)}}
+\DoxyCodeLine{00107\ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00108\ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ Ustawiamy\ teksty\ osi\ (mimo\ że\ są\ ukryte)}}
+\DoxyCodeLine{00111\ \ \ \ \ m\_axisX-\/>setTitleText(\textcolor{stringliteral}{"{}Czas\ (ms)"{}});}
+\DoxyCodeLine{00112\ \ \ \ \ m\_axisY-\/>setTitleText(\textcolor{stringliteral}{"{}Stan"{}});}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ Czcionka\ dla\ osi\ -\/\ ustawiamy\ na\ 8\ punktów\ jak\ w\ MotorChartManager}}
+\DoxyCodeLine{00115\ \ \ \ \ QFont\ axisFont;}
+\DoxyCodeLine{00116\ \ \ \ \ axisFont.setPointSize(8);\ \ \textcolor{comment}{//\ Stały\ rozmiar,\ identyczny\ jak\ w\ MotorChartManager}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ m\_axisX-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{00119\ \ \ \ \ m\_axisY-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ formatu\ etykiet\ osi\ X\ -\/\ pełne\ wartości}}
+\DoxyCodeLine{00122\ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Dynamiczna\ liczba\ etykiet\ na\ osi\ X}}
+\DoxyCodeLine{00125\ \ \ \ \ m\_axisX-\/>setTickCount(5);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ osi\ Y\ dla\ wartości\ 0/1}}
+\DoxyCodeLine{00128\ \ \ \ \ m\_axisY-\/>setRange(0,\ 1.0);}
+\DoxyCodeLine{00129\ \ \ \ \ m\_axisY-\/>setTickCount(2);}
+\DoxyCodeLine{00130\ \ \ \ \ m\_axisY-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%d"{}});}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ początkowego\ zakresu\ osi\ X}}
+\DoxyCodeLine{00133\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ Dodawanie\ osi\ do\ wykresu}}
+\DoxyCodeLine{00136\ \ \ \ \ m\_chart-\/>addAxis(m\_axisX,\ Qt::AlignBottom);}
+\DoxyCodeLine{00137\ \ \ \ \ m\_chart-\/>addAxis(m\_axisY,\ Qt::AlignLeft);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ Dołączanie\ osi\ do\ serii}}
+\DoxyCodeLine{00140\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00141\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00142\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00143\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00144\ \ \ \ \ m\_series3-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00145\ \ \ \ \ m\_series3-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ m\_chart-\/>legend()-\/>setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{00148\ \ \ \ \ m\_chart-\/>legend()-\/>setAlignment(Qt::AlignRight);\ \ \textcolor{comment}{//\ Ustawia\ legendę\ po\ prawej\ stronie}}
+\DoxyCodeLine{00149\ \ \ \ \ m\_chart-\/>legend()-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00150\ \ \ \ \ m\_chart-\/>legend()-\/>setBorderColor(Qt::transparent);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//\ Dostosowanie\ położenia\ legendy}}
+\DoxyCodeLine{00153\ \ \ \ \ QRectF\ legendRect\ =\ m\_chart-\/>legend()-\/>geometry();}
+\DoxyCodeLine{00154\ \ \ \ \ legendRect.moveTopRight(m\_chart-\/>plotArea().topRight()\ -\/\ QPointF(10,\ 10));}
+\DoxyCodeLine{00155\ \ \ \ \ m\_chart-\/>legend()-\/>setGeometry(legendRect);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ Ustawiamy\ czcionkę\ dla\ legendy}}
+\DoxyCodeLine{00158\ \ \ \ \ QFont\ legendFont;}
+\DoxyCodeLine{00159\ \ \ \ \ legendFont.setPointSize(8);\ \ \textcolor{comment}{//\ Stały\ rozmiar\ czcionki\ dla\ legendy}}
+\DoxyCodeLine{00160\ \ \ \ \ m\_chart-\/>legend()-\/>setFont(legendFont);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{comment}{//\ Tworzenie\ niestandardowego\ widoku\ wykresu}}
+\DoxyCodeLine{00163\ \ \ \ \ m\_chartView\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}(m\_chart);}
+\DoxyCodeLine{00164\ \ \ \ \ m\_chartView-\/>setRenderHint(QPainter::Antialiasing);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{//\ Wyłączamy\ paski\ przewijania,\ ale\ włączamy\ możliwość\ przeciągania}}
+\DoxyCodeLine{00167\ \ \ \ \ m\_chartView-\/>setRubberBand(QChartView::HorizontalRubberBand);}
+\DoxyCodeLine{00168\ \ \ \ \ m\_chartView-\/>setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{00169\ \ \ \ \ m\_chartView-\/>setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{comment}{//\ Podłączamy\ callbacki\ dla\ obsługi\ myszy}}
+\DoxyCodeLine{00172\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}{setMousePressedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99}{handleChartMousePressed}}();}
+\DoxyCodeLine{00174\ \ \ \ \ \});}
+\DoxyCodeLine{00175\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}{setMouseReleasedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7}{handleChartMouseReleased}}();}
+\DoxyCodeLine{00177\ \ \ \ \ \});}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{comment}{//\ Nasłuchujemy\ zmiany\ zakresu\ osi\ X\ by\ ograniczyć\ przesuwanie}}
+\DoxyCodeLine{00180\ \ \ \ \ connect(m\_axisX,\ \&QValueAxis::rangeChanged,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}{LineChartMenager::enforceAxisLimits}});}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{comment}{//\ Ustawienie\ layoutu\ -\/\ identycznie\ jak\ w\ motorchartmanager}}
+\DoxyCodeLine{00183\ \ \ \ \ QLayout*\ existingLayout\ =\ m\_container-\/>layout();}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordflow}{if}\ (existingLayout)\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Czyszczenie\ istniejącego\ layoutu}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (QLayoutItem*\ item\ =\ existingLayout-\/>takeAt(0))\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (QWidget*\ widget\ =\ item-\/>widget())\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ widget-\/>setParent(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ widget;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ item;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ existingLayout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{00195\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ QVBoxLayout\ *layout\ =\ \textcolor{keyword}{new}\ QVBoxLayout(m\_container);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ layout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ layout-\/>setContentsMargins(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ layout-\/>setSpacing(0);}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ m\_container-\/>setLayout(layout);}
+\DoxyCodeLine{00201\ \ \ \ \ \}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{comment}{//\ Początkowe\ dostosowanie\ etykiet\ osi\ X\ do\ rozmiaru}}
+\DoxyCodeLine{00204\ \ \ \ \ QTimer::singleShot(0,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}{LineChartMenager::adjustAxisLabels}});}
+\DoxyCodeLine{00205\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977_cgraph}
+\end{center}
+\end{figure}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classLineChartMenager_aeea626a786f77e752dcb62ff11a266fc}\label{classLineChartMenager_aeea626a786f77e752dcb62ff11a266fc} 
 \index{LineChartMenager@{LineChartMenager}!updateChart@{updateChart}}
 \index{updateChart@{updateChart}!LineChartMenager@{LineChartMenager}}
@@ -78,13 +657,48 @@ Zarządza wykresem danych z czujników linii.
 
 
 
-Aktualizuje dane na wykresie. 
+Aktualizuje wykres o nowe dane z \doxylink{classSensorData}{Sensor\+Data}. 
 
 
 \begin{DoxyParams}{Parametry}
-{\em time} & Znacznik czasu. \\
+{\em time} & Znacznik czasu nowej próbki (ms). \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{linechartmenager_8cpp_source_l00207}{207}} pliku \mbox{\hyperlink{linechartmenager_8cpp_source}{linechartmenager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00208\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{comment}{//\ Dodanie\ nowych\ punktów\ do\ wykresów\ na\ podstawie\ bieżących\ danych\ z\ SensorData}}
+\DoxyCodeLine{00210\ \ \ \ \ m\_series1-\/>append(time,\ m\_sensorData-\/>getLineS1Active()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{00211\ \ \ \ \ m\_series2-\/>append(time,\ m\_sensorData-\/>getLineS2Active()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{00212\ \ \ \ \ m\_series3-\/>append(time,\ m\_sensorData-\/>getLineS3Active()\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ m\_currentPoint++;}
+\DoxyCodeLine{00215\ \ \ \ \ m\_latestDataTime\ =\ time;}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{comment}{//\ Automatyczne\ przesuwanie\ wykresu\ gdy\ nowe\ dane\ wykraczają\ poza\ widoczny\ obszar}}
+\DoxyCodeLine{00218\ \ \ \ \ qreal\ currentMax\ =\ m\_axisX-\/>max();}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordflow}{if}\ (time\ >\ currentMax\ ||\ m\_isAutoScrollEnabled)\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Przesuwamy\ zakres\ osi\ X,\ aby\ pokazać\ najnowsze\ dane}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(time\ -\/\ MAX\_POINTS\ *\ 100,\ time);}
+\DoxyCodeLine{00223\ \ \ \ \ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{comment}{//\ Usuwamy\ stare\ punkty,\ tylko\ gdy\ jest\ ich\ za\ dużo\ (dla\ wydajności)}}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_HISTORY\ =\ MAX\_POINTS\ *\ 10;\ \textcolor{comment}{//\ Przechowujemy\ więcej\ danych\ do\ przewijania}}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_series1-\/>count()\ >\ MAX\_HISTORY)\ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pointsToRemove\ =\ m\_series1-\/>count()\ -\/\ MAX\_HISTORY;}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ m\_series1-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ m\_series2-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ m\_series3-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00233\ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \}}
+
+\end{DoxyCode}
 
 
 Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}

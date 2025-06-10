@@ -1,0 +1,5 @@
+<map id="ImuChartManager::eventFilter" name="ImuChartManager::eventFilter">
+<area shape="rect" id="Node000001" title="Filtr zdarzeń do obsługi resize kontenera wykresu." alt="" coords="5,13,223,38"/>
+<area shape="rect" id="Node000002" href="$classImuChartManager.html#a3f3d8399066e516e13bc1c288bf8c097" title="Dostosowuje liczbę etykiet osi X do rozmiaru wykresu." alt="" coords="271,5,485,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,23,257,23,257,28,223,28"/>
+</map>

@@ -11,8 +11,7 @@ Etykieta z obróconym o 90 stopni tekstem.
 
 
 
-Diagram dziedziczenia dla Rotated\+Label
-\nopagebreak
+Diagram dziedziczenia dla Rotated\+Label\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Diagram dziedziczenia dla Rotated\+Label
 \end{figure}
 
 
-Diagram współpracy dla Rotated\+Label\+:
-\nopagebreak
+Diagram współpracy dla Rotated\+Label\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -35,12 +33,12 @@ Diagram współpracy dla Rotated\+Label\+:
 \mbox{\hyperlink{classRotatedLabel_a724ff0d442df92369310df710c9972ba}{Rotated\+Label}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
 \begin{DoxyCompactList}\small\item\em Konstruktor domyślny. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classRotatedLabel_aa7383f5563cb41a12cdaab4b3a6fb951}{Rotated\+Label}} (const QString \&text, QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
-\begin{DoxyCompactList}\small\item\em Konstruktor z tekstem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Konstruktor z tekstem inicjalnym. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Metody chronione}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classRotatedLabel_a7366514aa4dbca45c715cd66181ae3f4}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}event) override
-\begin{DoxyCompactList}\small\item\em Metoda obsługująca zdarzenie rysowania widgetu. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Obsługuje zdarzenie rysowania widgetu. \end{DoxyCompactList}\item 
 QSize \mbox{\hyperlink{classRotatedLabel_a266ec1ec78421f85658fad0276bfbec8}{size\+Hint}} () const override
 \begin{DoxyCompactList}\small\item\em Sugerowany rozmiar widgetu. \end{DoxyCompactList}\item 
 QSize \mbox{\hyperlink{classRotatedLabel_a290423f574e51b54b58408665857f506}{minimum\+Size\+Hint}} () const override
@@ -50,7 +48,32 @@ QSize \mbox{\hyperlink{classRotatedLabel_a290423f574e51b54b58408665857f506}{mini
 \doxysubsection{Opis szczegółowy}
 Etykieta z obróconym o 90 stopni tekstem. 
 
-Klasa rozszerzająca standardową QLabel, która wyświetla tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara. Używana głównie do wyświetlania pionowych etykiet osi na wykresach. 
+Klasa rozszerzająca standardową QLabel, która wyświetla tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara. Używana głównie do pionowych etykiet osi na wykresach, lecz może być wykorzystana wszędzie, gdzie potrzebny jest pionowy napis.
+
+
+\begin{DoxyItemize}
+\item Rozszerza QLabel.
+\item Obraca tekst o -\/90 stopni (CCW) wokół środka widgetu.
+\item Dba o czytelność i poprawne czyszczenie tła.
+\item Sugeruje rozmiar zamieniając szerokość z wysokością (względem standardowej etykiety).
+\end{DoxyItemize}
+
+Przykład użycia\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}*\ label\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classRotatedLabel}{RotatedLabel}}(\textcolor{stringliteral}{"{}Oś\ Y"{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{layout-\/>addWidget(label);}
+
+\end{DoxyCode}
+
+
+\begin{DoxyAuthor}{Autor}
+Jakub Wilczyński 
+\end{DoxyAuthor}
+
+
+Definicja w linii \mbox{\hyperlink{rotatedlabel_8h_source_l00029}{29}} pliku \mbox{\hyperlink{rotatedlabel_8h_source}{rotatedlabel.\+h}}.
+
+
 
 \doxysubsection{Dokumentacja konstruktora i destruktora}
 \Hypertarget{classRotatedLabel_a724ff0d442df92369310df710c9972ba}\label{classRotatedLabel_a724ff0d442df92369310df710c9972ba} 
@@ -65,9 +88,18 @@ Konstruktor domyślny.
 
 
 \begin{DoxyParams}{Parametry}
-{\em parent} & Wskaźnik do widgetu rodzica \\
+{\em parent} & Wskaźnik do widgetu rodzica. \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{rotatedlabel_8h_source_l00038}{38}} pliku \mbox{\hyperlink{rotatedlabel_8h_source}{rotatedlabel.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ :\ QLabel(parent)\ \{\}}
+
+\end{DoxyCode}
 \Hypertarget{classRotatedLabel_aa7383f5563cb41a12cdaab4b3a6fb951}\label{classRotatedLabel_aa7383f5563cb41a12cdaab4b3a6fb951} 
 \index{RotatedLabel@{RotatedLabel}!RotatedLabel@{RotatedLabel}}
 \index{RotatedLabel@{RotatedLabel}!RotatedLabel@{RotatedLabel}}
@@ -76,15 +108,24 @@ Konstruktor domyślny.
 
 
 
-Konstruktor z tekstem. 
+Konstruktor z tekstem inicjalnym. 
 
 
 \begin{DoxyParams}{Parametry}
-{\em text} & Tekst do wyświetlenia \\
+{\em text} & Tekst do wyświetlenia. \\
 \hline
-{\em parent} & Wskaźnik do widgetu rodzica \\
+{\em parent} & Wskaźnik do widgetu rodzica. \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{rotatedlabel_8h_source_l00045}{45}} pliku \mbox{\hyperlink{rotatedlabel_8h_source}{rotatedlabel.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ :\ QLabel(text,\ parent)\ \{\}}
+
+\end{DoxyCode}
 
 
 \doxysubsection{Dokumentacja funkcji składowych}
@@ -98,11 +139,27 @@ Konstruktor z tekstem.
 
 Minimalny sugerowany rozmiar widgetu. 
 
-Zwraca minimalny rozmiar widgetu potrzebny do poprawnego wyświetlenia obroconego tekstu.
-
 \begin{DoxyReturn}{Zwraca}
-QSize Minimalny sugerowany rozmiar widgetu 
+QSize minimalny rozmiar widgetu. 
 \end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{rotatedlabel_8h_source_l00102}{102}} pliku \mbox{\hyperlink{rotatedlabel_8h_source}{rotatedlabel.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRotatedLabel_a266ec1ec78421f85658fad0276bfbec8}{sizeHint}}();}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRotatedLabel_a290423f574e51b54b58408665857f506_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classRotatedLabel_a7366514aa4dbca45c715cd66181ae3f4}\label{classRotatedLabel_a7366514aa4dbca45c715cd66181ae3f4} 
 \index{RotatedLabel@{RotatedLabel}!paintEvent@{paintEvent}}
 \index{paintEvent@{paintEvent}!RotatedLabel@{RotatedLabel}}
@@ -111,15 +168,51 @@ QSize Minimalny sugerowany rozmiar widgetu
 
 
 
-Metoda obsługująca zdarzenie rysowania widgetu. 
+Obsługuje zdarzenie rysowania widgetu. 
 
-Implementacja rysuje tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara. Przed rysowaniem czyści całe tło, aby zapobiec pozostawaniu artefaktów po poprzednim tekście.
+Rysuje tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara. Przed rysowaniem czyści tło, aby nie zostawiać artefaktów.
 
 
 \begin{DoxyParams}{Parametry}
-{\em event} & Obiekt zdarzenia rysowania \\
+{\em event} & Obiekt zdarzenia rysowania. \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{rotatedlabel_8h_source_l00056}{56}} pliku \mbox{\hyperlink{rotatedlabel_8h_source}{rotatedlabel.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ Q\_UNUSED(event);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ QPainter\ painter(\textcolor{keyword}{this});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ painter.setRenderHint(QPainter::Antialiasing);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Wyczyść\ tło}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ painter.fillRect(rect(),\ palette().color(QPalette::Window));}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text().isEmpty())}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ painter.save();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obrót\ o\ -\/90\ stopni\ wokół\ środka\ widgetu}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ painter.translate(width()\ /\ 2,\ height()\ /\ 2);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ painter.rotate(-\/90);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Oblicz\ prostokąt\ pod\ tekst}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ QFontMetrics\ fm(font());}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ textWidth\ =\ fm.horizontalAdvance(text());}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ textHeight\ =\ fm.height();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ QRect\ textRect(-\/textWidth\ /\ 2,\ -\/textHeight\ /\ 2,\ textWidth,\ textHeight);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ painter.setPen(palette().color(QPalette::WindowText));}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ painter.drawText(textRect,\ Qt::AlignCenter,\ text());}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ painter.restore();}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+
+\end{DoxyCode}
 \Hypertarget{classRotatedLabel_a266ec1ec78421f85658fad0276bfbec8}\label{classRotatedLabel_a266ec1ec78421f85658fad0276bfbec8} 
 \index{RotatedLabel@{RotatedLabel}!sizeHint@{sizeHint}}
 \index{sizeHint@{sizeHint}!RotatedLabel@{RotatedLabel}}
@@ -130,11 +223,30 @@ Implementacja rysuje tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek 
 
 Sugerowany rozmiar widgetu. 
 
-Zwraca sugerowany rozmiar widgetu, zamieniający szerokość i wysokość w porównaniu do standardowej etykiety, aby uwzględnić obrót tekstu o 90 stopni.
+Zamienia szerokość i wysokość standardowej etykiety, aby uwzględnić obrót tekstu.
 
 \begin{DoxyReturn}{Zwraca}
-QSize Sugerowany rozmiar widgetu 
+QSize sugerowany rozmiar widgetu. 
 \end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{rotatedlabel_8h_source_l00092}{92}} pliku \mbox{\hyperlink{rotatedlabel_8h_source}{rotatedlabel.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ QFontMetrics\ fm(font());}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ QSize(fm.height(),\ fm.horizontalAdvance(text()));}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRotatedLabel_a266ec1ec78421f85658fad0276bfbec8_icgraph}
+\end{center}
+\end{figure}
 
 
 Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}

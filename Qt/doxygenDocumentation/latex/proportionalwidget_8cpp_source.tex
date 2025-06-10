@@ -1,0 +1,174 @@
+\doxysection{proportionalwidget.\+cpp}
+\hypertarget{proportionalwidget_8cpp_source}{}\label{proportionalwidget_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}proportionalwidget.h"{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <QResizeEvent>}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QStackedWidget>}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <QHBoxLayout>}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <QDebug>}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00009}\mbox{\hyperlink{classProportionalWidget_a0d991ad0fd0a5982edfc3c1aa2a392ba}{00009}}\ \mbox{\hyperlink{classProportionalWidget_a0d991ad0fd0a5982edfc3c1aa2a392ba}{ProportionalWidget::ProportionalWidget}}(QWidget\ *parent)}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00010}00010\ \ \ \ \ :\ QWidget(parent)}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00012}00012\ \ \ \ \ QVBoxLayout*\ mainLayout\ =\ \textcolor{keyword}{new}\ QVBoxLayout(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00013}00013\ \ \ \ \ mainLayout-\/>setContentsMargins(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00014}00014\ \ \ \ \ mainLayout-\/>setSpacing(2);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00016}00016\ \ \ \ \ setSizePolicy(QSizePolicy::Expanding,\ QSizePolicy::Expanding);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00018}00018\ \ \ \ \ setLayout(mainLayout);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00020}00020\ \ \ \ \ m\_tofWidget\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00021}00021\ \ \ \ \ m\_arrowContainer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00022}00022\ \ \ \ \ m\_arrowWidget\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00025}\mbox{\hyperlink{classProportionalWidget_a1f70550b75c4d36905c3fe4f533a963b}{00025}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProportionalWidget_a1f70550b75c4d36905c3fe4f533a963b}{ProportionalWidget::setupTofWidget}}(QStackedWidget*\ tofWidget)}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00026}00026\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (!tofWidget)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00029}00029\ \ \ \ \ m\_tofWidget\ =\ tofWidget;}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Przenieś\ widget\ TOF\ do\ tego\ widgetu,\ jeśli\ nie\ jest\ już\ przypisany.}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_tofWidget-\/>parentWidget()\ !=\ \textcolor{keyword}{this})\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ m\_tofWidget-\/>setParent(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ layout()-\/>addWidget(m\_tofWidget);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Utwórz\ kontener\ na\ strzałkę,\ jeśli\ go\ jeszcze\ nie\ ma.}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_arrowContainer)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ m\_arrowContainer\ =\ \textcolor{keyword}{new}\ QWidget(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ m\_arrowContainer-\/>setStyleSheet(\textcolor{stringliteral}{"{}background:\ transparent;\ border:\ none;"{}});}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ QHBoxLayout*\ arrowLayout\ =\ \textcolor{keyword}{new}\ QHBoxLayout(m\_arrowContainer);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ arrowLayout-\/>setContentsMargins(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ arrowLayout-\/>setSpacing(0);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dodaj\ kontener\ na\ strzałkę\ do\ głównego\ layoutu}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ layout()-\/>addWidget(m\_arrowContainer);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Ustaw\ proporcje\ rozciągania\ layoutu:\ TOF\ (40\%),\ strzałka\ (60\%)}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00050}00050\ \ \ \ \ QVBoxLayout*\ vLayout\ =\ qobject\_cast<QVBoxLayout*>(layout());}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (vLayout)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ vLayout-\/>setStretch(0,\ 40);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ vLayout-\/>setStretch(1,\ 60);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00055}00055\ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00057}\mbox{\hyperlink{classProportionalWidget_aac48f0c6e5e119835f8183e7287ad4c6}{00057}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProportionalWidget_aac48f0c6e5e119835f8183e7287ad4c6}{ProportionalWidget::setupArrowWidget}}(QStackedWidget*\ arrowWidget,\ \textcolor{keywordtype}{bool}\ leftSide)}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00058}00058\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (!arrowWidget\ ||\ !m\_arrowContainer)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00061}00061\ \ \ \ \ m\_arrowWidget\ =\ arrowWidget;}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00062}00062\ \ \ \ \ m\_isLeftSide\ =\ leftSide;}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Przenieś\ widget\ strzałki\ do\ kontenera,\ jeśli\ nie\ jest\ już\ przypisany.}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_arrowWidget-\/>parentWidget()\ !=\ m\_arrowContainer)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ m\_arrowWidget-\/>setParent(m\_arrowContainer);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Utwórz\ lub\ wyczyść\ layout\ dla\ kontenera\ strzałki.}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00070}00070\ \ \ \ \ QHBoxLayout*\ arrowLayout\ =\ qobject\_cast<QHBoxLayout*>(m\_arrowContainer-\/>layout());}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{if}\ (!arrowLayout)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ m\_arrowContainer-\/>layout();}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ arrowLayout\ =\ \textcolor{keyword}{new}\ QHBoxLayout(m\_arrowContainer);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ arrowLayout-\/>setContentsMargins(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ arrowLayout-\/>setSpacing(0);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Wyczyść\ layout\ z\ poprzednich\ widgetów.}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{while}\ (QLayoutItem*\ item\ =\ arrowLayout-\/>takeAt(0))\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item-\/>widget())\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ item-\/>widget()-\/>hide();}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ item;}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ Dodaj\ widgety\ do\ layoutu\ zgodnie\ z\ pozycją\ (lewa/prawa\ strona).}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{if}\ (leftSide)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ QWidget*\ spacer\ =\ \textcolor{keyword}{new}\ QWidget(m\_arrowContainer);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ arrowLayout-\/>addWidget(spacer,\ 60);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ arrowLayout-\/>addWidget(m\_arrowWidget,\ 40);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00091}00091\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ arrowLayout-\/>addWidget(m\_arrowWidget,\ 40);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ QWidget*\ spacer\ =\ \textcolor{keyword}{new}\ QWidget(m\_arrowContainer);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ arrowLayout-\/>addWidget(spacer,\ 60);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00097}00097\ \ \ \ \ m\_arrowWidget-\/>show();}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ Ustaw\ style\ ikon\ strzałek\ dla\ wszystkich\ stron\ stosu.}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ m\_arrowWidget-\/>count();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ QWidget*\ page\ =\ m\_arrowWidget-\/>widget(i);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ page-\/>setStyleSheet(}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border-\/image:\ none;\ "{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}background:\ transparent;\ "{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border:\ none;\ "{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image:\ url(:/new/image/img/arrowUp.png);\ "{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image-\/position:\ center;"{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ page-\/>setStyleSheet(}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border-\/image:\ none;\ "{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}background:\ transparent;\ "{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}border:\ none;\ "{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image:\ url(:/new/image/img/arrowDown.png);\ "{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}image-\/position:\ center;"{}}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00119}00119\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00122}\mbox{\hyperlink{classProportionalWidget_acd5c68499fed6ec9dcbdb3a6731f4db7}{00122}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProportionalWidget_acd5c68499fed6ec9dcbdb3a6731f4db7}{ProportionalWidget::resizeEvent}}(QResizeEvent\ *event)}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00124}00124\ \ \ \ \ QWidget::resizeEvent(event);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00126}00126\ \ \ \ \ QWidget*\ robotView\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00127}00127\ \ \ \ \ QWidget*\ parentWid\ =\ parentWidget();}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{if}\ (parentWid)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ robotView\ =\ parentWid-\/>findChild<QWidget*>(\textcolor{stringliteral}{"{}robotView"{}});}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00130}00130\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (!robotView\ ||\ !m\_tofWidget\ ||\ !m\_arrowContainer\ ||\ !m\_arrowWidget)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00136}00136\ \ \ \ \ \textcolor{comment}{//\ Pobierz\ wymiary\ robotView}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00137}00137\ \ \ \ \ \textcolor{keywordtype}{int}\ robotWidth\ =\ robotView-\/>width();}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordtype}{int}\ robotHeight\ =\ robotView-\/>height();}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordtype}{int}\ minDim\ =\ qMin(robotWidth,\ robotHeight);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00141}00141\ \ \ \ \ \textcolor{comment}{//\ Rozmiar\ TOF:\ 40\%\ z\ minimalnego\ wymiaru\ robotView}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{keywordtype}{int}\ tofSize\ =\ minDim\ *\ 0.4;}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ Ustaw\ maksymalną\ wysokość\ widgetu\ TOF\ tak,\ żeby\ był\ kwadratem}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00145}00145\ \ \ \ \ m\_tofWidget-\/>setMaximumHeight(tofSize);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00146}00146\ \ \ \ \ m\_tofWidget-\/>setMinimumHeight(0);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00147}00147\ \ \ \ \ m\_tofWidget-\/>setSizePolicy(QSizePolicy::Expanding,\ QSizePolicy::Expanding);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00149}00149\ \ \ \ \ \textcolor{comment}{//\ Kontener\ na\ strzałkę\ dostaje\ resztę\ wysokości\ widgetu\ ProportionalWidget}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00150}00150\ \ \ \ \ \textcolor{keywordtype}{int}\ widgetH\ =\ height();}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordtype}{int}\ arrowContainerHeight\ =\ widgetH\ -\/\ m\_tofWidget-\/>height();}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00152}00152\ \ \ \ \ m\_arrowContainer-\/>setMaximumHeight(arrowContainerHeight\ >\ 0\ ?\ arrowContainerHeight\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00153}00153\ \ \ \ \ m\_arrowContainer-\/>setMinimumHeight(0);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00154}00154\ \ \ \ \ m\_arrowContainer-\/>setSizePolicy(QSizePolicy::Expanding,\ QSizePolicy::Expanding);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//\ Strzałka\ wewnątrz\ kontenera\ -\/\ 60\%\ wysokości\ kontenera}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordtype}{int}\ arrowSize\ =\ m\_arrowContainer-\/>height()\ *\ 0.6;}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00158}00158\ \ \ \ \ m\_arrowWidget-\/>setMaximumHeight(arrowSize);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00159}00159\ \ \ \ \ m\_arrowWidget-\/>setMaximumWidth(arrowSize);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00160}00160\ \ \ \ \ m\_arrowWidget-\/>setMinimumSize(0,0);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00161}00161\ \ \ \ \ m\_arrowWidget-\/>setSizePolicy(QSizePolicy::Expanding,\ QSizePolicy::Expanding);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00163}00163\ \ \ \ \ \textcolor{comment}{//\ Ustaw\ współczynniki\ rozciągania\ (na\ wszelki\ wypadek)}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00164}00164\ \ \ \ \ QVBoxLayout*\ vLayout\ =\ qobject\_cast<QVBoxLayout*>(layout());}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00165}00165\ \ \ \ \ \textcolor{keywordflow}{if}\ (vLayout)\ \{}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ vLayout-\/>setStretch(0,\ 40);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ vLayout-\/>setStretch(1,\ 60);}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proportionalwidget_8cpp_source_l00169}00169\ \}}
+
+\end{DoxyCode}

@@ -11,6 +11,21 @@
 /**
  * @class TCPManager
  * @brief Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów.
+ *
+ * Klasa odpowiada za:
+ *  - Nawiązanie i rozłączanie połączenia TCP z urządzeniem (np. ESP32).
+ *  - Odbiór, buforowanie i parsowanie danych przesyłanych przez ESP w formacie CSV.
+ *  - Aktualizację obiektu SensorData na podstawie odebranych danych.
+ *  - Emisję sygnałów Qt o aktualizacji danych, zmianie statusu połączenia oraz błędach sieciowych.
+ *
+ * Przykład użycia:
+ * @code
+ * TCPManager* tcpMgr = new TCPManager(sensorData, this);
+ * connect(tcpMgr, &TCPManager::dataUpdated, this, &MainWindow::onDataUpdated);
+ * tcpMgr->connectToDevice("192.168.4.1", 8888);
+ * @endcode
+ *
+ * @author Jakub Wilczyński
  */
 class TCPManager : public QObject {
     Q_OBJECT
@@ -23,7 +38,7 @@ public:
     explicit TCPManager(SensorData* sensorData, QObject *parent = nullptr);
 
     /**
-     * @brief Destruktor.
+     * @brief Destruktor. Zamyka gniazdo TCP.
      */
     ~TCPManager();
 
@@ -32,6 +47,8 @@ public:
      * @param hostAddress Adres IP urządzenia ESP.
      * @param port Port, na którym nasłuchuje urządzenie ESP.
      * @return true jeśli próba połączenia została zainicjowana.
+     *
+     * Połączenie inicjowane jest asynchronicznie.
      */
     bool connectToDevice(const QString &hostAddress, quint16 port);
 
@@ -87,6 +104,8 @@ private:
     /**
      * @brief Przetwarza linię danych otrzymaną z ESP.
      * @param line Linia danych do przetworzenia.
+     *
+     * Oczekiwany format: czas,tof1,tof2,tof3,tof4,lineS1,lineS2,lineS3,motor1,motor2,imuX,imuY
      */
     void processDataLine(const QString &line);
 

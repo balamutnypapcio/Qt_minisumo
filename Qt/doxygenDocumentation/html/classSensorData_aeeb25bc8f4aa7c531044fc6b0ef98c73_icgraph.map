@@ -1,0 +1,7 @@
+<map id="SensorData::imuDataChanged" name="SensorData::imuDataChanged">
+<area shape="rect" id="Node000001" title="Sygnał emitowany przy zmianie danych IMU." alt="" coords="260,42,479,67"/>
+<area shape="rect" id="Node000002" href="$classImuChartManager.html#a0cbf6e4e9759f2b79c9162598bb7aa4b" title="Konstruktor." alt="" coords="5,5,212,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,43,212,40,213,34,247,38"/>
+<area shape="rect" id="Node000003" href="$classSensorData.html#a3a985eab247604ab102f4015df8d66e8" title="Aktualizuje wszystkie dane naraz, optymalnie emitując tylko niezbędne sygnały." alt="" coords="9,70,208,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="247,71,208,75,208,69,246,65"/>
+</map>

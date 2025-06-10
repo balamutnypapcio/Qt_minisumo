@@ -1,0 +1,5 @@
+<map id="TofChartManager::handleChartMouseReleased" name="TofChartManager::handleChartMouseReleased">
+<area shape="rect" id="Node000001" title="Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania." alt="" coords="5,5,225,45"/>
+<area shape="rect" id="Node000002" href="$classTofChartManager.html#a8ac57c7f9e2ca93abfcdeb41b45562e7" title="Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas])." alt="" coords="273,5,464,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,23,260,23,260,28,226,28"/>
+</map>

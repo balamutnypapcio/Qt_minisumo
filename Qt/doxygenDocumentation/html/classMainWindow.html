@@ -83,22 +83,12 @@ $(function() {
 <div class="dynheader">
 Diagram dziedziczenia dla MainWindow</div>
 <div class="dyncontent">
-<div class="center"><img src="classMainWindow__inherit__graph.png" border="0" usemap="#aMainWindow_inherit__map" alt="Inheritance graph"/></div>
-<map name="aMainWindow_inherit__map" id="aMainWindow_inherit__map">
-<area shape="rect" title="Klasa reprezentująca główne okno aplikacji." alt="" coords="10,79,117,104"/>
-<area shape="rect" title=" " alt="" coords="5,5,121,31"/>
-<area shape="poly" title=" " alt="" coords="66,44,66,79,61,79,61,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow__inherit__graph.svg" width="127" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <div class="dynheader">
 Diagram współpracy dla MainWindow:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMainWindow__coll__graph.png" border="0" usemap="#aMainWindow_coll__map" alt="Collaboration graph"/></div>
-<map name="aMainWindow_coll__map" id="aMainWindow_coll__map">
-<area shape="rect" title="Klasa reprezentująca główne okno aplikacji." alt="" coords="10,79,117,104"/>
-<area shape="rect" title=" " alt="" coords="5,5,121,31"/>
-<area shape="poly" title=" " alt="" coords="66,44,66,79,61,79,61,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow__coll__graph.svg" width="127" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -116,7 +106,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>labelMotors</b> ()</t
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Klasa reprezentująca główne okno aplikacji. </p>
-<p>Zarządza interfejsem użytkownika, obsługuje dane z czujników oraz ich wizualizację. </p>
+<p>Zarządza interfejsem użytkownika, obsługuje dane z czujników oraz ich wizualizację.</p>
+<ul>
+<li>Ładuje i odtwarza pliki CSV z danymi.</li>
+<li>Obsługuje połączenie TCP z ESP.</li>
+<li>Synchronizuje wykresy i wizualizacje z danymi.</li>
+<li>Pozwala przełączać język interfejsu (PL/EN).</li>
+<li>Dynamicznie zamienia etykiety na pionowe (<a class="el" href="classRotatedLabel.html" title="Etykieta z obróconym o 90 stopni tekstem.">RotatedLabel</a>).</li>
+</ul>
+<p>Przykład użycia: </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {</div>
+<div class="line">    QApplication app(argc, argv);</div>
+<div class="line">    <a class="code hl_class" href="classMainWindow.html">MainWindow</a> w;</div>
+<div class="line">    w.show();</div>
+<div class="line">    <span class="keywordflow">return</span> app.exec();</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassMainWindow_html"><div class="ttname"><a href="classMainWindow.html">MainWindow</a></div><div class="ttdoc">Klasa reprezentująca główne okno aplikacji.</div><div class="ttdef"><b>Definition</b> <a href="mainwindow_8h_source.html#l00049">mainwindow.h:49</a></div></div>
+</div><!-- fragment --><dl class="section author"><dt>Autor</dt><dd>Jakub Wilczyński </dd></dl>
+
+<p class="definition">Definicja w linii <a class="el" href="mainwindow_8h_source.html#l00049">49</a> pliku <a class="el" href="mainwindow_8h_source.html">mainwindow.h</a>.</p>
 </div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a id="a996c5a2b6f77944776856f08ec30858d" name="a996c5a2b6f77944776856f08ec30858d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a996c5a2b6f77944776856f08ec30858d">&#9670;&#160;</a></span>MainWindow()</h2>
@@ -143,14 +150,116 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>labelMotors</b> ()</t
 </div><div class="memdoc">
 
 <p>Konstruktor klasy <a class="el" href="classMainWindow.html" title="Klasa reprezentująca główne okno aplikacji.">MainWindow</a>. </p>
-<p>Konstruktor klasy <a class="el" href="classMainWindow.html" title="Klasa reprezentująca główne okno aplikacji.">MainWindow</a>. Inicjalizuje interfejs i wszystkie menedżery oraz ustawia połączenia sygnałów i slotów.</p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parent</td><td>Wskaźnik na obiekt nadrzędny (domyślnie nullptr).</td></tr>
-    <tr><td class="paramname">parent</td><td>Wskaźnik na obiekt nadrzędny. </td></tr>
+    <tr><td class="paramname">parent</td><td>Wskaźnik na obiekt nadrzędny (domyślnie nullptr). </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definicja w linii <a class="el" href="mainwindow_8cpp_source.html#l00005">5</a> pliku <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    6</span>    : QMainWindow(parent)</div>
+<div class="line"><span class="lineno">    7</span>    , ui(<span class="keyword">new</span> <a class="code hl_class" href="classUi_1_1MainWindow.html">Ui::MainWindow</a>)</div>
+<div class="line"><span class="lineno">    8</span>{</div>
+<div class="line"><span class="lineno">    9</span>    ui-&gt;setupUi(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   10</span> </div>
+<div class="line"><span class="lineno">   11</span>    setupProportionalWidgets();</div>
+<div class="line"><span class="lineno">   12</span>    adjustGridLayoutProportions();</div>
+<div class="line"><span class="lineno">   13</span> </div>
+<div class="line"><span class="lineno">   14</span>    <span class="comment">// Pobieranie i konfiguracja widgetów</span></div>
+<div class="line"><span class="lineno">   15</span>    QWidget* widget_14 = findChild&lt;QWidget*&gt;(<span class="stringliteral">&quot;widget_14&quot;</span>);</div>
+<div class="line"><span class="lineno">   16</span>    QWidget* widget_16 = findChild&lt;QWidget*&gt;(<span class="stringliteral">&quot;widget_16&quot;</span>);</div>
+<div class="line"><span class="lineno">   17</span>    QWidget* widget_18 = findChild&lt;QWidget*&gt;(<span class="stringliteral">&quot;widget_18&quot;</span>);</div>
+<div class="line"><span class="lineno">   18</span>    QWidget* robotView = findChild&lt;QWidget*&gt;(<span class="stringliteral">&quot;robotView&quot;</span>);</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>    QHBoxLayout* hLayout = qobject_cast&lt;QHBoxLayout*&gt;(widget_14-&gt;layout());</div>
+<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">if</span> (hLayout) {</div>
+<div class="line"><span class="lineno">   22</span>        hLayout-&gt;setStretch(0, 1);</div>
+<div class="line"><span class="lineno">   23</span>        hLayout-&gt;setStretch(1, 1);</div>
+<div class="line"><span class="lineno">   24</span>        hLayout-&gt;setStretch(2, 1);</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>        widget_16-&gt;setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);</div>
+<div class="line"><span class="lineno">   27</span>        widget_18-&gt;setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);</div>
+<div class="line"><span class="lineno">   28</span>        robotView-&gt;setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>        widget_16-&gt;setMinimumWidth(60);</div>
+<div class="line"><span class="lineno">   31</span>        widget_18-&gt;setMinimumWidth(60);</div>
+<div class="line"><span class="lineno">   32</span>    }</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>    <span class="comment">// Połączenie przycisku wyjścia z oknem potwierdzenia</span></div>
+<div class="line"><span class="lineno">   35</span>    connect(ui-&gt;buttEXIT, &amp;QPushButton::clicked, <span class="keyword">this</span>, &amp;MainWindow::showExitConfirmation);</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>    <span class="comment">// Tworzenie obiektów zarządzających danymi i wizualizacją</span></div>
+<div class="line"><span class="lineno">   38</span>    m_sensorData = <span class="keyword">new</span> <a class="code hl_class" href="classSensorData.html">SensorData</a>(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   39</span>    m_csvManager = <span class="keyword">new</span> <a class="code hl_class" href="classCSVManager.html">CSVManager</a>(m_sensorData, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   40</span>    m_tofChartManager = <span class="keyword">new</span> <a class="code hl_class" href="classTofChartManager.html">TofChartManager</a>(m_sensorData, ui-&gt;chartTof, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   41</span>    m_lineChartManager = <span class="keyword">new</span> <a class="code hl_class" href="classLineChartMenager.html">LineChartMenager</a>(m_sensorData, ui-&gt;chartLS, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   42</span>    m_motorChartManager = <span class="keyword">new</span> <a class="code hl_class" href="classMotorChartManager.html">MotorChartManager</a>(m_sensorData, ui-&gt;chartMotors, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   43</span>    m_imuChartManager = <span class="keyword">new</span> <a class="code hl_class" href="classImuChartManager.html">ImuChartManager</a>(m_sensorData, ui-&gt;chartIMU, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   44</span>    m_visualManager = <span class="keyword">new</span> <a class="code hl_class" href="classVisualizationManager.html">VisualizationManager</a>(m_sensorData, ui, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>    <span class="comment">// Inicjalizacja wykresów</span></div>
+<div class="line"><span class="lineno">   47</span>    m_tofChartManager-&gt;<a class="code hl_function" href="classTofChartManager.html#ac4c44afd699ff240c3564bfb619a3874">setupChart</a>();</div>
+<div class="line"><span class="lineno">   48</span>    m_lineChartManager-&gt;<a class="code hl_function" href="classLineChartMenager.html#af4ae0b8f7efd7713d2e1b3faabe96977">setupChart</a>();</div>
+<div class="line"><span class="lineno">   49</span>    m_motorChartManager-&gt;<a class="code hl_function" href="classMotorChartManager.html#a85717a01fbee0e8d8ddd24e83f6bc418">setupChart</a>();</div>
+<div class="line"><span class="lineno">   50</span>    m_imuChartManager-&gt;<a class="code hl_function" href="classImuChartManager.html#af43ca7f8c5f2ab7db02c2fa72ee1a8fc">setupChart</a>();</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>    <span class="comment">// Połączenia sygnałów i slotów</span></div>
+<div class="line"><span class="lineno">   53</span>    m_tcpManager = <span class="keyword">new</span> <a class="code hl_class" href="classTCPManager.html">TCPManager</a>(m_sensorData, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   54</span>    connect(m_csvManager, &amp;<a class="code hl_signal" href="classCSVManager.html#ac8dfd7524b2fe204986084c3accbd839">CSVManager::dataUpdated</a>, <span class="keyword">this</span>, &amp;MainWindow::handleDataUpdated);</div>
+<div class="line"><span class="lineno">   55</span>    connect(m_sensorData, &amp;<a class="code hl_signal" href="classSensorData.html#ac852da69eccb449b75153160aa56676b">SensorData::dataChanged</a>, m_visualManager, &amp;<a class="code hl_slot" href="classVisualizationManager.html#a5f945fcf791c213972cc8762d0cc196b">VisualizationManager::updateAll</a>);</div>
+<div class="line"><span class="lineno">   56</span>    connect(m_tcpManager, &amp;<a class="code hl_signal" href="classTCPManager.html#a363c1b3b68d005feea5268decf210000">TCPManager::connectionStatusChanged</a>, <span class="keyword">this</span>, &amp;MainWindow::handleConnectionStatusChanged);</div>
+<div class="line"><span class="lineno">   57</span>    connect(m_tcpManager, &amp;<a class="code hl_signal" href="classTCPManager.html#a6c3543bf266491dcb529beb7a44fe012">TCPManager::dataUpdated</a>, <span class="keyword">this</span>, &amp;MainWindow::handleDataUpdated);</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>    <span class="comment">// Początkowa konfiguracja wizualizacji</span></div>
+<div class="line"><span class="lineno">   60</span>    m_visualManager-&gt;<a class="code hl_function" href="classVisualizationManager.html#a89c8db228d60d6e69f919deeaa93a10c">setupArrows</a>();</div>
+<div class="line"><span class="lineno">   61</span>    m_visualManager-&gt;<a class="code hl_slot" href="classVisualizationManager.html#a5f945fcf791c213972cc8762d0cc196b">updateAll</a>();</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    <span class="comment">// Wczytanie preferencji języka i inicjalizacja tłumaczeń</span></div>
+<div class="line"><span class="lineno">   64</span>    loadLanguagePreference();</div>
+<div class="line"><span class="lineno">   65</span>    initializeTranslations();</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>    <span class="comment">// Konfiguracja przycisku języka</span></div>
+<div class="line"><span class="lineno">   68</span>    QPushButton* languageButton = findChild&lt;QPushButton*&gt;(<span class="stringliteral">&quot;languageButton&quot;</span>);</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">if</span> (languageButton) {</div>
+<div class="line"><span class="lineno">   70</span>        languageButton-&gt;setIcon(QIcon(m_isEnglish ? <span class="stringliteral">&quot;:/new/image/img/eng.png&quot;</span> : <span class="stringliteral">&quot;:/new/image/img/pl.png&quot;</span>));</div>
+<div class="line"><span class="lineno">   71</span>        languageButton-&gt;setIconSize(QSize(32, 32));</div>
+<div class="line"><span class="lineno">   72</span>        connect(languageButton, &amp;QPushButton::clicked, <span class="keyword">this</span>, &amp;MainWindow::switchLanguage);</div>
+<div class="line"><span class="lineno">   73</span>        languageButton-&gt;setStyleSheet(<span class="stringliteral">&quot;QPushButton { border-radius: 16px; min-width: 32px; max-width: 32px; min-height: 32px; max-height: 32px; }&quot;</span>);</div>
+<div class="line"><span class="lineno">   74</span>    }</div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>    <span class="comment">// Tworzenie obrotowych etykiet</span></div>
+<div class="line"><span class="lineno">   77</span>    setupRotatedLabels();</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>    <span class="comment">// Jeżeli zapisany język to polski, zastosuj tłumaczenie</span></div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">if</span> (!m_isEnglish) {</div>
+<div class="line"><span class="lineno">   81</span>        applyPolishTranslation();</div>
+<div class="line"><span class="lineno">   82</span>    }</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+<div class="ttc" id="aclassCSVManager_html"><div class="ttname"><a href="classCSVManager.html">CSVManager</a></div><div class="ttdoc">Zarządza wczytywaniem, odtwarzaniem i symulacją danych z pliku CSV dla obiektów SensorData.</div><div class="ttdef"><b>Definition</b> <a href="csvmanager_8h_source.html#l00035">csvmanager.h:35</a></div></div>
+<div class="ttc" id="aclassCSVManager_html_ac8dfd7524b2fe204986084c3accbd839"><div class="ttname"><a href="classCSVManager.html#ac8dfd7524b2fe204986084c3accbd839">CSVManager::dataUpdated</a></div><div class="ttdeci">void dataUpdated(int time)</div><div class="ttdoc">Sygnał informujący o aktualizacji danych.</div><div class="ttdef"><b>Definition</b> <a href="moc__csvmanager_8cpp_source.html#l00127">moc_csvmanager.cpp:127</a></div></div>
+<div class="ttc" id="aclassImuChartManager_html"><div class="ttname"><a href="classImuChartManager.html">ImuChartManager</a></div><div class="ttdoc">Zarządza dynamicznym wykresem prezentującym dane z czujnika IMU (akcelerometru/żyroskopu).</div><div class="ttdef"><b>Definition</b> <a href="imuchartmanager_8h_source.html#l00034">imuchartmanager.h:35</a></div></div>
+<div class="ttc" id="aclassImuChartManager_html_af43ca7f8c5f2ab7db02c2fa72ee1a8fc"><div class="ttname"><a href="classImuChartManager.html#af43ca7f8c5f2ab7db02c2fa72ee1a8fc">ImuChartManager::setupChart</a></div><div class="ttdeci">void setupChart()</div><div class="ttdoc">Inicjalizuje (tworzy) wykres IMU i ustawia wszystkie parametry.</div><div class="ttdef"><b>Definition</b> <a href="imuchartmanager_8cpp_source.html#l00055">imuchartmanager.cpp:55</a></div></div>
+<div class="ttc" id="aclassLineChartMenager_html"><div class="ttname"><a href="classLineChartMenager.html">LineChartMenager</a></div><div class="ttdoc">Zarządza dynamicznym wykresem prezentującym dane z czujników linii.</div><div class="ttdef"><b>Definition</b> <a href="linechartmenager_8h_source.html#l00034">linechartmenager.h:35</a></div></div>
+<div class="ttc" id="aclassLineChartMenager_html_af4ae0b8f7efd7713d2e1b3faabe96977"><div class="ttname"><a href="classLineChartMenager.html#af4ae0b8f7efd7713d2e1b3faabe96977">LineChartMenager::setupChart</a></div><div class="ttdeci">void setupChart()</div><div class="ttdoc">Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry.</div><div class="ttdef"><b>Definition</b> <a href="linechartmenager_8cpp_source.html#l00063">linechartmenager.cpp:63</a></div></div>
+<div class="ttc" id="aclassMotorChartManager_html"><div class="ttname"><a href="classMotorChartManager.html">MotorChartManager</a></div><div class="ttdoc">Zarządza dynamicznym wykresem prezentującym dane z silników (np. prędkości lub sterowania).</div><div class="ttdef"><b>Definition</b> <a href="motorchartmanager_8h_source.html#l00034">motorchartmanager.h:35</a></div></div>
+<div class="ttc" id="aclassMotorChartManager_html_a85717a01fbee0e8d8ddd24e83f6bc418"><div class="ttname"><a href="classMotorChartManager.html#a85717a01fbee0e8d8ddd24e83f6bc418">MotorChartManager::setupChart</a></div><div class="ttdeci">void setupChart()</div><div class="ttdoc">Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry.</div><div class="ttdef"><b>Definition</b> <a href="motorchartmanager_8cpp_source.html#l00055">motorchartmanager.cpp:55</a></div></div>
+<div class="ttc" id="aclassSensorData_html"><div class="ttname"><a href="classSensorData.html">SensorData</a></div><div class="ttdoc">Przechowuje dane z różnych sensorów i udostępnia je aplikacji.</div><div class="ttdef"><b>Definition</b> <a href="sensordata_8h_source.html#l00027">sensordata.h:27</a></div></div>
+<div class="ttc" id="aclassSensorData_html_ac852da69eccb449b75153160aa56676b"><div class="ttname"><a href="classSensorData.html#ac852da69eccb449b75153160aa56676b">SensorData::dataChanged</a></div><div class="ttdeci">void dataChanged()</div><div class="ttdoc">Sygnał emitowany przy jakiejkolwiek zmianie danych.</div><div class="ttdef"><b>Definition</b> <a href="moc__sensordata_8cpp_source.html#l00162">moc_sensordata.cpp:162</a></div></div>
+<div class="ttc" id="aclassTCPManager_html"><div class="ttname"><a href="classTCPManager.html">TCPManager</a></div><div class="ttdoc">Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów.</div><div class="ttdef"><b>Definition</b> <a href="tcpmanager_8h_source.html#l00030">tcpmanager.h:30</a></div></div>
+<div class="ttc" id="aclassTCPManager_html_a363c1b3b68d005feea5268decf210000"><div class="ttname"><a href="classTCPManager.html#a363c1b3b68d005feea5268decf210000">TCPManager::connectionStatusChanged</a></div><div class="ttdeci">void connectionStatusChanged(bool connected)</div><div class="ttdoc">Sygnał emitowany po zmianie stanu połączenia.</div></div>
+<div class="ttc" id="aclassTCPManager_html_a6c3543bf266491dcb529beb7a44fe012"><div class="ttname"><a href="classTCPManager.html#a6c3543bf266491dcb529beb7a44fe012">TCPManager::dataUpdated</a></div><div class="ttdeci">void dataUpdated(int time)</div><div class="ttdoc">Sygnał informujący o aktualizacji danych.</div></div>
+<div class="ttc" id="aclassTofChartManager_html"><div class="ttname"><a href="classTofChartManager.html">TofChartManager</a></div><div class="ttdoc">Zarządza dynamicznym wykresem prezentującym dane z czujników ToF (Time of Flight).</div><div class="ttdef"><b>Definition</b> <a href="tofchartmanager_8h_source.html#l00034">tofchartmanager.h:35</a></div></div>
+<div class="ttc" id="aclassTofChartManager_html_ac4c44afd699ff240c3564bfb619a3874"><div class="ttname"><a href="classTofChartManager.html#ac4c44afd699ff240c3564bfb619a3874">TofChartManager::setupChart</a></div><div class="ttdeci">void setupChart()</div><div class="ttdoc">Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry.</div><div class="ttdef"><b>Definition</b> <a href="tofchartmanager_8cpp_source.html#l00055">tofchartmanager.cpp:55</a></div></div>
+<div class="ttc" id="aclassUi_1_1MainWindow_html"><div class="ttname"><a href="classUi_1_1MainWindow.html">Ui::MainWindow</a></div><div class="ttdef"><b>Definition</b> <a href="ui__mainwindow_8h_source.html#l00381">ui_mainwindow.h:381</a></div></div>
+<div class="ttc" id="aclassVisualizationManager_html"><div class="ttname"><a href="classVisualizationManager.html">VisualizationManager</a></div><div class="ttdoc">Zarządza wizualizacją stanu robota oraz aktualizuje widok na podstawie danych z sensorów.</div><div class="ttdef"><b>Definition</b> <a href="visualizationmanager_8h_source.html#l00031">visualizationmanager.h:32</a></div></div>
+<div class="ttc" id="aclassVisualizationManager_html_a5f945fcf791c213972cc8762d0cc196b"><div class="ttname"><a href="classVisualizationManager.html#a5f945fcf791c213972cc8762d0cc196b">VisualizationManager::updateAll</a></div><div class="ttdeci">void updateAll()</div><div class="ttdoc">Odświeża wszystkie elementy wizualizacji na podstawie bieżących danych sensorów.</div><div class="ttdef"><b>Definition</b> <a href="visualizationmanager_8cpp_source.html#l00071">visualizationmanager.cpp:71</a></div></div>
+<div class="ttc" id="aclassVisualizationManager_html_a89c8db228d60d6e69f919deeaa93a10c"><div class="ttname"><a href="classVisualizationManager.html#a89c8db228d60d6e69f919deeaa93a10c">VisualizationManager::setupArrows</a></div><div class="ttdeci">void setupArrows()</div><div class="ttdoc">Inicjalizuje strzałki kierunku silników na starcie.</div><div class="ttdef"><b>Definition</b> <a href="visualizationmanager_8cpp_source.html#l00017">visualizationmanager.cpp:17</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a996c5a2b6f77944776856f08ec30858d_cgraph.svg" width="1000" height="1084"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -170,13 +279,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>labelMotors</b> ()</t
 </div><div class="memdoc">
 
 <p>Destruktor klasy <a class="el" href="classMainWindow.html" title="Klasa reprezentująca główne okno aplikacji.">MainWindow</a>. </p>
-<p>Destruktor klasy <a class="el" href="classMainWindow.html" title="Klasa reprezentująca główne okno aplikacji.">MainWindow</a>. Zwalnia zasoby i rozłącza TCP jeśli to konieczne. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="mainwindow_8cpp_source.html#l00085">85</a> pliku <a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>                        {</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (m_tcpManager &amp;&amp; m_tcpManager-&gt;<a class="code hl_function" href="classTCPManager.html#a49bf45bb9b1545806780fe5458fa1155">isConnected</a>()) {</div>
+<div class="line"><span class="lineno">   87</span>        m_tcpManager-&gt;<a class="code hl_function" href="classTCPManager.html#afee7fb4092d884354ccf66f0148a8b1f">disconnectFromDevice</a>();</div>
+<div class="line"><span class="lineno">   88</span>    }</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keyword">delete</span> ui;</div>
+<div class="line"><span class="lineno">   90</span>}</div>
+<div class="ttc" id="aclassTCPManager_html_a49bf45bb9b1545806780fe5458fa1155"><div class="ttname"><a href="classTCPManager.html#a49bf45bb9b1545806780fe5458fa1155">TCPManager::isConnected</a></div><div class="ttdeci">bool isConnected() const</div><div class="ttdoc">Sprawdza stan połączenia.</div><div class="ttdef"><b>Definition</b> <a href="tcpmanager_8cpp_source.html#l00048">tcpmanager.cpp:48</a></div></div>
+<div class="ttc" id="aclassTCPManager_html_afee7fb4092d884354ccf66f0148a8b1f"><div class="ttname"><a href="classTCPManager.html#afee7fb4092d884354ccf66f0148a8b1f">TCPManager::disconnectFromDevice</a></div><div class="ttdeci">void disconnectFromDevice()</div><div class="ttdoc">Rozłącza połączenie z urządzeniem ESP.</div><div class="ttdef"><b>Definition</b> <a href="tcpmanager_8cpp_source.html#l00042">tcpmanager.cpp:42</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7_cgraph.svg" width="482" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
 <hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li><a class="el" href="mainwindow_8h_source.html">mainwindow.h</a></li>
-<li><b>mainwindow.cpp</b></li>
+<li><a class="el" href="mainwindow_8cpp_source.html">mainwindow.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

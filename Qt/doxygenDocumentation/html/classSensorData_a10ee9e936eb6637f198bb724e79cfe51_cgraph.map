@@ -1,0 +1,7 @@
+<map id="SensorData::setMotor2Speed" name="SensorData::setMotor2Speed">
+<area shape="rect" id="Node000001" title="Ustawia prędkość silnika 2 i emituje sygnały przy zmianie." alt="" coords="5,31,216,56"/>
+<area shape="rect" id="Node000002" href="$classSensorData.html#ac852da69eccb449b75153160aa56676b" title="Sygnał emitowany przy jakiejkolwiek zmianie danych." alt="" coords="285,5,475,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,31,271,26,271,31,216,36"/>
+<area shape="rect" id="Node000003" href="$classSensorData.html#a3d394763776fdce03f4c9130ca35b39e" title="Sygnał emitowany przy zmianie danych silników." alt="" coords="264,55,496,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,50,251,53,250,58,216,55"/>
+</map>

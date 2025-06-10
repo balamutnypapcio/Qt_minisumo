@@ -1,0 +1,283 @@
+\doxysection{motorchartmanager.\+cpp}
+\hypertarget{motorchartmanager_8cpp_source}{}\label{motorchartmanager_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}motorchartmanager.h"{}}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <QResizeEvent>}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QDateTime>}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <QFont>}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00008}00008\ \textcolor{comment}{/*\ Stała\ MAX\_POINTS\ –\ deklaracja\ */}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00009}00009\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MotorChartManager::MAX\_POINTS;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00011}\mbox{\hyperlink{classMotorChartManager_aa5b587327b9d86bc367fcb6bf20dd1e0}{00011}}\ \mbox{\hyperlink{classMotorChartManager_aa5b587327b9d86bc367fcb6bf20dd1e0}{MotorChartManager::MotorChartManager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QWidget*\ container,\ QObject\ *parent)}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00012}00012\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData),\ m\_container(container),}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00013}00013\ \ \ \ \ m\_chart(nullptr),\ m\_chartView(nullptr),\ m\_currentPoint(0),}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00014}00014\ \ \ \ \ m\_isAutoScrollEnabled(true),\ m\_currentTimeOffset(0)}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Sprawdź\ poprawność\ wskaźników}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_sensorData\ ||\ !m\_container)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}MotorChartManager:\ Nieprawidłowe\ wskaźniki\ do\ sensorData\ lub\ container!"{}};}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Instaluj\ filtr\ zdarzeń\ dla\ kontenera}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00023}00023\ \ \ \ \ m\_container-\/>installEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418}{setupChart}}();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Slot\ SensorData::motorDataChanged\ zostaje\ pusty\ –\ aktualizacja\ wywoływana\ z\ zewnątrz}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00028}00028\ \ \ \ \ connect(m\_sensorData,\ \&\mbox{\hyperlink{classSensorData_a3d394763776fdce03f4c9130ca35b39e}{SensorData::motorDataChanged}},\ \textcolor{keyword}{this},\ [\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Slot\ pusty\ –\ aktualizacja\ wykresu\ przez\ updateChart(time)}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00030}00030\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00033}\mbox{\hyperlink{classMotorChartManager_af263546de1d6ce102dc625de8bdd641a}{00033}}\ \mbox{\hyperlink{classMotorChartManager_af263546de1d6ce102dc625de8bdd641a}{MotorChartManager::\string~MotorChartManager}}()}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Usuń\ filtr\ zdarzeń}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_container)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ m\_container-\/>removeEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{delete}\ m\_chart;\ \ \textcolor{comment}{//\ m\_chartView\ usuwany\ przez\ m\_container}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00043}\mbox{\hyperlink{classMotorChartManager_a280c414156ff43bba10d6e63778e29c0}{00043}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMotorChartManager_a280c414156ff43bba10d6e63778e29c0}{MotorChartManager::eventFilter}}(QObject\ *watched,\ QEvent\ *event)}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00044}00044\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (watched\ ==\ m\_container\ \&\&\ event-\/>type()\ ==\ QEvent::Resize)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ m\_chartView-\/>resize(m\_container-\/>size());}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a}{adjustAxisLabels}}();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Pozwól\ na\ domyślną\ obsługę\ zdarzenia}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ QObject::eventFilter(watched,\ event);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00055}\mbox{\hyperlink{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418}{00055}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418}{MotorChartManager::setupChart}}()}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00056}00056\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00057}00057\ \ \ \ \ m\_chart\ =\ \textcolor{keyword}{new}\ QChart();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00058}00058\ \ \ \ \ m\_chart-\/>setMargins(QMargins(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00059}00059\ \ \ \ \ m\_chart-\/>setBackgroundRoundness(0);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00060}00060\ \ \ \ \ m\_chart-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00061}00061\ \ \ \ \ m\_chart-\/>setAnimationOptions(QChart::NoAnimation);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00063}00063\ \ \ \ \ m\_series1\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00064}00064\ \ \ \ \ m\_series2\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00066}00066\ \ \ \ \ m\_series1-\/>setName(\textcolor{stringliteral}{"{}M.\ Left"{}});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00067}00067\ \ \ \ \ m\_series2-\/>setName(\textcolor{stringliteral}{"{}M.\ Right"{}});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00069}00069\ \ \ \ \ m\_series1-\/>setColor(QColor(255,\ 0,\ 0));}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00070}00070\ \ \ \ \ m\_series2-\/>setColor(QColor(0,\ 0,\ 255));}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00072}00072\ \ \ \ \ QPen\ pen1\ =\ m\_series1-\/>pen();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00073}00073\ \ \ \ \ QPen\ pen2\ =\ m\_series2-\/>pen();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00074}00074\ \ \ \ \ pen1.setWidth(2);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00075}00075\ \ \ \ \ pen2.setWidth(2);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00076}00076\ \ \ \ \ m\_series1-\/>setPen(pen1);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00077}00077\ \ \ \ \ m\_series2-\/>setPen(pen2);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00079}00079\ \ \ \ \ m\_chart-\/>addSeries(m\_series1);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00080}00080\ \ \ \ \ m\_chart-\/>addSeries(m\_series2);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00082}00082\ \ \ \ \ m\_axisX\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00083}00083\ \ \ \ \ m\_axisY\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00085}00085\ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00086}00086\ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00088}00088\ \ \ \ \ m\_axisX-\/>setTitleText(\textcolor{stringliteral}{"{}Czas\ (ms)"{}});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00089}00089\ \ \ \ \ m\_axisY-\/>setTitleText(\textcolor{stringliteral}{"{}\%"{}});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00091}00091\ \ \ \ \ QFont\ axisFont;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00092}00092\ \ \ \ \ axisFont.setPointSize(8);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00094}00094\ \ \ \ \ m\_axisX-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00095}00095\ \ \ \ \ m\_axisY-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00097}00097\ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00098}00098\ \ \ \ \ m\_axisX-\/>setTickCount(5);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00100}00100\ \ \ \ \ m\_axisY-\/>setRange(-\/100,\ 100);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00101}00101\ \ \ \ \ m\_axisY-\/>setTickCount(5);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00102}00102\ \ \ \ \ m\_axisY-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00104}00104\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00106}00106\ \ \ \ \ m\_chart-\/>addAxis(m\_axisX,\ Qt::AlignBottom);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00107}00107\ \ \ \ \ m\_chart-\/>addAxis(m\_axisY,\ Qt::AlignLeft);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00109}00109\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00110}00110\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00111}00111\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00112}00112\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00114}00114\ \ \ \ \ m\_chart-\/>legend()-\/>setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00115}00115\ \ \ \ \ m\_chart-\/>legend()-\/>setAlignment(Qt::AlignRight);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00116}00116\ \ \ \ \ m\_chart-\/>legend()-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00117}00117\ \ \ \ \ m\_chart-\/>legend()-\/>setBorderColor(Qt::transparent);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00119}00119\ \ \ \ \ QRectF\ legendRect\ =\ m\_chart-\/>legend()-\/>geometry();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00120}00120\ \ \ \ \ legendRect.moveTopRight(m\_chart-\/>plotArea().topRight()\ -\/\ QPointF(10,\ 10));}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00121}00121\ \ \ \ \ m\_chart-\/>legend()-\/>setGeometry(legendRect);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00123}00123\ \ \ \ \ QFont\ legendFont;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00124}00124\ \ \ \ \ legendFont.setPointSize(8);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00125}00125\ \ \ \ \ m\_chart-\/>legend()-\/>setFont(legendFont);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00127}00127\ \ \ \ \ m\_chartView\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}(m\_chart);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00128}00128\ \ \ \ \ m\_chartView-\/>setRenderHint(QPainter::Antialiasing);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00129}00129\ \ \ \ \ m\_chartView-\/>setRubberBand(QChartView::HorizontalRubberBand);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00130}00130\ \ \ \ \ m\_chartView-\/>setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00131}00131\ \ \ \ \ m\_chartView-\/>setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00133}00133\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}{setMousePressedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70}{handleChartMousePressed}}();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00135}00135\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00136}00136\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}{setMouseReleasedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d}{handleChartMouseReleased}}();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00138}00138\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00140}00140\ \ \ \ \ connect(m\_axisX,\ \&QValueAxis::rangeChanged,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc}{MotorChartManager::enforceAxisLimits}});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00142}00142\ \ \ \ \ QLayout*\ existingLayout\ =\ m\_container-\/>layout();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{if}\ (existingLayout)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Czyszczenie\ istniejącego\ layoutu}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (QLayoutItem*\ item\ =\ existingLayout-\/>takeAt(0))\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (QWidget*\ widget\ =\ item-\/>widget())\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ widget-\/>setParent(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ widget;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ item;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ existingLayout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00154}00154\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ QVBoxLayout\ *layout\ =\ \textcolor{keyword}{new}\ QVBoxLayout(m\_container);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ layout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ layout-\/>setContentsMargins(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ layout-\/>setSpacing(0);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ m\_container-\/>setLayout(layout);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00160}00160\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00162}00162\ \ \ \ \ QTimer::singleShot(0,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a}{MotorChartManager::adjustAxisLabels}});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00163}00163\ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00165}\mbox{\hyperlink{classMotorChartManager_a1a206f54b54240cda87c8e80d79ae904}{00165}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMotorChartManager_a1a206f54b54240cda87c8e80d79ae904}{MotorChartManager::updateChart}}(\textcolor{keywordtype}{int}\ time)}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00166}00166\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00167}00167\ \ \ \ \ m\_series1-\/>append(time,\ m\_sensorData-\/>getMotor1Speed());}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00168}00168\ \ \ \ \ m\_series2-\/>append(time,\ m\_sensorData-\/>getMotor2Speed());}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00170}00170\ \ \ \ \ m\_currentPoint++;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00171}00171\ \ \ \ \ m\_latestDataTime\ =\ time;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00173}00173\ \ \ \ \ qreal\ currentMax\ =\ m\_axisX-\/>max();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00175}00175\ \ \ \ \ \textcolor{keywordflow}{if}\ (time\ >\ currentMax\ ||\ m\_isAutoScrollEnabled)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(time\ -\/\ MAX\_POINTS\ *\ 100,\ time);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00177}00177\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_HISTORY\ =\ MAX\_POINTS\ *\ 10;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00180}00180\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_series1-\/>count()\ >\ MAX\_HISTORY)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pointsToRemove\ =\ m\_series1-\/>count()\ -\/\ MAX\_HISTORY;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ m\_series1-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ m\_series2-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00184}00184\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00185}00185\ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00187}\mbox{\hyperlink{classMotorChartManager_a7b83bb3d9ee73e6ac3321dcef78ef858}{00187}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMotorChartManager_a7b83bb3d9ee73e6ac3321dcef78ef858}{MotorChartManager::clearChart}}()}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00188}00188\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00189}00189\ \ \ \ \ m\_series1-\/>clear();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00190}00190\ \ \ \ \ m\_series2-\/>clear();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00192}00192\ \ \ \ \ m\_currentPoint\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00193}00193\ \ \ \ \ m\_currentTimeOffset\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00194}00194\ \ \ \ \ m\_latestDataTime\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00195}00195\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00197}00197\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00198}00198\ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00200}\mbox{\hyperlink{classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70}{00200}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70}{MotorChartManager::handleChartMousePressed}}()}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00201}00201\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00202}00202\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00203}00203\ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00205}\mbox{\hyperlink{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d}{00205}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d}{MotorChartManager::handleChartMouseReleased}}()}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00206}00206\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00207}00207\ \ \ \ \ \mbox{\hyperlink{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc}{enforceAxisLimits}}(m\_axisX-\/>min(),\ m\_axisX-\/>max());}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00208}00208\ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00210}\mbox{\hyperlink{classMotorChartManager_aa9dad637e7a0563ae60ab5a225e91fce}{00210}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMotorChartManager_aa9dad637e7a0563ae60ab5a225e91fce}{MotorChartManager::resetToCurrentData}}()}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00211}00211\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00212}00212\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00214}00214\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(m\_latestDataTime\ -\/\ MAX\_POINTS\ *\ 100,\ m\_latestDataTime);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00216}00216\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00218}00218\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00219}00219\ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00221}\mbox{\hyperlink{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc}{00221}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc}{MotorChartManager::enforceAxisLimits}}(qreal\ min,\ qreal\ max)}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00222}00222\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00223}00223\ \ \ \ \ \textcolor{keywordtype}{bool}\ needAdjustment\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00224}00224\ \ \ \ \ qreal\ newMin\ =\ min;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00225}00225\ \ \ \ \ qreal\ newMax\ =\ max;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00226}00226\ \ \ \ \ qreal\ rangeSize\ =\ max\ -\/\ min;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00228}00228\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ newMin\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ newMax\ =\ rangeSize;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00232}00232\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00234}00234\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ m\_latestDataTime\ \&\&\ m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ newMax\ =\ m\_latestDataTime;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ newMin\ =\ qMax(0.0,\ m\_latestDataTime\ -\/\ rangeSize);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00238}00238\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00240}00240\ \ \ \ \ \textcolor{keywordflow}{if}\ (needAdjustment)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ QSignalBlocker\ blocker(m\_axisX);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(newMin,\ newMax);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00243}00243\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00244}00244\ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00246}\mbox{\hyperlink{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a}{00246}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a}{MotorChartManager::adjustAxisLabels}}()}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00247}00247\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00248}00248\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView\ \&\&\ m\_axisX)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ chartWidth\ =\ m\_chartView-\/>width();}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ labelCount;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 100)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 200)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 300)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_axisX-\/>tickCount()\ !=\ labelCount)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setTickCount(labelCount);}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 150)\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00277}00277\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{motorchartmanager_8cpp_source_l00278}00278\ \}}
+
+\end{DoxyCode}

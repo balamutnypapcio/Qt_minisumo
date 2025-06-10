@@ -2,7 +2,7 @@
 \hypertarget{classMotorChartManager}{}\label{classMotorChartManager}\index{MotorChartManager@{MotorChartManager}}
 
 
-Zarządza wykresem danych z silników.  
+Zarządza dynamicznym wykresem prezentującym dane z silników (np. prędkości lub sterowania).  
 
 
 
@@ -11,8 +11,7 @@ Zarządza wykresem danych z silników.
 
 
 
-Diagram dziedziczenia dla Motor\+Chart\+Manager
-\nopagebreak
+Diagram dziedziczenia dla Motor\+Chart\+Manager\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Diagram dziedziczenia dla Motor\+Chart\+Manager
 \end{figure}
 
 
-Diagram współpracy dla Motor\+Chart\+Manager\+:
-\nopagebreak
+Diagram współpracy dla Motor\+Chart\+Manager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,44 +30,563 @@ Diagram współpracy dla Motor\+Chart\+Manager\+:
 \doxysubsubsection*{Metody publiczne}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classMotorChartManager_aa5b587327b9d86bc367fcb6bf20dd1e0}\label{classMotorChartManager_aa5b587327b9d86bc367fcb6bf20dd1e0} 
-{\bfseries Motor\+Chart\+Manager} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QWidget \texorpdfstring{$\ast$}{*}container, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
-\item 
-\Hypertarget{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418}\label{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418} 
-void {\bfseries setup\+Chart} ()
-\begin{DoxyCompactList}\small\item\em Inicjalizuje wykres. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMotorChartManager_aa5b587327b9d86bc367fcb6bf20dd1e0}{Motor\+Chart\+Manager}} (\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}sensor\+Data, QWidget \texorpdfstring{$\ast$}{*}container, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Konstruktor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMotorChartManager_af263546de1d6ce102dc625de8bdd641a}{\texorpdfstring{$\sim$}{\string~}\+Motor\+Chart\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. Usuwa wykres i zwalnia zasoby. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418}{setup\+Chart}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMotorChartManager_a1a206f54b54240cda87c8e80d79ae904}{update\+Chart}} (int time)
-\begin{DoxyCompactList}\small\item\em Aktualizuje dane na wykresie. \end{DoxyCompactList}\item 
-\Hypertarget{classMotorChartManager_a7b83bb3d9ee73e6ac3321dcef78ef858}\label{classMotorChartManager_a7b83bb3d9ee73e6ac3321dcef78ef858} 
-void {\bfseries clear\+Chart} ()
-\begin{DoxyCompactList}\small\item\em Czyści dane z wykresu. \end{DoxyCompactList}\item 
-\Hypertarget{classMotorChartManager_aa9dad637e7a0563ae60ab5a225e91fce}\label{classMotorChartManager_aa9dad637e7a0563ae60ab5a225e91fce} 
-void {\bfseries reset\+To\+Current\+Data} ()
-\begin{DoxyCompactList}\small\item\em Przywraca widok do aktualnych danych (włącza auto-\/scrolling). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Aktualizuje wykres o nowe dane z \doxylink{classSensorData}{Sensor\+Data}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMotorChartManager_a7b83bb3d9ee73e6ac3321dcef78ef858}{clear\+Chart}} ()
+\begin{DoxyCompactList}\small\item\em Czyści wszystkie próbki z wykresu oraz resetuje oś X. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMotorChartManager_aa9dad637e7a0563ae60ab5a225e91fce}{reset\+To\+Current\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Przywraca widok wykresu do najnowszych danych (włącza auto-\/scroll). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Metody chronione}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classMotorChartManager_a280c414156ff43bba10d6e63778e29c0}\label{classMotorChartManager_a280c414156ff43bba10d6e63778e29c0} 
-bool {\bfseries event\+Filter} (QObject \texorpdfstring{$\ast$}{*}watched, QEvent \texorpdfstring{$\ast$}{*}event) override
-\begin{DoxyCompactList}\small\item\em Filtr zdarzeń do obsługi zmiany rozmiaru kontenera. \end{DoxyCompactList}\item 
-\Hypertarget{classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70}\label{classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70} 
-void {\bfseries handle\+Chart\+Mouse\+Pressed} ()
-\begin{DoxyCompactList}\small\item\em Obsługa kliknięcia i przesunięcia myszy na wykresie. \end{DoxyCompactList}\item 
-\Hypertarget{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d}\label{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d} 
-void {\bfseries handle\+Chart\+Mouse\+Released} ()
-\item 
-\Hypertarget{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc}\label{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc} 
-void {\bfseries enforce\+Axis\+Limits} (qreal min, qreal max)
-\begin{DoxyCompactList}\small\item\em Wymusza przestrzeganie limitów osi X (min ≥ 0, max ≤ aktualny\+\_\+czas). \end{DoxyCompactList}\item 
-\Hypertarget{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a}\label{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a} 
-void {\bfseries adjust\+Axis\+Labels} ()
-\begin{DoxyCompactList}\small\item\em Dostosowuje etykiety osi X do bieżącego rozmiaru wykresu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{classMotorChartManager_a280c414156ff43bba10d6e63778e29c0}{event\+Filter}} (QObject \texorpdfstring{$\ast$}{*}watched, QEvent \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Filtr zdarzeń do obsługi resize kontenera wykresu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70}{handle\+Chart\+Mouse\+Pressed}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-\/scroll. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d}{handle\+Chart\+Mouse\+Released}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc}{enforce\+Axis\+Limits}} (qreal min, qreal max)
+\begin{DoxyCompactList}\small\item\em Wymusza przestrzeganie limitów osi X (brak przewijania poza \mbox{[}0, aktualny\+\_\+czas\mbox{]}). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a}{adjust\+Axis\+Labels}} ()
+\begin{DoxyCompactList}\small\item\em Dostosowuje liczbę etykiet osi X do rozmiaru wykresu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Opis szczegółowy}
-Zarządza wykresem danych z silników. 
+Zarządza dynamicznym wykresem prezentującym dane z silników (np. prędkości lub sterowania). 
+
+Odpowiada za\+:
+\begin{DoxyItemize}
+\item Tworzenie i konfigurację wykresu (QChart) dla dwóch sygnałów z silników (np. lewy i prawy).
+\item Dodawanie nowych próbek, automatyczne przewijanie oraz czyszczenie danych.
+\item Dynamiczne dopasowywanie osi do okna i blokowanie przewijania poza zakres danych.
+\item Obsługę auto-\/scrollingu oraz wyłączanie go przy ręcznej interakcji użytkownika.
+\end{DoxyItemize}
+
+Współpracuje z \doxylink{classHorizontalOnlyChartView}{Horizontal\+Only\+Chart\+View} (ograniczenie interakcji do osi X).
+
+Przykład użycia\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classMotorChartManager}{MotorChartManager}}*\ motorMgr\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classMotorChartManager}{MotorChartManager}}(sensorData,\ ui-\/>motorChartContainer,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{connect(csvManager,\ \&\mbox{\hyperlink{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}{CSVManager::dataUpdated}},\ motorMgr,\ \&\mbox{\hyperlink{classMotorChartManager_a1a206f54b54240cda87c8e80d79ae904}{MotorChartManager::updateChart}});}
+
+\end{DoxyCode}
+
+
+\begin{DoxyAuthor}{Autor}
+Jakub Wilczyński 
+\end{DoxyAuthor}
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8h_source_l00034}{34}} pliku \mbox{\hyperlink{motorchartmanager_8h_source}{motorchartmanager.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classMotorChartManager_aa5b587327b9d86bc367fcb6bf20dd1e0}\label{classMotorChartManager_aa5b587327b9d86bc367fcb6bf20dd1e0} 
+\index{MotorChartManager@{MotorChartManager}!MotorChartManager@{MotorChartManager}}
+\index{MotorChartManager@{MotorChartManager}!MotorChartManager@{MotorChartManager}}
+\doxysubsubsection{\texorpdfstring{MotorChartManager()}{MotorChartManager()}}
+{\footnotesize\ttfamily Motor\+Chart\+Manager\+::\+Motor\+Chart\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSensorData}{Sensor\+Data}} \texorpdfstring{$\ast$}{*}}]{sensor\+Data,  }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{container,  }\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Konstruktor. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em sensor\+Data} & Wskaźnik do \doxylink{classSensorData}{Sensor\+Data} (źródło danych z silników). \\
+\hline
+{\em container} & QWidget, w którym osadzany jest wykres. \\
+\hline
+{\em parent} & Opcjonalny rodzic QObject. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00011}{11}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData),\ m\_container(container),}
+\DoxyCodeLine{00013\ \ \ \ \ m\_chart(\textcolor{keyword}{nullptr}),\ m\_chartView(\textcolor{keyword}{nullptr}),\ m\_currentPoint(0),}
+\DoxyCodeLine{00014\ \ \ \ \ m\_isAutoScrollEnabled(\textcolor{keyword}{true}),\ m\_currentTimeOffset(0)}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Sprawdź\ poprawność\ wskaźników}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_sensorData\ ||\ !m\_container)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}MotorChartManager:\ Nieprawidłowe\ wskaźniki\ do\ sensorData\ lub\ container!"{}};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Instaluj\ filtr\ zdarzeń\ dla\ kontenera}}
+\DoxyCodeLine{00023\ \ \ \ \ m\_container-\/>installEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418}{setupChart}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Slot\ SensorData::motorDataChanged\ zostaje\ pusty\ –\ aktualizacja\ wywoływana\ z\ zewnątrz}}
+\DoxyCodeLine{00028\ \ \ \ \ connect(m\_sensorData,\ \&\mbox{\hyperlink{classSensorData_a3d394763776fdce03f4c9130ca35b39e}{SensorData::motorDataChanged}},\ \textcolor{keyword}{this},\ [\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Slot\ pusty\ –\ aktualizacja\ wykresu\ przez\ updateChart(time)}}
+\DoxyCodeLine{00030\ \ \ \ \ \});}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMotorChartManager_aa5b587327b9d86bc367fcb6bf20dd1e0_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classMotorChartManager_af263546de1d6ce102dc625de8bdd641a}\label{classMotorChartManager_af263546de1d6ce102dc625de8bdd641a} 
+\index{MotorChartManager@{MotorChartManager}!````~MotorChartManager@{\texorpdfstring{$\sim$}{\string~}MotorChartManager}}
+\index{````~MotorChartManager@{\texorpdfstring{$\sim$}{\string~}MotorChartManager}!MotorChartManager@{MotorChartManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MotorChartManager()}{\string~MotorChartManager()}}
+{\footnotesize\ttfamily Motor\+Chart\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Motor\+Chart\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destruktor. Usuwa wykres i zwalnia zasoby. 
+
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00033}{33}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Usuń\ filtr\ zdarzeń}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_container)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ m\_container-\/>removeEventFilter(\textcolor{keyword}{this});}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{delete}\ m\_chart;\ \ \textcolor{comment}{//\ m\_chartView\ usuwany\ przez\ m\_container}}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}
+
 
 \doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a}\label{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a} 
+\index{MotorChartManager@{MotorChartManager}!adjustAxisLabels@{adjustAxisLabels}}
+\index{adjustAxisLabels@{adjustAxisLabels}!MotorChartManager@{MotorChartManager}}
+\doxysubsubsection{\texorpdfstring{adjustAxisLabels()}{adjustAxisLabels()}}
+{\footnotesize\ttfamily void Motor\+Chart\+Manager\+::adjust\+Axis\+Labels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Dostosowuje liczbę etykiet osi X do rozmiaru wykresu. 
+
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00246}{246}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00247\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView\ \&\&\ m\_axisX)\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ chartWidth\ =\ m\_chartView-\/>width();}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <=\ 0)}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ labelCount;}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 100)\ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 2;}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 200)\ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 3;}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 300)\ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 4;}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ labelCount\ =\ 5;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_axisX-\/>tickCount()\ !=\ labelCount)\ \{}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setTickCount(labelCount);}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chartWidth\ <\ 150)\ \{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00277\ \ \ \ \ \}}
+\DoxyCodeLine{00278\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classMotorChartManager_a7b83bb3d9ee73e6ac3321dcef78ef858}\label{classMotorChartManager_a7b83bb3d9ee73e6ac3321dcef78ef858} 
+\index{MotorChartManager@{MotorChartManager}!clearChart@{clearChart}}
+\index{clearChart@{clearChart}!MotorChartManager@{MotorChartManager}}
+\doxysubsubsection{\texorpdfstring{clearChart()}{clearChart()}}
+{\footnotesize\ttfamily void Motor\+Chart\+Manager\+::clear\+Chart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Czyści wszystkie próbki z wykresu oraz resetuje oś X. 
+
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00187}{187}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00188\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ m\_series1-\/>clear();}
+\DoxyCodeLine{00190\ \ \ \ \ m\_series2-\/>clear();}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ m\_currentPoint\ =\ 0;}
+\DoxyCodeLine{00193\ \ \ \ \ m\_currentTimeOffset\ =\ 0;}
+\DoxyCodeLine{00194\ \ \ \ \ m\_latestDataTime\ =\ 0;}
+\DoxyCodeLine{00195\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00198\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc}\label{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc} 
+\index{MotorChartManager@{MotorChartManager}!enforceAxisLimits@{enforceAxisLimits}}
+\index{enforceAxisLimits@{enforceAxisLimits}!MotorChartManager@{MotorChartManager}}
+\doxysubsubsection{\texorpdfstring{enforceAxisLimits()}{enforceAxisLimits()}}
+{\footnotesize\ttfamily void Motor\+Chart\+Manager\+::enforce\+Axis\+Limits (\begin{DoxyParamCaption}\item[{qreal}]{min,  }\item[{qreal}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wymusza przestrzeganie limitów osi X (brak przewijania poza \mbox{[}0, aktualny\+\_\+czas\mbox{]}). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em min} & Aktualne minimum zakresu osi X. \\
+\hline
+{\em max} & Aktualne maksimum zakresu osi X. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00221}{221}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00222\ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keywordtype}{bool}\ needAdjustment\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00224\ \ \ \ \ qreal\ newMin\ =\ min;}
+\DoxyCodeLine{00225\ \ \ \ \ qreal\ newMax\ =\ max;}
+\DoxyCodeLine{00226\ \ \ \ \ qreal\ rangeSize\ =\ max\ -\/\ min;}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\ <\ 0)\ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ newMin\ =\ 0;}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ newMax\ =\ rangeSize;}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00232\ \ \ \ \ \}}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ m\_latestDataTime\ \&\&\ m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ newMax\ =\ m\_latestDataTime;}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ newMin\ =\ qMax(0.0,\ m\_latestDataTime\ -\/\ rangeSize);}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ needAdjustment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00238\ \ \ \ \ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordflow}{if}\ (needAdjustment)\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ QSignalBlocker\ blocker(m\_axisX);}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(newMin,\ newMax);}
+\DoxyCodeLine{00243\ \ \ \ \ \}}
+\DoxyCodeLine{00244\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classMotorChartManager_a280c414156ff43bba10d6e63778e29c0}\label{classMotorChartManager_a280c414156ff43bba10d6e63778e29c0} 
+\index{MotorChartManager@{MotorChartManager}!eventFilter@{eventFilter}}
+\index{eventFilter@{eventFilter}!MotorChartManager@{MotorChartManager}}
+\doxysubsubsection{\texorpdfstring{eventFilter()}{eventFilter()}}
+{\footnotesize\ttfamily bool Motor\+Chart\+Manager\+::event\+Filter (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{watched,  }\item[{QEvent \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Filtr zdarzeń do obsługi resize kontenera wykresu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em watched} & Obiekt obserwowany. \\
+\hline
+{\em event} & Wskaźnik do zdarzenia. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+true jeśli filtr przechwycił zdarzenie. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00043}{43}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (watched\ ==\ m\_container\ \&\&\ event-\/>type()\ ==\ QEvent::Resize)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_chartView)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ m\_chartView-\/>resize(m\_container-\/>size());}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a}{adjustAxisLabels}}();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Pozwól\ na\ domyślną\ obsługę\ zdarzenia}}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{return}\ QObject::eventFilter(watched,\ event);}
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMotorChartManager_a280c414156ff43bba10d6e63778e29c0_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70}\label{classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70} 
+\index{MotorChartManager@{MotorChartManager}!handleChartMousePressed@{handleChartMousePressed}}
+\index{handleChartMousePressed@{handleChartMousePressed}!MotorChartManager@{MotorChartManager}}
+\doxysubsubsection{\texorpdfstring{handleChartMousePressed()}{handleChartMousePressed()}}
+{\footnotesize\ttfamily void Motor\+Chart\+Manager\+::handle\+Chart\+Mouse\+Pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto-\/scroll. 
+
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00200}{200}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00201\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00203\ \}}
+
+\end{DoxyCode}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d}\label{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d} 
+\index{MotorChartManager@{MotorChartManager}!handleChartMouseReleased@{handleChartMouseReleased}}
+\index{handleChartMouseReleased@{handleChartMouseReleased}!MotorChartManager@{MotorChartManager}}
+\doxysubsubsection{\texorpdfstring{handleChartMouseReleased()}{handleChartMouseReleased()}}
+{\footnotesize\ttfamily void Motor\+Chart\+Manager\+::handle\+Chart\+Mouse\+Released (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania. 
+
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00205}{205}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00206\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \mbox{\hyperlink{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc}{enforceAxisLimits}}(m\_axisX-\/>min(),\ m\_axisX-\/>max());}
+\DoxyCodeLine{00208\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d_cgraph}
+\end{center}
+\end{figure}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classMotorChartManager_aa9dad637e7a0563ae60ab5a225e91fce}\label{classMotorChartManager_aa9dad637e7a0563ae60ab5a225e91fce} 
+\index{MotorChartManager@{MotorChartManager}!resetToCurrentData@{resetToCurrentData}}
+\index{resetToCurrentData@{resetToCurrentData}!MotorChartManager@{MotorChartManager}}
+\doxysubsubsection{\texorpdfstring{resetToCurrentData()}{resetToCurrentData()}}
+{\footnotesize\ttfamily void Motor\+Chart\+Manager\+::reset\+To\+Current\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Przywraca widok wykresu do najnowszych danych (włącza auto-\/scroll). 
+
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00210}{210}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00211\ \{}
+\DoxyCodeLine{00212\ \ \ \ \ m\_isAutoScrollEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_latestDataTime\ >\ 0)\ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(m\_latestDataTime\ -\/\ MAX\_POINTS\ *\ 100,\ m\_latestDataTime);}
+\DoxyCodeLine{00216\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00218\ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418}\label{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418} 
+\index{MotorChartManager@{MotorChartManager}!setupChart@{setupChart}}
+\index{setupChart@{setupChart}!MotorChartManager@{MotorChartManager}}
+\doxysubsubsection{\texorpdfstring{setupChart()}{setupChart()}}
+{\footnotesize\ttfamily void Motor\+Chart\+Manager\+::setup\+Chart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry. 
+
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00055}{55}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ m\_chart\ =\ \textcolor{keyword}{new}\ QChart();}
+\DoxyCodeLine{00058\ \ \ \ \ m\_chart-\/>setMargins(QMargins(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00059\ \ \ \ \ m\_chart-\/>setBackgroundRoundness(0);}
+\DoxyCodeLine{00060\ \ \ \ \ m\_chart-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00061\ \ \ \ \ m\_chart-\/>setAnimationOptions(QChart::NoAnimation);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ m\_series1\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00064\ \ \ \ \ m\_series2\ =\ \textcolor{keyword}{new}\ QLineSeries();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ m\_series1-\/>setName(\textcolor{stringliteral}{"{}M.\ Left"{}});}
+\DoxyCodeLine{00067\ \ \ \ \ m\_series2-\/>setName(\textcolor{stringliteral}{"{}M.\ Right"{}});}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ m\_series1-\/>setColor(QColor(255,\ 0,\ 0));}
+\DoxyCodeLine{00070\ \ \ \ \ m\_series2-\/>setColor(QColor(0,\ 0,\ 255));}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ QPen\ pen1\ =\ m\_series1-\/>pen();}
+\DoxyCodeLine{00073\ \ \ \ \ QPen\ pen2\ =\ m\_series2-\/>pen();}
+\DoxyCodeLine{00074\ \ \ \ \ pen1.setWidth(2);}
+\DoxyCodeLine{00075\ \ \ \ \ pen2.setWidth(2);}
+\DoxyCodeLine{00076\ \ \ \ \ m\_series1-\/>setPen(pen1);}
+\DoxyCodeLine{00077\ \ \ \ \ m\_series2-\/>setPen(pen2);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ m\_chart-\/>addSeries(m\_series1);}
+\DoxyCodeLine{00080\ \ \ \ \ m\_chart-\/>addSeries(m\_series2);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ m\_axisX\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{00083\ \ \ \ \ m\_axisY\ =\ \textcolor{keyword}{new}\ QValueAxis();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ m\_axisX-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00086\ \ \ \ \ m\_axisY-\/>setTitleVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ m\_axisX-\/>setTitleText(\textcolor{stringliteral}{"{}Czas\ (ms)"{}});}
+\DoxyCodeLine{00089\ \ \ \ \ m\_axisY-\/>setTitleText(\textcolor{stringliteral}{"{}\%"{}});}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ QFont\ axisFont;}
+\DoxyCodeLine{00092\ \ \ \ \ axisFont.setPointSize(8);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ m\_axisX-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{00095\ \ \ \ \ m\_axisY-\/>setLabelsFont(axisFont);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ m\_axisX-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00098\ \ \ \ \ m\_axisX-\/>setTickCount(5);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ m\_axisY-\/>setRange(-\/100,\ 100);}
+\DoxyCodeLine{00101\ \ \ \ \ m\_axisY-\/>setTickCount(5);}
+\DoxyCodeLine{00102\ \ \ \ \ m\_axisY-\/>setLabelFormat(\textcolor{stringliteral}{"{}\%.0f"{}});}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ m\_axisX-\/>setRange(0,\ MAX\_POINTS\ *\ 100);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ m\_chart-\/>addAxis(m\_axisX,\ Qt::AlignBottom);}
+\DoxyCodeLine{00107\ \ \ \ \ m\_chart-\/>addAxis(m\_axisY,\ Qt::AlignLeft);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00110\ \ \ \ \ m\_series1-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00111\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisX);}
+\DoxyCodeLine{00112\ \ \ \ \ m\_series2-\/>attachAxis(m\_axisY);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ m\_chart-\/>legend()-\/>setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{00115\ \ \ \ \ m\_chart-\/>legend()-\/>setAlignment(Qt::AlignRight);}
+\DoxyCodeLine{00116\ \ \ \ \ m\_chart-\/>legend()-\/>setBackgroundVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00117\ \ \ \ \ m\_chart-\/>legend()-\/>setBorderColor(Qt::transparent);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ QRectF\ legendRect\ =\ m\_chart-\/>legend()-\/>geometry();}
+\DoxyCodeLine{00120\ \ \ \ \ legendRect.moveTopRight(m\_chart-\/>plotArea().topRight()\ -\/\ QPointF(10,\ 10));}
+\DoxyCodeLine{00121\ \ \ \ \ m\_chart-\/>legend()-\/>setGeometry(legendRect);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ QFont\ legendFont;}
+\DoxyCodeLine{00124\ \ \ \ \ legendFont.setPointSize(8);}
+\DoxyCodeLine{00125\ \ \ \ \ m\_chart-\/>legend()-\/>setFont(legendFont);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ m\_chartView\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}(m\_chart);}
+\DoxyCodeLine{00128\ \ \ \ \ m\_chartView-\/>setRenderHint(QPainter::Antialiasing);}
+\DoxyCodeLine{00129\ \ \ \ \ m\_chartView-\/>setRubberBand(QChartView::HorizontalRubberBand);}
+\DoxyCodeLine{00130\ \ \ \ \ m\_chartView-\/>setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{00131\ \ \ \ \ m\_chartView-\/>setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688}{setMousePressedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMotorChartManager_ae3abfa18078ea0a68ee37fef72323b70}{handleChartMousePressed}}();}
+\DoxyCodeLine{00135\ \ \ \ \ \});}
+\DoxyCodeLine{00136\ \ \ \ \ m\_chartView-\/>\mbox{\hyperlink{classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf}{setMouseReleasedCallback}}([\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMotorChartManager_ae0ac3fc2c8546fbcf5e9b4dee08c575d}{handleChartMouseReleased}}();}
+\DoxyCodeLine{00138\ \ \ \ \ \});}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ connect(m\_axisX,\ \&QValueAxis::rangeChanged,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classMotorChartManager_a76c5f53509d19a22b047cc777241eecc}{MotorChartManager::enforceAxisLimits}});}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ QLayout*\ existingLayout\ =\ m\_container-\/>layout();}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{if}\ (existingLayout)\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Czyszczenie\ istniejącego\ layoutu}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (QLayoutItem*\ item\ =\ existingLayout-\/>takeAt(0))\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (QWidget*\ widget\ =\ item-\/>widget())\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ widget-\/>setParent(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ widget;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ item;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ existingLayout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{00154\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ QVBoxLayout\ *layout\ =\ \textcolor{keyword}{new}\ QVBoxLayout(m\_container);}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ layout-\/>addWidget(m\_chartView);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ layout-\/>setContentsMargins(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ layout-\/>setSpacing(0);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ m\_container-\/>setLayout(layout);}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ QTimer::singleShot(0,\ \textcolor{keyword}{this},\ \&\mbox{\hyperlink{classMotorChartManager_ad2701ef1432db59dddda13f740613b2a}{MotorChartManager::adjustAxisLabels}});}
+\DoxyCodeLine{00163\ \}}
+
+\end{DoxyCode}
+Oto graf wywołań dla tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418_cgraph}
+\end{center}
+\end{figure}
+Oto graf wywoływań tej funkcji\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMotorChartManager_a85717a01fbee0e8d8ddd24e83f6bc418_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classMotorChartManager_a1a206f54b54240cda87c8e80d79ae904}\label{classMotorChartManager_a1a206f54b54240cda87c8e80d79ae904} 
 \index{MotorChartManager@{MotorChartManager}!updateChart@{updateChart}}
 \index{updateChart@{updateChart}!MotorChartManager@{MotorChartManager}}
@@ -78,13 +595,41 @@ Zarządza wykresem danych z silników.
 
 
 
-Aktualizuje dane na wykresie. 
+Aktualizuje wykres o nowe dane z \doxylink{classSensorData}{Sensor\+Data}. 
 
 
 \begin{DoxyParams}{Parametry}
-{\em time} & Znacznik czasu. \\
+{\em time} & Znacznik czasu nowej próbki (ms). \\
 \hline
 \end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{motorchartmanager_8cpp_source_l00165}{165}} pliku \mbox{\hyperlink{motorchartmanager_8cpp_source}{motorchartmanager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00166\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ m\_series1-\/>append(time,\ m\_sensorData-\/>getMotor1Speed());}
+\DoxyCodeLine{00168\ \ \ \ \ m\_series2-\/>append(time,\ m\_sensorData-\/>getMotor2Speed());}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ m\_currentPoint++;}
+\DoxyCodeLine{00171\ \ \ \ \ m\_latestDataTime\ =\ time;}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ qreal\ currentMax\ =\ m\_axisX-\/>max();}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordflow}{if}\ (time\ >\ currentMax\ ||\ m\_isAutoScrollEnabled)\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ m\_axisX-\/>setRange(time\ -\/\ MAX\_POINTS\ *\ 100,\ time);}
+\DoxyCodeLine{00177\ \ \ \ \ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_HISTORY\ =\ MAX\_POINTS\ *\ 10;}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_series1-\/>count()\ >\ MAX\_HISTORY)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pointsToRemove\ =\ m\_series1-\/>count()\ -\/\ MAX\_HISTORY;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ m\_series1-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ m\_series2-\/>removePoints(0,\ pointsToRemove);}
+\DoxyCodeLine{00184\ \ \ \ \ \}}
+\DoxyCodeLine{00185\ \}}
+
+\end{DoxyCode}
 
 
 Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}

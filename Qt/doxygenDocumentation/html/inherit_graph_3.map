@@ -1,18 +1,18 @@
 <map id="Graficzna hierarchia klas" name="Graficzna hierarchia klas">
 <area shape="rect" id="Node000000" title=" " alt="" coords="5,179,80,204"/>
-<area shape="rect" id="Node000001" href="$classCSVManager.html" title="Zarządza odczytem i odtwarzaniem danych z pliku CSV." alt="" coords="157,5,262,31"/>
+<area shape="rect" id="Node000001" href="$classCSVManager.html" title="Zarządza wczytywaniem, odtwarzaniem i symulacją danych z pliku CSV dla obiektów SensorData." alt="" coords="157,5,262,31"/>
 <area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="49,164,77,102,99,69,126,40,155,25,158,29,130,44,103,72,81,105,54,166"/>
-<area shape="rect" id="Node000002" href="$classImuChartManager.html" title="Zarządza wykresem danych z czujnika IMU." alt="" coords="140,55,279,80"/>
+<area shape="rect" id="Node000002" href="$classImuChartManager.html" title="Zarządza dynamicznym wykresem prezentującym dane z czujnika IMU (akcelerometru/żyroskopu)." alt="" coords="140,55,279,80"/>
 <area shape="poly" id="edge5_Node000000_Node000002" title=" " alt="" coords="56,166,85,126,105,106,127,89,149,78,152,82,129,94,108,110,90,130,61,169"/>
-<area shape="rect" id="Node000003" href="$classLineChartMenager.html" title="Zarządza wykresem danych z czujników linii." alt="" coords="139,104,280,129"/>
+<area shape="rect" id="Node000003" href="$classLineChartMenager.html" title="Zarządza dynamicznym wykresem prezentującym dane z czujników linii." alt="" coords="139,104,280,129"/>
 <area shape="poly" id="edge6_Node000000_Node000003" title=" " alt="" coords="73,168,127,138,158,127,160,132,129,143,75,173"/>
-<area shape="rect" id="Node000004" href="$classMotorChartManager.html" title="Zarządza wykresem danych z silników." alt="" coords="133,153,285,179"/>
+<area shape="rect" id="Node000004" href="$classMotorChartManager.html" title="Zarządza dynamicznym wykresem prezentującym dane z silników (np. prędkości lub sterowania)." alt="" coords="133,153,285,179"/>
 <area shape="poly" id="edge7_Node000000_Node000004" title=" " alt="" coords="93,181,132,175,133,180,94,186"/>
 <area shape="rect" id="Node000005" href="$classSensorData.html" title="Przechowuje dane z różnych sensorów i udostępnia je aplikacji." alt="" coords="161,203,258,228"/>
 <area shape="poly" id="edge8_Node000000_Node000005" title=" " alt="" coords="94,196,161,206,160,211,93,201"/>
 <area shape="rect" id="Node000006" href="$classTCPManager.html" title="Zarządza połączeniem TCP z urządzeniem ESP i odbiorem danych sensorów." alt="" coords="158,252,261,277"/>
 <area shape="poly" id="edge9_Node000000_Node000006" title=" " alt="" coords="76,209,129,237,163,249,161,254,127,242,74,213"/>
-<area shape="rect" id="Node000007" href="$classTofChartManager.html" title="Zarządza wykresem danych z czujników ToF (Time of Flight)." alt="" coords="143,301,276,327"/>
+<area shape="rect" id="Node000007" href="$classTofChartManager.html" title="Zarządza dynamicznym wykresem prezentującym dane z czujników ToF (Time of Flight)." alt="" coords="143,301,276,327"/>
 <area shape="poly" id="edge10_Node000000_Node000007" title=" " alt="" coords="61,214,90,251,129,286,155,299,152,304,127,291,86,255,57,217"/>
 <area shape="rect" id="Node000008" href="$classVisualizationManager.html" title="Zarządza wizualizacją stanu robota oraz aktualizuje widok na podstawie danych z sensorów." alt="" coords="128,351,291,376"/>
 <area shape="poly" id="edge11_Node000000_Node000008" title=" " alt="" coords="54,216,82,276,103,308,130,336,151,348,149,353,126,340,99,312,77,279,50,218"/>

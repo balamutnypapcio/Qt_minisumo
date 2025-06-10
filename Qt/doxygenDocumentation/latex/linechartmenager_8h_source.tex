@@ -1,67 +1,68 @@
 \doxysection{linechartmenager.\+h}
 \hypertarget{linechartmenager_8h_source}{}\label{linechartmenager_8h_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LINECHARTMENAGER\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LINECHARTMENAGER\_H}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QtCharts/QLineSeries>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QtCharts/QChart>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QtCharts/QValueAxis>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QTimer>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}sensordata.h"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}chartviewhelper.h"{}}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }QGraphicsTextItem;}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLineChartMenager}{LineChartMenager}}\ :\ \textcolor{keyword}{public}\ QObject}
-\DoxyCodeLine{00019\ \{}
-\DoxyCodeLine{00020\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classLineChartMenager}{LineChartMenager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QWidget*\ container,\ QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classLineChartMenager}{\string~LineChartMenager}}();}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}{setupChart}}();}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_aeea626a786f77e752dcb62ff11a266fc}{updateChart}}(\textcolor{keywordtype}{int}\ time);}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_ac69f0c1db373525cdcf1fb2223b789d0}{clearChart}}();}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_a81b170401c7cf07380d64dde3b00b738}{resetToCurrentData}}();}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classLineChartMenager_ad4b84cbb138d5ab9ffc414bf6416e24f}{eventFilter}}(QObject\ *watched,\ QEvent\ *event)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99}{handleChartMousePressed}}();}
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ handleChartMouseReleased();}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}{enforceAxisLimits}}(qreal\ min,\ qreal\ max);}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}{adjustAxisLabels}}();}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{classSensorData}{SensorData}}*\ m\_sensorData;\ \ \ \ \ \ }
-\DoxyCodeLine{00071\ \ \ \ \ QWidget*\ m\_container;\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00072\ \ \ \ \ QChart*\ m\_chart;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00073\ \ \ \ \ QLineSeries*\ m\_series1;\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00074\ \ \ \ \ QLineSeries*\ m\_series2;\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00075\ \ \ \ \ QLineSeries*\ m\_series3;\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00076\ \ \ \ \ QValueAxis*\ m\_axisX;\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00077\ \ \ \ \ QValueAxis*\ m\_axisY;\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}*\ m\_chartView;\ }
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Dodajemy\ własne\ etykiety\ tytułów\ osi}}
-\DoxyCodeLine{00081\ \ \ \ \ QGraphicsTextItem*\ m\_xAxisTitle;\ \ }
-\DoxyCodeLine{00082\ \ \ \ \ QGraphicsTextItem*\ m\_yAxisTitle;\ \ }
-\DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_POINTS\ =\ 100;\ \ }
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_currentPoint\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00086\ \ \ \ \ qint64\ m\_currentTimeOffset;\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isAutoScrollEnabled;\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00088\ \ \ \ \ qreal\ m\_latestDataTime\ =\ 0;\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00089\ \};}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LINECHARTMENAGER\_H}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ LINECHARTMENAGER\_H}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ LINECHARTMENAGER\_H}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <QtCharts/QLineSeries>}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <QtCharts/QChart>}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <QtCharts/QValueAxis>}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}sensordata.h"{}}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}chartviewhelper.h"{}}}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00012}00012\ \textcolor{keyword}{class\ }QGraphicsTextItem;}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00034}\mbox{\hyperlink{classLineChartMenager}{00034}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLineChartMenager}{LineChartMenager}}\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00036}00036\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00038}00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classLineChartMenager}{LineChartMenager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QWidget*\ container,\ QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{classLineChartMenager_aaae9e0c93e7319d61dd744970a6aa2c0}{\string~LineChartMenager}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_af4ae0b8f7efd7713d2e1b3faabe96977}{setupChart}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00061}00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_aeea626a786f77e752dcb62ff11a266fc}{updateChart}}(\textcolor{keywordtype}{int}\ time);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_ac69f0c1db373525cdcf1fb2223b789d0}{clearChart}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00071}00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_a81b170401c7cf07380d64dde3b00b738}{resetToCurrentData}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00073}00073\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classLineChartMenager_ad4b84cbb138d5ab9ffc414bf6416e24f}{eventFilter}}(QObject\ *watched,\ QEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00085}00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_acbb2057099a3d9bf8cae41725122fc99}{handleChartMousePressed}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00090}00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_aa940e9e26f3d2953abca44de085a0bf7}{handleChartMouseReleased}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_a711bb6f8e8c0757c97cd52d45a0f49ad}{enforceAxisLimits}}(qreal\ min,\ qreal\ max);}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLineChartMenager_a71ff3e2215d7d10b9fd19877f9edfe94}{adjustAxisLabels}}();}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00104}00104\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{classSensorData}{SensorData}}*\ m\_sensorData;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00106}00106\ \ \ \ \ QWidget*\ m\_container;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00107}00107\ \ \ \ \ QChart*\ m\_chart;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00108}00108\ \ \ \ \ QLineSeries*\ m\_series1;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00109}00109\ \ \ \ \ QLineSeries*\ m\_series2;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00110}00110\ \ \ \ \ QLineSeries*\ m\_series3;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00111}00111\ \ \ \ \ QValueAxis*\ m\_axisX;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00112}00112\ \ \ \ \ QValueAxis*\ m\_axisY;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00113}00113\ \ \ \ \ \mbox{\hyperlink{classHorizontalOnlyChartView}{HorizontalOnlyChartView}}*\ m\_chartView;\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00115}00115\ \ \ \ \ QGraphicsTextItem*\ m\_xAxisTitle;\ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00116}00116\ \ \ \ \ QGraphicsTextItem*\ m\_yAxisTitle;\ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00118}00118\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_POINTS\ =\ 100;\ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00119}00119\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_currentPoint\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00120}00120\ \ \ \ \ qint64\ m\_currentTimeOffset;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00121}00121\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isAutoScrollEnabled;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00122}00122\ \ \ \ \ qreal\ m\_latestDataTime\ =\ 0;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00123}00123\ \};}
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{linechartmenager_8h_source_l00125}00125\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LINECHARTMENAGER\_H}}
 
 \end{DoxyCode}

@@ -1,0 +1,5 @@
+<map id="CSVManager::stopPlayback" name="CSVManager::stopPlayback">
+<area shape="rect" id="Node000001" title="Zatrzymuje odtwarzanie danych CSV." alt="" coords="5,5,205,31"/>
+<area shape="rect" id="Node000002" href="$classCSVManager.html#a10755abfed118a3625b213fcc61b8e3f" title="Sygnał emitowany po zakończeniu odtwarzania (np. koniec pliku)." alt="" coords="253,5,480,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,15,240,15,240,21,206,21"/>
+</map>

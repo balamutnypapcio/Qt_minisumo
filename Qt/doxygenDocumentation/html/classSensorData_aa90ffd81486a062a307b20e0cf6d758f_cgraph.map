@@ -1,0 +1,7 @@
+<map id="SensorData::setLineS1Active" name="SensorData::setLineS1Active">
+<area shape="rect" id="Node000001" title="Ustawia aktywność czujnika linii S1 i emituje sygnały przy zmianie." alt="" coords="5,31,215,56"/>
+<area shape="rect" id="Node000002" href="$classSensorData.html#ac852da69eccb449b75153160aa56676b" title="Sygnał emitowany przy jakiejkolwiek zmianie danych." alt="" coords="280,5,471,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,31,266,26,266,31,215,36"/>
+<area shape="rect" id="Node000003" href="$classSensorData.html#a0ebd4e4804899960c3708d6ff6b4641e" title="Sygnał emitowany przy zmianie dowolnych czujników linii." alt="" coords="263,55,488,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,50,249,53,249,59,215,55"/>
+</map>

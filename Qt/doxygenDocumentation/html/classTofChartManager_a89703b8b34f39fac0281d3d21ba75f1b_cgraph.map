@@ -1,0 +1,5 @@
+<map id="TofChartManager::eventFilter" name="TofChartManager::eventFilter">
+<area shape="rect" id="Node000001" title="Filtr zdarzeń do obsługi resize kontenera wykresu." alt="" coords="5,13,216,38"/>
+<area shape="rect" id="Node000002" href="$classTofChartManager.html#aef81c689ee20264f5258b5a776f86a2e" title="Dostosowuje liczbę etykiet osi X do rozmiaru wykresu." alt="" coords="264,5,473,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,23,251,23,251,28,216,28"/>
+</map>

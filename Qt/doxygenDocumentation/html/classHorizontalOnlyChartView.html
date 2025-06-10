@@ -78,72 +78,93 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Specjalny widok wykresu QChartView, który umożliwia przewijanie i zoomowanie wyłącznie w poziomie.  
+<p>Specjalistyczny widok QChartView umożliwiający przewijanie i zoomowanie wyłącznie w osi poziomej (X).  
  <a href="classHorizontalOnlyChartView.html#details">Więcej...</a></p>
 
 <p><code>#include &lt;<a class="el" href="chartviewhelper_8h_source.html">chartviewhelper.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagram dziedziczenia dla HorizontalOnlyChartView</div>
 <div class="dyncontent">
-<div class="center"><img src="classHorizontalOnlyChartView__inherit__graph.png" border="0" usemap="#aHorizontalOnlyChartView_inherit__map" alt="Inheritance graph"/></div>
-<map name="aHorizontalOnlyChartView_inherit__map" id="aHorizontalOnlyChartView_inherit__map">
-<area shape="rect" title="Specjalny widok wykresu QChartView, który umożliwia przewijanie i zoomowanie wyłącznie w poziomie." alt="" coords="5,79,192,104"/>
-<area shape="rect" title=" " alt="" coords="49,5,148,31"/>
-<area shape="poly" title=" " alt="" coords="101,44,101,79,96,79,96,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classHorizontalOnlyChartView__inherit__graph.svg" width="198" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <div class="dynheader">
 Diagram współpracy dla HorizontalOnlyChartView:</div>
 <div class="dyncontent">
-<div class="center"><img src="classHorizontalOnlyChartView__coll__graph.png" border="0" usemap="#aHorizontalOnlyChartView_coll__map" alt="Collaboration graph"/></div>
-<map name="aHorizontalOnlyChartView_coll__map" id="aHorizontalOnlyChartView_coll__map">
-<area shape="rect" title="Specjalny widok wykresu QChartView, który umożliwia przewijanie i zoomowanie wyłącznie w poziomie." alt="" coords="5,79,192,104"/>
-<area shape="rect" title=" " alt="" coords="49,5,148,31"/>
-<area shape="poly" title=" " alt="" coords="101,44,101,79,96,79,96,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classHorizontalOnlyChartView__coll__graph.svg" width="198" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Typy publiczne</h2></td></tr>
-<tr class="memitem:aa58ca4fc9099cdeecda268d40790b37b" id="r_aa58ca4fc9099cdeecda268d40790b37b"><td class="memItemLeft" align="right" valign="top"><a id="aa58ca4fc9099cdeecda268d40790b37b" name="aa58ca4fc9099cdeecda268d40790b37b"></a>
-typedef std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>MouseCallback</b></td></tr>
-<tr class="memdesc:aa58ca4fc9099cdeecda268d40790b37b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typ funkcji callback wywoływanej przy naciśnięciu/przesunięciu myszy. <br /></td></tr>
+<tr class="memitem:aa58ca4fc9099cdeecda268d40790b37b" id="r_aa58ca4fc9099cdeecda268d40790b37b"><td class="memItemLeft" align="right" valign="top">typedef std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHorizontalOnlyChartView.html#aa58ca4fc9099cdeecda268d40790b37b">MouseCallback</a></td></tr>
+<tr class="memdesc:aa58ca4fc9099cdeecda268d40790b37b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typ funkcji callback wywoływanej przy naciśnięciu lub puszczeniu myszy. Sygnatura: void ()  <br /></td></tr>
 <tr class="separator:aa58ca4fc9099cdeecda268d40790b37b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Metody publiczne</h2></td></tr>
 <tr class="memitem:a97b6fa55bfa712267b2c29db00a962fb" id="r_a97b6fa55bfa712267b2c29db00a962fb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHorizontalOnlyChartView.html#a97b6fa55bfa712267b2c29db00a962fb">HorizontalOnlyChartView</a> (QChart *chart)</td></tr>
-<tr class="memdesc:a97b6fa55bfa712267b2c29db00a962fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor.  <br /></td></tr>
+<tr class="memdesc:a97b6fa55bfa712267b2c29db00a962fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor widoku wykresu umożliwiającego tylko poziome przewijanie i zoom.  <br /></td></tr>
 <tr class="separator:a97b6fa55bfa712267b2c29db00a962fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4fa096e706fad33f59803272de046c1" id="r_af4fa096e706fad33f59803272de046c1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHorizontalOnlyChartView.html#af4fa096e706fad33f59803272de046c1">~HorizontalOnlyChartView</a> ()</td></tr>
-<tr class="memdesc:af4fa096e706fad33f59803272de046c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruktor.  <br /></td></tr>
+<tr class="memdesc:af4fa096e706fad33f59803272de046c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wirtualny destruktor.  <br /></td></tr>
 <tr class="separator:af4fa096e706fad33f59803272de046c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ef619d9b976147eb7fe9f83da3b6688" id="r_a5ef619d9b976147eb7fe9f83da3b6688"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHorizontalOnlyChartView.html#a5ef619d9b976147eb7fe9f83da3b6688">setMousePressedCallback</a> (<a class="el" href="classHorizontalOnlyChartView.html#aa58ca4fc9099cdeecda268d40790b37b">MouseCallback</a> callback)</td></tr>
-<tr class="memdesc:a5ef619d9b976147eb7fe9f83da3b6688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia callback wywoływany przy naciśnięciu przycisku myszy.  <br /></td></tr>
+<tr class="memdesc:a5ef619d9b976147eb7fe9f83da3b6688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia callback wywoływany przy naciśnięciu lewego przycisku myszy na wykresie.  <br /></td></tr>
 <tr class="separator:a5ef619d9b976147eb7fe9f83da3b6688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12bd31146864d4ca20b2da4544f6c2bf" id="r_a12bd31146864d4ca20b2da4544f6c2bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHorizontalOnlyChartView.html#a12bd31146864d4ca20b2da4544f6c2bf">setMouseReleasedCallback</a> (<a class="el" href="classHorizontalOnlyChartView.html#aa58ca4fc9099cdeecda268d40790b37b">MouseCallback</a> callback)</td></tr>
-<tr class="memdesc:a12bd31146864d4ca20b2da4544f6c2bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia callback wywoływany przy puszczeniu przycisku myszy.  <br /></td></tr>
+<tr class="memdesc:a12bd31146864d4ca20b2da4544f6c2bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia callback wywoływany przy puszczeniu lewego przycisku myszy na wykresie.  <br /></td></tr>
 <tr class="separator:a12bd31146864d4ca20b2da4544f6c2bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Metody chronione</h2></td></tr>
 <tr class="memitem:a9c1211fa14c58981a51ca04128f82750" id="r_a9c1211fa14c58981a51ca04128f82750"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHorizontalOnlyChartView.html#a9c1211fa14c58981a51ca04128f82750">wheelEvent</a> (QWheelEvent *event) override</td></tr>
-<tr class="memdesc:a9c1211fa14c58981a51ca04128f82750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługa kółka myszy: umożliwia zoomowanie wyłącznie w poziomie.  <br /></td></tr>
+<tr class="memdesc:a9c1211fa14c58981a51ca04128f82750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługa kółka myszy: umożliwia zoomowanie wyłącznie w poziomie (oś X).  <br /></td></tr>
 <tr class="separator:a9c1211fa14c58981a51ca04128f82750"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab91fa124fd95f6ac7927a3c117d94e20" id="r_ab91fa124fd95f6ac7927a3c117d94e20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHorizontalOnlyChartView.html#ab91fa124fd95f6ac7927a3c117d94e20">mouseMoveEvent</a> (QMouseEvent *event) override</td></tr>
 <tr class="memdesc:ab91fa124fd95f6ac7927a3c117d94e20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługa ruchu myszy: przesuwa wykres tylko w poziomie podczas przeciągania.  <br /></td></tr>
 <tr class="separator:ab91fa124fd95f6ac7927a3c117d94e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c89f560778513c03701bb27853aabb1" id="r_a4c89f560778513c03701bb27853aabb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHorizontalOnlyChartView.html#a4c89f560778513c03701bb27853aabb1">mouseReleaseEvent</a> (QMouseEvent *event) override</td></tr>
-<tr class="memdesc:a4c89f560778513c03701bb27853aabb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługa puszczenia przycisku myszy: kończy przesuwanie wykresu.  <br /></td></tr>
+<tr class="memdesc:a4c89f560778513c03701bb27853aabb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługa puszczenia przycisku myszy: kończy przeciąganie wykresu.  <br /></td></tr>
 <tr class="separator:a4c89f560778513c03701bb27853aabb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e22032d9da3ed99ec35ed661098b792" id="r_a1e22032d9da3ed99ec35ed661098b792"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHorizontalOnlyChartView.html#a1e22032d9da3ed99ec35ed661098b792">mousePressEvent</a> (QMouseEvent *event) override</td></tr>
-<tr class="memdesc:a1e22032d9da3ed99ec35ed661098b792"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługa naciśnięcia przycisku myszy: rozpoczyna przesuwanie wykresu.  <br /></td></tr>
+<tr class="memdesc:a1e22032d9da3ed99ec35ed661098b792"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługa naciśnięcia przycisku myszy: rozpoczyna przeciąganie wykresu.  <br /></td></tr>
 <tr class="separator:a1e22032d9da3ed99ec35ed661098b792"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
-<div class="textblock"><p>Specjalny widok wykresu QChartView, który umożliwia przewijanie i zoomowanie wyłącznie w poziomie. </p>
-<p>Klasa rozszerza QChartView, aby ograniczyć interakcje użytkownika tylko do osi X. Dodatkowo obsługuje callbacki dla naciśnięcia i puszczenia my // Zmiana kursora na rękę zamkniętąszy, co umożliwia np. zarządzanie auto-przewijaniem. </p>
-</div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<div class="textblock"><p>Specjalistyczny widok QChartView umożliwiający przewijanie i zoomowanie wyłącznie w osi poziomej (X). </p>
+<p>Klasa rozszerza QChartView, ograniczając interakcje użytkownika tylko do osi X (tylko poziome przewijanie i skalowanie). Obsługuje callbacki dla naciśnięcia i puszczenia przycisku myszy, co jest przydatne np. do zarządzania auto-przewijaniem lub synchronizacją z innymi komponentami GUI.</p>
+<p>Przykład użycia: </p><div class="fragment"><div class="line">QChart *chart = <span class="keyword">new</span> QChart();</div>
+<div class="line"><a class="code hl_class" href="classHorizontalOnlyChartView.html">HorizontalOnlyChartView</a> *view = <span class="keyword">new</span> <a class="code hl_class" href="classHorizontalOnlyChartView.html">HorizontalOnlyChartView</a>(chart);</div>
+<div class="line">view-&gt;<a class="code hl_function" href="classHorizontalOnlyChartView.html#a5ef619d9b976147eb7fe9f83da3b6688">setMousePressedCallback</a>([<span class="keyword">this</span>](){ stopAutoScroll(); });</div>
+<div class="line">view-&gt;<a class="code hl_function" href="classHorizontalOnlyChartView.html#a12bd31146864d4ca20b2da4544f6c2bf">setMouseReleasedCallback</a>([<span class="keyword">this</span>](){ startAutoScroll(); });</div>
+<div class="ttc" id="aclassHorizontalOnlyChartView_html"><div class="ttname"><a href="classHorizontalOnlyChartView.html">HorizontalOnlyChartView</a></div><div class="ttdoc">Specjalistyczny widok QChartView umożliwiający przewijanie i zoomowanie wyłącznie w osi poziomej (X).</div><div class="ttdef"><b>Definition</b> <a href="chartviewhelper_8h_source.html#l00029">chartviewhelper.h:29</a></div></div>
+<div class="ttc" id="aclassHorizontalOnlyChartView_html_a12bd31146864d4ca20b2da4544f6c2bf"><div class="ttname"><a href="classHorizontalOnlyChartView.html#a12bd31146864d4ca20b2da4544f6c2bf">HorizontalOnlyChartView::setMouseReleasedCallback</a></div><div class="ttdeci">void setMouseReleasedCallback(MouseCallback callback)</div><div class="ttdoc">Ustawia callback wywoływany przy puszczeniu lewego przycisku myszy na wykresie.</div><div class="ttdef"><b>Definition</b> <a href="chartviewhelper_8cpp_source.html#l00019">chartviewhelper.cpp:19</a></div></div>
+<div class="ttc" id="aclassHorizontalOnlyChartView_html_a5ef619d9b976147eb7fe9f83da3b6688"><div class="ttname"><a href="classHorizontalOnlyChartView.html#a5ef619d9b976147eb7fe9f83da3b6688">HorizontalOnlyChartView::setMousePressedCallback</a></div><div class="ttdeci">void setMousePressedCallback(MouseCallback callback)</div><div class="ttdoc">Ustawia callback wywoływany przy naciśnięciu lewego przycisku myszy na wykresie.</div><div class="ttdef"><b>Definition</b> <a href="chartviewhelper_8cpp_source.html#l00014">chartviewhelper.cpp:14</a></div></div>
+</div><!-- fragment --><dl class="section note"><dt>Nota</dt><dd>Przesuwanie i zoomowanie pionowe (oś Y) są zablokowane. </dd>
+<dd>
+Kursor automatycznie zmienia się na "otwartą" lub "zamkniętą" dłoń w zależności od stanu przeciągania. </dd></dl>
+<dl class="section author"><dt>Autor</dt><dd>Jakub Wilczyński </dd></dl>
+
+<p class="definition">Definicja w linii <a class="el" href="chartviewhelper_8h_source.html#l00029">29</a> pliku <a class="el" href="chartviewhelper_8h_source.html">chartviewhelper.h</a>.</p>
+</div><h2 class="groupheader">Dokumentacja składowych definicji typu</h2>
+<a id="aa58ca4fc9099cdeecda268d40790b37b" name="aa58ca4fc9099cdeecda268d40790b37b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa58ca4fc9099cdeecda268d40790b37b">&#9670;&#160;</a></span>MouseCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::function&lt;void()&gt; <a class="el" href="classHorizontalOnlyChartView.html#aa58ca4fc9099cdeecda268d40790b37b">HorizontalOnlyChartView::MouseCallback</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Typ funkcji callback wywoływanej przy naciśnięciu lub puszczeniu myszy. Sygnatura: void () </p>
+
+<p class="definition">Definicja w linii <a class="el" href="chartviewhelper_8h_source.html#l00046">46</a> pliku <a class="el" href="chartviewhelper_8h_source.html">chartviewhelper.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a id="a97b6fa55bfa712267b2c29db00a962fb" name="a97b6fa55bfa712267b2c29db00a962fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a97b6fa55bfa712267b2c29db00a962fb">&#9670;&#160;</a></span>HorizontalOnlyChartView()</h2>
 
@@ -168,16 +189,21 @@ Metody chronione</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Konstruktor. </p>
-<p>Konstruktor widoku wykresu umożliwiającego jedynie poziome przewijanie i zoom.</p>
+<p>Konstruktor widoku wykresu umożliwiającego tylko poziome przewijanie i zoom. </p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">chart</td><td>Wskaźnik do obiektu QChart wyświetlanego w widoku.</td></tr>
-    <tr><td class="paramname">chart</td><td>Wskaźnik do obiektu QChart do wyświetlania. </td></tr>
+    <tr><td class="paramname">chart</td><td>Wskaźnik do obiektu QChart wyświetlanego w widoku. Nie może być nullptr. </td></tr>
   </table>
   </dd>
 </dl>
 
+<p class="definition">Definicja w linii <a class="el" href="chartviewhelper_8cpp_source.html#l00004">4</a> pliku <a class="el" href="chartviewhelper_8cpp_source.html">chartviewhelper.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    5</span>    : QChartView(chart), lastMousePos(), isDragging(<span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">    6</span>{</div>
+<div class="line"><span class="lineno">    7</span>    setMouseTracking(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">    8</span>    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);</div>
+<div class="line"><span class="lineno">    9</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af4fa096e706fad33f59803272de046c1" name="af4fa096e706fad33f59803272de046c1"></a>
@@ -203,9 +229,11 @@ Metody chronione</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Destruktor. </p>
-<p>Destruktor widoku wykresu. </p>
+<p>Wirtualny destruktor. </p>
 
+<p class="definition">Definicja w linii <a class="el" href="chartviewhelper_8cpp_source.html#l00011">11</a> pliku <a class="el" href="chartviewhelper_8cpp_source.html">chartviewhelper.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>{}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Dokumentacja funkcji składowych</h2>
@@ -234,14 +262,32 @@ Metody chronione</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Obsługa ruchu myszy: przesuwa wykres tylko w poziomie podczas przeciągania. </p>
-<p>Obsługuje ruch myszy – przesuwa wykres tylko w poziomie podczas przeciągania.</p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td>Zdarzenie ruchu myszy. </td></tr>
+    <tr><td class="paramname">event</td><td>Zdarzenie ruchu myszy.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Przeciąganie przesuwa wykres tylko w lewo/prawo. </p>
 
+<p class="definition">Definicja w linii <a class="el" href="chartviewhelper_8cpp_source.html#l00054">54</a> pliku <a class="el" href="chartviewhelper_8cpp_source.html">chartviewhelper.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">if</span> (isDragging &amp;&amp; !lastMousePos.isNull()) {</div>
+<div class="line"><span class="lineno">   57</span>        <span class="comment">// Oblicza przesunięcie wyłącznie w osi X</span></div>
+<div class="line"><span class="lineno">   58</span>        QPoint delta(event-&gt;pos().x() - lastMousePos.x(), 0);</div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">if</span> (!delta.isNull()) {</div>
+<div class="line"><span class="lineno">   60</span>            chart()-&gt;scroll(-delta.x(), 0);</div>
+<div class="line"><span class="lineno">   61</span>        }</div>
+<div class="line"><span class="lineno">   62</span>        lastMousePos = <span class="keyword">event</span>-&gt;pos();</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keyword">event</span>-&gt;accept();</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   65</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (rubberBand() != QChartView::NoRubberBand) {</div>
+<div class="line"><span class="lineno">   66</span>        <span class="comment">// Gdy nie przeciągamy, zmieniamy kursor na &quot;otwartą dłoń&quot;</span></div>
+<div class="line"><span class="lineno">   67</span>        setCursor(Qt::OpenHandCursor);</div>
+<div class="line"><span class="lineno">   68</span>    }</div>
+<div class="line"><span class="lineno">   69</span>    QChartView::mouseMoveEvent(event);</div>
+<div class="line"><span class="lineno">   70</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1e22032d9da3ed99ec35ed661098b792" name="a1e22032d9da3ed99ec35ed661098b792"></a>
@@ -268,15 +314,28 @@ Metody chronione</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Obsługa naciśnięcia przycisku myszy: rozpoczyna przesuwanie wykresu. </p>
-<p>Obsługuje naciśnięcie przycisku myszy – rozpoczyna przeciąganie wykresu w poziomie.</p>
+<p>Obsługa naciśnięcia przycisku myszy: rozpoczyna przeciąganie wykresu. </p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td>Zdarzenie naciśnięcia przycisku myszy. </td></tr>
+    <tr><td class="paramname">event</td><td>Zdarzenie naciśnięcia przycisku myszy.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Wywołuje callback (jeśli ustawiony) i zmienia kursor na "zamkniętą dłoń". </p>
 
+<p class="definition">Definicja w linii <a class="el" href="chartviewhelper_8cpp_source.html#l00041">41</a> pliku <a class="el" href="chartviewhelper_8cpp_source.html">chartviewhelper.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (event-&gt;button() == Qt::LeftButton) {</div>
+<div class="line"><span class="lineno">   44</span>        lastMousePos = <span class="keyword">event</span>-&gt;pos();</div>
+<div class="line"><span class="lineno">   45</span>        isDragging = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   46</span>        setCursor(Qt::ClosedHandCursor);</div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">if</span> (mousePressedCallback) {</div>
+<div class="line"><span class="lineno">   48</span>            mousePressedCallback();</div>
+<div class="line"><span class="lineno">   49</span>        }</div>
+<div class="line"><span class="lineno">   50</span>    }</div>
+<div class="line"><span class="lineno">   51</span>    QChartView::mousePressEvent(event);</div>
+<div class="line"><span class="lineno">   52</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a4c89f560778513c03701bb27853aabb1" name="a4c89f560778513c03701bb27853aabb1"></a>
@@ -303,15 +362,28 @@ Metody chronione</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Obsługa puszczenia przycisku myszy: kończy przesuwanie wykresu. </p>
-<p>Obsługuje puszczenie przycisku myszy – kończy przeciąganie wykresu.</p>
+<p>Obsługa puszczenia przycisku myszy: kończy przeciąganie wykresu. </p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td>Zdarzenie puszczenia przycisku myszy. </td></tr>
+    <tr><td class="paramname">event</td><td>Zdarzenie puszczenia przycisku myszy.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Wywołuje callback (jeśli ustawiony), resetuje stan przeciągania oraz zmienia kursor. </p>
 
+<p class="definition">Definicja w linii <a class="el" href="chartviewhelper_8cpp_source.html#l00072">72</a> pliku <a class="el" href="chartviewhelper_8cpp_source.html">chartviewhelper.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>{</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (event-&gt;button() == Qt::LeftButton &amp;&amp; isDragging) {</div>
+<div class="line"><span class="lineno">   75</span>        isDragging = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   76</span>        setCursor(Qt::OpenHandCursor);</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">if</span> (mouseReleasedCallback) {</div>
+<div class="line"><span class="lineno">   78</span>            mouseReleasedCallback();</div>
+<div class="line"><span class="lineno">   79</span>        }</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span>    lastMousePos = QPoint();</div>
+<div class="line"><span class="lineno">   82</span>    QChartView::mouseReleaseEvent(event);</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a5ef619d9b976147eb7fe9f83da3b6688" name="a5ef619d9b976147eb7fe9f83da3b6688"></a>
@@ -330,13 +402,24 @@ Metody chronione</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Ustawia callback wywoływany przy naciśnięciu przycisku myszy. </p>
+<p>Ustawia callback wywoływany przy naciśnięciu lewego przycisku myszy na wykresie. </p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">callback</td><td>Funkcja typu void(). </td></tr>
+    <tr><td class="paramname">callback</td><td>Funkcja typu void(), wywoływana przy rozpoczęciu przeciągania.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Możesz wykorzystać np. do zatrzymania auto-przewijania. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="chartviewhelper_8cpp_source.html#l00014">14</a> pliku <a class="el" href="chartviewhelper_8cpp_source.html">chartviewhelper.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   15</span>{</div>
+<div class="line"><span class="lineno">   16</span>    mousePressedCallback = callback;</div>
+<div class="line"><span class="lineno">   17</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classHorizontalOnlyChartView_a5ef619d9b976147eb7fe9f83da3b6688_icgraph.svg" width="738" height="294"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -356,13 +439,24 @@ Metody chronione</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Ustawia callback wywoływany przy puszczeniu przycisku myszy. </p>
+<p>Ustawia callback wywoływany przy puszczeniu lewego przycisku myszy na wykresie. </p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">callback</td><td>Funkcja typu void(). </td></tr>
+    <tr><td class="paramname">callback</td><td>Funkcja typu void(), wywoływana przy zakończeniu przeciągania.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Możesz wykorzystać np. do wznowienia auto-przewijania. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="chartviewhelper_8cpp_source.html#l00019">19</a> pliku <a class="el" href="chartviewhelper_8cpp_source.html">chartviewhelper.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>{</div>
+<div class="line"><span class="lineno">   21</span>    mouseReleasedCallback = callback;</div>
+<div class="line"><span class="lineno">   22</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classHorizontalOnlyChartView_a12bd31146864d4ca20b2da4544f6c2bf_icgraph.svg" width="747" height="294"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -390,20 +484,37 @@ Metody chronione</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Obsługa kółka myszy: umożliwia zoomowanie wyłącznie w poziomie. </p>
-<p>Obsługuje zdarzenie przewijania kółkiem myszy – pozwala tylko na przewijanie w poziomie.</p>
+<p>Obsługa kółka myszy: umożliwia zoomowanie wyłącznie w poziomie (oś X). </p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td>Zdarzenie kółka myszy. </td></tr>
+    <tr><td class="paramname">event</td><td>Zdarzenie kółka myszy.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Ignoruje pionowy komponent scrolla, pozwalając jedynie na zoom w poziomie. </p>
 
+<p class="definition">Definicja w linii <a class="el" href="chartviewhelper_8cpp_source.html#l00024">24</a> pliku <a class="el" href="chartviewhelper_8cpp_source.html">chartviewhelper.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>{</div>
+<div class="line"><span class="lineno">   26</span>    <span class="comment">// Tworzy nowe zdarzenie z wyzerowaną składową pionową, aby wymusić zoom tylko w poziomie.</span></div>
+<div class="line"><span class="lineno">   27</span>    QWheelEvent horizontalEvent(</div>
+<div class="line"><span class="lineno">   28</span>        event-&gt;position(),</div>
+<div class="line"><span class="lineno">   29</span>        event-&gt;globalPosition(),</div>
+<div class="line"><span class="lineno">   30</span>        QPoint(event-&gt;pixelDelta().x(), 0),</div>
+<div class="line"><span class="lineno">   31</span>        QPoint(event-&gt;angleDelta().x(), 0),</div>
+<div class="line"><span class="lineno">   32</span>        event-&gt;buttons(),</div>
+<div class="line"><span class="lineno">   33</span>        event-&gt;modifiers(),</div>
+<div class="line"><span class="lineno">   34</span>        event-&gt;phase(),</div>
+<div class="line"><span class="lineno">   35</span>        event-&gt;inverted(),</div>
+<div class="line"><span class="lineno">   36</span>        event-&gt;source()</div>
+<div class="line"><span class="lineno">   37</span>        );</div>
+<div class="line"><span class="lineno">   38</span>    QChartView::wheelEvent(&amp;horizontalEvent);</div>
+<div class="line"><span class="lineno">   39</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li><a class="el" href="chartviewhelper_8h_source.html">chartviewhelper.h</a></li>
-<li><b>chartviewhelper.cpp</b></li>
+<li><a class="el" href="chartviewhelper_8cpp_source.html">chartviewhelper.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

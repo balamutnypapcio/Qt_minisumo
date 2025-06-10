@@ -7,21 +7,13 @@
 #include <QDebug>
 #include <QtMath>
 
-/**
- * @brief Konstruktor menedżera wizualizacji. Ustawia wskaźniki i rejestruje filtr zdarzeń.
- */
 VisualizationManager::VisualizationManager(SensorData* sensorData, Ui::MainWindow* ui, QObject* parent)
     : QObject(parent), m_sensorData(sensorData), m_ui(ui)
 {
-    // Początkowa aktualizacja statusu połączenia
     updateConnectionStatusUI(false);
-    // Instalacja filtra zdarzeń na QLabel z IMU, aby reagować na zmianę rozmiaru
     m_ui->imuArrow->installEventFilter(this);
 }
 
-/**
- * @brief Inicjalizuje strzałki silników (ustawia domyślny kierunek i style).
- */
 void VisualizationManager::setupArrows()
 {
     // Silnik 1 (lewy) - domyślnie do góry
@@ -69,9 +61,6 @@ void VisualizationManager::setupArrows()
     }
 }
 
-/**
- * @brief Aktualizuje status połączenia (ikona WiFi).
- */
 void VisualizationManager::updateConnectionStatusUI(bool connected)
 {
     if (m_ui->wifi) {
@@ -79,9 +68,6 @@ void VisualizationManager::updateConnectionStatusUI(bool connected)
     }
 }
 
-/**
- * @brief Odświeża wszystkie elementy wizualne na podstawie bieżących danych.
- */
 void VisualizationManager::updateAll()
 {
     updateMotorArrows();
@@ -91,27 +77,19 @@ void VisualizationManager::updateAll()
     updateImuArrow();
 }
 
-/**
- * @brief Ustawia kierunek strzałek silników w zależności od znaku prędkości.
- */
 void VisualizationManager::updateMotorArrows()
 {
     int motor1 = m_sensorData->getMotor1Speed();
     int motor2 = m_sensorData->getMotor2Speed();
 
-    // Silnik 1 (lewy)
     if (m_ui->M1_arrow) {
         m_ui->M1_arrow->setCurrentIndex(motor1 >= 0 ? 0 : 1);
     }
-    // Silnik 2 (prawy)
     if (m_ui->M2_arrow) {
         m_ui->M2_arrow->setCurrentIndex(motor2 >= 0 ? 0 : 1);
     }
 }
 
-/**
- * @brief Aktualizuje wizualizację wszystkich czujników TOF.
- */
 void VisualizationManager::updateTofSensors()
 {
     int tofLeft = m_sensorData->getTof1();
@@ -120,10 +98,10 @@ void VisualizationManager::updateTofSensors()
     int tofRight = m_sensorData->getTof4();
 
     if (m_ui->tofLEFT) {
-        m_ui->tofLEFT->setCurrentIndex(tofLeft == 1 ? 1 : 0); // 0 = zielony, 1 = czerwony
+        m_ui->tofLEFT->setCurrentIndex(tofLeft == 1 ? 1 : 0);
     }
     if (m_ui->tofRIGHT) {
-        m_ui->tofRIGHT->setCurrentIndex(tofRight == 1 ? 0 : 1); // 0 = czerwony, 1 = zielony
+        m_ui->tofRIGHT->setCurrentIndex(tofRight == 1 ? 0 : 1);
     }
     if (m_ui->tofUpL) {
         m_ui->tofUpL->setCurrentIndex(tofUpL == 1 ? 1 : 0);
@@ -133,9 +111,6 @@ void VisualizationManager::updateTofSensors()
     }
 }
 
-/**
- * @brief Aktualizuje grafikę czujników linii w zależności od aktywności.
- */
 void VisualizationManager::updateLsSensors()
 {
     bool lineLeft = m_sensorData->getLineS1Active();
@@ -164,25 +139,19 @@ void VisualizationManager::updateLsSensors()
     m_ui->robotView->setStyleSheet(styleSheet);
 }
 
-/**
- * @brief Aktualizuje etykiety PWM silników.
- */
 void VisualizationManager::updateMotorLabels()
 {
     int motor1 = m_sensorData->getMotor1Speed();
     int motor2 = m_sensorData->getMotor2Speed();
 
     if (m_ui->labelMotor1PWM) {
-        m_ui->labelMotor1PWM->setText(QString::number(abs(motor1))+"%");
+        m_ui->labelMotor1PWM->setText("PWM 1: " + QString::number(abs(motor1)) + "%");
     }
     if (m_ui->labelMotor2PWM) {
-        m_ui->labelMotor2PWM->setText(QString::number(abs(motor2))+"%");
+        m_ui->labelMotor2PWM->setText("PWM 2: " + QString::number(abs(motor2)) + "%");
     }
 }
 
-/**
- * @brief Aktualizuje i obraca strzałkę IMU na podstawie danych z akcelerometru/żyroskopu.
- */
 void VisualizationManager::updateImuArrow()
 {
     if (!m_ui->imuArrow) {
@@ -264,16 +233,13 @@ void VisualizationManager::updateImuArrow()
     yPos = qMax(0, yPos);
 
     QPainter painter(&finalPixmap);
-    painter.setOpacity(0.7); // 70% nieprzezroczystości
+    painter.setOpacity(0.7);
     painter.drawPixmap(xPos, yPos, transformedPixmap);
     painter.end();
 
     m_ui->imuArrow->setPixmap(finalPixmap);
 }
 
-/**
- * @brief Filtr zdarzeń - przechwytuje zmianę rozmiaru QLabel dla IMU i odświeża strzałkę.
- */
 bool VisualizationManager::eventFilter(QObject *obj, QEvent *event)
 {
     if (obj == m_ui->imuArrow && event->type() == QEvent::Resize) {

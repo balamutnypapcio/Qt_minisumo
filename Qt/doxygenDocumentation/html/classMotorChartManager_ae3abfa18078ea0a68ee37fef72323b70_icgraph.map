@@ -1,0 +1,9 @@
+<map id="MotorChartManager::handleChartMousePressed" name="MotorChartManager::handleChartMousePressed">
+<area shape="rect" id="Node000001" title="Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto&#45;scroll." alt="" coords="459,27,653,67"/>
+<area shape="rect" id="Node000002" href="$classMotorChartManager.html#a85717a01fbee0e8d8ddd24e83f6bc418" title="Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry." alt="" coords="251,27,411,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="445,50,411,50,411,45,445,45"/>
+<area shape="rect" id="Node000003" href="$classMainWindow.html#a996c5a2b6f77944776856f08ec30858d" title="Konstruktor klasy MainWindow." alt="" coords="5,5,203,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="237,38,202,33,203,28,237,33"/>
+<area shape="rect" id="Node000004" href="$classMotorChartManager.html#aa5b587327b9d86bc367fcb6bf20dd1e0" title="Konstruktor." alt="" coords="24,55,184,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="237,62,185,68,184,63,237,56"/>
+</map>

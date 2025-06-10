@@ -1,0 +1,7 @@
+<map id="SensorData::setImuX" name="SensorData::setImuX">
+<area shape="rect" id="Node000001" title="Ustawia wartość osi X z IMU i emituje sygnały przy zmianie." alt="" coords="5,31,164,56"/>
+<area shape="rect" id="Node000002" href="$classSensorData.html#ac852da69eccb449b75153160aa56676b" title="Sygnał emitowany przy jakiejkolwiek zmianie danych." alt="" coords="226,5,417,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,32,212,27,213,32,165,37"/>
+<area shape="rect" id="Node000003" href="$classSensorData.html#aeeb25bc8f4aa7c531044fc6b0ef98c73" title="Sygnał emitowany przy zmianie danych IMU." alt="" coords="212,55,431,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,49,199,52,198,58,164,54"/>
+</map>

@@ -84,22 +84,12 @@ $(function() {
 <div class="dynheader">
 Diagram dziedziczenia dla VisualizationManager</div>
 <div class="dyncontent">
-<div class="center"><img src="classVisualizationManager__inherit__graph.png" border="0" usemap="#aVisualizationManager_inherit__map" alt="Inheritance graph"/></div>
-<map name="aVisualizationManager_inherit__map" id="aVisualizationManager_inherit__map">
-<area shape="rect" title="Zarządza wizualizacją stanu robota oraz aktualizuje widok na podstawie danych z sensorów." alt="" coords="5,79,168,104"/>
-<area shape="rect" title=" " alt="" coords="49,5,124,31"/>
-<area shape="poly" title=" " alt="" coords="89,44,89,79,84,79,84,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classVisualizationManager__inherit__graph.svg" width="174" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <div class="dynheader">
 Diagram współpracy dla VisualizationManager:</div>
 <div class="dyncontent">
-<div class="center"><img src="classVisualizationManager__coll__graph.png" border="0" usemap="#aVisualizationManager_coll__map" alt="Collaboration graph"/></div>
-<map name="aVisualizationManager_coll__map" id="aVisualizationManager_coll__map">
-<area shape="rect" title="Zarządza wizualizacją stanu robota oraz aktualizuje widok na podstawie danych z sensorów." alt="" coords="5,79,168,104"/>
-<area shape="rect" title=" " alt="" coords="49,5,124,31"/>
-<area shape="poly" title=" " alt="" coords="89,44,89,79,84,79,84,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classVisualizationManager__coll__graph.svg" width="174" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legenda</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
@@ -110,7 +100,7 @@ Sloty publiczne</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Metody publiczne</h2></td></tr>
-<tr class="memitem:adccff85e05c01b68d27df2ca59c6fe98" id="r_adccff85e05c01b68d27df2ca59c6fe98"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisualizationManager.html#adccff85e05c01b68d27df2ca59c6fe98">VisualizationManager</a> (<a class="el" href="classSensorData.html">SensorData</a> *sensorData, Ui::MainWindow *ui, QObject *parent=nullptr)</td></tr>
+<tr class="memitem:adccff85e05c01b68d27df2ca59c6fe98" id="r_adccff85e05c01b68d27df2ca59c6fe98"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisualizationManager.html#adccff85e05c01b68d27df2ca59c6fe98">VisualizationManager</a> (<a class="el" href="classSensorData.html">SensorData</a> *sensorData, <a class="el" href="classUi_1_1MainWindow.html">Ui::MainWindow</a> *ui, QObject *parent=nullptr)</td></tr>
 <tr class="memdesc:adccff85e05c01b68d27df2ca59c6fe98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor menedżera wizualizacji.  <br /></td></tr>
 <tr class="separator:adccff85e05c01b68d27df2ca59c6fe98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89c8db228d60d6e69f919deeaa93a10c" id="r_a89c8db228d60d6e69f919deeaa93a10c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisualizationManager.html#a89c8db228d60d6e69f919deeaa93a10c">setupArrows</a> ()</td></tr>
@@ -122,6 +112,19 @@ Metody publiczne</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Zarządza wizualizacją stanu robota oraz aktualizuje widok na podstawie danych z sensorów. </p>
+<p>Klasa odpowiada za:</p><ul>
+<li>Dynamiczną aktualizację graficznych elementów GUI związanych ze stanem robota (strzałki silników, czujniki, IMU, status WiFi).</li>
+<li>Synchronizację stanów graficznych z wartościami z <a class="el" href="classSensorData.html" title="Przechowuje dane z różnych sensorów i udostępnia je aplikacji.">SensorData</a>.</li>
+<li>Obsługę zdarzeń resize/paint dla wybranych widgetów.</li>
+</ul>
+<p>Przykład użycia: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classVisualizationManager.html">VisualizationManager</a>* visMan = <span class="keyword">new</span> <a class="code hl_class" href="classVisualizationManager.html">VisualizationManager</a>(sensorData, ui, <span class="keyword">this</span>);</div>
+<div class="line">connect(sensorData, &amp;<a class="code hl_signal" href="classSensorData.html#ac852da69eccb449b75153160aa56676b">SensorData::dataChanged</a>, visMan, &amp;<a class="code hl_slot" href="classVisualizationManager.html#a5f945fcf791c213972cc8762d0cc196b">VisualizationManager::updateAll</a>);</div>
+<div class="ttc" id="aclassSensorData_html_ac852da69eccb449b75153160aa56676b"><div class="ttname"><a href="classSensorData.html#ac852da69eccb449b75153160aa56676b">SensorData::dataChanged</a></div><div class="ttdeci">void dataChanged()</div><div class="ttdoc">Sygnał emitowany przy jakiejkolwiek zmianie danych.</div><div class="ttdef"><b>Definition</b> <a href="moc__sensordata_8cpp_source.html#l00162">moc_sensordata.cpp:162</a></div></div>
+<div class="ttc" id="aclassVisualizationManager_html"><div class="ttname"><a href="classVisualizationManager.html">VisualizationManager</a></div><div class="ttdoc">Zarządza wizualizacją stanu robota oraz aktualizuje widok na podstawie danych z sensorów.</div><div class="ttdef"><b>Definition</b> <a href="visualizationmanager_8h_source.html#l00031">visualizationmanager.h:32</a></div></div>
+<div class="ttc" id="aclassVisualizationManager_html_a5f945fcf791c213972cc8762d0cc196b"><div class="ttname"><a href="classVisualizationManager.html#a5f945fcf791c213972cc8762d0cc196b">VisualizationManager::updateAll</a></div><div class="ttdeci">void updateAll()</div><div class="ttdoc">Odświeża wszystkie elementy wizualizacji na podstawie bieżących danych sensorów.</div><div class="ttdef"><b>Definition</b> <a href="visualizationmanager_8cpp_source.html#l00071">visualizationmanager.cpp:71</a></div></div>
+</div><!-- fragment --><dl class="section author"><dt>Autor</dt><dd>Jakub Wilczyński </dd></dl>
+
+<p class="definition">Definicja w linii <a class="el" href="visualizationmanager_8h_source.html#l00031">31</a> pliku <a class="el" href="visualizationmanager_8h_source.html">visualizationmanager.h</a>.</p>
 </div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a id="adccff85e05c01b68d27df2ca59c6fe98" name="adccff85e05c01b68d27df2ca59c6fe98"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adccff85e05c01b68d27df2ca59c6fe98">&#9670;&#160;</a></span>VisualizationManager()</h2>
@@ -141,7 +144,7 @@ Metody publiczne</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Ui::MainWindow *&#160;</td>
+          <td class="paramtype"><a class="el" href="classUi_1_1MainWindow.html">Ui::MainWindow</a> *&#160;</td>
           <td class="paramname"><em>ui</em>, </td>
         </tr>
         <tr>
@@ -164,15 +167,27 @@ Metody publiczne</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Konstruktor menedżera wizualizacji. </p>
-<p>Konstruktor menedżera wizualizacji. Ustawia wskaźniki i rejestruje filtr zdarzeń.</p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
     <tr><td class="paramname">sensorData</td><td>Wskaźnik do danych z sensorów. </td></tr>
     <tr><td class="paramname">ui</td><td>Wskaźnik do interfejsu użytkownika (<a class="el" href="classMainWindow.html" title="Klasa reprezentująca główne okno aplikacji.">MainWindow</a>). </td></tr>
-    <tr><td class="paramname">parent</td><td>Rodzic QObject. </td></tr>
+    <tr><td class="paramname">parent</td><td>Rodzic QObject (opcjonalnie). </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definicja w linii <a class="el" href="visualizationmanager_8cpp_source.html#l00010">10</a> pliku <a class="el" href="visualizationmanager_8cpp_source.html">visualizationmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>    : QObject(parent), m_sensorData(sensorData), m_ui(ui)</div>
+<div class="line"><span class="lineno">   12</span>{</div>
+<div class="line"><span class="lineno">   13</span>    <a class="code hl_function" href="classVisualizationManager.html#aeb8e73440ea7c33ab33770cc7783ca0c">updateConnectionStatusUI</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   14</span>    m_ui-&gt;imuArrow-&gt;installEventFilter(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   15</span>}</div>
+<div class="ttc" id="aclassVisualizationManager_html_aeb8e73440ea7c33ab33770cc7783ca0c"><div class="ttname"><a href="classVisualizationManager.html#aeb8e73440ea7c33ab33770cc7783ca0c">VisualizationManager::updateConnectionStatusUI</a></div><div class="ttdeci">void updateConnectionStatusUI(bool connected)</div><div class="ttdoc">Aktualizuje wskaźnik połączenia WiFi na podstawie statusu.</div><div class="ttdef"><b>Definition</b> <a href="visualizationmanager_8cpp_source.html#l00064">visualizationmanager.cpp:64</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classVisualizationManager_adccff85e05c01b68d27df2ca59c6fe98_cgraph.svg" width="432" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -193,7 +208,59 @@ Metody publiczne</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Inicjalizuje strzałki kierunku silników na starcie. </p>
-<p>Inicjalizuje strzałki silników (ustawia domyślny kierunek i style). </p>
+<p>Ustawia obrazy (np. QPixmap) i przygotowuje elementy wizualne. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="visualizationmanager_8cpp_source.html#l00017">17</a> pliku <a class="el" href="visualizationmanager_8cpp_source.html">visualizationmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
+<div class="line"><span class="lineno">   19</span>    <span class="comment">// Silnik 1 (lewy) - domyślnie do góry</span></div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">if</span> (m_ui-&gt;M1_arrow) {</div>
+<div class="line"><span class="lineno">   21</span>        m_ui-&gt;M1_arrow-&gt;setCurrentIndex(0);</div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; m_ui-&gt;M1_arrow-&gt;count(); i++) {</div>
+<div class="line"><span class="lineno">   23</span>            QWidget* page = m_ui-&gt;M1_arrow-&gt;widget(i);</div>
+<div class="line"><span class="lineno">   24</span>            page-&gt;setStyleSheet(</div>
+<div class="line"><span class="lineno">   25</span>                <span class="stringliteral">&quot;border-image: none; &quot;</span></div>
+<div class="line"><span class="lineno">   26</span>                <span class="stringliteral">&quot;background: transparent; &quot;</span></div>
+<div class="line"><span class="lineno">   27</span>                <span class="stringliteral">&quot;border: none; &quot;</span></div>
+<div class="line"><span class="lineno">   28</span>                <span class="stringliteral">&quot;image: url(:/new/image/img/arrowUp.png); &quot;</span></div>
+<div class="line"><span class="lineno">   29</span>                <span class="stringliteral">&quot;image-position: center;&quot;</span></div>
+<div class="line"><span class="lineno">   30</span>                );</div>
+<div class="line"><span class="lineno">   31</span>        }</div>
+<div class="line"><span class="lineno">   32</span>        m_ui-&gt;M1_arrow-&gt;widget(1)-&gt;setStyleSheet(</div>
+<div class="line"><span class="lineno">   33</span>            <span class="stringliteral">&quot;border-image: none; &quot;</span></div>
+<div class="line"><span class="lineno">   34</span>            <span class="stringliteral">&quot;background: transparent; &quot;</span></div>
+<div class="line"><span class="lineno">   35</span>            <span class="stringliteral">&quot;border: none; &quot;</span></div>
+<div class="line"><span class="lineno">   36</span>            <span class="stringliteral">&quot;image: url(:/new/image/img/arrowDown.png); &quot;</span></div>
+<div class="line"><span class="lineno">   37</span>            <span class="stringliteral">&quot;image-position: center;&quot;</span></div>
+<div class="line"><span class="lineno">   38</span>            );</div>
+<div class="line"><span class="lineno">   39</span>    }</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>    <span class="comment">// Silnik 2 (prawy) - domyślnie do góry</span></div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">if</span> (m_ui-&gt;M2_arrow) {</div>
+<div class="line"><span class="lineno">   43</span>        m_ui-&gt;M2_arrow-&gt;setCurrentIndex(0);</div>
+<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; m_ui-&gt;M2_arrow-&gt;count(); i++) {</div>
+<div class="line"><span class="lineno">   45</span>            QWidget* page = m_ui-&gt;M2_arrow-&gt;widget(i);</div>
+<div class="line"><span class="lineno">   46</span>            page-&gt;setStyleSheet(</div>
+<div class="line"><span class="lineno">   47</span>                <span class="stringliteral">&quot;border-image: none; &quot;</span></div>
+<div class="line"><span class="lineno">   48</span>                <span class="stringliteral">&quot;background: transparent; &quot;</span></div>
+<div class="line"><span class="lineno">   49</span>                <span class="stringliteral">&quot;border: none; &quot;</span></div>
+<div class="line"><span class="lineno">   50</span>                <span class="stringliteral">&quot;image: url(:/new/image/img/arrowUp.png); &quot;</span></div>
+<div class="line"><span class="lineno">   51</span>                <span class="stringliteral">&quot;image-position: center;&quot;</span></div>
+<div class="line"><span class="lineno">   52</span>                );</div>
+<div class="line"><span class="lineno">   53</span>        }</div>
+<div class="line"><span class="lineno">   54</span>        m_ui-&gt;M2_arrow-&gt;widget(1)-&gt;setStyleSheet(</div>
+<div class="line"><span class="lineno">   55</span>            <span class="stringliteral">&quot;border-image: none; &quot;</span></div>
+<div class="line"><span class="lineno">   56</span>            <span class="stringliteral">&quot;background: transparent; &quot;</span></div>
+<div class="line"><span class="lineno">   57</span>            <span class="stringliteral">&quot;border: none; &quot;</span></div>
+<div class="line"><span class="lineno">   58</span>            <span class="stringliteral">&quot;image: url(:/new/image/img/arrowDown.png); &quot;</span></div>
+<div class="line"><span class="lineno">   59</span>            <span class="stringliteral">&quot;image-position: center;&quot;</span></div>
+<div class="line"><span class="lineno">   60</span>            );</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="line"><span class="lineno">   62</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classVisualizationManager_a89c8db228d60d6e69f919deeaa93a10c_icgraph.svg" width="419" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -221,7 +288,21 @@ Metody publiczne</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Odświeża wszystkie elementy wizualizacji na podstawie bieżących danych sensorów. </p>
-<p>Odświeża wszystkie elementy wizualne na podstawie bieżących danych. </p>
+<p>Wywoływane przy każdej zmianie danych – aktualizuje silniki, czujniki, IMU, itp. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="visualizationmanager_8cpp_source.html#l00071">71</a> pliku <a class="el" href="visualizationmanager_8cpp_source.html">visualizationmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    updateMotorArrows();</div>
+<div class="line"><span class="lineno">   74</span>    updateTofSensors();</div>
+<div class="line"><span class="lineno">   75</span>    updateMotorLabels();</div>
+<div class="line"><span class="lineno">   76</span>    updateLsSensors();</div>
+<div class="line"><span class="lineno">   77</span>    updateImuArrow();</div>
+<div class="line"><span class="lineno">   78</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classVisualizationManager_a5f945fcf791c213972cc8762d0cc196b_icgraph.svg" width="419" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -242,19 +323,30 @@ Metody publiczne</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Aktualizuje wskaźnik połączenia WiFi na podstawie statusu. </p>
-<p>Aktualizuje status połączenia (ikona WiFi).</p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
-    <tr><td class="paramname">connected</td><td>Czy połączono z ESP. </td></tr>
+    <tr><td class="paramname">connected</td><td>True jeśli ESP jest połączone, false jeśli nie. </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definicja w linii <a class="el" href="visualizationmanager_8cpp_source.html#l00064">64</a> pliku <a class="el" href="visualizationmanager_8cpp_source.html">visualizationmanager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
+<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span> (m_ui-&gt;wifi) {</div>
+<div class="line"><span class="lineno">   67</span>        m_ui-&gt;wifi-&gt;setCurrentIndex(connected ? 0 : 1); <span class="comment">// 0 = zielona, 1 = czerwona</span></div>
+<div class="line"><span class="lineno">   68</span>    }</div>
+<div class="line"><span class="lineno">   69</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classVisualizationManager_aeb8e73440ea7c33ab33770cc7783ca0c_icgraph.svg" width="432" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
 <hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li><a class="el" href="visualizationmanager_8h_source.html">visualizationmanager.h</a></li>
-<li><b>visualizationmanager.cpp</b></li>
+<li><a class="el" href="visualizationmanager_8cpp_source.html">visualizationmanager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

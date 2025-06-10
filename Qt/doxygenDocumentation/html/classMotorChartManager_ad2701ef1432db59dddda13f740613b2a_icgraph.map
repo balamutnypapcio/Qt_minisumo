@@ -1,0 +1,11 @@
+<map id="MotorChartManager::adjustAxisLabels" name="MotorChartManager::adjustAxisLabels">
+<area shape="rect" id="Node000001" title="Dostosowuje liczbę etykiet osi X do rozmiaru wykresu." alt="" coords="459,37,619,77"/>
+<area shape="rect" id="Node000002" href="$classMotorChartManager.html#a280c414156ff43bba10d6e63778e29c0" title="Filtr zdarzeń do obsługi resize kontenera wykresu." alt="" coords="251,5,411,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="445,46,411,40,411,35,446,40"/>
+<area shape="rect" id="Node000003" href="$classMotorChartManager.html#a85717a01fbee0e8d8ddd24e83f6bc418" title="Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry." alt="" coords="251,69,411,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="446,74,411,80,411,74,445,69"/>
+<area shape="rect" id="Node000004" href="$classMainWindow.html#a996c5a2b6f77944776856f08ec30858d" title="Konstruktor klasy MainWindow." alt="" coords="5,47,203,73"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="237,80,202,75,203,70,237,75"/>
+<area shape="rect" id="Node000005" href="$classMotorChartManager.html#aa5b587327b9d86bc367fcb6bf20dd1e0" title="Konstruktor." alt="" coords="24,97,184,137"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="237,104,185,110,184,105,237,98"/>
+</map>

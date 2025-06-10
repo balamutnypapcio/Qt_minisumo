@@ -12,7 +12,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>420</width>
+    <width>720</width>
     <height>350</height>
    </size>
   </property>
@@ -43,7 +43,7 @@
 border: 2px solid #505050;  
 border-radius: 8px;  </string>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="20,40,0,20,20">
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="20,5,13,22,0,20,20">
        <property name="spacing">
         <number>7</number>
        </property>
@@ -125,6 +125,63 @@ border: 2px solid #505050; </string>
         </widget>
        </item>
        <item>
+        <widget class="QWidget" name="widget_36" native="true">
+         <property name="styleSheet">
+          <string notr="true">background-color: #bbbbbb;  
+border: 2px solid #505050;  
+border-radius: 8px;  
+border:none;
+</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_12">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="styleSheet">
+             <string notr="true">background-color: #bdbebd;
+color: #555555;            
+font-weight: bold;
+border:none;</string>
+            </property>
+            <property name="text">
+             <string>IP:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: #bdbebd;
+color: #555555;            
+font-weight: bold;
+border:none;</string>
+            </property>
+            <property name="text">
+             <string>PORT:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <widget class="QWidget" name="widget_6" native="true">
          <property name="styleSheet">
           <string notr="true">border:none;</string>
@@ -151,10 +208,11 @@ border: 2px solid #505050; </string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: #B0B0B0;
+             <string notr="true">background-color: #d3d3d3;
 color: #555555;            
 font-weight: bold;
-border: 2px solid #505050; </string>
+border: 2px solid #505050; 
+border-radius: 0px;  </string>
             </property>
            </widget>
           </item>
@@ -167,14 +225,26 @@ border: 2px solid #505050; </string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: #B0B0B0;
+             <string notr="true">background-color: #d3d3d3;
 color: #555555;            
 font-weight: bold;
-border: 2px solid #505050; </string>
+border: 2px solid #505050; 
+border-radius: 0px;  </string>
             </property>
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_35" native="true">
+         <property name="styleSheet">
+          <string notr="true">background-color: #bbbbbb;  
+border: 2px solid #505050;  
+border-radius: 8px;  
+border:none;
+</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -310,17 +380,32 @@ border: 2px solid #505050; </string>
 border: 2px solid #505050;  
 border-radius: 8px;  </string>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout" stretch="45,55">
+      <layout class="QHBoxLayout" name="horizontalLayout" stretch="60,40">
        <item>
         <widget class="QWidget" name="widChart" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>400</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #bdbebd;</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_5" stretch="25,275,25,275,25,175,25,175">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLabel" name="labelImu">
             <property name="styleSheet">
-             <string notr="true">background-color: #B0B0B0;
+             <string notr="true">background-color: #bdbebd;
 color: #555555;            
 font-weight: bold;
-border: 2px solid #505050; </string>
+border:none;</string>
             </property>
             <property name="text">
              <string>IMU SENSOR</string>
@@ -333,26 +418,27 @@ border: 2px solid #505050; </string>
           <item>
            <widget class="QWidget" name="widIMU" native="true">
             <property name="styleSheet">
-             <string notr="true">background-color: #B0B0B0;
+             <string notr="true">background-color: #bdbebd;
 color: #555555;            
 font-weight: bold;
-border: 2px solid #505050; </string>
+border: 2px solid #505050; 
+border:none;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_10" stretch="95,5">
              <property name="spacing">
               <number>0</number>
              </property>
              <property name="leftMargin">
-              <number>3</number>
+              <number>0</number>
              </property>
              <property name="topMargin">
-              <number>3</number>
+              <number>0</number>
              </property>
              <property name="rightMargin">
-              <number>2</number>
+              <number>0</number>
              </property>
              <property name="bottomMargin">
-              <number>2</number>
+              <number>30</number>
              </property>
              <item>
               <widget class="QWidget" name="widget_33" native="true">
@@ -379,7 +465,8 @@ border: 2px solid #505050; </string>
                  <widget class="QLabel" name="labelIMU">
                   <property name="styleSheet">
                    <string notr="true">border: 2px solid #B0B0B0; 
-font-size: 9pt;</string>
+font-size: 9pt;
+border:none;</string>
                   </property>
                   <property name="text">
                    <string>VALUE</string>
@@ -387,7 +474,13 @@ font-size: 9pt;</string>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QWidget" name="chartIMU" native="true"/>
+                 <widget class="QWidget" name="chartIMU" native="true">
+                  <property name="styleSheet">
+                   <string notr="true">border: 2px solid #B0B0B0; 
+font-size: 9pt;
+border:none;</string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -396,7 +489,8 @@ font-size: 9pt;</string>
               <widget class="QLabel" name="labelIMUX">
                <property name="styleSheet">
                 <string notr="true">border: 2px solid #B0B0B0; 
-font-size: 9pt;</string>
+font-size: 9pt;
+border:none;</string>
                </property>
                <property name="text">
                 <string>TIME (ms)</string>
@@ -412,10 +506,10 @@ font-size: 9pt;</string>
           <item>
            <widget class="QLabel" name="labelMotors">
             <property name="styleSheet">
-             <string notr="true">background-color: #B0B0B0;
+             <string notr="true">background-color: #bdbebd;
 color: #555555;            
 font-weight: bold;
-border: 2px solid #505050; </string>
+border:none;</string>
             </property>
             <property name="text">
              <string> MOTORS SPEED</string>
@@ -428,31 +522,34 @@ border: 2px solid #505050; </string>
           <item>
            <widget class="QWidget" name="widMOTORS" native="true">
             <property name="styleSheet">
-             <string notr="true">background-color: #B0B0B0;
+             <string notr="true">background-color: #bdbebd;
 color: #555555;            
 font-weight: bold;
-border: 2px solid #505050; </string>
+border:none;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_9" stretch="95,5">
              <property name="spacing">
               <number>0</number>
              </property>
              <property name="leftMargin">
-              <number>3</number>
+              <number>0</number>
              </property>
              <property name="topMargin">
-              <number>3</number>
+              <number>0</number>
              </property>
              <property name="rightMargin">
-              <number>2</number>
+              <number>0</number>
              </property>
              <property name="bottomMargin">
-              <number>2</number>
+              <number>30</number>
              </property>
              <item>
               <widget class="QWidget" name="widget_32" native="true">
                <property name="styleSheet">
-                <string notr="true">border:none;</string>
+                <string notr="true">background-color: #bdbebd;
+color: #555555;            
+font-weight: bold;
+border:none;</string>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_18" stretch="5,95">
                 <property name="spacing">
@@ -474,7 +571,8 @@ border: 2px solid #505050; </string>
                  <widget class="QLabel" name="labelMotorsY">
                   <property name="styleSheet">
                    <string notr="true">border: 2px solid #B0B0B0; 
-font-size: 9pt;</string>
+font-size: 9pt;
+border:none;</string>
                   </property>
                   <property name="text">
                    <string>VALUE</string>
@@ -491,7 +589,8 @@ font-size: 9pt;</string>
               <widget class="QLabel" name="labelMotorsX">
                <property name="styleSheet">
                 <string notr="true">border: 2px solid #B0B0B0; 
-font-size: 9pt;</string>
+font-size: 9pt;
+border:none;</string>
                </property>
                <property name="text">
                 <string>TIME (ms)</string>
@@ -507,10 +606,10 @@ font-size: 9pt;</string>
           <item>
            <widget class="QLabel" name="labelLine">
             <property name="styleSheet">
-             <string notr="true">background-color: #B0B0B0;
+             <string notr="true">background-color: #bdbebd;
 color: #555555;            
 font-weight: bold;
-border: 2px solid #505050; </string>
+border:none;</string>
             </property>
             <property name="text">
              <string>LINE SENSORS</string>
@@ -523,31 +622,34 @@ border: 2px solid #505050; </string>
           <item>
            <widget class="QWidget" name="widLS" native="true">
             <property name="styleSheet">
-             <string notr="true">background-color: #B0B0B0;
+             <string notr="true">background-color: #bdbebd;
 color: #555555;            
 font-weight: bold;
-border: 2px solid #505050; </string>
+border:none;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_6" stretch="95,5">
              <property name="spacing">
               <number>0</number>
              </property>
              <property name="leftMargin">
-              <number>3</number>
+              <number>0</number>
              </property>
              <property name="topMargin">
-              <number>3</number>
+              <number>0</number>
              </property>
              <property name="rightMargin">
-              <number>2</number>
+              <number>0</number>
              </property>
              <property name="bottomMargin">
-              <number>2</number>
+              <number>30</number>
              </property>
              <item>
               <widget class="QWidget" name="widget_31" native="true">
                <property name="styleSheet">
-                <string notr="true">border:none;</string>
+                <string notr="true">background-color: #bdbebd;
+color: #555555;            
+font-weight: bold;
+border:none;</string>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="5,95">
                 <property name="spacing">
@@ -569,7 +671,8 @@ border: 2px solid #505050; </string>
                  <widget class="QLabel" name="labelLSY">
                   <property name="styleSheet">
                    <string notr="true">border: 2px solid #B0B0B0; 
-font-size: 9pt;</string>
+font-size: 9pt;
+border:none;</string>
                   </property>
                   <property name="text">
                    <string>VALUE</string>
@@ -589,7 +692,8 @@ font-size: 9pt;</string>
               <widget class="QLabel" name="labelLSX">
                <property name="styleSheet">
                 <string notr="true">border: 2px solid #B0B0B0; 
-font-size: 9pt;</string>
+font-size: 9pt;
+border:none;</string>
                </property>
                <property name="text">
                 <string>TIME (ms)</string>
@@ -605,10 +709,10 @@ font-size: 9pt;</string>
           <item>
            <widget class="QLabel" name="labelTof">
             <property name="styleSheet">
-             <string notr="true">background-color: #B0B0B0;
+             <string notr="true">background-color: #bdbebd;
 color: #555555;            
 font-weight: bold;
-border: 2px solid #505050; </string>
+border:none;</string>
             </property>
             <property name="text">
              <string>REFLECTIVE SENSORS</string>
@@ -621,26 +725,26 @@ border: 2px solid #505050; </string>
           <item>
            <widget class="QWidget" name="widTof" native="true">
             <property name="styleSheet">
-             <string notr="true">background-color: #B0B0B0;
+             <string notr="true">background-color: #bdbebd;
 color: #555555;            
 font-weight: bold;
-border: 2px solid #505050; </string>
+border:none;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_11" stretch="95,5">
              <property name="spacing">
               <number>0</number>
              </property>
              <property name="leftMargin">
-              <number>3</number>
+              <number>0</number>
              </property>
              <property name="topMargin">
-              <number>3</number>
+              <number>0</number>
              </property>
              <property name="rightMargin">
-              <number>2</number>
+              <number>0</number>
              </property>
              <property name="bottomMargin">
-              <number>2</number>
+              <number>0</number>
              </property>
              <item>
               <widget class="QWidget" name="widget_34" native="true">
@@ -667,7 +771,8 @@ border: 2px solid #505050; </string>
                  <widget class="QLabel" name="labelTofY">
                   <property name="styleSheet">
                    <string notr="true">border: 2px solid #B0B0B0; 
-font-size: 9pt;</string>
+font-size: 9pt;
+border:none;</string>
                   </property>
                   <property name="text">
                    <string>VALUE</string>
@@ -684,7 +789,8 @@ font-size: 9pt;</string>
               <widget class="QLabel" name="labelTofX">
                <property name="styleSheet">
                 <string notr="true">border: 2px solid #B0B0B0; 
-font-size: 9pt;</string>
+font-size: 9pt;
+border:none;</string>
                </property>
                <property name="text">
                 <string>TIME (ms)</string>
@@ -704,11 +810,11 @@ font-size: 9pt;</string>
         <widget class="QWidget" name="widRobot" native="true">
          <property name="minimumSize">
           <size>
-           <width>70</width>
+           <width>300</width>
            <height>0</height>
           </size>
          </property>
-         <layout class="QGridLayout" name="gridLayout" rowstretch="10,30,35,6,5">
+         <layout class="QGridLayout" name="gridLayout" rowstretch="15,15,25,30,5,20,5">
           <property name="leftMargin">
            <number>3</number>
           </property>
@@ -721,42 +827,14 @@ font-size: 9pt;</string>
           <property name="bottomMargin">
            <number>3</number>
           </property>
-          <item row="0" column="0">
-           <widget class="QWidget" name="widget_12" native="true">
+          <item row="6" column="0">
+           <widget class="QWidget" name="widget_24" native="true">
             <property name="styleSheet">
              <string notr="true">border:none;</string>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="70,30">
-             <item>
-              <widget class="QWidget" name="widget_11" native="true"/>
-             </item>
-             <item>
-              <widget class="QStackedWidget" name="wifi">
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border:none;</string>
-               </property>
-               <widget class="QWidget" name="wifi_green">
-                <property name="styleSheet">
-                 <string notr="true">image: url(:/new/image/img/connectionGreen.png);</string>
-                </property>
-               </widget>
-               <widget class="QWidget" name="wifi_red">
-                <property name="styleSheet">
-                 <string notr="true">image: url(:/new/image/img/connectionRed.png);</string>
-                </property>
-               </widget>
-              </widget>
-             </item>
-            </layout>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item row="2" column="0">
            <widget class="QWidget" name="widget_13" native="true">
             <property name="styleSheet">
              <string notr="true">border:none;</string>
@@ -908,7 +986,14 @@ font-size: 9pt;</string>
             </layout>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item row="1" column="0">
+           <widget class="QWidget" name="widget_37" native="true">
+            <property name="styleSheet">
+             <string notr="true">border:none;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
            <widget class="QWidget" name="widget_14" native="true">
             <property name="styleSheet">
              <string notr="true">border:none;</string>
@@ -1205,14 +1290,49 @@ image: url(:/new/image/img/arrowUp.png);
             </layout>
            </widget>
           </item>
-          <item row="3" column="0">
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_12" native="true">
+            <property name="styleSheet">
+             <string notr="true">border:none;</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="70,30">
+             <item>
+              <widget class="QWidget" name="widget_11" native="true"/>
+             </item>
+             <item>
+              <widget class="QStackedWidget" name="wifi">
+               <property name="minimumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border:none;</string>
+               </property>
+               <widget class="QWidget" name="wifi_green">
+                <property name="styleSheet">
+                 <string notr="true">image: url(:/new/image/img/connectionGreen.png);</string>
+                </property>
+               </widget>
+               <widget class="QWidget" name="wifi_red">
+                <property name="styleSheet">
+                 <string notr="true">image: url(:/new/image/img/connectionRed.png);</string>
+                </property>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="4" column="0">
            <widget class="QWidget" name="widget" native="true">
             <property name="styleSheet">
              <string notr="true">border:none;</string>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="33,33">
+            <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="40,20,40">
              <property name="spacing">
-              <number>0</number>
+              <number>5</number>
              </property>
              <property name="leftMargin">
               <number>0</number>
@@ -1228,7 +1348,7 @@ image: url(:/new/image/img/arrowUp.png);
              </property>
              <item>
               <widget class="QWidget" name="widget_17" native="true">
-               <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="60,40,0">
+               <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="50,50">
                 <property name="spacing">
                  <number>0</number>
                 </property>
@@ -1250,10 +1370,8 @@ image: url(:/new/image/img/arrowUp.png);
                 <item>
                  <widget class="QLabel" name="labelMotor1PWM">
                   <property name="styleSheet">
-                   <string notr="true">background-color: #B0B0B0;
-color: #555555;            
-font-weight: bold;
-border: 2px solid #505050; </string>
+                   <string notr="true">color: #555555;            
+font-weight: bold;</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -1263,22 +1381,18 @@ border: 2px solid #505050; </string>
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QWidget" name="widget_15" native="true">
-                  <property name="styleSheet">
-                   <string notr="true">border:none;</string>
-                  </property>
-                 </widget>
-                </item>
                </layout>
               </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_39" native="true"/>
              </item>
              <item>
               <widget class="QWidget" name="widget_10" native="true">
                <property name="styleSheet">
                 <string notr="true">border:none;</string>
                </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="40,60">
+               <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="50,50">
                 <property name="spacing">
                  <number>0</number>
                 </property>
@@ -1297,10 +1411,8 @@ border: 2px solid #505050; </string>
                 <item>
                  <widget class="QLabel" name="labelMotor2PWM">
                   <property name="styleSheet">
-                   <string notr="true">background-color: #B0B0B0;
-color: #555555;            
-font-weight: bold;
-border: 2px solid #505050; </string>
+                   <string notr="true">color: #555555;            
+font-weight: bold;</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -1323,8 +1435,8 @@ border: 2px solid #505050; </string>
             </layout>
            </widget>
           </item>
-          <item row="4" column="0">
-           <widget class="QWidget" name="widget_24" native="true">
+          <item row="5" column="0">
+           <widget class="QWidget" name="widget_38" native="true">
             <property name="styleSheet">
              <string notr="true">border:none;</string>
             </property>

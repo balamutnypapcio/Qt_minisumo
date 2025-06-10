@@ -6,11 +6,25 @@
 
 /**
  * @class RotatedLabel
- * @brief Etykieta z obróconym o 90 stopni tekstem
+ * @brief Etykieta z obróconym o 90 stopni tekstem.
  *
  * Klasa rozszerzająca standardową QLabel, która wyświetla tekst obrócony
  * o 90 stopni przeciwnie do ruchu wskazówek zegara. Używana głównie do
- * wyświetlania pionowych etykiet osi na wykresach.
+ * pionowych etykiet osi na wykresach, lecz może być wykorzystana wszędzie,
+ * gdzie potrzebny jest pionowy napis.
+ *
+ * - Rozszerza QLabel.
+ * - Obraca tekst o -90 stopni (CCW) wokół środka widgetu.
+ * - Dba o czytelność i poprawne czyszczenie tła.
+ * - Sugeruje rozmiar zamieniając szerokość z wysokością (względem standardowej etykiety).
+ *
+ * Przykład użycia:
+ * @code
+ * auto* label = new RotatedLabel("Oś Y", this);
+ * layout->addWidget(label);
+ * @endcode
+ *
+ * @author Jakub Wilczyński
  */
 class RotatedLabel : public QLabel
 {
@@ -18,80 +32,72 @@ class RotatedLabel : public QLabel
 
 public:
     /**
-     * @brief Konstruktor domyślny
-     * @param parent Wskaźnik do widgetu rodzica
+     * @brief Konstruktor domyślny.
+     * @param parent Wskaźnik do widgetu rodzica.
      */
     explicit RotatedLabel(QWidget* parent = nullptr) : QLabel(parent) {}
 
     /**
-     * @brief Konstruktor z tekstem
-     * @param text Tekst do wyświetlenia
-     * @param parent Wskaźnik do widgetu rodzica
+     * @brief Konstruktor z tekstem inicjalnym.
+     * @param text Tekst do wyświetlenia.
+     * @param parent Wskaźnik do widgetu rodzica.
      */
     explicit RotatedLabel(const QString& text, QWidget* parent = nullptr) : QLabel(text, parent) {}
 
 protected:
     /**
-     * @brief Metoda obsługująca zdarzenie rysowania widgetu
+     * @brief Obsługuje zdarzenie rysowania widgetu.
      *
-     * Implementacja rysuje tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara.
-     * Przed rysowaniem czyści całe tło, aby zapobiec pozostawaniu artefaktów po poprzednim tekście.
+     * Rysuje tekst obrócony o 90 stopni przeciwnie do ruchu wskazówek zegara.
+     * Przed rysowaniem czyści tło, aby nie zostawiać artefaktów.
      *
-     * @param event Obiekt zdarzenia rysowania
+     * @param event Obiekt zdarzenia rysowania.
      */
     void paintEvent(QPaintEvent* event) override {
         Q_UNUSED(event);
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
 
-        // Całkowicie wyczyść tło przed rysowaniem
+        // Wyczyść tło
         painter.fillRect(rect(), palette().color(QPalette::Window));
 
-        // Jeśli tekst jest pusty, nie ma potrzeby dalszego rysowania
         if (text().isEmpty())
             return;
 
-        // Zapisz aktualny stan
         painter.save();
 
-        // Obrót o -90 stopni wokół środka
+        // Obrót o -90 stopni wokół środka widgetu
         painter.translate(width() / 2, height() / 2);
-        painter.rotate(-90); // Obrót o -90 stopni
+        painter.rotate(-90);
 
-        // Obliczenie prostokąta dla obroconego tekstu
+        // Oblicz prostokąt pod tekst
         QFontMetrics fm(font());
         int textWidth = fm.horizontalAdvance(text());
         int textHeight = fm.height();
         QRect textRect(-textWidth / 2, -textHeight / 2, textWidth, textHeight);
 
-        // Narysuj tekst
         painter.setPen(palette().color(QPalette::WindowText));
         painter.drawText(textRect, Qt::AlignCenter, text());
 
-        // Przywróć zapisany stan
         painter.restore();
     }
 
     /**
-     * @brief Sugerowany rozmiar widgetu
+     * @brief Sugerowany rozmiar widgetu.
      *
-     * Zwraca sugerowany rozmiar widgetu, zamieniający szerokość i wysokość
-     * w porównaniu do standardowej etykiety, aby uwzględnić obrót tekstu o 90 stopni.
+     * Zamienia szerokość i wysokość standardowej etykiety, aby uwzględnić obrót tekstu.
      *
-     * @return QSize Sugerowany rozmiar widgetu
+     * @return QSize sugerowany rozmiar widgetu.
      */
     QSize sizeHint() const override {
         QFontMetrics fm(font());
-        // Zamiana szerokości i wysokości ze względu na obrót o 90 stopni
         return QSize(fm.height(), fm.horizontalAdvance(text()));
     }
 
     /**
-     * @brief Minimalny sugerowany rozmiar widgetu
+     * @brief Minimalny sugerowany rozmiar widgetu.
      *
-     * Zwraca minimalny rozmiar widgetu potrzebny do poprawnego wyświetlenia obroconego tekstu.
-     *
-     * @return QSize Minimalny sugerowany rozmiar widgetu
+     * @return QSize minimalny rozmiar widgetu.
      */
     QSize minimumSizeHint() const override {
         return sizeHint();

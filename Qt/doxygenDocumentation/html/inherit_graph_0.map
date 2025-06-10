@@ -1,5 +1,5 @@
 <map id="Graficzna hierarchia klas" name="Graficzna hierarchia klas">
 <area shape="rect" id="Node000000" title=" " alt="" coords="5,5,104,31"/>
-<area shape="rect" id="Node000001" href="$classHorizontalOnlyChartView.html" title="Specjalny widok wykresu QChartView, który umożliwia przewijanie i zoomowanie wyłącznie w poziomie." alt="" coords="152,5,339,31"/>
+<area shape="rect" id="Node000001" href="$classHorizontalOnlyChartView.html" title="Specjalistyczny widok QChartView umożliwiający przewijanie i zoomowanie wyłącznie w osi poziomej (X)." alt="" coords="152,5,339,31"/>
 <area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="118,15,152,15,152,21,118,21"/>
 </map>

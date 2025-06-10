@@ -1,0 +1,142 @@
+\doxysection{csvmanager.\+cpp}
+\hypertarget{csvmanager_8cpp_source}{}\label{csvmanager_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}csvmanager.h"{}}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <QFile>}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <QTextStream>}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QDebug>}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00006}\mbox{\hyperlink{classCSVManager_a41436a6ce1f97fed378776db1eac6e24}{00006}}\ \mbox{\hyperlink{classCSVManager_a41436a6ce1f97fed378776db1eac6e24}{CSVManager::CSVManager}}(\mbox{\hyperlink{classSensorData}{SensorData}}*\ sensorData,\ QObject\ *parent)}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00007}00007\ \ \ \ \ :\ QObject(parent),\ m\_sensorData(sensorData)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00008}00008\ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00010}\mbox{\hyperlink{classCSVManager_a97ab57c81378a5655ec36f52885316b1}{00010}}\ \mbox{\hyperlink{classCSVManager_a97ab57c81378a5655ec36f52885316b1}{CSVManager::\string~CSVManager}}()\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_dataUpdateTimer)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ m\_dataUpdateTimer-\/>stop();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ m\_dataUpdateTimer;}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00017}\mbox{\hyperlink{classCSVManager_aa83110a5d828a7dd9f18c6edcf661ea4}{00017}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCSVManager_aa83110a5d828a7dd9f18c6edcf661ea4}{CSVManager::loadFromFile}}(\textcolor{keyword}{const}\ QString\ \&filePath)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00018}00018\ \ \ \ \ QFile\ file(filePath);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.open(QIODevice::ReadOnly\ |\ QIODevice::Text))\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}Nie\ udało\ się\ otworzyć\ pliku\ CSV"{}};}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ Reset\ bufora\ na\ wypadek\ ponownego\ ładowania}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00025}00025\ \ \ \ \ m\_csvData.clear();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00026}00026\ \ \ \ \ m\_currentRow\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00028}00028\ \ \ \ \ QTextStream\ in(\&file);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00029}00029\ \ \ \ \ QString\ line;}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ firstLine\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Wczytywanie\ wszystkich\ wierszy\ z\ pominięciem\ nagłówka}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{while}\ (!in.atEnd())\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ line\ =\ in.readLine();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (firstLine)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ firstLine\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \ \textcolor{comment}{//\ Pomijamy\ pierwszą\ linię\ (nagłówki\ kolumn)}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ QStringList\ data\ =\ line.split(\textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Walidacja\ liczby\ kolumn\ (12\ wymaganych)}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.size()\ >=\ 12)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ m\_csvData.append(data);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00046}00046\ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{return}\ !m\_csvData.isEmpty();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00050}\mbox{\hyperlink{classCSVManager_aa421002b8c1b3562776ae67961680e71}{00050}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCSVManager_aa421002b8c1b3562776ae67961680e71}{CSVManager::startPlayback}}()\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00051}00051\ \ \ \ \ m\_currentRow\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Rozpocznij\ pomiar\ czasu\ (od\ t=0)}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00054}00054\ \ \ \ \ m\_playbackTimer.start();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Zatrzymaj\ i\ usuń\ poprzedni\ timer\ (jeśli\ był)}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_dataUpdateTimer)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ m\_dataUpdateTimer-\/>stop();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ m\_dataUpdateTimer;}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00062}00062\ \ \ \ \ m\_dataUpdateTimer\ =\ \textcolor{keyword}{new}\ QTimer(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00063}00063\ \ \ \ \ connect(m\_dataUpdateTimer,\ \&QTimer::timeout,\ \textcolor{keyword}{this},\ \&CSVManager::updateData);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00064}00064\ \ \ \ \ m\_dataUpdateTimer-\/>start(20);\ \textcolor{comment}{//\ 50\ Hz\ odświeżania}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00067}\mbox{\hyperlink{classCSVManager_a16a339a63758a4b594567faaedf4bc82}{00067}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCSVManager_a16a339a63758a4b594567faaedf4bc82}{CSVManager::stopPlayback}}()}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00068}00068\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Zatrzymaj\ timer\ QTimer}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_dataUpdateTimer)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ m\_dataUpdateTimer-\/>stop();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ Zresetuj\ timer\ czasu\ rzeczywistego}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00075}00075\ \ \ \ \ m\_playbackTimer.invalidate();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Powiadom\ o\ zakończeniu\ odtwarzania}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00078}00078\ \ \ \ \ emit\ \mbox{\hyperlink{classCSVManager_a10755abfed118a3625b213fcc61b8e3f}{playbackFinished}}();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00081}00081\ \textcolor{keywordtype}{void}\ CSVManager::updateData()\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ Bez\ danych\ lub\ timer\ nieaktywny\ –\ wyjdź}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_csvData.isEmpty()\ ||\ !m\_playbackTimer.isValid())\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Oblicz\ ile\ ms\ minęło\ od\ rozpoczęcia\ odtwarzania}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00088}00088\ \ \ \ \ qint64\ elapsedMs\ =\ m\_playbackTimer.elapsed();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ Przetwarzaj\ wszystkie\ wiersze,\ których\ znacznik\ czasu\ już\ minął}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{while}\ (m\_currentRow\ <\ m\_csvData.size())\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ timeInCSV\ =\ m\_csvData[m\_currentRow][0].toInt();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (elapsedMs\ >=\ timeInCSV)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ updateVariablesFromCSV(m\_currentRow);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ m\_currentRow++;}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \textcolor{comment}{//\ Poczekaj\ na\ kolejne\ wywołanie\ timera}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00100}00100\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ Jeśli\ doszliśmy\ do\ końca\ –\ zatrzymaj\ odtwarzanie\ i\ powiadom}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_currentRow\ >=\ m\_csvData.size())\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ m\_dataUpdateTimer-\/>stop();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ emit\ \mbox{\hyperlink{classCSVManager_a10755abfed118a3625b213fcc61b8e3f}{playbackFinished}}();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Odtwarzanie\ zakończone"{}};}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00107}00107\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00108}00108\ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00110}00110\ \textcolor{keywordtype}{void}\ CSVManager::updateVariablesFromCSV(\textcolor{keywordtype}{int}\ row)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{if}\ (row\ <\ 0\ ||\ row\ >=\ m\_csvData.size()\ ||\ m\_csvData[row].size()\ <\ 12)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}Nieprawidłowe\ dane\ w\ wierszu\ o\ indeksie"{}}\ <<\ row;}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00116}00116\ \ \ \ \ QStringList\ data\ =\ m\_csvData[row];}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordtype}{int}\ time\ =\ data[0].toInt();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ tof1\ =\ (data[1].toInt()\ ==\ 1);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ tof2\ =\ (data[2].toInt()\ ==\ 1);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ tof3\ =\ (data[3].toInt()\ ==\ 1);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ tof4\ =\ (data[4].toInt()\ ==\ 1);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ lineS1\ =\ (data[5].toInt()\ ==\ 1);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ lineS2\ =\ (data[6].toInt()\ ==\ 1);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ lineS3\ =\ (data[7].toInt()\ ==\ 1);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ motor1\ =\ data[8].toInt();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ motor2\ =\ data[9].toInt();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ imuX\ =\ data[10].toFloat();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ imuY\ =\ data[11].toFloat();}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ m\_sensorData-\/>\mbox{\hyperlink{classSensorData_a3a985eab247604ab102f4015df8d66e8}{updateAllData}}(tof1,\ tof2,\ tof3,\ tof4,\ lineS1,\ lineS2,\ lineS3,\ motor1,\ motor2,\ imuX,\ imuY);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ emit\ \mbox{\hyperlink{classCSVManager_ac8dfd7524b2fe204986084c3accbd839}{dataUpdated}}(time);}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00134}00134\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}Błąd\ przetwarzania\ wiersza"{}}\ <<\ row;}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00136}00136\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{csvmanager_8cpp_source_l00137}00137\ \}}
+
+\end{DoxyCode}

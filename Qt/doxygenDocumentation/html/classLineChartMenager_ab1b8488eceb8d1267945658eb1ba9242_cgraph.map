@@ -1,0 +1,20 @@
+<map id="LineChartMenager::LineChartMenager" name="LineChartMenager::LineChartMenager">
+<area shape="rect" id="Node000001" title="Konstruktor." alt="" coords="5,128,216,168"/>
+<area shape="rect" id="Node000002" href="$classSensorData.html#a0ebd4e4804899960c3708d6ff6b4641e" title="Sygnał emitowany przy zmianie dowolnych czujników linii." alt="" coords="264,110,489,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,135,250,132,251,137,216,141"/>
+<area shape="rect" id="Node000003" href="$classLineChartMenager.html#af4ae0b8f7efd7713d2e1b3faabe96977" title="Inicjalizuje (tworzy) wykres i ustawia wszystkie parametry." alt="" coords="267,159,487,185"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,155,253,158,253,164,216,160"/>
+<area shape="rect" id="Node000004" href="$classLineChartMenager.html#a71ff3e2215d7d10b9fd19877f9edfe94" title="Dostosowuje liczbę etykiet osi X do rozmiaru wykresu." alt="" coords="547,5,737,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="465,157,488,145,504,126,511,105,519,84,536,62,554,49,557,54,539,66,523,86,517,107,509,128,491,149,467,162"/>
+<area shape="rect" id="Node000005" href="$classLineChartMenager.html#a711bb6f8e8c0757c97cd52d45a0f49ad" title="Wymusza przestrzeganie limitów osi X (brak przewijania poza [0, aktualny_czas])." alt="" coords="795,124,993,164"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="454,157,488,144,502,135,511,124,521,114,536,106,573,95,612,90,689,91,762,101,824,117,823,122,761,107,689,96,612,95,575,101,538,110,524,118,515,128,505,139,491,149,456,162"/>
+<area shape="rect" id="Node000006" href="$classLineChartMenager.html#acbb2057099a3d9bf8cae41725122fc99" title="Wywoływane przy kliknięciu/przesuwaniu wykresu – wyłącza auto&#45;scroll." alt="" coords="545,120,739,160"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="482,157,531,151,532,156,483,162"/>
+<area shape="rect" id="Node000007" href="$classLineChartMenager.html#aa940e9e26f3d2953abca44de085a0bf7" title="Wywoływane przy puszczeniu myszy na wykresie – blokuje zakres przewijania." alt="" coords="545,184,739,224"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="483,182,532,188,531,193,482,187"/>
+<area shape="rect" id="Node000008" href="$classHorizontalOnlyChartView.html#a5ef619d9b976147eb7fe9f83da3b6688" title="Ustawia callback wywoływany przy naciśnięciu lewego przycisku myszy na wykresie." alt="" coords="542,248,742,288"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="409,182,538,233,561,241,559,246,536,239,407,187"/>
+<area shape="rect" id="Node000009" href="$classHorizontalOnlyChartView.html#a12bd31146864d4ca20b2da4544f6c2bf" title="Ustawia callback wywoływany przy puszczeniu lewego przycisku myszy na wykresie." alt="" coords="537,312,747,352"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="392,183,452,238,494,270,539,298,553,305,551,309,536,302,491,274,449,242,389,187"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="726,181,795,165,797,170,727,187"/>
+</map>
